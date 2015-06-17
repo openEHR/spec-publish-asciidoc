@@ -1,0 +1,47 @@
+==== TERMINOLOGY_CODE CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*TERMINOLOGY_CODE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*terminology_id*: `String`
+{set:cellbgcolor!}
+|
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*terminology_version*: `String`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*code_string*: `String`
+{set:cellbgcolor!}
+|
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*uri*: `Uri`
+{set:cellbgcolor!}
+|
+|===

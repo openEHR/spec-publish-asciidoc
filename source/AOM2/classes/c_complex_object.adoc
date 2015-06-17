@@ -1,0 +1,63 @@
+==== C_COMPLEX_OBJECT CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*C_COMPLEX_OBJECT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Constraint on complex objects, i.e. any object that consists of other object constraints.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|C_DEFINED_OBJECT
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*attributes*: `List<C_ATTRIBUTE>`
+{set:cellbgcolor!}
+|List of constraints on attributes of the reference model type represented by this object.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*attribute_tuples*: `List<C_ATTRIBUTE_TUPLE>`
+{set:cellbgcolor!}
+|List of attribute tuple constraints under this object constraint, if any.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*any_allowed*: `Boolean`
+{set:cellbgcolor!}
+|True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descendants.
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*valid_value*: `Boolean`
+{set:cellbgcolor!}
+|True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*prototype_value*: `Any`
+{set:cellbgcolor!}
+|
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*has_default_value*: `Boolean`
+{set:cellbgcolor!}
+|True if there is an assumed value.
+|===

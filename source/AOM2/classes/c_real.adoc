@@ -1,0 +1,19 @@
+==== C_REAL CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*C_REAL*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Constraint on instances of Real.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|===

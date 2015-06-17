@@ -1,0 +1,35 @@
+==== BASIC_DEFINITIONS CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*BASIC_DEFINITIONS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Defines globally used constant values.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*CR*: `char`
+{set:cellbgcolor!}
+|carriage return character
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*LF*: `char`
+{set:cellbgcolor!}
+|line feed character
+|===

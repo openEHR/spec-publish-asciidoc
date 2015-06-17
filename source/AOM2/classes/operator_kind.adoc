@@ -1,0 +1,42 @@
+==== OPERATOR_KIND CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*OPERATOR_KIND*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Enumeration type for operator types in assertion expressions. +
+Enumeration type for operator types in assertion expressions 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*op_eq*: `int`
+{set:cellbgcolor!}
+|Equals operator ( =' or  ==')
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*op_ne*: `int`
+{set:cellbgcolor!}
+|Not equals operator ( !=' or  /=' or  <>')
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*op_le*: `int`
+{set:cellbgcolor!}
+|Less-than or equals operator ( <=') 
+|===

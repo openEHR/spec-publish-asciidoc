@@ -1,0 +1,19 @@
+==== P_C_INTEGER CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*P_C_INTEGER*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Constraint on instances of Integer.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|===

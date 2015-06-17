@@ -1,0 +1,45 @@
+==== P_C_DEFINED_OBJECT CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*_P_C_DEFINED_OBJECT (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract parent type of C_OBJECT subtypes that are defined by value, i.e. whose definitions are actually in the archetype rather than being by reference. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|P_C_OBJECT
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*is_frozen*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*default_value*: `Any`
+{set:cellbgcolor!}
+|
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*specialisation_depth*: `Integer`
+{set:cellbgcolor!}
+|
+|===

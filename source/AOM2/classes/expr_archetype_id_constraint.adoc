@@ -1,0 +1,29 @@
+==== EXPR_ARCHETYPE_ID_CONSTRAINT CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*EXPR_ARCHETYPE_ID_CONSTRAINT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Expression tree leaf item representing a constraint on an archetype identifier.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|EXPR_CONSTRAINT
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*item*: `C_STRING`
+{set:cellbgcolor!}
+|
+|===

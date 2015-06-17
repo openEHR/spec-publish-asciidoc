@@ -1,0 +1,41 @@
+==== ISO8601_TYPE CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*_ISO8601_TYPE (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|Ordered
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_partial*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*is_extended*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*<*: `Boolean`
+{set:cellbgcolor!}
+|
+|===

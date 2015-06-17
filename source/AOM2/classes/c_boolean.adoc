@@ -1,0 +1,63 @@
+==== C_BOOLEAN CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*C_BOOLEAN*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Constraint on instances of Boolean. Both attributes cannot be set to False, since this would mean that the Boolean value being constrained cannot be True or False.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|C_PRIMITIVE_OBJECT
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*constraint*: `List<Boolean>`
+{set:cellbgcolor!}
+|
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*assumed_value*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*default_value*: `Boolean`
+{set:cellbgcolor!}
+|
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*prototype_value*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*has_assumed_value*: `Boolean`
+{set:cellbgcolor!}
+|True if there is an assumed value.
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*constrained_typename*: `String`
+{set:cellbgcolor!}
+|Generate name of native type that is constrained by this C_XXX type. For most types, it is the C_XXX typename without the 'C_', i.e. XXX. E.g. C_INTEGER -> Integer. For the date/time types the mapping is different.
+|===

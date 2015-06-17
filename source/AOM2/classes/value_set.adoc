@@ -1,0 +1,19 @@
+==== VALUE_SET CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*VALUE_SET*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Representation of a flat value set within the archetype terminology.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|TERMINOLOGY_RELATION
+{set:cellbgcolor!}
+
+|===

@@ -1,0 +1,47 @@
+==== ISO8601_TIME_ZONE CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*ISO8601_TIME_ZONE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*hour*: `Integer`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*minute*: `Integer`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*is_gmt*: `Boolean`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*sign*: `Integer`
+{set:cellbgcolor!}
+|
+|===

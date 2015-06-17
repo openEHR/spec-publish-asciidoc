@@ -1,0 +1,59 @@
+==== ADL_CODE_DEFINITIONS CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*ADL_CODE_DEFINITIONS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Id_code_leader*: `String`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Value_code_leader*: `String`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Value_set_code_leader*: `String`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Specialisation_separator*: `char`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Code_regex_pattern*: `String`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*Root_code_regex_pattern*: `String`
+{set:cellbgcolor!}
+|
+|===

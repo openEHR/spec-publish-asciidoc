@@ -1,0 +1,39 @@
+==== EXPR_VARIABLE_REF CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*EXPR_VARIABLE_REF*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Expression tree leaf item representing a reference to a defined variable.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|EXPR_LEAF
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*declaration*: `VARIABLE_DECLARATION`
+{set:cellbgcolor!}
+|The variable referred to.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*(effected)*
+{set:cellbgcolor:lightblue}
+|*reference_type*: `String`
+{set:cellbgcolor!}
+|Type of reference: “constant”, “attribute”, “function”, “constraint”. The first three are used to indicate the referencing mechanism for an operand. The last is used to indicate a constraint operand, as happens in the case of the right-hand operand of the ‘matches’ operator.
+|===

@@ -1,0 +1,35 @@
+==== C_PRIMITIVE_TUPLE CLASS
+
+[cols="^1,2,3"]
+|===
+|*CLASS*
+{set:cellbgcolor:lightblue}
+2+^|*C_PRIMITIVE_TUPLE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*members*: `List<C_PRIMITIVE_OBJECT>`
+{set:cellbgcolor!}
+|
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*assumed_value*: `Any`
+{set:cellbgcolor!}
+|
+|===
