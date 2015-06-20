@@ -7,7 +7,7 @@
 :pagenums:
 :numbered!:
 :copyright_year: 2004
-image:../images/openehr_logo_large.png["openEHR logo",align="center"]
+image::../images/openehr_logo_large.png["openEHR logo",align="center"]
 
 
 
@@ -26,7 +26,7 @@ image:../images/openehr_logo_large.png["openEHR logo",align="center"]
 3+^|*Keywords*: EHR, ADL, health records, archetypes, constraints
 |===
 
-image:diagrams/block_diagram.png["openEHR components",align="center"]
+image::diagrams/block_diagram.png["openEHR components",align="center"]
  
 
 
@@ -304,37 +304,33 @@ This specification and its sibling Archetype Definition Language specification h
 :numbered:
 == Introduction
 
-Purpose
-~~~~~~~
+=== Purpose
 
-This document contains the definitive formal statement of archetype and template semantics, in the form of an object model for archetypes. The model presented here can be used as a basis for building software that represents archetypes and templates, independent of their persistent representation; equally, it can be used to develop the output side of parsers that process archetypes in a linguistic format, such as the openEHR Archetype Definition Language (ADL) link:AOM2.htm#50487307_43585[See Heard S, Beale T. Archetype Definitions and Principles. See http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/principles/REV_HIST.html.], XML-instance and so on. As a specification, it can be treated as an API for archetypes within software tools and components.
+This document contains the normative description of openEHR Archetype and Template semantics, in the form of an object model. The model presented here can be used as a basis for building software that represents archetypes and templates, independent of their persistent representation. Equally, it can be used to develop the output side of parsers that process archetypes in a linguistic format, such as the http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf[openEHR Archetype Definition Language (ADL)], XML and so on.
 
-It is recommended that the openEHR ADL document link:AOM2.htm#50487307_43585[See Heard S, Beale T. Archetype Definitions and Principles. See http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/principles/REV_HIST.html.] be read in conjunction with this document, since it contains a detailed explanation of the semantics of archetypes, and many of the examples are more obvious in ADL, regardless of whether ADL is actually used with the object model presented here or not.
+It is recommended in any case that the ADL specification be read in conjunction with this document, since it contains a detailed explanation of the semantics of archetypes, and many of the examples are more obvious in ADL, regardless of whether ADL is actually used with the object model presented here or not.
 
-The release of AOM described in this specification corresponds to the 2.x versions of the archetype formalism.
+The release of AOM described in this specification corresponds to the 2.x version of the archetype formalism.
 
-Related Documents
-~~~~~~~~~~~~~~~~~
+=== Related Documents
 
 Prerequisite documents for reading this document include:
 
-* The _http://www.openehr.org/releases/1.0.2/architecture/overview.pdf[openEHR Architecture Overview]_
+* The http://www.openehr.org/releases/trunk/architecture/overview.pdf[openEHR Architecture Overview]
+* The http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf[openEHR Archetypes: Technical Overview specification]
 
 Related documents include:
 
-* The openEHR Archetypes: Technical Overview specification
-* The openEHR _http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf[Archetype Definition Language (ADL)]_
-* The openEHR Operational Template Specification
+* The openEHR http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf[Archetype Definition Language (ADL)]
+* The http://www.openehr.org/releases/trunk/architecture/am/templates_guide.pdf[openEHR Operational Template Specification]
 
-Nomenclature
-~~~~~~~~~~~~
+=== Nomenclature
 
 In this document, the term ‘attribute’ denotes any stored property of a type defined in an object model, including primitive attributes and any kind of relationship such as an association or aggregation. XML ‘attributes’ are always referred to explicitly as ‘XML attributes’.
 
 We also use the word ‘archetype’ in a broad sense to designate what are commonly understood to be ‘archetypes’ (specifications of clinical data groups / data constraints) and ‘templates’ (data sets based on archetypes, since at a technical level, an ADL/AOM 2 template is in fact just an archetype. Accordingly, statements about ‘archetypes’ in this specification can be always understood to also apply to templates, unless otherwise indicated.
 
-Status
-~~~~~~
+=== Status
 
 This specification is in the ‘development’ state, and is published for review purposes.
 
@@ -342,13 +338,11 @@ The development version of this document can be found at _http://www.openehr.org
 
 Blue text indicates sections under active development.
 
-Tools
-~~~~~
+=== Tools
 
 Various tools exist for creating and processing archetypes. The openEHR tools are available in source and binary form from the website ( _http://www.openEHR.org_ ).
 
-Changes from Previous Versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Changes from Previous Versions
 
 ==== Release 1.5 to 2.0 (Document version 2.1.2 - )
 
@@ -356,14 +350,14 @@ The changes in release 2 of the ADL/AOM formalism are designed to make the forma
 
 The changes are as follows.
 
-* Introduction of new archetype internal coding scheme, consisting of id-codes, at-codes and ac-codes;
-* Replace string archetype identifier with multi-part, namespaced identifier;
-* Addition of explicit value-sets in terminology section, replacing in-line value sets in the definition section;
-* Renaming archetype ontology section to ‘terminology’;
-* Expression of all external term bindings as URIs following IHTSDO format;
-* Introduction of generic ‘tuple’ second order constraints to replace openEHR custom constrainer types for covarying attributes within Quantity, Ordinal structures;
+* Introduction of *new internal coding scheme*, consisting of id-codes, at-codes and ac-codes;
+* Replace string archetype identifier with multi-part, *namespaced identifier*;
+* Addition of *explicit value-sets* in terminology section, replacing in-line value sets in the `definition` section;
+* Renaming archetype `ontology` section to `terminology`;
+* Expression of all external *term bindings as URIs* following IHTSDO format;
+* Introduction of *‘tuple’ constraints* to replace openEHR custom constrainer types for covarying attributes within Quantity, Ordinal structures;
 * Re-engineering of all primitive constrainer types, i.e. `C_STRING` , `C_DATE` etc;
-* Removal of the openEHR Archetype Profile specification;
+* Removal of the openEHR Archetype Profile specification.
 
 ==== Release 1.4 to 1.5 (Document version 2.0 to 2.1.1)
 
@@ -371,66 +365,66 @@ The changes in release 1.5 are made to better facilitate the representation of s
 
 The changes are as follows.
 
-* Full specialisation support: the addition of an attribute to the `C_ATTRIBUTE` class, allowing the inclusion of a path that enables specialised archetype redefinitions deep within a structure;
-* Addition of node-level annotations;
+* Full *specialisation support*: the addition of an attribute to the `C_ATTRIBUTE` class, allowing the inclusion of a path that enables specialised archetype redefinitions deep within a structure;
+* Addition of *node-level annotations*;
 * Structural simplification of archetype ontology section;
-* The name of the invariant section has been changed to rules, to better reflect its purpose.
+* The name of the `invariant` section has been changed to `rules`, to better reflect its purpose.
 * A template is now just an archetype.
 
 ==== Release 0.6 to 1.4
 
 Changes made from Release 1.3 to 1.4:
 
-* added a new attribute _adl_version_ : String to the `ARCHETYPE` class;
+* added a new attribute _adl_version_ : `String` to the `ARCHETYPE` class;
 * changed name of `ARCHETYPE` . _concept_code_ attribute to _concept_ .
 
 == Model Overview
 
-The model described here is a pure object-oriented model that can be used with archetype parsers and software that manipulates archetypes and templates. It is independent of any particular serialised expression of an archetype, such as ADL or XML, and can therefore be used with any kind of parser.
-
-It is dependent on the openEHR Support model (assumed types and identifiers), as small number of the openEHR Data types IM, and the `AUTHORED_RESOURCE` classes from the openEHR Common IM.
+The model described here is a pure object-oriented model that can be used with archetype parsers and software that manipulates archetypes and templates in memory. It is typically the output of a parser of any serialsed form of archetypes. It is dependent on the openEHR Base package classes.
 
 === Package Structure
 
-The openEHR Archetype Object Model is defined as the package _am.archetype_ , as illustrated in link:main.htm#50487297_46554[See openehr.am.archetype Package]. It is shown in the context of the openEHR _am.archetype_ packages.
+The openEHR Archetype Object Model is defined as the package `am.archetype` , as illustrated in Figure [[package_overview]]. It is shown in the context of the openEHR `am.archetype` packages.
 
 [[package_overview]]
 .Package Overview
-image:uml_diagrams/AOM-packages.png[align="center"]
+image::uml_diagrams/AOM-packages.png[align="center"]
 
-== Support Package
+== Definition and Utility Classes
 
 === Overview
 
-The _am.support_ package contains a number of classes providing definitions used elsewhere in the archetype object model, and is illustrated below.
+Various definitional classes are used in the AOM. Some are defined in the `aom.definitions` package, while others come from the openEHR `definitions` package. These are illustrated below.
 
 [[definition_package]]
 .Definition Package
-image:uml_diagrams/AOM-definitions.png[align="center"]
+image::uml_diagrams/AOM-definitions.png[align="center"]
 
-==== Utility Classes
+The enumeration type `VALIDITY_KIND` is provided in order to define standard values representing `mandatory`, `optional`, or `disallowed` in any model. It is used in this model in classes such as `C_DATE` , `C_TIME` and `C_DATE_TIME`. The `VERSION_STATUS` enumeration type serves a similar function within various AOM types.
 
-The enumeration class, `VALIDITY_KIND` is provided in order to define standard values representing ‘mandatory’, ‘optional’, or ‘disallowed’ in any model. It is used in this model in classes such as _C_Date_ , _C_Time_ and _C_Date_Time_ .
-
-include::./classes/adl_code_definitions.adoc[]
+Other classes used from the `base` package include AUTHORED_RESOURCE (openEHR `resource` package) and its subordinate classes. These are shown in full within the packages that use them.
 
 === Class Definitions
 
 include::./classes/version_status.adoc[]
+
 include::./classes/validity_kind.adoc[]
+
 include::./classes/adl_code_definitions.adoc[]
 
 == The Archetype Package
 
 === Overview
 
-The top-level model of archetypes and templates (all variant forms) is illustrated in Figure <<archetype_package>>. The model defines a standard structural representation of an archetype, typically parsed from either the openEHR ADL format, or an ‘object graph’ serialisation in a format such as ODIN, XML, JSON or YAML. Archetypes authored as independent entities are instances of the class `AUTHORED_ARCHETYPE` which is a descendant of the classes `AUTHORED_RESOURCE` and `ARCHETYPE` . The former provides a standardised model of descriptive meta-data, language information, annotations and revision history. The latter class defines the core structure of any kind of archetype, including namely definition, optional rules part, and terminology, along with its ‘semantic identifier’.
+The top-level model of archetypes and templates (all variant forms) is illustrated in Figure <<archetype_package>>. The model defines a standard structural representation of an archetype, typically parsed from either the openEHR ADL format, or an ‘object graph’ serialisation in a format such as ODIN, XML, JSON or YAML. Archetypes authored as independent entities are instances of the class `AUTHORED_ARCHETYPE` which is a descendant of `AUTHORED_RESOURCE` and `ARCHETYPE` The former provides a standardised model of descriptive meta-data, language information, annotations and revision history. The latter class defines the core structure of any kind of archetype, including definition, optional rules part, and terminology, along with its ‘semantic identifier’.
 
-The `AUTHORED_ARCHETYPE` class adds identifying attributes and flags of its own, and is the ancestor type for two further specialisations - `TEMPLATE` and `OPERATIONAL_TEMPLATE` . The `TEMPLATE` class defines the notion of a ‘templated’ archetype, i.e. an archetype containing fillers/references ( _use_archetype_ constructs), typically designed to express a data set. To enable this, it may contain ‘overlays’, private archetypes that specialise one or more of the referenced / filler archetypes it uses. Overlays are represented by the `TEMPLATE_OVERLAY` class, have no meta-data of their own, but are otherwise computationally just like any other archetype. The `OPERATIONAL_TEMPLATE` class represents the fully flattened form of a template, i.e. with all fillers and references substituted and overlays processed, to form what is in practical terms, a single custom-made ‘operational’ artefact, ready for transformation to downstream artefacts. Because an operational template includes one or more other archetype structures inline, it also includes their terminologies, enabling it to be treated as a self-standing artefact.
+The `AUTHORED_ARCHETYPE` class adds identifying attributes, flags and descriptive meta-data, and is the ancestor type for two further specialisations - `TEMPLATE` and `OPERATIONAL_TEMPLATE` . The `TEMPLATE` class defines the notion of a ‘templated’ archetype, i.e. an archetype containing fillers/references (ADL `use_archetype` statements), typically designed to represent a data set. To enable this, it may contain ‘overlays’, private archetypes that specialise one or more of the referenced / filler archetypes it uses. Overlays are represented by the `TEMPLATE_OVERLAY` class, have no meta-data of their own, but are otherwise computationally just like any other archetype. 
 
 [[archetype_package]]
 .Archetype Package
-image:uml_diagrams/AOM-archetype.png[align="center"]
+image::uml_diagrams/AOM-archetype.png[align="center"]
+
+The `OPERATIONAL_TEMPLATE` class represents the fully flattened form of a template, i.e. with all fillers and references substituted and overlays processed, to form what is in practical terms, a single custom-made ‘operational’ artefact, ready for transformation to downstream artefacts. Because an operational template includes one or more other archetype structures inline, it also includes their terminologies, enabling it to be treated as a self-standing artefact.
 
 === Archteype Identification
 
@@ -444,7 +438,7 @@ An important aspect of identification relates to the rules governing when when t
 
 [[archetype_hrid_structure]]
 .Archetype HRID Structure
-image:diagrams/archetype_hrid_structure.png[align="center"]
+image::diagrams/archetype_hrid_structure.png[align="center"]
 
 ==== Machine Identifiers
 
@@ -486,7 +480,7 @@ Governance meta-data is visible primarily in the `RESOURCE_DESCRIPTION` class, i
 
 [[metadata_governance]]
 .Governance Meta-data
-image:images/metadata_governance.png[align="center"]
+image::images/metadata_governance.png[align="center"]
 
 ===== Package
 
@@ -516,7 +510,7 @@ Authorship meta-data consists of items such as author name, contributors, and tr
 
 [[metadata_authoring]]
 .Authoring Meta-data
-image:images/metadata_authoring.png[, align="center"]
+image::images/metadata_authoring.png[, align="center"]
 
 ===== Original Author
 
@@ -544,7 +538,7 @@ Various descriptive meta-data may be provided for an archetype in multiple trans
 
 [[metadata_descriptive]]
 .Descriptive Meta-data
-image:images/metadata_details.png[align="center"]
+image::images/metadata_details.png[align="center"]
 
 ===== Purpose
 
@@ -583,7 +577,7 @@ The model in Figure <<archetype_package>> defines the structures of a number of 
 
 [[source_archetype_structure]]
 .Source Archetype Structure
-image:diagrams/source_archetype_instance_structure.png[align="center"]
+image::diagrams/source_archetype_instance_structure.png[align="center"]
 
 Source archetypes can be specialised, in which case their definition structure is a partial overlay on the flat parent, or ‘top-level’, in which case the definition structure is complete. `C_ARCHETYPE_ROOT` instances may only occur representing direct references to other archetypes - ‘external references’.
 
@@ -603,7 +597,7 @@ Figure <<operational_template_structure>> illustrates the resulting operational 
 
 [[operational_template_structure]]
 .Operational Template Structure
-image:diagrams/operational_template_instance_structure.png[align="center"]
+image::diagrams/operational_template_instance_structure.png[align="center"]
 
 More details of template development, representation and semantics are described in the next section.
 
@@ -621,65 +615,65 @@ include::./classes/operational_template.adoc[]
 The following validity rules apply to all varieties of `ARCHETYPE` object:
 
 [.rule]
-*VARAV* ADL version validity. The adl_version top-level meta-data item must exist and consist of a valid 3-part version identifier.
+*VARAV*: ADL version validity. The adl_version top-level meta-data item must exist and consist of a valid 3-part version identifier.
 
 [.rule]
-*VARRV* RM release validity. The rm_release top-level meta-data item must exist and consist of a valid 3-part version identifier.
+*VARRV*: RM release validity. The rm_release top-level meta-data item must exist and consist of a valid 3-part version identifier.
 
 [.rule]
-*VARCN* archetype concept validity. The node_id of the root object of the archetype must be of the form id1\{.1}*, where the number of ‘.1’ components equals the specalisation depth, and must be defined in the terminology.
+*VARCN*: archetype concept validity. The node_id of the root object of the archetype must be of the form id1\{.1}*, where the number of ‘.1’ components equals the specalisation depth, and must be defined in the terminology.
 
 [.rule]
-*VATDF* value code validity. Each value code (at-code) used in a term constraint in the archetype definition must be defined in the term_definitions part of the terminology of the flattened form of the current archetype.
+*VATDF*: value code validity. Each value code (at-code) used in a term constraint in the archetype definition must be defined in the term_definitions part of the terminology of the flattened form of the current archetype.
 
 [.rule]
-*VACDF* constraint code validity. Each value set code (ac-code) used in a term constraint in the archetype definition must be defined in the term_definitions part of the terminology of the current archetype.
+*VACDF*: constraint code validity. Each value set code (ac-code) used in a term constraint in the archetype definition must be defined in the term_definitions part of the terminology of the current archetype.
 
 [.rule]
-*VATDA* value set assumed value code validity. Each value code (at-code) used as an assumed_value for a value set in a term constraint in the archetype definition must exist in the value set definition in the terminology for the identified value set.
+*VATDA*: value set assumed value code validity. Each value code (at-code) used as an assumed_value for a value set in a term constraint in the archetype definition must exist in the value set definition in the terminology for the identified value set.
 
 [.rule]
-*VETDF* external term validity. Each external term used within the archetype definition must exist in the relevant terminology (subject to tool accesibility; codes for inaccessible terminologies should be flagged with a warning indicating that no verification was possible).
+*VETDF*: external term validity. Each external term used within the archetype definition must exist in the relevant terminology (subject to tool accesibility; codes for inaccessible terminologies should be flagged with a warning indicating that no verification was possible).
 
 [.rule]
-*VOTM* terminology translations validity. Translations must exist for term_definitions and constraint_definitions sections for all languages defined in the description / translations section.
+*VOTM*: terminology translations validity. Translations must exist for term_definitions and constraint_definitions sections for all languages defined in the description / translations section.
 
 [.rule]
-*VOKU* object key unique. Within any keyed list in an archetype, including the desription, terminology, and annotations sections, each item must have a unique key with respect to its siblings.
+*VOKU*: object key unique. Within any keyed list in an archetype, including the desription, terminology, and annotations sections, each item must have a unique key with respect to its siblings.
 
 [.rule]
-*VARDT* archetype definition typename validity. The typename mentioned in the outer block of the archetype definition section must match the type mentioned in the first segment of the archetype id.
+*VARDT*: archetype definition typename validity. The typename mentioned in the outer block of the archetype definition section must match the type mentioned in the first segment of the archetype id.
 
 [.rule]
-*VRANP* annotation path valid. Each path mentioned in an annotation within the annotations section must either be a valid archetype path, or a ‘reference model’ path, i.e. a path that is valid for the root class of the archetype.
+*VRANP*: annotation path valid. Each path mentioned in an annotation within the annotations section must either be a valid archetype path, or a ‘reference model’ path, i.e. a path that is valid for the root class of the archetype.
 
 [.rule]
-*VRRLP* rule path valid. Each path mentioned in a rule in the rules section must be found within the archetype, or be an RM-valid extension of a path found within the archetype.
+*VRRLP*: rule path valid. Each path mentioned in a rule in the rules section must be found within the archetype, or be an RM-valid extension of a path found within the archetype.
 
 The following validity rules apply to `ARCHETYPE` objects for which _is_overlay_ = False:
 
 [.rule]
-*VARID* archetype identifier validity. The archetype must have an identifier that conforms to the openEHR specification for archetype identifiers.
+*VARID*: archetype identifier validity. The archetype must have an identifier that conforms to the openEHR specification for archetype identifiers.
 
 [.rule]
-*VDEOL* original language specified. An original_language section containing the meta-data of the original authoring language must exist.
+*VDEOL*: original language specified. An original_language section containing the meta-data of the original authoring language must exist.
 
 [.rule]
-*VARD* description specified. A description section containing the main meta-data of the archetype must exist.
+*VARD*: description specified. A description section containing the main meta-data of the archetype must exist.
 
 The following rules apply to specialised archetypes.
 
 [.rule]
-*VASID* archetype specialisation parent identifier validity. The archetype identifier stated in the specialise clause must be the identifier of the immediate specialisation parent archetype.
+*VASID*: archetype specialisation parent identifier validity. The archetype identifier stated in the specialise clause must be the identifier of the immediate specialisation parent archetype.
 
 [.rule]
-*VALC* archetype language conformance. The languages defined in a specialised archetype must be the same as or a subset of those defined in the flat parent.
+*VALC*: archetype language conformance. The languages defined in a specialised archetype must be the same as or a subset of those defined in the flat parent.
 
 [.rule]
-*VACSD* archetype concept specialisation depth. The specialisation depth of the concept code must be one greater than the specialisation depth of the parent archetype.
+*VACSD*: archetype concept specialisation depth. The specialisation depth of the concept code must be one greater than the specialisation depth of the parent archetype.
 
 [.rule]
-*VATCD* archetype code specialisation level validity. Each archetype term (‘at’ code) and constraint code (‘ac’ code) used in the archetype definition part must have a specialisation level no greater than the specialisation level of the archetype.
+*VATCD*: archetype code specialisation level validity. Each archetype term (‘at’ code) and constraint code (‘ac’ code) used in the archetype definition part must have a specialisation level no greater than the specialisation level of the archetype.
 
 == Constraint Model Package
 
@@ -689,7 +683,7 @@ Figure [[constraint_model_top]] and Figure [[constraint_model_bottom]] illustrat
 
 [[constraint_model_top]]
 .constraint_model Package
-image:uml_diagrams/AOM-constraint_model-top.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-top.png[align="center"]
 
 The definition part of an archetype is an instance of a `C_COMPLEX_OBJECT` and consists of alternate layers of object and attribute constrainer nodes, each containing the next level of nodes. At the leaves are primitive object constrainer nodes constraining primitive types such as _String_ , _Integer_ etc. There are also nodes that represent internal references to other nodes, constraint reference nodes that refer to a text constraint in the constraint binding part of the archetype terminology, and archetype constraint nodes, which represent constraints on other archetypes allowed to appear at a given point. The full list of concrete node types is as follows:
 
@@ -704,7 +698,7 @@ The constraints define which configurations of reference model class instances a
 
 [[constraint_model_bottom]]
 .constraint_model.primitive Package
-image:uml_diagrams/AOM-constraint_model-bottom.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-bottom.png[align="center"]
 
 The type-name nomenclature `C_XXX` used here is intended to be read as “constraint on objects of type `XXXX` ”, i.e. a `C_COMPLEX_OBJECT` is a “constraint on a complex object (defined by a complex reference model type)”. These type names are used below in the formal model.
 
@@ -740,7 +734,7 @@ The appearance of both _existence_ and _cardinality_ constraints in `C_ATTRIBUTE
 
 [[c_attributes]]
 .C_ATTRIBUTE variants
-image:diagrams/c_attributes.png[align="center"]
+image::diagrams/c_attributes.png[align="center"]
 
 ==== Object Node Types
 
@@ -853,7 +847,7 @@ Since _C_PRIMITIVEs_ don’t have type names in ADL, the type name is inferred b
 
 [[enumerated_constraint]]
 .Enumerated Constraint
-image:diagrams/enumerated_type_constraint.png[align="center"]
+image::diagrams/enumerated_type_constraint.png[align="center"]
 
 A parser that deserialises from an object dump format such as ODIN, JSON or XML will not need to do this.
 
@@ -871,23 +865,27 @@ Another type of second order constraint can be ‘attached’ to the object/attr
 
 Tuple constraints are designed to account for the very common need to constrain the values of more than one RM class attribute together. This effectively treats the attributes in question as a tuple, and the corresponding object constraints are accordingly modelled as tuples. Additions to the main constraint model to support tuples are shown below.
 
-[[typle_constraint_model]]
+[[tuple_constraint_model]]
 .Tuple Constraint Model
-image:uml_diagrams/AOM-constraint_model-tuple.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-tuple.png[align="center"]
 
-In this model, the type `C_ATTRIBUTE_TUPLE` groups the co-constrained `C_ATTRIBUTE` s under a `C_COMPLEX_OBJECT` . Currently the concrete type is limited to being `C_PRIMITIVE_OBJECT` , to reduce complexity, and since this caters for the known examples of tuple constraints. In principle, any `C_DEFINED_OBJECT` would be allowed, and this may change in the future.
+In this model, the type `C_ATTRIBUTE_TUPLE` groups the co-constrained `C_ATTRIBUTE`s under a `C_COMPLEX_OBJECT`. Currently the concrete type is limited to being `C_PRIMITIVE_OBJECT`, to reduce complexity, and since this caters for the known examples of tuple constraints. In principle, any `C_DEFINED_OBJECT` would be allowed, and this may change in the future.
 
-The tuple constraint type replaces all domain-specific constraint types defined in ADL/AOM 1.4, including `C_DV_QUANTITY` and `C_DV_ORDINAL` .
+The tuple constraint type replaces all domain-specific constraint types defined in ADL/AOM 1.4, including `C_DV_QUANTITY` and `C_DV_ORDINAL`.
 
 These additions allow standard constraint structures (i.e. `C_ATTRIBUTE` / `C_COMPLEX_OBJECT` / `C_PRIMITIVE_OBJECT` hierarchies) to be ‘annotated’, while leaving the first order structure intact. The following example shows an archetype instance structure in which a notional `ORDINAL` type is constrained. The logical requirement is to constrain a `ORDINAL` to one of three instance possibilities, each of which consists of a pair of values for the attributes value and symbol, of type Integer and `TERMINOLOGY_CODE` respectively. Each of these three instance constraints should be understood as an alternative for the single valued owning attribute, `ELEMENT` .value. Tuple constraints achieve the requirement to express the constraints as pairs not just as allowable alternatives at the final leaf level, which would incorrectly allowing any mixing of the Integer and code values.
 
-[[typle_constraint_example]]
-.Tuple Constraint Example
-image:diagrams/tuple_example.png[align="center"]
+[[tuple_constraint_example_aom]]
+.Tuple Constraint Example AOM Instances
+image::diagrams/tuple_example_aom_instance.png[align="center"]
+
+[[tuple_constraint_example_data]]
+.Tuple Constraint Example Data
+image::diagrams/tuple_example_data.png[align="center"]
 
 ==== Assertions
 
-Assertions are also used in `ARCHETYPE`SLOTs_ , in order to express the ‘included’ and ‘excluded’ archetypes for the slot. In this case, each assertion is an expression that refers to parts of other archetypes, such as its identifier (e.g. ‘include archetypes with short_concept_name matching xxxx’). Assertions are modelled here as a generic expression tree of unary prefix and binary infix operators. Examples of archetype slots in ADL syntax are given in the openEHR ADL document.
+Assertions are also used in `ARCHETYPE_SLOTs` , in order to express the ‘included’ and ‘excluded’ archetypes for the slot. In this case, each assertion is an expression that refers to parts of other archetypes, such as its identifier (e.g. ‘include archetypes with short_concept_name matching xxxx’). Assertions are modelled here as a generic expression tree of unary prefix and binary infix operators. Examples of archetype slots in ADL syntax are given in the openEHR ADL document.
 
 === AOM Type Substitutions
 
@@ -895,7 +893,7 @@ The `C_OBJECT` types defined in Figure <<constraint_model_top>> are reproduced b
 
 [[c_object_substitutions]]
 .C_Object Substitutions
-image:diagrams/c_object_substitutions.png[align="center"]
+image::diagrams/c_object_substitutions.png[align="center"]
 
 Within a specialised archetype, nodes that redefine corresponding nodes in the parent are normally of the same `C_OBJECT` type (we can think of this as a ‘meta-type’, since the RM type is the ‘type’ in the information model sense), but in some cases may also be of different `C_OBJECT` types.
 
@@ -981,41 +979,42 @@ The validity rules are as follows:
 The following validity rule applies to redefinition in a specialised archetype:
 
 [.rule]
-*VDIFP* specialised archetype attribute differential path validity: if an attribute constraint has a differential path, the path must exist in the flat parent, and also be valid with respect to the reference model, i.e. in the sense that it corresponds to a legal potential construction of objects.
+*VDIFP*: specialised archetype attribute differential path validity: if an attribute constraint has a differential path, the path must exist in the flat parent, and also be valid with respect to the reference model, i.e. in the sense that it corresponds to a legal potential construction of objects.
 
 [.rule]
-*VSANCE* specialised archetype attribute node existence conformance: the existence of a redefined attribute node in a specialised archetype, if stated, must conform to the existence of the corresponding node in the flat parent archetype, by having an identical range, or a range wholly contained by the latter.
+*VSANCE*: specialised archetype attribute node existence conformance: the existence of a redefined attribute node in a specialised archetype, if stated, must conform to the existence of the corresponding node in the flat parent archetype, by having an identical range, or a range wholly contained by the latter.
 
 [.rule]
-*VSAM* specialised archetype attribute multiplicity conformance: the multiplicity, i.e. whether an attribute is multiply- or single-valued, of a redefined attribute must conform to that of the corresponding attribute in the parent archetype.
+*VSAM*: specialised archetype attribute multiplicity conformance: the multiplicity, i.e. whether an attribute is multiply- or single-valued, of a redefined attribute must conform to that of the corresponding attribute in the parent archetype.
 
 The following validity rules apply to single-valued attributes, i.e when `C_ATTRIBUTE` .is_multiple is False:
 
 [.rule]
-*VACSO* single-valued attribute child object occurrences validity: the occurrences of a child object of a single-valued attribute cannot have an upper limit greater than 1.
+*VACSO*: single-valued attribute child object occurrences validity: the occurrences of a child object of a single-valued attribute cannot have an upper limit greater than 1.
 
 The following validity rules apply to container attributes, i.e when `C_ATTRIBUTE` .is_multiple is True:
 
 [.rule]
-*VACMCU* cardinality/occurrences upper bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the occurrences must either have an open upper bound (i.e. n..*) which is interpreted as the maximum value allowed within the cardinality, or else a finite upper bound which is <= the cardinality upper bound.
+*VACMCU*: cardinality/occurrences upper bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the occurrences must either have an open upper bound (i.e. n..*) which is interpreted as the maximum value allowed within the cardinality, or else a finite upper bound which is <= the cardinality upper bound.
 
 [.rule]
-*VACMCO* cardinality/occurrences orphans: it must be possible for at least one instance of one optional child object (i.e. an object for which the occurrences lower bound is 0) and one instance of every mandatory child object (i.e. object constraints for which the occurrences lower bound is >= 1) to be included within the cardinality range.
+*VACMCO*: cardinality/occurrences orphans: it must be possible for at least one instance of one optional child object (i.e. an object for which the occurrences lower bound is 0) and one instance of every mandatory child object (i.e. object constraints for which the occurrences lower bound is >= 1) to be included within the cardinality range.
 
 [.rule]
-*VCACA* archetype attribute reference model cardinality conformance: the cardinality of an attribute must conform, i.e. be the same or narrower, to the cardinality of the corresponding attribute in the underlying information model.
+*VCACA*: archetype attribute reference model cardinality conformance: the cardinality of an attribute must conform, i.e. be the same or narrower, to the cardinality of the corresponding attribute in the underlying information model.
 
 The following validity warnings apply to container attributes, i.e when `C_ATTRIBUTE` .is_multiple is True:
 
 [.rule]
-WACMCL: cardinality/occurrences lower bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the sum of occurrences lower bounds should be lower than the cardinality upper limit.
+*WACMCL*: cardinality/occurrences lower bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the sum of occurrences lower bounds should be lower than the cardinality upper limit.
 
 The following validity rule applies to cardinality redefinition in a specialised archetype:
 
 [.rule]
-*VSANCC* specialised archetype attribute node cardinality conformance: the cardinality of a redefined (multiply-valued) attribute node in a specialised archetype, if stated, must conform to the cardinality of the corresponding node in the flat parent archetype by either being identical, or being wholly contained by the latter.
+*VSANCC*: specialised archetype attribute node cardinality conformance: the cardinality of a redefined (multiply-valued) attribute node in a specialised archetype, if stated, must conform to the cardinality of the corresponding node in the flat parent archetype by either being identical, or being wholly contained by the latter.
 
 include::./classes/cardinality.adoc[]
+
 include::./classes/c_object.adoc[]
 
 === Occurrences inferencing rules
@@ -1121,10 +1120,10 @@ The following validity rules govern _C_OBJECTs_ in specialised archetypes.
 [.rule]
 *VSONCT* specialised archetype object node reference type conformance: the reference model type of a redefined object node in a specialised archetype must conform to the reference model type in the corresponding node in the flat parent archetype by either being identical, or conforming via an inheritance relationship in the relevant reference model.
 
-[.rule]
+[.deprecated]
 *VSONIR* specialised archetype redefined object node identifier condition: the node identifier of an object node in a specialised archetype that is a redefinition of a node in the flat parent must be redefined if any of reference model type, node identifier definition in the terminology, or occurrences of the immediate object constraint is redefined, with the exception of occurrences being redefined to \{0}, i.e. exclusion.
 
-[.rule]
+[.deprecated]
 *VSONI* specialised archetype redefined object node identifier validity: if an object node in a specialised archetype is a redefinition of a node in the flat parent according to VSONIR, and the parent node carries a node identifier, it must carry a node identifier specalised at the level of the child archetype. Otherwise it must carry the same node identifier (or none) as the corresponding parent node.
 
 [.rule]
@@ -1277,7 +1276,7 @@ Assertions are expressed in archetypes in typed first-order predicate logic (FOL
 
 [[rules_package]]
 .Rules Package
-image:uml_diagrams/AOM-rules.png[align="center"]
+image::uml_diagrams/AOM-rules.png[align="center"]
 
 === Semantics
 
@@ -1320,7 +1319,7 @@ All local terminology as well as terminological and terminology binding elements
 
 [[terminology_package]]
 .Terminology Package
-image:uml_diagrams/AOM-terminology.png[align="center"]
+image::uml_diagrams/AOM-terminology.png[align="center"]
 
 An archetype terminology consists of the following elements.
 
@@ -1336,7 +1335,7 @@ Depending on whether the archetype is in differential or flat form, an instance 
 
 [[terminology_instance]]
 .Terminology Instance Structure
-image:diagrams/terminology_instance_structure.png[align="center"]
+image::diagrams/terminology_instance_structure.png[align="center"]
 
 === Semantics
 
@@ -1359,25 +1358,25 @@ include::./classes/archetype_terminology.adoc[]
 The following validity rules apply to instances of this class in an archetype:
 
 [.rule]
-*VTVSID* value-set id defined. The identifying code of a value set must be defined in the term definitions of the terminology of the current archetype.
+*VTVSID*: value-set id defined. The identifying code of a value set must be defined in the term definitions of the terminology of the current archetype.
 
 [.rule]
-*VTVSMD* value-set members defined. The member codes of a value set must be defined in the term definitions of the terminology of the flattened form of the current archetype.
+*VTVSMD*: value-set members defined. The member codes of a value set must be defined in the term definitions of the terminology of the flattened form of the current archetype.
 
 [.rule]
-*VTVSUQ* value-set members unique. The member codes of a value set must be unique within the value set.
+*VTVSUQ*: value-set members unique. The member codes of a value set must be unique within the value set.
 
 [.rule]
 *VTSD* specialisation level of codes. Term or constraint code defined in archetype terminology must be of the same specialisation level as the archetype (differential archetypes), or the same or a less specialised level (flat archetypes).
 
 [.rule]
-*VTLC* language consistency. Languages consistent: all term codes and constraint codes exist in all languages.
+*VTLC*: language consistency. Languages consistent: all term codes and constraint codes exist in all languages.
 
 [.rule]
-*VTTBK* terminology term binding key valid. Every term binding must be to either a defined archetype term (‘at-code’) or to a path that is valid in the flat archetype.
+*VTTBK*: terminology term binding key valid. Every term binding must be to either a defined archetype term (‘at-code’) or to a path that is valid in the flat archetype.
 
 [.rule]
-*VTCBK* terminology constraint binding key valid. Every constraint binding must be to a defined archetype constraint code (‘ac-code’).
+*VTCBK*: terminology constraint binding key valid. Every constraint binding must be to a defined archetype constraint code (‘ac-code’).
 
 include::./classes/archetype_term.adoc[]
 include::./classes/value_set.adoc[]
