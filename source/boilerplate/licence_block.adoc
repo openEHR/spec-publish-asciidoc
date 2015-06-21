@@ -8,7 +8,7 @@
 |===
 2+^|(C) {copyright_year} - {localyear} The openEHR Foundation
 
-2+^|The openEHR Foundation is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.
+2+^|http://www.openehr.org/[The openEHR Foundation] is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.
 
 |*Affiliates*
 |{affiliates}
