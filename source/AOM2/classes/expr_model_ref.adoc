@@ -1,8 +1,8 @@
-==== EXPR_MODEL_REF CLASS
+==== EXPR_MODEL_REF Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*EXPR_MODEL_REF*
 
@@ -28,14 +28,4 @@
 |*path*: `String`
 {set:cellbgcolor!}
 |The path to the archetype node.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*reference_type*: `String`
-{set:cellbgcolor!}
-|Type of reference: “constant”, “attribute”, “function”, “constraint”. The first three are used to indicate the referencing mechanism for an operand. The last is used to indicate a constraint operand, as happens in the case of the right-hand operand of the ‘matches’ operator.
 |===

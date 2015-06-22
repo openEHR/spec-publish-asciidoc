@@ -1,8 +1,8 @@
-==== P_C_TEMPORAL<ISO8601_DATE_TIME> CLASS
+==== P_C_TEMPORAL<ISO8601_DATE_TIME> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_P_C_TEMPORAL<ISO8601_DATE_TIME> (abstract)_*
 
@@ -13,11 +13,6 @@ flag for  year', since it must always be by definition mandatory in order to hav
 sensible date/time at all. Syntax expressions of instances of this class include  +
  YYYY-MM-DDT??:??:??  (date/time with optional time) and  +
  YYYY-MM-DDTHH:MM:xx  (date/time, seconds not allowed).
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |===

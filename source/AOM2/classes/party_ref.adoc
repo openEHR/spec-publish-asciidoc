@@ -1,8 +1,8 @@
-==== PARTY_REF CLASS
+==== PARTY_REF Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*PARTY_REF*
 

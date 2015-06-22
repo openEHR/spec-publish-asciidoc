@@ -1,8 +1,8 @@
-==== QUERY_VARIABLE CLASS
+==== QUERY_VARIABLE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*QUERY_VARIABLE*
 
@@ -41,20 +41,4 @@ Not yet standardised.
 {set:cellbgcolor!}
 |Optional arguments to query. +
 Not yet standardised.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*definition*: `String`
-{set:cellbgcolor!}
-|Formal definition of the variable.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*value*: `Any`
-{set:cellbgcolor!}
-|Formal definition of the variable. Value of the variable once evaluated.
 |===

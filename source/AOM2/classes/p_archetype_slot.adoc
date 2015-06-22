@@ -1,8 +1,8 @@
-==== P_ARCHETYPE_SLOT CLASS
+==== P_ARCHETYPE_SLOT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*P_ARCHETYPE_SLOT*
 
@@ -36,16 +36,6 @@
 |*1..1*
 {set:cellbgcolor:lightblue}
 |*is_closed*: `Boolean`
-{set:cellbgcolor!}
-|
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*specialisation_depth*: `Integer`
 {set:cellbgcolor!}
 |
 |===

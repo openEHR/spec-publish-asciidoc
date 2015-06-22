@@ -1,8 +1,8 @@
-==== ISO8610_DATE CLASS
+==== ISO8610_DATE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*ISO8610_DATE*
 
@@ -48,18 +48,6 @@
 |
 {set:cellbgcolor:lightblue}
 |*day_unknown*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_partial*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_extended*: `Boolean`
 {set:cellbgcolor!}
 |
 |===

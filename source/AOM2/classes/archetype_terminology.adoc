@@ -1,19 +1,14 @@
-==== ARCHETYPE_TERMINOLOGY CLASS
+==== ARCHETYPE_TERMINOLOGY Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*ARCHETYPE_TERMINOLOGY*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Local terminology of an archetype. This class defines the semantics of the terminology of an archetype.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -61,7 +56,7 @@
 {set:cellbgcolor:lightblue}
 |*value_sets*: `Hash<VALUE_SET, String>`
 {set:cellbgcolor!}
-|
+|Archetype-local value sets, each keyed by value-set id, i.e. an ac-code.
 
 |*0..1*
 {set:cellbgcolor:lightblue}
@@ -81,73 +76,96 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*id_codes*: `String`
+|*id_codes*: `List<String>`
 {set:cellbgcolor!}
 |List of all id codes in the terminology., i.e. the “id” codes in an ADL archetype, which are the node_ids on C_OBJECT descendants.
 
 |
 {set:cellbgcolor:lightblue}
-|*value_codes*: `String`
+|*value_codes*: `List<String>`
 {set:cellbgcolor!}
 |List of all value term codes in the terminology, i.e. the “at” codes in an ADL archetype, which are used as possible values on terminological constrainer nodes.
 
 |
 {set:cellbgcolor:lightblue}
-|*value_set_codes*: `String`
+|*value_set_codes*: `List<String>`
 {set:cellbgcolor!}
 |List of all value set codes in the terminology defining value sets. These correspond to the “ac” codes in an ADL archetype.
 
 |
 {set:cellbgcolor:lightblue}
-|*has_language*: `Boolean`
+|*has_language* (a_lang: `String`): `Boolean`
 {set:cellbgcolor!}
 |True if language `a_lang' is present in archetype terminology. 
 
 |
 {set:cellbgcolor:lightblue}
-|*has_terminology*: `boolean`
+|*has_terminology* (a_terminology_id: `String`): `boolean`
 {set:cellbgcolor!}
 |True if terminology `a_terminology' is present in archetype ontology. 
 
 |
 {set:cellbgcolor:lightblue}
-|*has_term_code*: `boolean`
+|*has_term_code* (a_code: `String`): `boolean`
 {set:cellbgcolor!}
-|
+|True if code 'a_code' defined in this terminology.
 
 |
 {set:cellbgcolor:lightblue}
-|*term_definition*: `ARCHETYPE_TERM`
+|*term_definition* (a_lang: `String`, a_code: `String`): `ARCHETYPE_TERM` +
+*_Pre_*: has_term-definition (a_lang, a_code)
 {set:cellbgcolor!}
 |Term definition for a code, in a specified language. 
 
 |
 {set:cellbgcolor:lightblue}
-|*term_binding*: `Uri`
+|*term_binding* (a_terminology: `String`, a_code: `String`): `Uri` +
+*_Pre_*: has_term_binding (a_terminology_id, a_code)
 {set:cellbgcolor!}
 |Binding of constraint corresponding to a_code in target external terminology a_terminology_id, as a string, which is usually a formal query expression.
 
 |
 {set:cellbgcolor:lightblue}
-|*terminologies_available*: `String`
+|*terminologies_available*: `List<String>`
 {set:cellbgcolor!}
 |List of terminologies to which term or constraint bindings exist in this terminology, computed from bindings.
 
 |
 {set:cellbgcolor:lightblue}
-|*terminology_extract_term*: `ARCHETYPE_TERM`
+|*terminology_extract_term* (a_terminology_id: `String`, a_code: `String`): `ARCHETYPE_TERM` +
+*_Pre_*: has_terminology_extract (a_terminology_id) and has_terminology_extract_code (a_code)
 {set:cellbgcolor!}
 |Return an ARCHETYPE_TERM from specified terminology extract, for specified term code.
 
 |
 {set:cellbgcolor:lightblue}
-|*has_terminology_extract*: `Boolean`
+|*has_terminology_extract* (a_terminology_id: `String`): `Boolean`
 {set:cellbgcolor!}
 |
 
 |
 {set:cellbgcolor:lightblue}
-|*languages_available*: `String`
+|*languages_available*: `List<String>`
 {set:cellbgcolor!}
 |List of languages in which terms in this terminology are available.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Original_language_validity_*: code_set (Code_set_id_languages).has_concept_id (original_language)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_concept_code_validity_*: id_codes.has (concept_code)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Term_bindings_validity_*: bindings /= void implies not bindings.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Parent_archetype_valid_*: parent_archetype.terminology = Current
+{set:cellbgcolor!}
 |===

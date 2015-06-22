@@ -1,19 +1,14 @@
-==== Hash CLASS
+==== Hash Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*Hash*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Type representing a keyed table of values. T is the value type, and U the type of the keys. 
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Functions*
@@ -23,13 +18,13 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*has_key*: `Boolean`
+|*has_key* (a_key: `U`): `Boolean`
 {set:cellbgcolor!}
 |Test for membership of a key.
 
 |
 {set:cellbgcolor:lightblue}
-|*item*: `T`
+|*item* (a_key: `U`): `T`
 {set:cellbgcolor!}
 |Return item for key  a_key'. Equivalent to ISO 11404 fetch operation.
 |===

@@ -1,8 +1,8 @@
-==== P_C_BOOLEAN CLASS
+==== P_C_BOOLEAN Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*P_C_BOOLEAN*
 
@@ -21,19 +21,22 @@
 ^|*Signature*
 ^|*Meaning*
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*constraint*: `List<Boolean>`
 {set:cellbgcolor!}
 |
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*assumed_value*: `Boolean`
 {set:cellbgcolor!}
 |
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*default_value*: `Boolean`
 {set:cellbgcolor!}

@@ -1,8 +1,8 @@
-==== EXPR_BINARY_OPERATOR CLASS
+==== EXPR_BINARY_OPERATOR Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*EXPR_BINARY_OPERATOR*
 

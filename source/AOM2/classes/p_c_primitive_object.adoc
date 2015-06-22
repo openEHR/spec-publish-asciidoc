@@ -1,8 +1,8 @@
-==== P_C_PRIMITIVE_OBJECT CLASS
+==== P_C_PRIMITIVE_OBJECT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_P_C_PRIMITIVE_OBJECT (abstract)_*
 

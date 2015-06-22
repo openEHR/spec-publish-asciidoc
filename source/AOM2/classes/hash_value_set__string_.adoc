@@ -1,17 +1,12 @@
-==== Hash<VALUE_SET, String> CLASS
+==== Hash<VALUE_SET, String> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*Hash<VALUE_SET, String>*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

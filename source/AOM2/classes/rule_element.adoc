@@ -1,17 +1,12 @@
-==== RULE_ELEMENT CLASS
+==== RULE_ELEMENT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_RULE_ELEMENT (abstract)_*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

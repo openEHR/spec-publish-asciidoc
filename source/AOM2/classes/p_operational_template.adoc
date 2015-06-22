@@ -1,8 +1,8 @@
-==== P_OPERATIONAL_TEMPLATE CLASS
+==== P_OPERATIONAL_TEMPLATE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*P_OPERATIONAL_TEMPLATE*
 

@@ -2,11 +2,11 @@
 // ============================================ Asciidoc HEADER =============================================
 //
 :doctype: book
-:source-highlighter: coderay
-:toc: macro
-//:toc: left
+:source-highlighter: pygments
+:pygments-style: murphy
+//:toc: macro
+:toc: left
 :toclevels: 4
-:source-highlighter: highlightjs
 :pagenums:
 :numbered!:
 :copyright_year: 2004
@@ -322,6 +322,9 @@ Initial Writing. Taken from ADL document https://github.com/openEHR/specificatio
 |10 Nov 2004
 |===
 
+//
+// --------------------------------------------- Preface -----------------------------------------------
+//
 == Trademarks
 
 'openEHR' is a trademark of the openEHR Foundation
@@ -362,7 +365,7 @@ This specification and its sibling Archetype Definition Language specification h
 //
 // --------------------------------------------- TOC -----------------------------------------------
 //
-toc::[left]
+//toc::[left]
 
 //
 // --------------------------------------------- INTRO -----------------------------------------------
@@ -1142,7 +1145,7 @@ c_congruent_to (other: like Current): Boolean
 			(sibling_order = Void or else sibling_order ~ other.sibling_order) and
 			node_reuse_congruent (other)
 	end
- 
+
 rm_type_conforms_to (other: like Current): Boolean
 	require
 		other /= Void

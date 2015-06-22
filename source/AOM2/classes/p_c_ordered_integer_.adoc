@@ -1,17 +1,12 @@
-==== P_C_ORDERED<Integer> CLASS
+==== P_C_ORDERED<Integer> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_P_C_ORDERED<Integer> (abstract)_*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

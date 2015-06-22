@@ -1,8 +1,8 @@
-==== C_PRIMITIVE_OBJECT CLASS
+==== C_PRIMITIVE_OBJECT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_C_PRIMITIVE_OBJECT (abstract)_*
 
@@ -54,22 +54,4 @@
 |*constrained_typename*: `String`
 {set:cellbgcolor!}
 |Generate name of native type that is constrained by this C_XXX type. For most types, it is the C_XXX typename without the 'C_', i.e. XXX. E.g. C_INTEGER -> Integer. For the date/time types the mapping is different.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*valid_value*: `Boolean`
-{set:cellbgcolor!}
-|True if a_value is valid with respect to constraint expressed in concrete instance of this type.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*prototype_value*: `Any`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*has_default_value*: `Boolean`
-{set:cellbgcolor!}
-|True if there is an assumed value.
 |===

@@ -1,8 +1,8 @@
-==== EXPR_ARCHETYPE_ID_CONSTRAINT CLASS
+==== EXPR_ARCHETYPE_ID_CONSTRAINT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*EXPR_ARCHETYPE_ID_CONSTRAINT*
 
@@ -21,7 +21,8 @@
 ^|*Signature*
 ^|*Meaning*
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*item*: `C_STRING`
 {set:cellbgcolor!}

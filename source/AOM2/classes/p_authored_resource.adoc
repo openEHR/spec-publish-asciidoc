@@ -1,19 +1,14 @@
-==== P_AUTHORED_RESOURCE CLASS
+==== P_AUTHORED_RESOURCE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_P_AUTHORED_RESOURCE (abstract)_*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Abstract idea of an online resource created by a human author. 
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*

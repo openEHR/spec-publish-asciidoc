@@ -1,8 +1,8 @@
-==== Ordered_Numeric CLASS
+==== Ordered_Numeric Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_Ordered_Numeric (abstract)_*
 
@@ -16,14 +16,4 @@
 2+|Ordered
 {set:cellbgcolor!}
 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*<*: `Boolean`
-{set:cellbgcolor!}
-|
 |===

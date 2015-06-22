@@ -1,19 +1,14 @@
-==== ARCHETYPE_HRID CLASS
+==== ARCHETYPE_HRID Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*ARCHETYPE_HRID*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Human_readable structured identifier (HRID) for an archetype or template.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -114,22 +109,22 @@
 2+|*_Inv_rm_publisher_validity_*: not rm_publisher.is_empty
 {set:cellbgcolor!}
 
-|*Invariant*
+|
 {set:cellbgcolor:lightblue}
 2+|*_Inv_rm_package_validity_*: not rm_package.is_empty
 {set:cellbgcolor!}
 
-|*Invariant*
+|
 {set:cellbgcolor:lightblue}
 2+|*_Inv_class_name_validity_*: not rm_class.is_empty
 {set:cellbgcolor!}
 
-|*Invariant*
+|
 {set:cellbgcolor:lightblue}
 2+|*_Inv_concept_id_validity_*: not concept_id.is_empty
 {set:cellbgcolor!}
 
-|*Invariant*
+|
 {set:cellbgcolor:lightblue}
 2+|*_Inv_release_version_validity_*: valid_version (release_version)
 {set:cellbgcolor!}

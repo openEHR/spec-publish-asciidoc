@@ -1,8 +1,8 @@
-==== ARCHETYPE_SLOT CLASS
+==== ARCHETYPE_SLOT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*ARCHETYPE_SLOT*
 
@@ -48,10 +48,4 @@
 |*any_allowed*: `Boolean`
 {set:cellbgcolor!}
 |True if no constraints stated, and slot is not closed.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*specialisation_depth*: `Integer`
-{set:cellbgcolor!}
-|
 |===

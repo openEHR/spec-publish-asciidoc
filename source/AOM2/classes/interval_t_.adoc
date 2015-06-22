@@ -1,19 +1,14 @@
-==== Interval<T> CLASS
+==== Interval<T> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*Interval<T>*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Interval of ordered items.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -63,7 +58,7 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*has*: `boolean`
+|*has* (e): `boolean`
 {set:cellbgcolor!}
 |True if (lower_unbounded or  +
 ((lower_included and v >= lower) or  +

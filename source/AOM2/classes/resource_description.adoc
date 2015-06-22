@@ -1,19 +1,14 @@
-==== RESOURCE_DESCRIPTION CLASS
+==== RESOURCE_DESCRIPTION Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*RESOURCE_DESCRIPTION*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Defines the descriptive meta-data of a resource.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -53,7 +48,7 @@
 
 |*1..1*
 {set:cellbgcolor:lightblue}
-|*parent_resource*: `AUTHORED_RESOURCE`
+|*parent_resource*: `AUTHORED_RESOURCE{nbsp}={nbsp}`
 {set:cellbgcolor!}
 |Reference to owning resource. 
 

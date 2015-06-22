@@ -1,8 +1,8 @@
-==== ARCHETYPE CLASS
+==== ARCHETYPE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_ARCHETYPE (abstract)_*
 
@@ -10,11 +10,6 @@
 {set:cellbgcolor:lightblue}
 2+|The ARCHETYPE class defines the core formal model of the root object of any archetype or template. It includes only basic identification information, and otherwise provides the structural connections from the Archetype to its constituent parts, i.e. definition (a C_COMPLEX_OBJECT), terminology (ARCHEYTPE_TERMINOLOGY) and so on.  +
 It is the parent class of all concrete types of archetype.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -71,13 +66,13 @@ It is the parent class of all concrete types of archetype.
 
 |
 {set:cellbgcolor:lightblue}
-|*physical_paths*: `String`
+|*physical_paths*: `List<String>`
 {set:cellbgcolor!}
 |Set of language-independent paths extracted from archetype. Paths obey Xpath-like syntax and are formed from alternations of C_OBJECT.node_id and C_ATTRIBUTE.rm_attribute_name values. 
 
 |
 {set:cellbgcolor:lightblue}
-|*logical_paths*: `String`
+|*logical_paths* (lang: `String`): `List<String>`
 {set:cellbgcolor!}
 |Set of language-dependent paths extracted from archetype. Paths obey the same syntax as physical_paths, but with node_ids replaced by their meanings from the ontology. 
 
@@ -100,7 +95,7 @@ It is the parent class of all concrete types of archetype.
 2+|*_Invariant_concept_valid_*: terminology.has_term_code (concept_code)
 {set:cellbgcolor!}
 
-|*Invariant*
+|
 {set:cellbgcolor:lightblue}
 2+|*_Invariant_specialisation_validity_*: is_specialised implies specialisation_depth > 0
 {set:cellbgcolor!}

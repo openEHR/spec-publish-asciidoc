@@ -1,19 +1,14 @@
-==== TERMINOLOGY_RELATION CLASS
+==== TERMINOLOGY_RELATION Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
-2+^|*TERMINOLOGY_RELATION*
+2+^|*_TERMINOLOGY_RELATION (abstract)_*
 
 |*Description*
 {set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
+2+|Class whose instances represent any kind of 1:N relationship between a source term and 1-N target terms.
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -25,11 +20,11 @@
 {set:cellbgcolor:lightblue}
 |*id*: `String`
 {set:cellbgcolor!}
-|Ac-code of this value set.
+|Code of source term of this relation.
 
 |*1..1*
 {set:cellbgcolor:lightblue}
 |*members*: `List<String>`
 {set:cellbgcolor!}
-|List of at-codes in this value set.
+|List of target terms in this relation.
 |===

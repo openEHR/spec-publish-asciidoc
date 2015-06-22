@@ -1,8 +1,8 @@
-==== VARIABLE_DECLARATION CLASS
+==== VARIABLE_DECLARATION Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_VARIABLE_DECLARATION (abstract)_*
 

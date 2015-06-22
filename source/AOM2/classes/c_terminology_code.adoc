@@ -1,8 +1,8 @@
-==== C_TERMINOLOGY_CODE CLASS
+==== C_TERMINOLOGY_CODE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*C_TERMINOLOGY_CODE*
 
@@ -25,19 +25,22 @@ The last possibility above is enabled by the merge_tuple routine, which enables 
 ^|*Signature*
 ^|*Meaning*
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*constraint*: `String`
 {set:cellbgcolor!}
 |Type of individual constraint - a single string that can either be a local at-code, or a local ac-code signifying a locally defined value set. If an ac-code, assumed_value may contain an at-code from the value set of the ac-code.
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*assumed_value*: `TERMINOLOGY_CODE`
 {set:cellbgcolor!}
 |
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*default_value*: `TERMINOLOGY_CODE`
 {set:cellbgcolor!}
@@ -49,43 +52,31 @@ The last possibility above is enabled by the merge_tuple routine, which enables 
 
 |
 {set:cellbgcolor:lightblue}
-|*value_set_expanded*: `String`
+|*value_set_expanded*: `List<String>`
 {set:cellbgcolor!}
 |Effective value or value set of single constraint in tuple_constraint, mediated by terminology to expand an ac-code.
 
 |
 {set:cellbgcolor:lightblue}
-|*value_set_substituted*: `Uri`
+|*value_set_substituted*: `List<Uri>`
 {set:cellbgcolor!}
 |List of external URI(s) either substituted for local at-codes in value_set_expanded, or else an external ref-set URI substituted for the accode in value_set_id, via bindings, if they exist.
 
 |
 {set:cellbgcolor:lightblue}
-|*value_set_resolved*: `TERMINOLOGY_CODE`
+|*value_set_resolved*: `List<TERMINOLOGY_CODE>`
 {set:cellbgcolor!}
 |Final set of codes, which may be internal or external, to which value set is resolved. For internally defined value sets, the list is 1:1 with value_set_substituted. For external value-sets, the list is determined by a terminology service.
 
-|
+|(effected)
 {set:cellbgcolor:lightblue}
-|*valid_value*: `Boolean`
+|*valid_value* (a_value: `TERMINOLOGY_CODE`): `Boolean`
 {set:cellbgcolor!}
 |True if a_value is valid with respect to constraint expressed in concrete instance of this type. 
 
-|
+|(effected)
 {set:cellbgcolor:lightblue}
 |*prototype_value*: `TERMINOLOGY_CODE`
 {set:cellbgcolor!}
 |A generated prototype value from this constraint object.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*has_assumed_value*: `Boolean`
-{set:cellbgcolor!}
-|True if there is an assumed value.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*constrained_typename*: `String`
-{set:cellbgcolor!}
-|Generate name of native type that is constrained by this C_XXX type. For most types, it is the C_XXX typename without the 'C_', i.e. XXX. E.g. C_INTEGER -> Integer. For the date/time types the mapping is different.
 |===

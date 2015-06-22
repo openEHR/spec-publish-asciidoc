@@ -1,8 +1,8 @@
-==== P_C_TEMPORAL<ISO8601_TIME> CLASS
+==== P_C_TEMPORAL<ISO8601_TIME> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_P_C_TEMPORAL<ISO8601_TIME> (abstract)_*
 
@@ -12,11 +12,6 @@
 for  hour', since it must always be by definition mandatory in order to have a  +
 sensible time at all. Syntax expressions of instances of this class include  HH:??:xx   +
 (time with optional minutes and seconds not allowed). 
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |===

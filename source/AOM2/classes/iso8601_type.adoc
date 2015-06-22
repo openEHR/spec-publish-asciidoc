@@ -1,8 +1,8 @@
-==== ISO8601_TYPE CLASS
+==== ISO8601_TYPE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_ISO8601_TYPE (abstract)_*
 
@@ -30,12 +30,6 @@
 |
 {set:cellbgcolor:lightblue}
 |*is_extended*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*<*: `Boolean`
 {set:cellbgcolor!}
 |
 |===

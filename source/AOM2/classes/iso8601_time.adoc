@@ -1,8 +1,8 @@
-==== ISO8601_TIME CLASS
+==== ISO8601_TIME Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*ISO8601_TIME*
 
@@ -72,18 +72,6 @@
 |
 {set:cellbgcolor:lightblue}
 |*timezone*: `ISO8601_TIME_ZONE`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_partial*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_extended*: `Boolean`
 {set:cellbgcolor!}
 |
 |===

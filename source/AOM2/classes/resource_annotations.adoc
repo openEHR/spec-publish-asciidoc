@@ -1,8 +1,8 @@
-==== RESOURCE_ANNOTATIONS CLASS
+==== RESOURCE_ANNOTATIONS Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*RESOURCE_ANNOTATIONS*
 
@@ -22,11 +22,6 @@
         > +
     > +
 Other sub-structures might have different keys, e.g.  based on programming languages, UI toolkits etc.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*

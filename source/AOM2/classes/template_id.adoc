@@ -1,8 +1,8 @@
-==== TEMPLATE_ID CLASS
+==== TEMPLATE_ID Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*TEMPLATE_ID*
 

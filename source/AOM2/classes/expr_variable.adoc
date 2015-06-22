@@ -1,8 +1,8 @@
-==== EXPR_VARIABLE CLASS
+==== EXPR_VARIABLE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*EXPR_VARIABLE*
 
@@ -26,20 +26,4 @@
 |*expression*: `EXPR_ITEM`
 {set:cellbgcolor!}
 |Expression tree of expression.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*definition*: `String`
-{set:cellbgcolor!}
-|Formal definition of the variable.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*value*: `Any`
-{set:cellbgcolor!}
-|Formal definition of the variable. Value of the variable once evaluated.
 |===

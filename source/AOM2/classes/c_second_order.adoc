@@ -1,19 +1,14 @@
-==== C_SECOND_ORDER CLASS
+==== C_SECOND_ORDER Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_C_SECOND_ORDER (abstract)_*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Abstract parent of classes defining second order constraints.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*

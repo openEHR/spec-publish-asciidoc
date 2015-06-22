@@ -1,19 +1,14 @@
-==== TERMINOLOGY_CODE CLASS
+==== TERMINOLOGY_CODE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*TERMINOLOGY_CODE*
 
 |*Description*
 {set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
+2+|Logically primitive type representing a reference to a terminology concept, in the form of a terminology identifier, optional version, and a code or code string from the terminology.
 {set:cellbgcolor!}
 
 |*Attributes*

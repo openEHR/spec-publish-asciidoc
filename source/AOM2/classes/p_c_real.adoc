@@ -1,19 +1,14 @@
-==== P_C_REAL CLASS
+==== P_C_REAL Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*P_C_REAL*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Constraint on instances of Real.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |===

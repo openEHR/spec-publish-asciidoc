@@ -1,19 +1,14 @@
-==== BASIC_DEFINITIONS CLASS
+==== BASIC_DEFINITIONS Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*BASIC_DEFINITIONS*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Defines globally used constant values.
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -23,13 +18,13 @@
 
 |*1..1*
 {set:cellbgcolor:lightblue}
-|*CR*: `char`
+|*CR*: `char{nbsp}={nbsp}'\015'`
 {set:cellbgcolor!}
 |carriage return character
 
 |*1..1*
 {set:cellbgcolor:lightblue}
-|*LF*: `char`
+|*LF*: `char{nbsp}={nbsp}'\012'`
 {set:cellbgcolor!}
 |line feed character
 |===

@@ -1,8 +1,8 @@
-==== C_ATTRIBUTE_TUPLE CLASS
+==== C_ATTRIBUTE_TUPLE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*C_ATTRIBUTE_TUPLE*
 
@@ -27,7 +27,8 @@
 {set:cellbgcolor!}
 |Tuple definitions.
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*members*: `List<C_ATTRIBUTE>`
 {set:cellbgcolor!}

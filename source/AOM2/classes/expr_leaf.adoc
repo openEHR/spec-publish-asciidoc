@@ -1,8 +1,8 @@
-==== EXPR_LEAF CLASS
+==== EXPR_LEAF Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*EXPR_LEAF*
 
@@ -30,10 +30,4 @@
 |*reference_type*: `String`
 {set:cellbgcolor!}
 |Type of reference: “constant”, “attribute”, “function”, “constraint”. The first three are used to indicate the referencing mechanism for an operand. The last is used to indicate a constraint operand, as happens in the case of the right-hand operand of the ‘matches’ operator.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*value*: `Any`
-{set:cellbgcolor!}
-|
 |===

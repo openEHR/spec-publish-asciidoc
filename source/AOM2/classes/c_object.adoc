@@ -1,8 +1,8 @@
-==== C_OBJECT CLASS
+==== C_OBJECT Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_C_OBJECT (abstract)_*
 
@@ -51,7 +51,7 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.
 {set:cellbgcolor:lightblue}
 |*sibling_order*: `SIBLING_ORDER`
 {set:cellbgcolor!}
-|
+|Optional indicator of order of this node with respect to another sibling. Only meaningful in a specialised archetype for a C_OBJECT within a C_ATTRIBUTE with is_multiple = True.
 |*Functions*
 {set:cellbgcolor:lightblue}
 ^|*Signature*
@@ -61,55 +61,5 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.
 {set:cellbgcolor:lightblue}
 |*specialisation_depth*: `Integer`
 {set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_prohibited*: `Boolean`
-{set:cellbgcolor!}
-|True if this node (and all its sub-nodes) is a valid archetype node for its type. This function should be implemented by each subtype to perform semantic validation of itself, and then call the is_valid function in any subparts, and generate the result appropriately.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*has_path*: `boolean`
-{set:cellbgcolor!}
-|True if the relative path a_path exists at this node.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*path*: `String`
-{set:cellbgcolor!}
-|Path of this node relative to root of archetype.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*c_conforms_to*: `Boolean`
-{set:cellbgcolor!}
-|True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.  +
-Typically used during validation of special-ised archetype nodes.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*c_congruent_to*: `Boolean`
-{set:cellbgcolor!}
-|True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.  +
-Typically used to test if an inherited node locally contains any constraints.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_second_order_constrained*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_root*: `Boolean`
-{set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*is_leaf*: `Boolean`
-{set:cellbgcolor!}
-|
+|Level of specialisation of this archetype node, based on its node_id. The value 0 corresponds to non-specialised, 1 to first-level specialisation and so on. The level is the same as the number of ‘.’ characters in the node_id code. If node_id is not set, the return value is -1, signifying that the specialisation level should be determined from the nearest parent C_OBJECT node having a node_id.
 |===

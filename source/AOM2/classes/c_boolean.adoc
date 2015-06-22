@@ -1,8 +1,8 @@
-==== C_BOOLEAN CLASS
+==== C_BOOLEAN Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*C_BOOLEAN*
 
@@ -21,19 +21,22 @@
 ^|*Signature*
 ^|*Meaning*
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*constraint*: `List<Boolean>`
 {set:cellbgcolor!}
-|
+|Boolean constraint - a list of Boolean values.
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*assumed_value*: `Boolean`
 {set:cellbgcolor!}
 |
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*default_value*: `Boolean`
 {set:cellbgcolor!}
@@ -43,21 +46,9 @@
 ^|*Signature*
 ^|*Meaning*
 
-|
+|(effected)
 {set:cellbgcolor:lightblue}
 |*prototype_value*: `Boolean`
 {set:cellbgcolor!}
 |
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*has_assumed_value*: `Boolean`
-{set:cellbgcolor!}
-|True if there is an assumed value.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*constrained_typename*: `String`
-{set:cellbgcolor!}
-|Generate name of native type that is constrained by this C_XXX type. For most types, it is the C_XXX typename without the 'C_', i.e. XXX. E.g. C_INTEGER -> Integer. For the date/time types the mapping is different.
 |===

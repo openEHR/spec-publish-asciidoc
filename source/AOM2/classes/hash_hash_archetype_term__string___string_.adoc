@@ -1,17 +1,12 @@
-==== Hash<Hash<ARCHETYPE_TERM, String>, String> CLASS
+==== Hash<Hash<ARCHETYPE_TERM, String>, String> Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*Hash<Hash<ARCHETYPE_TERM, String>, String>*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

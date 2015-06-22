@@ -1,8 +1,8 @@
-==== OPERATIONAL_TEMPLATE CLASS
+==== OPERATIONAL_TEMPLATE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*OPERATIONAL_TEMPLATE*
 
@@ -40,8 +40,12 @@ An operational template is used for generating and validating canonical openEHR 
 
 |
 {set:cellbgcolor:lightblue}
-|*component_terminology*: `ARCHETYPE_TERMINOLOGY` +
-*_Inv_is_specialised_*: is_specialised
+|*component_terminology* (an_id: `String`): `ARCHETYPE_TERMINOLOGY`
 {set:cellbgcolor!}
 |
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Specialisation_validity_*: is_specialised
+{set:cellbgcolor!}
 |===

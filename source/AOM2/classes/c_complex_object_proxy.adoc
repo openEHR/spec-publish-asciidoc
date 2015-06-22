@@ -1,8 +1,8 @@
-==== C_COMPLEX_OBJECT_PROXY CLASS
+==== C_COMPLEX_OBJECT_PROXY Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*C_COMPLEX_OBJECT_PROXY*
 
@@ -33,13 +33,8 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*use_target_occurrences*: `Boolean`
+|*use_target_occurrences*: `Boolean` +
+*_Post_*: Result = (occurrences = Void)
 {set:cellbgcolor!}
-|
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*specialisation_depth*: `Integer`
-{set:cellbgcolor!}
-|
+|True if target occurrences are to be used as the value of occurrences in this object; by the time of runtime use, the target occurrences value has to be set into this object.
 |===

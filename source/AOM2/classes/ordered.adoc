@@ -1,17 +1,12 @@
-==== Ordered CLASS
+==== Ordered Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_Ordered (abstract)_*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}
@@ -23,7 +18,7 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*<*: `Boolean`
+|*<* (other: `Ordered`): `Boolean`
 {set:cellbgcolor!}
 |
 |===

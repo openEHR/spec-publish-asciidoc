@@ -1,8 +1,8 @@
-==== C_ORDERED CLASS
+==== C_ORDERED Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_C_ORDERED (abstract)_*
 
@@ -23,25 +23,10 @@ The next simplest form is a single proper Interval <T> (i.e. normal two-sided or
 ^|*Signature*
 ^|*Meaning*
 
-|*1..1*
+|*1..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*constraint*: `List<Interval<T>>`
 {set:cellbgcolor!}
 |
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*has_assumed_value*: `Boolean`
-{set:cellbgcolor!}
-|True if there is an assumed value.
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*constrained_typename*: `String`
-{set:cellbgcolor!}
-|Generate name of native type that is constrained by this C_XXX type. For most types, it is the C_XXX typename without the 'C_', i.e. XXX. E.g. C_INTEGER -> Integer. For the date/time types the mapping is different.
 |===

@@ -1,17 +1,12 @@
-==== C_PRIMITIVE_TUPLE CLASS
+==== C_PRIMITIVE_TUPLE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*C_PRIMITIVE_TUPLE*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

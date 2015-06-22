@@ -1,8 +1,8 @@
-==== P_AUTHORED_ARCHETYPE CLASS
+==== P_AUTHORED_ARCHETYPE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*P_AUTHORED_ARCHETYPE*
 
@@ -50,20 +50,4 @@
 |*other_meta_data*: `Hash<String, String>`
 {set:cellbgcolor!}
 |
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*current_revision*: `String`
-{set:cellbgcolor!}
-|Most recent revision in revision_history if is_controlled else  (uncontrolled) . 
-
-|*(effected)*
-{set:cellbgcolor:lightblue}
-|*languages_available*: `String`
-{set:cellbgcolor!}
-|Total list of languages available in this resource, derived from original_language and translations. 
 |===

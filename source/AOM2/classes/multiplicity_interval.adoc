@@ -1,17 +1,12 @@
-==== MULTIPLICITY_INTERVAL CLASS
+==== MULTIPLICITY_INTERVAL Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*MULTIPLICITY_INTERVAL*
 
 |*Description*
-{set:cellbgcolor:lightblue}
-2+|
-{set:cellbgcolor!}
-
-|*Inherit*
 {set:cellbgcolor:lightblue}
 2+|
 {set:cellbgcolor!}

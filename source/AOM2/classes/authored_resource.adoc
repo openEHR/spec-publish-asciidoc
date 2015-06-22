@@ -1,19 +1,14 @@
-==== AUTHORED_RESOURCE CLASS
+==== AUTHORED_RESOURCE Class
 
 [cols="^1,2,3"]
 |===
-|*CLASS*
+|*Class*
 {set:cellbgcolor:lightblue}
 2+^|*_AUTHORED_RESOURCE (abstract)_*
 
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|Abstract idea of an online resource created by a human author. 
-{set:cellbgcolor!}
-
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -69,7 +64,7 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*languages_available*: `String`
+|*languages_available*: `List<String>`
 {set:cellbgcolor!}
 |Total list of languages available in this resource, derived from original_language and translations. 
 
