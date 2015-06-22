@@ -1,0 +1,57 @@
+= spec-publish-asciidoc
+Specification publishing using Asciidoc and UML
+
+== Purpose
+This repository contains a model publishing environment showing how technical specifications can be published in HTML, PDF and DocBook, based on authored content merged with UML models from a tool. The method will be used to replace openEHR.org's current method of publishing based on Adobe FrameMaker documents.
+
+The type of technical specifications for which this approach is useful is standard-style documentation of formal artefacts, including:
+* object models
+* languages
+* other formalisms.
+
+== Description
+The publishing environment takes two sources of input to create a logical specification:
+* manually authored text (.adoc documents) and diagrams (any tool, as long as .png or .svg is generated)
+* a formal UML model, represented in a UML tool.
+
+We use http://asciidoctor.org/docs/what-is-asciidoc/[Asciidoc] as the source document syntax, the http://www.nomagic.com/[MagicDraw] UML tool for the models and http://asciidoctor.org[Asciidoctor] as the master publishing tool.
+
+The general concept is that the overall specification is considered to be a manually authored artefact, which may include headings, complex formatting, tables, diagrams, source code, and any other features that would normally be expected in a sophisticated authoring toolset. Within this master document are 'include' statements for documents and diagrams generated from a formal model, such as a UML tool or programming environment.footnote:[There is an alternative theory that says specifications are completely represented inside a tool such as a UML tool, and it is responsible for generating the whole output. We don't believe this theory, mainly because UML tools are not good at dealing with arbitrary complex text, and also because UML isn't the only possible formalism that might be included in the output document. What is clearly needed is a standardised publishing environment that can deal with specifications about anything.]
+
+Model elements are extracted from the UML tool and serialised as source documents and diagrams that are included in the master Asciidoc document using include statements.
+
+The outputs are generated using asciidoctor tool.
+
+== Status
+Alpha
+
+== Just Looking?
+You can see the generated results: link:source/AOM2/AOM2.html[HTML]; link:source/AOM2/AOM2.pdf[PDF]
+
+== Installation
+
+=== Publishing tools
+To get the environment going you need quite a few tools...:
+
+Ruby::
+See https://www.ruby-lang.org/en/documentation/installation/[install Ruby]. The scripts and commands in the publishing environment in this repository assume a unix-style environment, since the ultimate aim is to have it working under a Linux continuous build server. It can be set up on any normal machine; if you are on a Windows machine, using cygwin to run everything is probably advisable.
+Rubygems::
+On Linux see http://www.heatware.net/ruby-rails/how-to-install-rubygems-linux-ubuntu-10/[here]; Cygwin, use the https://cygwin.com/install.html[normal installer]. 
+Asciidoctor::
+The http://asciidoctor.org/[guidance on this page] pretty much covers it.
+Pygments::
+This supports code highlighting in the generated output. See http://asciidoctor.org/docs/user-manual/#pygments[here].
+
+=== MagicDraw and UML Extractor
+If you have MagicDraw, you can install the UML extractor plugin in MagicDraw's plugin directory, under `org.openehr.docs.magicdraw`. The plugin files consist of one `.jar` and the `plugin.xml` file.  With this installed, start MagicDraw and open the project link:computable/UML/[openEHR_UML-AM.mdzip]. You will see an 'openEHR' menu option, with one option to extract documentation. Choose this, and choose `source/AOM2` as the output directory. The generated outputs will appear in the subdirectories `uml_diagrams` and `classes`.
+
+=== Generating the publishing outputs
+The following commands can be used to generate the HTML and PDF outputs:
+
+[source,shell]
+----------
+$ cd AOM2/source
+$ asciidoctor -a localyear=`date +%G` AOM2.adoc # generate HTML
+$  asciidoctor -a localyear=`date +%G` -r asciidoctor-pdf -b pdf AOM2.adoc # generate PDF
+----------
+

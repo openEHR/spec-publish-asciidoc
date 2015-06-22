@@ -800,8 +800,8 @@ The _c_conforms_to_ function returns True if the node on which it is called is a
 
 Constraints on reference model attributes, including computed attributes (represented by functions with no aguments in most programming languages), are represented by instances of `C_ATTRIBUTE` . The expressible constraints include:
 
-* is_multiple: a flag that indicates whether the `C_ATTRIBUTE` is constraining a multiply-valued (i.e. container) RM attribute or a single-valued one;
-* existence: whether the corresponding instance (defined by the _rm_attribute_name_ attribute) must exist;
+* _is_multiple_: a flag that indicates whether the `C_ATTRIBUTE` is constraining a multiply-valued (i.e. container) RM attribute or a single-valued one;
+* _existence_: whether the corresponding instance (defined by the _rm_attribute_name_ attribute) must exist;
 * child objects: representing allowable values of the object value(s) of the attribute.
 
 In the case of single-valued attributes (such as Person.date_of_birth) the children represent one or more alternative object constraints for the attribute value.
