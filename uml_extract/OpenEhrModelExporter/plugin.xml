@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+	id="org.openehr.docs.magicdraw"
+	name="openEHR docs exporter"
+	version="1.0"
+	provider-name="openEHR"
+	class="org.openehr.docs.magicdraw.OpenEHRExporter">
+
+	<requires>
+	   <api version="1.0"/>
+	</requires>
+
+	<runtime>
+	   <library name="OpenEhrModelExporter.jar"/>
+	</runtime>
+</plugin>
