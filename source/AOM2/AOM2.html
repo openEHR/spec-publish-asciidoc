@@ -5,276 +5,16 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="description" content="openEHR Archetype Object Model (AOM2) specification">
+<meta name="keywords" content="archetype, openehr, aom, aom2">
 <title>The openEHR Archetype Object Model (AOM2)</title>
 <link rel="stylesheet" href="./openehr.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad()</script>
 </head>
-<body class="book toc2 toc-left">
+<body class="book">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel0">
-<li><a href="#_the_openehr_archetype_object_model_aom2">The openEHR Archetype Object Model (AOM2)</a>
-<ul class="sectlevel1">
-<li><a href="#_amendment_record">Amendment Record</a></li>
-<li><a href="#_trademarks">Trademarks</a></li>
-<li><a href="#_acknowledgements">Acknowledgements</a></li>
-<li><a href="#_introduction">1. Introduction</a>
-<ul class="sectlevel2">
-<li><a href="#_purpose">1.1. Purpose</a></li>
-<li><a href="#_related_documents">1.2. Related Documents</a></li>
-<li><a href="#_nomenclature">1.3. Nomenclature</a></li>
-<li><a href="#_status">1.4. Status</a></li>
-<li><a href="#_tools">1.5. Tools</a></li>
-<li><a href="#_changes_from_previous_versions">1.6. Changes from Previous Versions</a>
-<ul class="sectlevel3">
-<li><a href="#_release_1_5_to_2_0_document_version_2_1_2">1.6.1. Release 1.5 to 2.0 (Document version 2.1.2 - )</a></li>
-<li><a href="#_release_1_4_to_1_5_document_version_2_0_to_2_1_1">1.6.2. Release 1.4 to 1.5 (Document version 2.0 to 2.1.1)</a></li>
-<li><a href="#_release_0_6_to_1_4">1.6.3. Release 0.6 to 1.4</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_model_overview">2. Model Overview</a>
-<ul class="sectlevel2">
-<li><a href="#_package_structure">2.1. Package Structure</a></li>
-</ul>
-</li>
-<li><a href="#_definition_and_utility_classes">3. Definition and Utility Classes</a>
-<ul class="sectlevel2">
-<li><a href="#_overview">3.1. Overview</a></li>
-<li><a href="#_class_definitions">3.2. Class Definitions</a>
-<ul class="sectlevel3">
-<li><a href="#_adl_code_definitions_class">3.2.1. ADL_CODE_DEFINITIONS CLASS</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_the_archetype_package">4. The Archetype Package</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_2">4.1. Overview</a></li>
-<li><a href="#_archteype_identification">4.2. Archteype Identification</a>
-<ul class="sectlevel3">
-<li><a href="#_human_readable_identifier_hrid">4.2.1. Human-Readable Identifier (HRID)</a></li>
-<li><a href="#_machine_identifiers">4.2.2. Machine Identifiers</a></li>
-</ul>
-</li>
-<li><a href="#_top_level_meta_data">4.3. Top-level Meta-data</a>
-<ul class="sectlevel3">
-<li><a href="#_adl_version">4.3.1. ADL Version</a></li>
-<li><a href="#_reference_model_release">4.3.2. Reference Model Release</a></li>
-<li><a href="#_generated_flag">4.3.3. Generated Flag</a></li>
-</ul>
-</li>
-<li><a href="#_governance_meta_data">4.4. Governance Meta-data</a>
-<ul class="sectlevel3">
-<li><a href="#_governance_meta_data_items">4.4.1. Governance Meta-data Items</a>
-<ul class="sectlevel4">
-<li><a href="#_package">Package</a></li>
-<li><a href="#_lifecycle_state">Lifecycle_state</a></li>
-<li><a href="#_original_namespace_and_original_publisher">Original_namespace and Original_publisher</a></li>
-<li><a href="#_custodian_namespace_and_custodian_organisation">Custodian_namespace and Custodian_organisation</a></li>
-<li><a href="#_intellectual_property_items">Intellectual Property Items</a></li>
-</ul>
-</li>
-<li><a href="#_authorship_meta_data">4.4.2. Authorship Meta-data</a>
-<ul class="sectlevel4">
-<li><a href="#_original_author">Original Author</a></li>
-<li><a href="#_contributors">Contributors</a></li>
-<li><a href="#_languages_and_translation">Languages and Translation</a></li>
-<li><a href="#_version_last_translated">Version_last_translated</a></li>
-</ul>
-</li>
-<li><a href="#_descriptive_meta_data">4.4.3. Descriptive Meta-data</a>
-<ul class="sectlevel4">
-<li><a href="#_purpose_2">Purpose</a></li>
-<li><a href="#_use_and_misuse">Use and Misuse</a></li>
-<li><a href="#_keywords">Keywords</a></li>
-<li><a href="#_resources">Resources</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_structural_definition">4.5. Structural Definition</a>
-<ul class="sectlevel3">
-<li><a href="#_common_structural_parts">4.5.1. Common Structural Parts</a></li>
-<li><a href="#_structural_variants">4.5.2. Structural Variants</a></li>
-</ul>
-</li>
-<li><a href="#_class_descriptions">4.6. Class Descriptions</a>
-<ul class="sectlevel3">
-<li><a href="#_archetype_class">4.6.1. ARCHETYPE CLASS</a></li>
-<li><a href="#_authored_archetype_class">4.6.2. AUTHORED_ARCHETYPE CLASS</a></li>
-<li><a href="#_archetype_hrid_class">4.6.3. ARCHETYPE_HRID CLASS</a></li>
-<li><a href="#_template_class">4.6.4. TEMPLATE CLASS</a></li>
-<li><a href="#_template_overlay_class">4.6.5. TEMPLATE_OVERLAY CLASS</a></li>
-<li><a href="#_operational_template_class">4.6.6. OPERATIONAL_TEMPLATE CLASS</a></li>
-</ul>
-</li>
-<li><a href="#_validity_rules">4.7. Validity Rules</a></li>
-</ul>
-</li>
-<li><a href="#_constraint_model_package">5. Constraint Model Package</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_3">5.1. Overview</a></li>
-<li><a href="#_semantics">5.2. Semantics</a>
-<ul class="sectlevel3">
-<li><a href="#_all_node_types">5.2.1. All Node Types</a></li>
-</ul>
-</li>
-<li><a href="#_path_functions">5.3. Path Functions</a></li>
-<li><a href="#_conformance_functions">5.4. Conformance Functions</a>
-<ul class="sectlevel3">
-<li><a href="#_attribute_node_types">5.4.1. Attribute Node Types</a></li>
-<li><a href="#_object_node_types">5.4.2. Object Node Types</a>
-<ul class="sectlevel4">
-<li><a href="#_node_id_and_paths">Node_id and Paths</a></li>
-<li><a href="#_sibling_ordering">Sibling Ordering</a></li>
-<li><a href="#_defined_object_nodes_c_defined_object">Defined Object Nodes (C`DEFINED`OBJECT)</a></li>
-<li><a href="#_valid_value">Valid_value</a></li>
-<li><a href="#_prototype_value">Prototype_value</a></li>
-<li><a href="#_default_value">Default_value</a></li>
-<li><a href="#_node_deprecation">Node Deprecation</a></li>
-<li><a href="#__frozen_nodes">‘Frozen’ Nodes</a></li>
-<li><a href="#_complex_objects_c_complex_object">Complex Objects (C`COMPLEX`OBJECT)</a></li>
-<li><a href="#_any_allowed">Any_allowed</a></li>
-<li><a href="#_primitive_types_c_primitive_object_descendants">Primitive Types (C`PRIMITIVE`OBJECT descendants)</a></li>
-<li><a href="#_terminology_constraints_c_terminology_code">Terminology Constraints - C`TERMINOLOGY`CODE</a></li>
-<li><a href="#_assumed_value">Assumed_value</a></li>
-<li><a href="#_reference_objects">Reference Objects</a></li>
-<li><a href="#_constraints_on_enumeration_types">Constraints on Enumeration Types</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_second_order_constraints">5.5. Second Order Constraints</a>
-<ul class="sectlevel3">
-<li><a href="#_tuple_constraints">5.5.1. Tuple Constraints</a></li>
-<li><a href="#_assertions">5.5.2. Assertions</a></li>
-</ul>
-</li>
-<li><a href="#_aom_type_substitutions">5.6. AOM Type Substitutions</a></li>
-<li><a href="#_class_definitions_2">5.7. Class Definitions</a>
-<ul class="sectlevel3">
-<li><a href="#_c_attribute_class">5.7.1. C_ATTRIBUTE CLASS</a></li>
-<li><a href="#_conformance_semantics">5.7.2. Conformance Semantics</a></li>
-</ul>
-</li>
-<li><a href="#_validity_rules_2">5.8. Validity Rules</a>
-<ul class="sectlevel3">
-<li><a href="#_cardinality_class">5.8.1. CARDINALITY CLASS</a></li>
-<li><a href="#_c_object_class">5.8.2. C_OBJECT CLASS</a></li>
-</ul>
-</li>
-<li><a href="#_occurrences_inferencing_rules">5.9. Occurrences inferencing rules</a></li>
-<li><a href="#_conformance_semantics_2">5.10. Conformance semantics</a></li>
-<li><a href="#_validity_rules_3">5.11. Validity Rules</a>
-<ul class="sectlevel3">
-<li><a href="#_sibling_order_class">5.11.1. SIBLING_ORDER CLASS</a></li>
-<li><a href="#_c_defined_object_class">5.11.2. C_DEFINED_OBJECT CLASS</a></li>
-<li><a href="#_c_complex_object_class">5.11.3. C_COMPLEX_OBJECT CLASS</a></li>
-</ul>
-</li>
-<li><a href="#_validity_rules_4">5.12. Validity Rules</a>
-<ul class="sectlevel3">
-<li><a href="#_c_archetype_root_class">5.12.1. C_ARCHETYPE_ROOT CLASS</a>
-<ul class="sectlevel4">
-<li><a href="#_validity_rules_5">Validity Rules</a></li>
-</ul>
-</li>
-<li><a href="#_archetype_slot_class">5.12.2. ARCHETYPE_SLOT CLASS</a>
-<ul class="sectlevel4">
-<li><a href="#_validity_rules_6">Validity Rules</a></li>
-</ul>
-</li>
-<li><a href="#_c_complex_object_proxy_class">5.12.3. C_COMPLEX_OBJECT_PROXY CLASS</a>
-<ul class="sectlevel4">
-<li><a href="#_validity_rules_7">Validity Rules</a></li>
-</ul>
-</li>
-<li><a href="#_c_primitive_object_class">5.12.4. C_PRIMITIVE_OBJECT CLASS</a>
-<ul class="sectlevel4">
-<li><a href="#_validity_rules_8">Validity Rules</a></li>
-</ul>
-</li>
-<li><a href="#_c_boolean_class">5.12.5. C_BOOLEAN CLASS</a></li>
-<li><a href="#_c_string_class">5.12.6. C_STRING CLASS</a></li>
-<li><a href="#_c_ordered_class">5.12.7. C_ORDERED CLASS</a></li>
-<li><a href="#_c_integer_class">5.12.8. C_INTEGER CLASS</a></li>
-<li><a href="#_c_real_class">5.12.9. C_REAL CLASS</a></li>
-<li><a href="#_c_temporal_class">5.12.10. C_TEMPORAL CLASS</a></li>
-<li><a href="#_c_date_class">5.12.11. C_DATE CLASS</a></li>
-<li><a href="#_c_time_class">5.12.12. C_TIME CLASS</a></li>
-<li><a href="#_c_date_time_class">5.12.13. C_DATE_TIME CLASS</a></li>
-<li><a href="#_c_duration_class">5.12.14. C_DURATION CLASS</a></li>
-<li><a href="#_c_terminology_code_class">5.12.15. C_TERMINOLOGY_CODE CLASS</a></li>
-<li><a href="#_terminology_code_class">5.12.16. TERMINOLOGY_CODE CLASS</a></li>
-<li><a href="#_c_second_order_class">5.12.17. C_SECOND_ORDER CLASS</a></li>
-<li><a href="#_c_attribute_tuple_class">5.12.18. C_ATTRIBUTE_TUPLE CLASS</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_the_assertion_package">6. The Assertion Package</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_4">6.1. Overview</a></li>
-<li><a href="#_semantics_2">6.2. Semantics</a></li>
-<li><a href="#_class_descriptions_2">6.3. Class Descriptions</a>
-<ul class="sectlevel3">
-<li><a href="#_rule_statement_class">6.3.1. RULE_STATEMENT CLASS</a></li>
-<li><a href="#_expr_variable_class">6.3.2. EXPR_VARIABLE CLASS</a></li>
-<li><a href="#_builtin_variable_class">6.3.3. BUILTIN_VARIABLE CLASS</a></li>
-<li><a href="#_query_variable_class">6.3.4. QUERY_VARIABLE CLASS</a></li>
-<li><a href="#_expr_item_class">6.3.5. EXPR_ITEM CLASS</a></li>
-<li><a href="#_expr_leaf_class">6.3.6. EXPR_LEAF CLASS</a></li>
-<li><a href="#_expr_constant_class">6.3.7. EXPR_CONSTANT CLASS</a></li>
-<li><a href="#_expr_constraint_class">6.3.8. EXPR_CONSTRAINT CLASS</a></li>
-<li><a href="#_expr_archetype_id_constraint_class">6.3.9. EXPR_ARCHETYPE_ID_CONSTRAINT CLASS</a></li>
-<li><a href="#_expr_model_ref_class">6.3.10. EXPR_MODEL_REF CLASS</a></li>
-<li><a href="#_expr_variable_ref_class">6.3.11. EXPR_VARIABLE_REF CLASS</a></li>
-<li><a href="#_expr_operator_class">6.3.12. EXPR_OPERATOR CLASS</a></li>
-<li><a href="#_expr_unary_operator_class">6.3.13. EXPR_UNARY_OPERATOR CLASS</a></li>
-<li><a href="#_expr_binary_operator_class">6.3.14. EXPR_BINARY_OPERATOR CLASS</a></li>
-<li><a href="#_operator_kind_class">6.3.15. OPERATOR_KIND CLASS</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_terminology_package">7. Terminology Package</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_5">7.1. Overview</a></li>
-<li><a href="#_semantics_3">7.2. Semantics</a>
-<ul class="sectlevel3">
-<li><a href="#_specialisation_depth">7.2.1. Specialisation Depth</a></li>
-</ul>
-</li>
-<li><a href="#_class_descriptions_3">7.3. Class Descriptions</a>
-<ul class="sectlevel3">
-<li><a href="#_archetype_terminology_class">7.3.1. ARCHETYPE_TERMINOLOGY CLASS</a></li>
-<li><a href="#_terminology_relation_class">7.3.2. TERMINOLOGY_RELATION CLASS</a></li>
-<li><a href="#_value_set_class">7.3.3. VALUE_SET CLASS</a>
-<ul class="sectlevel4">
-<li><a href="#_validity_rules_9">Validity Rules</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_validation_and_transformation_semantics">8. Validation and Transformation Semantics</a>
-<ul class="sectlevel2">
-<li><a href="#_validation">8.1. Validation</a></li>
-<li><a href="#_flattening">8.2. Flattening</a></li>
-<li><a href="#_diff_ing">8.3. Diff’ing</a></li>
-</ul>
-</li>
-<li><a href="#_references">References</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -877,6 +617,268 @@ Includes detailed input and review from:</p>
 </li>
 <li>
 <p>Alessandro Torrisi, Code24, The Netherlands.</p>
+</li>
+</ul>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_the_openehr_archetype_object_model_aom2">The openEHR Archetype Object Model (AOM2)</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_trademarks">Trademarks</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_nomenclature">1.3. Nomenclature</a></li>
+<li><a href="#_status">1.4. Status</a></li>
+<li><a href="#_tools">1.5. Tools</a></li>
+<li><a href="#_changes_from_previous_versions">1.6. Changes from Previous Versions</a>
+<ul class="sectlevel3">
+<li><a href="#_release_1_5_to_2_0_document_version_2_1_2">1.6.1. Release 1.5 to 2.0 (Document version 2.1.2 - )</a></li>
+<li><a href="#_release_1_4_to_1_5_document_version_2_0_to_2_1_1">1.6.2. Release 1.4 to 1.5 (Document version 2.0 to 2.1.1)</a></li>
+<li><a href="#_release_0_6_to_1_4">1.6.3. Release 0.6 to 1.4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_model_overview">2. Model Overview</a>
+<ul class="sectlevel2">
+<li><a href="#_package_structure">2.1. Package Structure</a></li>
+</ul>
+</li>
+<li><a href="#_definition_and_utility_classes">3. Definition and Utility Classes</a>
+<ul class="sectlevel2">
+<li><a href="#_overview">3.1. Overview</a></li>
+<li><a href="#_class_definitions">3.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_adl_code_definitions_class">3.2.1. ADL_CODE_DEFINITIONS CLASS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_the_archetype_package">4. The Archetype Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">4.1. Overview</a></li>
+<li><a href="#_archteype_identification">4.2. Archteype Identification</a>
+<ul class="sectlevel3">
+<li><a href="#_human_readable_identifier_hrid">4.2.1. Human-Readable Identifier (HRID)</a></li>
+<li><a href="#_machine_identifiers">4.2.2. Machine Identifiers</a></li>
+</ul>
+</li>
+<li><a href="#_top_level_meta_data">4.3. Top-level Meta-data</a>
+<ul class="sectlevel3">
+<li><a href="#_adl_version">4.3.1. ADL Version</a></li>
+<li><a href="#_reference_model_release">4.3.2. Reference Model Release</a></li>
+<li><a href="#_generated_flag">4.3.3. Generated Flag</a></li>
+</ul>
+</li>
+<li><a href="#_governance_meta_data">4.4. Governance Meta-data</a>
+<ul class="sectlevel3">
+<li><a href="#_governance_meta_data_items">4.4.1. Governance Meta-data Items</a>
+<ul class="sectlevel4">
+<li><a href="#_package">Package</a></li>
+<li><a href="#_lifecycle_state">Lifecycle_state</a></li>
+<li><a href="#_original_namespace_and_original_publisher">Original_namespace and Original_publisher</a></li>
+<li><a href="#_custodian_namespace_and_custodian_organisation">Custodian_namespace and Custodian_organisation</a></li>
+<li><a href="#_intellectual_property_items">Intellectual Property Items</a></li>
+</ul>
+</li>
+<li><a href="#_authorship_meta_data">4.4.2. Authorship Meta-data</a>
+<ul class="sectlevel4">
+<li><a href="#_original_author">Original Author</a></li>
+<li><a href="#_contributors">Contributors</a></li>
+<li><a href="#_languages_and_translation">Languages and Translation</a></li>
+<li><a href="#_version_last_translated">Version_last_translated</a></li>
+</ul>
+</li>
+<li><a href="#_descriptive_meta_data">4.4.3. Descriptive Meta-data</a>
+<ul class="sectlevel4">
+<li><a href="#_purpose_2">Purpose</a></li>
+<li><a href="#_use_and_misuse">Use and Misuse</a></li>
+<li><a href="#_keywords">Keywords</a></li>
+<li><a href="#_resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_structural_definition">4.5. Structural Definition</a>
+<ul class="sectlevel3">
+<li><a href="#_common_structural_parts">4.5.1. Common Structural Parts</a></li>
+<li><a href="#_structural_variants">4.5.2. Structural Variants</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions">4.6. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_archetype_class">4.6.1. ARCHETYPE CLASS</a></li>
+<li><a href="#_authored_archetype_class">4.6.2. AUTHORED_ARCHETYPE CLASS</a></li>
+<li><a href="#_archetype_hrid_class">4.6.3. ARCHETYPE_HRID CLASS</a></li>
+<li><a href="#_template_class">4.6.4. TEMPLATE CLASS</a></li>
+<li><a href="#_template_overlay_class">4.6.5. TEMPLATE_OVERLAY CLASS</a></li>
+<li><a href="#_operational_template_class">4.6.6. OPERATIONAL_TEMPLATE CLASS</a></li>
+</ul>
+</li>
+<li><a href="#_validity_rules">4.7. Validity Rules</a></li>
+</ul>
+</li>
+<li><a href="#_constraint_model_package">5. Constraint Model Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">5.1. Overview</a></li>
+<li><a href="#_semantics">5.2. Semantics</a>
+<ul class="sectlevel3">
+<li><a href="#_all_node_types">5.2.1. All Node Types</a></li>
+</ul>
+</li>
+<li><a href="#_path_functions">5.3. Path Functions</a></li>
+<li><a href="#_conformance_functions">5.4. Conformance Functions</a>
+<ul class="sectlevel3">
+<li><a href="#_attribute_node_types">5.4.1. Attribute Node Types</a></li>
+<li><a href="#_object_node_types">5.4.2. Object Node Types</a>
+<ul class="sectlevel4">
+<li><a href="#_node_id_and_paths">Node_id and Paths</a></li>
+<li><a href="#_sibling_ordering">Sibling Ordering</a></li>
+<li><a href="#_defined_object_nodes_c_defined_object">Defined Object Nodes (C`DEFINED`OBJECT)</a></li>
+<li><a href="#_valid_value">Valid_value</a></li>
+<li><a href="#_prototype_value">Prototype_value</a></li>
+<li><a href="#_default_value">Default_value</a></li>
+<li><a href="#_node_deprecation">Node Deprecation</a></li>
+<li><a href="#__frozen_nodes">‘Frozen’ Nodes</a></li>
+<li><a href="#_complex_objects_c_complex_object">Complex Objects (C`COMPLEX`OBJECT)</a></li>
+<li><a href="#_any_allowed">Any_allowed</a></li>
+<li><a href="#_primitive_types_c_primitive_object_descendants">Primitive Types (C`PRIMITIVE`OBJECT descendants)</a></li>
+<li><a href="#_terminology_constraints_c_terminology_code">Terminology Constraints - C`TERMINOLOGY`CODE</a></li>
+<li><a href="#_assumed_value">Assumed_value</a></li>
+<li><a href="#_reference_objects">Reference Objects</a></li>
+<li><a href="#_constraints_on_enumeration_types">Constraints on Enumeration Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_second_order_constraints">5.5. Second Order Constraints</a>
+<ul class="sectlevel3">
+<li><a href="#_tuple_constraints">5.5.1. Tuple Constraints</a></li>
+<li><a href="#_assertions">5.5.2. Assertions</a></li>
+</ul>
+</li>
+<li><a href="#_aom_type_substitutions">5.6. AOM Type Substitutions</a></li>
+<li><a href="#_class_definitions_2">5.7. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_c_attribute_class">5.7.1. C_ATTRIBUTE CLASS</a></li>
+<li><a href="#_conformance_semantics">5.7.2. Conformance Semantics</a></li>
+</ul>
+</li>
+<li><a href="#_validity_rules_2">5.8. Validity Rules</a>
+<ul class="sectlevel3">
+<li><a href="#_cardinality_class">5.8.1. CARDINALITY CLASS</a></li>
+<li><a href="#_c_object_class">5.8.2. C_OBJECT CLASS</a></li>
+</ul>
+</li>
+<li><a href="#_occurrences_inferencing_rules">5.9. Occurrences inferencing rules</a></li>
+<li><a href="#_conformance_semantics_2">5.10. Conformance semantics</a></li>
+<li><a href="#_validity_rules_3">5.11. Validity Rules</a>
+<ul class="sectlevel3">
+<li><a href="#_sibling_order_class">5.11.1. SIBLING_ORDER CLASS</a></li>
+<li><a href="#_c_defined_object_class">5.11.2. C_DEFINED_OBJECT CLASS</a></li>
+<li><a href="#_c_complex_object_class">5.11.3. C_COMPLEX_OBJECT CLASS</a></li>
+</ul>
+</li>
+<li><a href="#_validity_rules_4">5.12. Validity Rules</a>
+<ul class="sectlevel3">
+<li><a href="#_c_archetype_root_class">5.12.1. C_ARCHETYPE_ROOT CLASS</a>
+<ul class="sectlevel4">
+<li><a href="#_validity_rules_5">Validity Rules</a></li>
+</ul>
+</li>
+<li><a href="#_archetype_slot_class">5.12.2. ARCHETYPE_SLOT CLASS</a>
+<ul class="sectlevel4">
+<li><a href="#_validity_rules_6">Validity Rules</a></li>
+</ul>
+</li>
+<li><a href="#_c_complex_object_proxy_class">5.12.3. C_COMPLEX_OBJECT_PROXY CLASS</a>
+<ul class="sectlevel4">
+<li><a href="#_validity_rules_7">Validity Rules</a></li>
+</ul>
+</li>
+<li><a href="#_c_primitive_object_class">5.12.4. C_PRIMITIVE_OBJECT CLASS</a>
+<ul class="sectlevel4">
+<li><a href="#_validity_rules_8">Validity Rules</a></li>
+</ul>
+</li>
+<li><a href="#_c_boolean_class">5.12.5. C_BOOLEAN CLASS</a></li>
+<li><a href="#_c_string_class">5.12.6. C_STRING CLASS</a></li>
+<li><a href="#_c_ordered_class">5.12.7. C_ORDERED CLASS</a></li>
+<li><a href="#_c_integer_class">5.12.8. C_INTEGER CLASS</a></li>
+<li><a href="#_c_real_class">5.12.9. C_REAL CLASS</a></li>
+<li><a href="#_c_temporal_class">5.12.10. C_TEMPORAL CLASS</a></li>
+<li><a href="#_c_date_class">5.12.11. C_DATE CLASS</a></li>
+<li><a href="#_c_time_class">5.12.12. C_TIME CLASS</a></li>
+<li><a href="#_c_date_time_class">5.12.13. C_DATE_TIME CLASS</a></li>
+<li><a href="#_c_duration_class">5.12.14. C_DURATION CLASS</a></li>
+<li><a href="#_c_terminology_code_class">5.12.15. C_TERMINOLOGY_CODE CLASS</a></li>
+<li><a href="#_terminology_code_class">5.12.16. TERMINOLOGY_CODE CLASS</a></li>
+<li><a href="#_c_second_order_class">5.12.17. C_SECOND_ORDER CLASS</a></li>
+<li><a href="#_c_attribute_tuple_class">5.12.18. C_ATTRIBUTE_TUPLE CLASS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_the_assertion_package">6. The Assertion Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_4">6.1. Overview</a></li>
+<li><a href="#_semantics_2">6.2. Semantics</a></li>
+<li><a href="#_class_descriptions_2">6.3. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_rule_statement_class">6.3.1. RULE_STATEMENT CLASS</a></li>
+<li><a href="#_expr_variable_class">6.3.2. EXPR_VARIABLE CLASS</a></li>
+<li><a href="#_builtin_variable_class">6.3.3. BUILTIN_VARIABLE CLASS</a></li>
+<li><a href="#_query_variable_class">6.3.4. QUERY_VARIABLE CLASS</a></li>
+<li><a href="#_expr_item_class">6.3.5. EXPR_ITEM CLASS</a></li>
+<li><a href="#_expr_leaf_class">6.3.6. EXPR_LEAF CLASS</a></li>
+<li><a href="#_expr_constant_class">6.3.7. EXPR_CONSTANT CLASS</a></li>
+<li><a href="#_expr_constraint_class">6.3.8. EXPR_CONSTRAINT CLASS</a></li>
+<li><a href="#_expr_archetype_id_constraint_class">6.3.9. EXPR_ARCHETYPE_ID_CONSTRAINT CLASS</a></li>
+<li><a href="#_expr_model_ref_class">6.3.10. EXPR_MODEL_REF CLASS</a></li>
+<li><a href="#_expr_variable_ref_class">6.3.11. EXPR_VARIABLE_REF CLASS</a></li>
+<li><a href="#_expr_operator_class">6.3.12. EXPR_OPERATOR CLASS</a></li>
+<li><a href="#_expr_unary_operator_class">6.3.13. EXPR_UNARY_OPERATOR CLASS</a></li>
+<li><a href="#_expr_binary_operator_class">6.3.14. EXPR_BINARY_OPERATOR CLASS</a></li>
+<li><a href="#_operator_kind_class">6.3.15. OPERATOR_KIND CLASS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_terminology_package">7. Terminology Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_5">7.1. Overview</a></li>
+<li><a href="#_semantics_3">7.2. Semantics</a>
+<ul class="sectlevel3">
+<li><a href="#_specialisation_depth">7.2.1. Specialisation Depth</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions_3">7.3. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_archetype_terminology_class">7.3.1. ARCHETYPE_TERMINOLOGY CLASS</a></li>
+<li><a href="#_terminology_relation_class">7.3.2. TERMINOLOGY_RELATION CLASS</a></li>
+<li><a href="#_value_set_class">7.3.3. VALUE_SET CLASS</a>
+<ul class="sectlevel4">
+<li><a href="#_validity_rules_9">Validity Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_validation_and_transformation_semantics">8. Validation and Transformation Semantics</a>
+<ul class="sectlevel2">
+<li><a href="#_validation">8.1. Validation</a></li>
+<li><a href="#_flattening">8.2. Flattening</a></li>
+<li><a href="#_diff_ing">8.3. Diff’ing</a></li>
+</ul>
+</li>
+<li><a href="#_references">References</a></li>
+</ul>
 </li>
 </ul>
 </div>
@@ -2599,7 +2601,7 @@ Typically used to test if an inherited node locally contains any constraints.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>c_conforms_to (other: like Current): Boolean
+<pre class="highlightjs highlight"><code class="language-eiffel" data-lang="eiffel">c_conforms_to (other: like Current): Boolean
 	require
 		other /= Void
 	do
@@ -2636,7 +2638,7 @@ cardinality_conforms_to (other: like Current): Boolean
 		else
 			Result := True
 		end
-	end</pre>
+	end</code></pre>
 </div>
 </div>
 </div>
@@ -2880,7 +2882,7 @@ Typically used to test if an inherited node locally contains any constraints.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>if not c_object.is_root and c_object.occurrences = Void then
+<pre class="highlightjs highlight"><code class="language-eiffel" data-lang="eiffel">if not c_object.is_root and c_object.occurrences = Void then
 	if is_container_attribute_in_rm (c_object.parent) then
 		if rm_parent_attr.cardinality.upper_unbounded then
 			c_object.set_occurrences (|0..*|)
@@ -2890,7 +2892,7 @@ Typically used to test if an inherited node locally contains any constraints.</p
 	else
 		c_object.set_occurrences (rm_parent_attr.existence)
 	end
-end</pre>
+end</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2904,7 +2906,7 @@ end</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>c_conforms_to (other: like Current): Boolean
+<pre class="highlightjs highlight"><code class="language-eiffel" data-lang="eiffel">c_conforms_to (other: like Current): Boolean
 	require
 		other /= Void
 	do
@@ -2952,7 +2954,7 @@ node_id_conforms_to (other: like Current): Boolean
 		other_exists: other /= Void
 	do
 		Result := codes_conformant (node_id, other.node_id)
-	end</pre>
+	end</code></pre>
 </div>
 </div>
 </div>
@@ -3356,7 +3358,7 @@ In an operational template, the node_id is converted to the archetype_ref, and t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>if includes not empty and = 'any' then
+<pre class="highlightjs highlight"><code class="language-eiffel" data-lang="eiffel">if includes not empty and = 'any' then
 	not (excludes empty or /= 'any') ==&gt; VDSEV Error
 elseif includes not empty and /= 'any' then
 	not (excludes empty or = 'any') ==&gt; VDSEV Error
@@ -3364,7 +3366,7 @@ elseif excludes not empty and = 'any' then
 	not (includes empty or /= 'any') ==&gt; VDSIV Error
 elseif excludes not empty and /= 'any' then
 	not (includes empty or = 'any') ==&gt; VDSIV Error
-end</pre>
+end</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5366,7 +5368,7 @@ Enumeration type for operator types in assertion expressions</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-21 23:46:47 BST
+Last updated 2015-06-22 12:29:34 BST
 </div>
 </div>
 </body>
