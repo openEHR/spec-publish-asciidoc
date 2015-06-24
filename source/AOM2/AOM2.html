@@ -7,16 +7,16 @@
 <meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="description" content="openEHR Archetype Object Model (AOM2) specification">
 <meta name="keywords" content="archetype, openehr, aom, aom2">
-<title>The openEHR Archetype Object Model (AOM2)</title>
-<link rel="stylesheet" href="./openehr.css">
-<link rel="stylesheet" href="./pygments-murphy.css">
+<title>Archetype Object Model (AOM2)</title>
+<link rel="stylesheet" href="../../css/openehr.css">
+<link rel="stylesheet" href="../../css/pygments-murphy.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_the_openehr_archetype_object_model_aom2">The openEHR Archetype Object Model (AOM2)</a>
+<li><a href="#_archetype_object_model_aom2">Archetype Object Model (AOM2)</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
 <li><a href="#_trademarks">Trademarks</a></li>
@@ -47,7 +47,9 @@
 <li><a href="#_overview">3.1. Overview</a></li>
 <li><a href="#_class_definitions">3.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_adl_code_definitions_class">3.2.1. ADL_CODE_DEFINITIONS Class</a></li>
+<li><a href="#_version_status_enumeration">3.2.1. VERSION_STATUS Enumeration</a></li>
+<li><a href="#_validity_kind_enumeration">3.2.2. VALIDITY_KIND Enumeration</a></li>
+<li><a href="#_adl_code_definitions_class">3.2.3. ADL_CODE_DEFINITIONS Class</a></li>
 </ul>
 </li>
 </ul>
@@ -132,15 +134,15 @@
 <ul class="sectlevel4">
 <li><a href="#_node_id_and_paths">Node_id and Paths</a></li>
 <li><a href="#_sibling_ordering">Sibling Ordering</a></li>
-<li><a href="#_defined_object_nodes_code_c_defined_object_code">Defined Object Nodes (<code>C_DEFINED_OBJECT</code>)</a></li>
+<li><a href="#_defined_object_nodes_c_defined_object">Defined Object Nodes (C_DEFINED_OBJECT)</a></li>
 <li><a href="#_valid_value">Valid_value</a></li>
 <li><a href="#_prototype_value">Prototype_value</a></li>
 <li><a href="#_default_value">Default_value</a></li>
 <li><a href="#_node_deprecation">Node Deprecation</a></li>
 <li><a href="#__frozen_nodes">‘Frozen’ Nodes</a></li>
-<li><a href="#_complex_objects_code_c_complex_object_code">Complex Objects (<code>C_COMPLEX_OBJECT</code>)</a></li>
+<li><a href="#_complex_objects_c_complex_object">Complex Objects (C_COMPLEX_OBJECT)</a></li>
 <li><a href="#_any_allowed">Any_allowed</a></li>
-<li><a href="#_primitive_types_code_c_primitive_object_code_descendants">Primitive Types (<code>C_PRIMITIVE_OBJECT</code> descendants)</a></li>
+<li><a href="#_primitive_types_c_primitive_object_descendants">Primitive Types (C_PRIMITIVE_OBJECT descendants)</a></li>
 <li><a href="#_terminology_constraints_code_c_terminology_code_code">Terminology Constraints - <code>C_TERMINOLOGY_CODE</code></a></li>
 <li><a href="#_assumed_value">Assumed_value</a></li>
 <li><a href="#_reference_objects">Reference Objects</a></li>
@@ -240,7 +242,7 @@
 <li><a href="#_expr_operator_class">6.3.14. EXPR_OPERATOR Class</a></li>
 <li><a href="#_expr_unary_operator_class">6.3.15. EXPR_UNARY_OPERATOR Class</a></li>
 <li><a href="#_expr_binary_operator_class">6.3.16. EXPR_BINARY_OPERATOR Class</a></li>
-<li><a href="#_operator_kind_class">6.3.17. OPERATOR_KIND CLASS</a></li>
+<li><a href="#_operator_kind_enumeration">6.3.17. OPERATOR_KIND Enumeration</a></li>
 </ul>
 </li>
 </ul>
@@ -290,7 +292,7 @@
 </div>
 </div>
 </div>
-<h1 id="_the_openehr_archetype_object_model_aom2" class="sect0">The openEHR Archetype Object Model (AOM2)</h1>
+<h1 id="_archetype_object_model_aom2" class="sect0">Archetype Object Model (AOM2)</h1>
 <div class="openblock partintro">
 <div class="content">
 <table class="tableblock frame-all grid-all spread">
@@ -405,7 +407,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.1.11</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Correct spelling of ‘licence’ to international English; rename <code>ARCHETYPE</code> . <em>urn</em> to <em>provenance_id</em>.</p>
+<p>Correct spelling of ‘licence’ to international English; rename <code>ARCHETYPE</code>.<code><em>urn</em></code> to <code><em>provenance_id</em></code>.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Garde,<br>
  I McNicoll</p></td>
@@ -436,7 +438,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.1.8</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Rename <code>ARCHETYPE</code> .commit_number to <em>build_count</em> .</p>
+<p>Rename <code>ARCHETYPE</code> .commit_number to <code><em>build_count</em></code> .</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
  S Garde,<br>
@@ -517,28 +519,28 @@
 <div class="ulist">
 <ul>
 <li>
-<p>move <code>C_PRIMITIVE</code> . <em>assumed_value</em> to attribute slot in UML</p>
+<p>move <code>C_PRIMITIVE</code>.<code><em>assumed_value</em></code> to attribute slot in UML</p>
 </li>
 <li>
-<p>rename <code>C_DEFINED_OBJECT</code> . <em>default_value</em> function to prototype_value</p>
+<p>rename <code>C_DEFINED_OBJECT</code>.<code><em>default_value</em></code> function to prototype_value</p>
 </li>
 <li>
-<p>correct <em>assumed_value</em> definition to be like ; remove its entry from all of the <code>C_PRIMITIVE</code> subtypes</p>
+<p>correct <code><em>assumed_value</em></code> definition to be like ; remove its entry from all of the <code>C_PRIMITIVE</code> subtypes</p>
 </li>
 <li>
 <p>convert <code>BOOLEAN</code> flag representation of patterns to functions and add a String data member for the pattern value, thus matching the XSDs and ADL</p>
 </li>
 <li>
-<p>add <code>ARCHETYPE</code> . <em>is_template</em> attribute.</p>
+<p>add <code>ARCHETYPE</code>.<code><em>is_template</em></code> attribute.</p>
 </li>
 <li>
-<p>add <code>ARCHETYPE</code> . <em>is_component</em> attribute.</p>
+<p>add <code>ARCHETYPE</code>.<code><em>is_component</em></code> attribute.</p>
 </li>
 <li>
 <p>allow computed as well as stored attributes.</p>
 </li>
 <li>
-<p>make <code>ONTOLOGY</code> . <em>terminologies_available</em> computed.</p>
+<p>make <code>ONTOLOGY</code>.<code><em>terminologies_available</em></code> computed.</p>
 </li>
 </ul>
 </div></div></td>
@@ -564,7 +566,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>SPEC-300. Archetype slot regular expressions should cover whole identifier. Added <code>C_STRING</code> . <em>is_pattern</em> .</p>
+<p>SPEC-300. Archetype slot regular expressions should cover whole identifier. Added <code>C_STRING</code>.<code><em>is_pattern</em></code> .</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Flinton</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -587,13 +589,13 @@ SPEC-178. Add template object model to AM.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Add <em>is_exhaustive</em> attribute to <code>ARCHETYPE_SLOT</code> .</p>
+<p>Add <code><em>is_exhaustive</em></code> attribute to <code>ARCHETYPE_SLOT</code> .</p>
 </li>
 <li>
-<p>Add <em>is_template</em> attribute to <code>ARCHETYPE</code> .</p>
+<p>Add <code><em>is_template</em></code> attribute to <code>ARCHETYPE</code> .</p>
 </li>
 <li>
-<p>Add <em>terminology_extracts</em> to <code>ARCHETYPE_TERMINOLOGY</code> .</p>
+<p>Add <code><em>terminology_extracts</em></code> to <code>ARCHETYPE_TERMINOLOGY</code> .</p>
 </li>
 </ul>
 </div></div></td>
@@ -606,7 +608,7 @@ SPEC-178. Add template object model to AM.<br></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.2</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>SPEC-257. Correct minor typos and clarify text. Correct reversed definitions of <em>is_bag</em> and <em>is_set</em> in <code>CARDINALITY</code> class.</p>
+<p>SPEC-257. Correct minor typos and clarify text. Correct reversed definitions of <code><em>is_bag</em></code> and <code><em>is_set</em></code> in <code>CARDINALITY</code> class.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
  R Chen,<br>
@@ -627,7 +629,7 @@ SPEC-178. Add template object model to AM.<br></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.1</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>CR-000200. Correct Release 1.0 typographical errors. Table for missed class <code>ASSERTION_VARIABLE</code> added. Assumed_value assertions corrected; <em>standard_representation</em> function corrected. Added missed <em>adl_version</em> , <em>concept</em> rename from CR-000153.</p>
+<p>CR-000200. Correct Release 1.0 typographical errors. Table for missed class <code>ASSERTION_VARIABLE</code> added. Assumed_value assertions corrected; <code><em>standard_representation</em></code> function corrected. Added missed <code><em>adl_version</em></code> , <code><em>concept</em></code> rename from CR-000153.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">D Lloyd,<br>
  P Pazos,<br>
@@ -662,7 +664,7 @@ SPEC-178. Add template object model to AM.<br></p>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>CR-000233: Define semantics for <em>occurrences</em> on <code>ARCHETYPE_INTERNAL_REF</code> .</p>
+<p>CR-000233: Define semantics for <code><em>occurrences</em></code> on <code>ARCHETYPE_INTERNAL_REF</code> .</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Atalag</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -691,7 +693,7 @@ SPEC-178. Add template object model to AM.<br></p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>CR-000153. Synchronise ADL and AOM attribute naming.
  CR-000178. Add Template Object Model to AM. Text changes only.
- CR-000167. Add <code>AUTHORED_RESOURCE</code> class. Remove <em>description</em> package to <em>resource</em> package in Common IM.</p>
+ CR-000167. Add <code>AUTHORED_RESOURCE</code> class. Remove <code><em>description</em></code> package to <code><em>resource</em></code> package in Common IM.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10 Nov 2005</p></td>
@@ -746,9 +748,9 @@ SPEC-178. Add template object model to AM.<br></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.5.1</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Corrected documentation error - return type of <code>ARCHETYPE_CONSTRAINT</code> . <em>has_path</em><br>
+<p>Corrected documentation error - return type of <code>ARCHETYPE_CONSTRAINT</code> . <code><em>has_path</em></code><br>
 add optionality markers to Primitive types UML diagram.<br>
-Removed erroneous aggregation marker from <code>ARCHETYPE_ONTOLOGY</code> . <em>parent_archetype</em> and <code>ARCHETYPE_DESCRIPTION</code> . <em>parent_archetype</em> .</p>
+Removed erroneous aggregation marker from <code>ARCHETYPE_ONTOLOGY</code> . <code><em>parent_archetype</em></code> and <code>ARCHETYPE_DESCRIPTION</code> . <code><em>parent_archetype</em></code> .</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">D Lloyd</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20 Jan 2005</p></td>
@@ -1032,10 +1034,10 @@ Includes detailed input and review from:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>added a new attribute <em>adl_version</em> : <code>String</code> to the <code>ARCHETYPE</code> class;</p>
+<p>added a new attribute <code><em>adl_version</em></code> : <code>String</code> to the <code>ARCHETYPE</code> class;</p>
 </li>
 <li>
-<p>changed name of <code>ARCHETYPE</code> . <em>concept_code</em> attribute to <em>concept</em> .</p>
+<p>changed name of <code>ARCHETYPE</code> . <code><em>concept_code</em></code> attribute to <code><em>concept</em></code> .</p>
 </li>
 </ul>
 </div>
@@ -1054,7 +1056,7 @@ Includes detailed input and review from:</p>
 <div class="paragraph">
 <p>The openEHR Archetype Object Model is defined as the package <code>am.archetype</code> , as illustrated in Figure <a id="package_overview"></a>. It is shown in the context of the openEHR <code>am.archetype</code> packages.</p>
 </div>
-<div id="package_overview" class="imageblock" style="text-align: center">
+<div id="package_overview" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-packages.png" alt="AOM packages">
 </div>
@@ -1071,7 +1073,7 @@ Includes detailed input and review from:</p>
 <div class="paragraph">
 <p>Various definitional classes are used in the AOM. Some are defined in the <code>aom.definitions</code> package, while others come from the openEHR <code>definitions</code> package. These are illustrated below.</p>
 </div>
-<div id="definition_package" class="imageblock" style="text-align: center">
+<div id="definition_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-definitions.png" alt="AOM definitions">
 </div>
@@ -1086,14 +1088,100 @@ Includes detailed input and review from:</p>
 </div>
 <div class="sect2">
 <h3 id="_class_definitions">3.2. Class Definitions</h3>
-<div class="paragraph">
-<p>Unresolved directive in AOM2.adoc - include::./classes/version_status.adoc[]</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in AOM2.adoc - include::./classes/validity_kind.adoc[]</p>
+<div class="sect3">
+<h4 id="_version_status_enumeration">3.2.1. VERSION_STATUS Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Enumeration</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>VERSION_STATUS</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Status of a versioned artefact, as one of a number of possible values: uncontrolled, prerelease, release, build.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value representing a version which is ‘unstable’, i.e. contains an unknown size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-alpha.B” e.g. “2.0.1-alpha.154”.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value representing a version which is ‘beta’, i.e. contains an unknown but reducing size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-beta.B” e.g. “2.0.1-beta.154”.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">release_candidate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value representing a version which is ‘release candidate’, i.e. contains only patch-level changes on the base version. Rendered as a string as “N.M.P-rc.B” e.g. “2.0.1-rc.27”.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">released</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value representing a version which is ‘released’, i.e. is the definitive base version. Rendered with the build number as a string in the form “N.M.P” e.g. “2.0.1”.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value representing a version which is a build of the current base release. Rendered with the build number as a string in the form “N.M.P+B” e.g. “2.0.1+33”.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
-<h4 id="_adl_code_definitions_class">3.2.1. ADL_CODE_DEFINITIONS Class</h4>
+<h4 id="_validity_kind_enumeration">3.2.2. VALIDITY_KIND Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Enumeration</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>VALIDITY_KIND</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">An enumeration of three values that may commonly occur in constraint models.<br>
+Use as the type of any attribute within this model, which expresses constraint on some attribute in a class in a reference model. For example to indicate validity<br>
+of Date/Time fields.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant to indicate mandatory presence of something.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant to indicate optional presence of something.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prohibited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constant to indicate disallowed presence of something.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_adl_code_definitions_class">3.2.3. ADL_CODE_DEFINITIONS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -1156,12 +1244,12 @@ Includes detailed input and review from:</p>
 <div class="sect2">
 <h3 id="_overview_2">4.1. Overview</h3>
 <div class="paragraph">
-<p>The top-level model of archetypes and templates (all variant forms) is illustrated in Figure <a href="#archetype_package">Archetype Package</a>. The model defines a standard structural representation of an archetype. Archetypes authored as independent entities are instances of the class <code>AUTHORED_ARCHETYPE</code> which is a descendant of <code>AUTHORED_RESOURCE</code> and <code>ARCHETYPE</code>. The former provides a standardised model of descriptive meta-data, language information, annotations and revision history for any resource. The latter class defines the core structure of any kind of archetype, including definition, terminology, optional rules part, along with a ‘semantic identifier’ (<code>ARCHETYPE</code>.<em>archetype_id</em>).</p>
+<p>The top-level model of archetypes and templates (all variant forms) is illustrated in Figure <a href="#archetype_package">Archetype Package</a>. The model defines a standard structural representation of an archetype. Archetypes authored as independent entities are instances of the class <code>AUTHORED_ARCHETYPE</code> which is a descendant of <code>AUTHORED_RESOURCE</code> and <code>ARCHETYPE</code>. The former provides a standardised model of descriptive meta-data, language information, annotations and revision history for any resource. The latter class defines the core structure of any kind of archetype, including definition, terminology, optional rules part, along with a ‘semantic identifier’ (<code>ARCHETYPE</code>.<code><em>archetype_id</em></code>).</p>
 </div>
 <div class="paragraph">
 <p>The <code>AUTHORED_ARCHETYPE</code> class adds identifying attributes, flags and descriptive meta-data, and is the ancestor type for two further specialisations - <code>TEMPLATE</code> and <code>OPERATIONAL_TEMPLATE</code> . The <code>TEMPLATE</code> class defines the notion of a ‘templated’ archetype, i.e. an archetype containing fillers/references (ADL&#8217;s <code>use_archetype</code> statements), typically designed to represent a data set. To enable this, it may contain ‘overlays’, private archetypes that specialise one or more of the referenced / filler archetypes it uses. Overlays are instances of the <code>TEMPLATE_OVERLAY</code> class, have no meta-data of their own, but are otherwise computationally just like any other archetype.</p>
 </div>
-<div id="archetype_package" class="imageblock" style="text-align: center">
+<div id="archetype_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-archetype.png" alt="AOM archetype">
 </div>
@@ -1176,39 +1264,39 @@ Includes detailed input and review from:</p>
 <div class="sect3">
 <h4 id="_human_readable_identifier_hrid">4.2.1. Human-Readable Identifier (HRID)</h4>
 <div class="paragraph">
-<p>All archetype variants based on <code>ARCHETYPE</code> have a human-readable, structured identifier defined by the <code>ARCHETYPE_HRID</code> class. This identifier places the artefact in a multi-dimensional space based on a namespace, its reference model class and its informational concept. This class defines an atomised representation of the identifier, enabling variant forms to be used as needed. Its various parts can be understood from the following diagram, which also shows the computed <em>semantic_id</em> and <em>physical_id</em> forms.</p>
+<p>All archetype variants based on <code>ARCHETYPE</code> have a human-readable, structured identifier defined by the <code>ARCHETYPE_HRID</code> class. This identifier places the artefact in a multi-dimensional space based on a namespace, its reference model class and its informational concept. This class defines an atomised representation of the identifier, enabling variant forms to be used as needed. Its various parts can be understood from the following diagram, which also shows the computed <code><em>semantic_id</em></code> and <code><em>physical_id</em></code> forms.</p>
 </div>
-<div id="archetype_hrid_structure" class="imageblock" style="text-align: center">
+<div id="archetype_hrid_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/archetype_hrid_structure.png" alt="archetype hrid structure">
 </div>
 <div class="title">Figure 4. Archetype HRID Structure</div>
 </div>
 <div class="paragraph">
-<p>For specialised archetypes, the <em>parent_archetype_id</em> is also required. This is a string <em>reference</em> to an archetype, and is normally the ‘interface’ form of the id, i.e. down to the major version only. In some circumstances, it is useful to include the minor and patch version numbers as well.</p>
+<p>For specialised archetypes, the <code><em>parent_archetype_id</em></code> is also required. This is a string <code><em>reference</em></code> to an archetype, and is normally the ‘interface’ form of the id, i.e. down to the major version only. In some circumstances, it is useful to include the minor and patch version numbers as well.</p>
 </div>
 <div class="paragraph">
-<p>An important aspect of identification relates to the rules governing when when the HRID namespace changes or is retained, with respect to when ‘moves’ or ‘forks’ occur. Its value is always the same as one of the <em>original_namespace</em> and <em>custodian_namespace</em> properties inherited from <code>AUTHORED_RESOURCE</code>.<em>description</em> (or both, in the case where they are the same). A full explanation of the identification system and rules is given in the openEHR Knowledge Artefact Identification specification.</p>
+<p>An important aspect of identification relates to the rules governing when when the HRID namespace changes or is retained, with respect to when ‘moves’ or ‘forks’ occur. Its value is always the same as one of the <code><em>original_namespace</em></code> and <code><em>custodian_namespace</em></code> properties inherited from <code>AUTHORED_RESOURCE</code>.<code><em>description</em></code> (or both, in the case where they are the same). A full explanation of the identification system and rules is given in the openEHR Knowledge Artefact Identification specification.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_machine_identifiers">4.2.2. Machine Identifiers</h4>
 <div class="paragraph">
-<p>Two machine identifiers are defined for archetypes. The <code>ARCHETYPE</code>.<em>uid</em> attribute defines a machine identifier equivalent to the human readable <em>archetype_id.semantic_id</em> , i.e. <code>ARCHETYPE_HRID</code> up to its major version, and changes whenever the latter does. It is defined as optional but to be practically useful would need to be mandatory for all archetypes within a custodian organisation where this identifier was in use. It could in principle be synthesised at any time for a custodian that decided to implement it.</p>
+<p>Two machine identifiers are defined for archetypes. The <code>ARCHETYPE</code>.<code><em>uid</em></code> attribute defines a machine identifier equivalent to the human readable <code><em>archetype_id</em></code>.<code><em>semantic_id</em></code> , i.e. <code>ARCHETYPE_HRID</code> up to its major version, and changes whenever the latter does. It is defined as optional but to be practically useful would need to be mandatory for all archetypes within a custodian organisation where this identifier was in use. It could in principle be synthesised at any time for a custodian that decided to implement it.</p>
 </div>
 <div class="paragraph">
-<p>The <code>ARCHETYPE</code>.<em>build_uid</em> attribute is also optional, and if used, is intended to provide a unique identifier that corresponds to any change in version of the artefact. At a minimum, this means generating a new UID for each change to:</p>
+<p>The <code>ARCHETYPE</code>.<code><em>build_uid</em></code> attribute is also optional, and if used, is intended to provide a unique identifier that corresponds to any change in version of the artefact. At a minimum, this means generating a new UID for each change to:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ARCHETYPE</code>.<em>archetype_id.release_version</em> ;</p>
+<p><code>ARCHETYPE</code>.<code><em>archetype_id</em></code>.<code><em>release_version</em></code>;</p>
 </li>
 <li>
-<p><code>ARCHETYPE</code>.<em>archetype_id.build_count</em> ;</p>
+<p><code>ARCHETYPE</code>.<code><em>archetype_id</em></code>.<code><em>build_count</em></code>;</p>
 </li>
 <li>
-<p><code>ARCHETYPE</code>.<em>description.lifecycle_state</em>.</p>
+<p><code>ARCHETYPE</code>.<code><em>description</em></code>.<code><em>lifecycle_state</em></code>.</p>
 </li>
 </ul>
 </div>
@@ -1225,22 +1313,22 @@ Includes detailed input and review from:</p>
 <div class="sect3">
 <h4 id="_adl_version">4.3.1. ADL Version</h4>
 <div class="paragraph">
-<p>The <code>ARCHETYPE</code>.<em>adl_version</em> attribute in ADL 1.4 was used to indicate the ADL release used in the archetype source file from which the AOM structure was created (the version number comes from the revision history of the openEHR ADL specification). In the current and future AOM and ADL specifications, the meaning of this attribute is generalised to mean ‘the version of the archetype formalism’ in which the current archetype is expressed. For reasons of convenience, the version number is still taken from the ADL specification, but now refers to all archetype-related specifications together, since they are always updated in a synchronised fashion.</p>
+<p>The <code>ARCHETYPE</code>.<code><em>adl_version</em></code> attribute in ADL 1.4 was used to indicate the ADL release used in the archetype source file from which the AOM structure was created (the version number comes from the revision history of the openEHR ADL specification). In the current and future AOM and ADL specifications, the meaning of this attribute is generalised to mean ‘the version of the archetype formalism’ in which the current archetype is expressed. For reasons of convenience, the version number is still taken from the ADL specification, but now refers to all archetype-related specifications together, since they are always updated in a synchronised fashion.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_reference_model_release">4.3.2. Reference Model Release</h4>
 <div class="paragraph">
-<p>The <code>ARCHETYPE</code>.<em>rm_release</em> attribute designates the release of the reference model on which the archetype is based, in the archetype’s current version. This means <em>rm_release</em> can change with new versions of the archetype, where re-versioning includes upgrading the archetype to a later RM release. However, such upgrading still has to obey the basic rule of archetype compatibility: later minor, patch versions and builds cannot create data that is not valid with respect to the prior version.</p>
+<p>The <code>ARCHETYPE</code>.<code><em>rm_release</em></code> attribute designates the release of the reference model on which the archetype is based, in the archetype’s current version. This means <code><em>rm_release</em></code> can change with new versions of the archetype, where re-versioning includes upgrading the archetype to a later RM release. However, such upgrading still has to obey the basic rule of archetype compatibility: later minor, patch versions and builds cannot create data that is not valid with respect to the prior version.</p>
 </div>
 <div class="paragraph">
-<p>This should be in the same semver.org 3-part form as the <code>ARCHETYPE_HRID</code>.<em>release_version</em> property, e.g. “1.0.2”. This property does not indicate conformance to any particular reference model version(s) other than the named one, since most archetypes can easily conform to more than one. More minimal archetypes are likely to technically conform to more old and future releases than more complex archteypes.</p>
+<p>This should be in the same semver.org 3-part form as the <code>ARCHETYPE_HRID</code>.<code><em>release_version</em></code> property, e.g. “1.0.2”. This property does not indicate conformance to any particular reference model version(s) other than the named one, since most archetypes can easily conform to more than one. More minimal archetypes are likely to technically conform to more old and future releases than more complex archteypes.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_generated_flag">4.3.3. Generated Flag</h4>
 <div class="paragraph">
-<p>The <code>ARCHETYPE</code>.<em>is_generated</em> flag is used to indicate that an archetype has been machine-generated from another artefact, e.g. an older ADL version (say 1.4), or a non-archetype artefact. If true, it indicates to tools that the current archetype can potentially be overwritten, and that some other artefact is considered the primary source. If manual authoring occurs, this attribute should be set to False.</p>
+<p>The <code>ARCHETYPE</code>.<code><em>is_generated</em></code> flag is used to indicate that an archetype has been machine-generated from another artefact, e.g. an older ADL version (say 1.4), or a non-archetype artefact. If true, it indicates to tools that the current archetype can potentially be overwritten, and that some other artefact is considered the primary source. If manual authoring occurs, this attribute should be set to False.</p>
 </div>
 </div>
 </div>
@@ -1254,7 +1342,7 @@ Includes detailed input and review from:</p>
 <div class="paragraph">
 <p>Governance meta-data is visible primarily in the <code>RESOURCE_DESCRIPTION</code> class, inherited via <code>AUTHORED_RESOURCE</code>, and consists of items relating to management and intellectual property status of the artefact. A typical form of these is shown in the screenshot in Figure <a href="#metadata_governance">Governance Meta-data</a>.</p>
 </div>
-<div id="metadata_governance" class="imageblock" style="text-align: center">
+<div id="metadata_governance" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/metadata_governance.png" alt="metadata governance">
 </div>
@@ -1263,19 +1351,19 @@ Includes detailed input and review from:</p>
 <div class="sect4">
 <h5 id="_package">Package</h5>
 <div class="paragraph">
-<p>The optional <em>resource_package_uri</em> property enables the recording of a reference to a package of archetypes or other resources, to which this archetype is considered to below. It may be in the form of ‘text &lt;URL&gt;’.</p>
+<p>The optional <code><em>resource_package_uri</em></code> property enables the recording of a reference to a package of archetypes or other resources, to which this archetype is considered to below. It may be in the form of ‘text &lt;URL&gt;’.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_lifecycle_state">Lifecycle_state</h5>
 <div class="paragraph">
-<p>The <em>description.lifecycle_state</em> is an important property of an archetype, which is used to record its state in a defined lifecycle. The lifecycle state machine and versioning rules are explained fully in the <a href="http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf">openEHR Knowledge Artefact Identification specification</a>. Here we simply note that the value of the property is a coded term corresponding to one of the macro-state names on the diagram, i.e. ‘unmanaged’, ‘in_development’, and so on.</p>
+<p>The <code><em>description</em></code>.<code><em>lifecycle_state</em></code> is an important property of an archetype, which is used to record its state in a defined lifecycle. The lifecycle state machine and versioning rules are explained fully in the <a href="http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf">openEHR Knowledge Artefact Identification specification</a>. Here we simply note that the value of the property is a coded term corresponding to one of the macro-state names on the diagram, i.e. ‘unmanaged’, ‘in_development’, and so on.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_original_namespace_and_original_publisher">Original_namespace and Original_publisher</h5>
 <div class="paragraph">
-<p>These two optional properties indicate the original publishing organisation, and its namespace, i.e. the original publishing environment where the artefact was first imported or created. The <em>original_namespace</em> property is normally the same value as <em>archetype_id.namespace</em>,unless the artefact has been forked into its current custodian, in which case <em>archetype_id.namespace</em> will be the same as <em>custodian_namespace</em>.</p>
+<p>These two optional properties indicate the original publishing organisation, and its namespace, i.e. the original publishing environment where the artefact was first imported or created. The <code><em>original_namespace</em></code> property is normally the same value as <code><em>archetype_id</em></code>.<code><em>namespace</em></code>,unless the artefact has been forked into its current custodian, in which case <code><em>archetype_id</em></code>.<code><em>namespace</em></code> will be the same as <code><em>custodian_namespace</em></code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1304,7 +1392,7 @@ Includes detailed input and review from:</p>
 <div class="paragraph">
 <p>Authorship meta-data consists of items such as author name, contributors, and translator information, and is visualised in Figure <a href="#metadata_authoring">Authoring Meta-data</a>.</p>
 </div>
-<div id="metadata_authoring" class="imageblock" style="text-align: center">
+<div id="metadata_authoring" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/metadata_authoring.png" alt="metadata authoring">
 </div>
@@ -1313,13 +1401,13 @@ Includes detailed input and review from:</p>
 <div class="sect4">
 <h5 id="_original_author">Original Author</h5>
 <div class="paragraph">
-<p>The <code>RESOURCE_DESCRIPTION</code>.<em>original_author</em> property defines a simple list of name/value pairs via which the original author can be documented. Typical key values include ‘name’, ‘organi[zs]ation’, ‘email’ and ‘date’.</p>
+<p>The <code>RESOURCE_DESCRIPTION</code>.<code><em>original_author</em></code> property defines a simple list of name/value pairs via which the original author can be documented. Typical key values include ‘name’, ‘organi[zs]ation’, ‘email’ and ‘date’.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_contributors">Contributors</h5>
 <div class="paragraph">
-<p>The <code>RESOURCE_DESCRIPTION</code>.<em>other_contributors</em> property is a simple list of strings, one for each contributor. The recommended format of the string is one of:</p>
+<p>The <code>RESOURCE_DESCRIPTION</code>.<code><em>other_contributors</em></code> property is a simple list of strings, one for each contributor. The recommended format of the string is one of:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1332,13 +1420,13 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="sect4">
 <h5 id="_languages_and_translation">Languages and Translation</h5>
 <div class="paragraph">
-<p>The <code>AUTHORED_RESOURCE</code>.<em>original_language</em> and <code>TRANSLATION_DETAILS</code> class enable the original language of authoring and information relating to subsequent translations to be expressed. <code>TRANSLATION_DETAILS</code>.<em>author</em> allows each translator to be represented in the same way as the <em>original_author</em> , i.e. a list of name/values. The <em>version_last_translated</em> property is used to record a copy of the archetype_id.physical_id for each language, when the translation was carried out. This enables maintainers to know when new translations are needed for some or all languages.</p>
+<p>The <code>AUTHORED_RESOURCE</code>.<code><em>original_language</em></code> and <code>TRANSLATION_DETAILS</code> class enable the original language of authoring and information relating to subsequent translations to be expressed. <code>TRANSLATION_DETAILS</code>.<code><em>author</em></code> allows each translator to be represented in the same way as the <code><em>original_author</em></code> , i.e. a list of name/values. The <code><em>version_last_translated</em></code> property is used to record a copy of the archetype_id.physical_id for each language, when the translation was carried out. This enables maintainers to know when new translations are needed for some or all languages.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_version_last_translated">Version_last_translated</h5>
 <div class="paragraph">
-<p>This String property records the full version identifier (i.e. <code>ARCHETYPE</code>.<em>archetype_id.version_id</em>) at the time of last translation, enabling tools to determine if and when translations may be out of date.</p>
+<p>This String property records the full version identifier (i.e. <code>ARCHETYPE</code>.<code><em>archetype_id</em></code>.<code><em>version_id</em></code>) at the time of last translation, enabling tools to determine if and when translations may be out of date.</p>
 </div>
 </div>
 </div>
@@ -1347,7 +1435,7 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="paragraph">
 <p>Various descriptive meta-data may be provided for an archetype in multiple translations in the <code>RESOURCE_DESCRIPTION_ITEM</code> class, using one instance for each translation language, as shown in Figure <a href="#metadata_descriptive">Descriptive Meta-data</a>.</p>
 </div>
-<div id="metadata_descriptive" class="imageblock" style="text-align: center">
+<div id="metadata_descriptive" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/metadata_details.png" alt="metadata details">
 </div>
@@ -1356,28 +1444,28 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="sect4">
 <h5 id="_purpose_2">Purpose</h5>
 <div class="paragraph">
-<p>The <em>purpose</em> item is a String property for recording the intended design concept of the artefact.</p>
+<p>The <code><em>purpose</em></code> item is a String property for recording the intended design concept of the artefact.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_use_and_misuse">Use and Misuse</h5>
 <div class="paragraph">
-<p>The <em>use</em> and <em>misuse</em> properties enable specific uses and misuses to be documented. The latter normally relate to common errors of use, or apparently reasonable but wrong assumptions about use.</p>
+<p>The <code><em>use</em></code> and <code><em>misuse</em></code> properties enable specific uses and misuses to be documented. The latter normally relate to common errors of use, or apparently reasonable but wrong assumptions about use.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_keywords">Keywords</h5>
 <div class="paragraph">
-<p>The <em>keywords</em> property is a list of Strings designed to record search keywords for the artefact.</p>
+<p>The <code><em>keywords</em></code> property is a list of Strings designed to record search keywords for the artefact.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_resources">Resources</h5>
 <div class="paragraph">
-<p>The <em>original_resource_uri</em> property is used to record one or more references to resources in each particular language.</p>
+<p>The <code><em>original_resource_uri</em></code> property is used to record one or more references to resources in each particular language.</p>
 </div>
 <div class="paragraph tbd">
-<p>This property does not appear to have ever been used, and it may not be useful, since ‘resources’ are not typically available for each language.</p>
+<p><em>TBD</em>: This property does not appear to have ever been used, and it may not be useful, since ‘resources’ are not typically available for each language.</p>
 </div>
 </div>
 </div>
@@ -1404,7 +1492,7 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="paragraph">
 <p>The model in Figure <a href="#archetype_package">Archetype Package</a> defines the structures of a number of variants of the ‘archetype’ idea. All concrete instances are instances of one of the concrete descendants of <code>ARCHETYPE</code>. Figure <a href="#source_archetype_structure">Source Archetype Structure</a> illustrates the typical object structure of a source archetype - the form of archetype created by an authoring tool - represented by a <code>DIFFERENTIAL_ARCHETYPE</code> instance. Mandatory parts are shown in bold.</p>
 </div>
-<div id="source_archetype_structure" class="imageblock" style="text-align: center">
+<div id="source_archetype_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-source_archetype_structure.png" alt="AOM source archetype structure">
 </div>
@@ -1416,7 +1504,7 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="paragraph">
 <p>A flat archetype is generated from one or more source archetypes via the flattening process described in the next chapter of this specification, (also in the ADL specification). This generates a <code>FLAT_ARCHETYPE</code> from a <code>DIFFERENTIAL_ARCHETYPE</code> instance. The main two changes that occur in this operation are a) specialised archetype overlays are applied to the flat parent structure, resulting in a full archetype structure, and b) internal references (use_nodes) are replaced by their expanded form, i.e. a copy of the subtrees to which they point.</p>
 </div>
-<div id="source_template_structure" class="imageblock" style="text-align: center">
+<div id="source_template_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-source_template_structure.png" alt="AOM source template structure">
 </div>
@@ -1434,7 +1522,7 @@ first names last name, organisation &lt;organisation email address&gt;</pre>
 <div class="paragraph">
 <p>Figure <a href="#operational_template_structure">Operational Template Structure</a> illustrates the resulting operational template, or compiled form of a template. This is created by building the composition of referenced archetypes and/or templates and/or template overlays, in their flattened form, to generate a single ‘giant’ archetype. The root node of this archetype, along with every archetype/template root node within, is represented using a <code>C_ARCHETYPE_ROOT</code> object. An operational template also has a component_terminologies property containing the ontologies from every constituent archetype, template and overlay.</p>
 </div>
-<div id="operational_template_structure" class="imageblock" style="text-align: center">
+<div id="operational_template_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-operational_template_structure.png" alt="AOM operational template structure">
 </div>
@@ -1853,10 +1941,10 @@ An operational template is used for generating and validating canonical openEHR 
 <p>The following validity rules apply to all varieties of <code>ARCHETYPE</code> object:</p>
 </div>
 <div class="paragraph rule">
-<p><strong>VARAV</strong>: ADL version validity. The <em>adl_version</em> top-level meta-data item must exist and consist of a valid 3-part version identifier.</p>
+<p><strong>VARAV</strong>: ADL version validity. The <code><em>adl_version</em></code> top-level meta-data item must exist and consist of a valid 3-part version identifier.</p>
 </div>
 <div class="paragraph rule">
-<p><strong>VARRV</strong>: RM release validity. The <em>rm_release</em> top-level meta-data item must exist and consist of a valid 3-part version identifier.</p>
+<p><strong>VARRV</strong>: RM release validity. The <code><em>rm_release</em></code> top-level meta-data item must exist and consist of a valid 3-part version identifier.</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VARCN</strong>: archetype concept validity. The node_id of the root object of the archetype must be of the form id1\{.1}*, where the number of ‘.1’ components equals the specalisation depth, and must be defined in the terminology.</p>
@@ -1889,13 +1977,13 @@ An operational template is used for generating and validating canonical openEHR 
 <p><strong>VRRLP</strong>: rule path valid. Each path mentioned in a rule in the rules section must be found within the archetype, or be an RM-valid extension of a path found within the archetype.</p>
 </div>
 <div class="paragraph">
-<p>The following validity rules apply to <code>ARCHETYPE</code> objects for which <em>is_overlay</em> = False:</p>
+<p>The following validity rules apply to <code>ARCHETYPE</code> objects for which <code><em>is_overlay</em></code> = False:</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VARID</strong>: archetype identifier validity. The archetype must have an identifier that conforms to the openEHR specification for archetype identifiers.</p>
 </div>
 <div class="paragraph rule">
-<p><strong>VDEOL</strong>: original language specified. An original_language section containing the meta-data of the original authoring language must exist.</p>
+<p><strong>VDEOL</strong>: original language specified. An <code>original_language</code> section containing the meta-data of the original authoring language must exist.</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VARD</strong>: description specified. A description section containing the main meta-data of the archetype must exist.</p>
@@ -1926,14 +2014,14 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="paragraph">
 <p>Figure <a id="constraint_model_top"></a> and Figure <a id="constraint_model_bottom"></a> illustrate the object model of constraints used in an archetype definition. This model is completely generic, and is designed to express the semantics of constraints on instances of classes which are themselves described in any orthodox object-oriented formalism, such as UML. Accordingly, the major abstractions in this model correspond to major abstractions in object-oriented formalisms, including several variations of the notion of ‘object’ and the notion of ‘attribute’. The notion of ‘object’ rather than ‘class’ or ‘type’ is used because archetypes are about constraints on data (i.e. ‘instances’, or ‘objects’) rather than models, which are constructed from ‘classes’. In this document, the word ‘attribute’ refers to any data property of a class, regardless of whether regarded as a ‘relationship’ (i.e. association, aggregation, or composition) or ‘primitive’ (i.e. value) attribute in an object model.</p>
 </div>
-<div id="constraint_model_top" class="imageblock" style="text-align: center">
+<div id="constraint_model_top" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-constraint_model-top.png" alt="AOM constraint model top">
 </div>
 <div class="title">Figure 11. constraint_model Package</div>
 </div>
 <div class="paragraph">
-<p>The definition part of an archetype is an instance of a <code>C_COMPLEX_OBJECT</code> and consists of alternate layers of object and attribute constrainer nodes, each containing the next level of nodes. At the leaves are primitive object constrainer nodes constraining primitive types such as <em>String</em> , <em>Integer</em> etc. There are also nodes that represent internal references to other nodes, constraint reference nodes that refer to a text constraint in the constraint binding part of the archetype terminology, and archetype constraint nodes, which represent constraints on other archetypes allowed to appear at a given point. The full list of concrete node types is as follows:</p>
+<p>The definition part of an archetype is an instance of a <code>C_COMPLEX_OBJECT</code> and consists of alternate layers of object and attribute constrainer nodes, each containing the next level of nodes. At the leaves are primitive object constrainer nodes constraining primitive types such as <code>String</code> , <code>Integer</code> etc. There are also nodes that represent internal references to other nodes, constraint reference nodes that refer to a text constraint in the constraint binding part of the archetype terminology, and archetype constraint nodes, which represent constraints on other archetypes allowed to appear at a given point. The full list of concrete node types is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1960,7 +2048,7 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="paragraph">
 <p>The constraints define which configurations of reference model class instances are considered to conform to the archetype. For example, certain configurations of the classes <code>PARTY</code> , <code>ADDRESS</code> , <code>CLUSTER</code> and <code>ELEMENT</code> might be defined by a Person archetype as allowable structures for ‘people with identity, contacts, and addresses’. Because the constraints allow optionality, cardinality and other choices, a given archetype usually corresponds to a set of similar configurations of objects.</p>
 </div>
-<div id="constraint_model_bottom" class="imageblock" style="text-align: center">
+<div id="constraint_model_bottom" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-constraint_model-bottom.png" alt="AOM constraint model bottom">
 </div>
@@ -1992,7 +2080,7 @@ An operational template is used for generating and validating canonical openEHR 
 <p>All node types include two functions that formalise the notion of conformance of a specialised archetype to a parent archetype. Both functions take an argument which must be a corresponding node in a parent archetype, not necessarily the immediate parent. A ‘corresponding’ node is one found at the same or a congruent path. A congruent path is one in which one or more at-codes have been redefined in the specialised archetype.</p>
 </div>
 <div class="paragraph">
-<p>The <em>c_conforms_to</em> function returns True if the node on which it is called is a valid specialisation of the ‘other’ node. The <em>c_congruent_to</em> function returns True if the node on which it is called is the same as the other node, with the possible exception of a redefined at-code. The latter may happen due to the need to restrict the domain meaning of node to a meaning narrower than that of the same node in the parent. The formal semantics of both functions are given in the section <a href="AOM2.htm#50487317_85899">See Class Definitions</a>.</p>
+<p>The <code><em>c_conforms_to</em></code> function returns True if the node on which it is called is a valid specialisation of the ‘other’ node. The <code><em>c_congruent_to</em></code> function returns True if the node on which it is called is the same as the other node, with the possible exception of a redefined at-code. The latter may happen due to the need to restrict the domain meaning of node to a meaning narrower than that of the same node in the parent. The formal semantics of both functions are given in the section <a href="AOM2.htm#50487317_85899">See Class Definitions</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_attribute_node_types">5.4.1. Attribute Node Types</h4>
@@ -2002,10 +2090,10 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="ulist">
 <ul>
 <li>
-<p>is_multiple: a flag that indicates whether the <code>C_ATTRIBUTE</code> is constraining a multiply-valued (i.e. container) RM attribute or a single-valued one;</p>
+<p><code><em>is_multiple</em></code>: a flag that indicates whether the <code>C_ATTRIBUTE</code> is constraining a multiply-valued (i.e. container) RM attribute or a single-valued one;</p>
 </li>
 <li>
-<p>existence: whether the corresponding instance (defined by the <em>rm_attribute_name</em> attribute) must exist;</p>
+<p><code><em>existence</em></code>: whether the corresponding instance (defined by the <code><em>rm_attribute_name</em></code> attribute) must exist;</p>
 </li>
 <li>
 <p>child objects: representing allowable values of the object value(s) of the attribute.</p>
@@ -2016,12 +2104,12 @@ An operational template is used for generating and validating canonical openEHR 
 <p>In the case of single-valued attributes (such as Person.date_of_birth) the children represent one or more alternative object constraints for the attribute value.</p>
 </div>
 <div class="paragraph">
-<p>For multiply-valued attributes (such as <code>Person</code>.<em>contacts</em>: <code>List&lt;Contact&gt;</code>), a cardinality constraint on the container can be defined. The constraint on child objects is essentially the same except that more than one of the alternatives can co-exist in the data. Figure <a href="#c_attributes">C_ATTRIBUTE variants</a> illustrates the two possibilities.</p>
+<p>For multiply-valued attributes (such as <code>Person</code>.<code><em>contacts</em></code>: <code>List&lt;Contact&gt;</code>), a cardinality constraint on the container can be defined. The constraint on child objects is essentially the same except that more than one of the alternatives can co-exist in the data. Figure <a href="#c_attributes">C_ATTRIBUTE variants</a> illustrates the two possibilities.</p>
 </div>
 <div class="paragraph">
-<p>The appearance of both <em>existence</em> and <em>cardinality</em> constraints in <code>C_ATTRIBUTE</code> deserves some explanation, especially as the meanings of these notions are often confused in object-oriented literature. An existence constraint indicates whether an object will be found in a given attribute field, while a cardinality constraint indicates what the valid membership of a container object is. <em>Cardinality</em> is only required for container objects such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> and so on, whereas <em>existence</em> is always possible. If both are used, the meaning is as follows: the existence constraint says whether the container object will be there (at all), while the cardinality constraint says how many items must be in the container, and whether it acts logically as a list, set or bag. Both existence and cardinality are optional in the model, since they are only needed to override the settings from the reference model.</p>
+<p>The appearance of both <code><em>existence</em></code> and <code><em>cardinality</em></code> constraints in <code>C_ATTRIBUTE</code> deserves some explanation, especially as the meanings of these notions are often confused in object-oriented literature. An existence constraint indicates whether an object will be found in a given attribute field, while a cardinality constraint indicates what the valid membership of a container object is. <code><em>Cardinality</em></code> is only required for container objects such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> and so on, whereas <code><em>existence</em></code> is always possible. If both are used, the meaning is as follows: the existence constraint says whether the container object will be there (at all), while the cardinality constraint says how many items must be in the container, and whether it acts logically as a list, set or bag. Both existence and cardinality are optional in the model, since they are only needed to override the settings from the reference model.</p>
 </div>
-<div id="c_attributes" class="imageblock" style="text-align: center">
+<div id="c_attributes" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/c_attributes.png" alt="c attributes">
 </div>
@@ -2046,25 +2134,25 @@ An operational template is used for generating and validating canonical openEHR 
 </ul>
 </div>
 <div class="paragraph">
-<p>The existence of <em>node_ids</em> in an archetype allows archetype paths to be created, which refer to each node. Every node in the archetype needs a <em>node_id</em> , but only node_ids for nodes under container attributes must have a terminology definition. For nodes under single-valued attributes, the terminology definition is optional (and typically not supplied), since the meaning is given by the reference model attribute definition.</p>
+<p>The existence of <code><em>node_ids</em></code> in an archetype allows archetype paths to be created, which refer to each node. Every node in the archetype needs a <code><em>node_id</em></code> , but only node_ids for nodes under container attributes must have a terminology definition. For nodes under single-valued attributes, the terminology definition is optional (and typically not supplied), since the meaning is given by the reference model attribute definition.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_sibling_ordering">Sibling Ordering</h5>
 <div class="paragraph">
-<p>Within a specialised archetype, redefined or added object nodes may be defined within a container attribute. Since specialised archetypes are in differential form, i.e. only redefined or added nodes are expressed, not nodes inherited unchanged, the relative ordering of siblings can’t be stated simply by the ordering of such items within the relevant list within the differential form of the archetype. An explicit ordering indicator is required if indeed order is specific. The <code>C_OBJECT</code> . <em>sibling_order</em> attribute provides this possibility. It can only be set on a <code>C_OBJECT</code> descendant within a multiply-valued attribute, i.e. an instance of <code>C_ATTRIBUTE</code> for which the cardinality is ordered.</p>
+<p>Within a specialised archetype, redefined or added object nodes may be defined within a container attribute. Since specialised archetypes are in differential form, i.e. only redefined or added nodes are expressed, not nodes inherited unchanged, the relative ordering of siblings can’t be stated simply by the ordering of such items within the relevant list within the differential form of the archetype. An explicit ordering indicator is required if indeed order is specific. The <code>C_OBJECT</code> . <code><em>sibling_order</em></code> attribute provides this possibility. It can only be set on a <code>C_OBJECT</code> descendant within a multiply-valued attribute, i.e. an instance of <code>C_ATTRIBUTE</code> for which the cardinality is ordered.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_defined_object_nodes_code_c_defined_object_code">Defined Object Nodes (<code>C_DEFINED_OBJECT</code>)</h5>
+<h5 id="_defined_object_nodes_c_defined_object">Defined Object Nodes (C_DEFINED_OBJECT)</h5>
 <div class="paragraph">
-<p>The <code>C_DEFINED_OBJECT</code> subtype corresponds to the category of <em>C_OBJECTs</em> that are defined in an archetype by value, i.e. by inline definition. Four properties characterise <code>C_DEFINED_OBJECT</code> s as follows.</p>
+<p>The <code>C_DEFINED_OBJECT</code> subtype corresponds to the category of <code>C_OBJECTs</code> that are defined in an archetype by value, i.e. by inline definition. Four properties characterise <code>C_DEFINED_OBJECT</code> s as follows.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_valid_value">Valid_value</h5>
 <div class="paragraph">
-<p>The <em>valid_value</em> function tests a reference model object for conformance to the archetype. It is designed for recursive implementation in which a call to the function at the top of the archetype definition would cause a cascade of calls down the tree. This function is the key function of an ‘archetype-enabled kernel’ component that can perform runtime data validation based on an archetype definition.</p>
+<p>The <code><em>valid_value</em></code> function tests a reference model object for conformance to the archetype. It is designed for recursive implementation in which a call to the function at the top of the archetype definition would cause a cascade of calls down the tree. This function is the key function of an ‘archetype-enabled kernel’ component that can perform runtime data validation based on an archetype definition.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2076,7 +2164,7 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="sect4">
 <h5 id="_default_value">Default_value</h5>
 <div class="paragraph">
-<p>This attribute allows a user-specified default value to be defined within an archetype. The <em>default_value</em> object must be of the same type as defined by the <em>prototype_value</em> function, pass the <em>valid_value</em> test. Where defined, the <em>prototype_value</em> function would return this value instead of a synthesised value.</p>
+<p>This attribute allows a user-specified default value to be defined within an archetype. The <code><em>default_value</em></code> object must be of the same type as defined by the <code><em>prototype_value</em></code> function, pass the <code><em>valid_value</em></code> test. Where defined, the <code><em>prototype_value</em></code> function would return this value instead of a synthesised value.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2092,9 +2180,9 @@ An operational template is used for generating and validating canonical openEHR 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_complex_objects_code_c_complex_object_code">Complex Objects (<code>C_COMPLEX_OBJECT</code>)</h5>
+<h5 id="_complex_objects_c_complex_object">Complex Objects (C_COMPLEX_OBJECT)</h5>
 <div class="paragraph">
-<p>Along with <code>C_ATTRIBUTE</code> , <code>C_COMPLEX_OBJECT</code> is the key structuring type of the <em>constraint_model</em> package, and consists of attributes of type <code>C_ATTRIBUTE</code> , which are constraints on the attributes (i.e. any property, including relationships) of the reference model type. Accordingly, each <code>C_ATTRIBUTE</code> records the name of the constrained attribute (in <em>rm_attr_name)</em> , the existence and cardinality expressed by the constraint (depending on whether the attribute it constrains is a multiple or single relationship), and the constraint on the object to which this <code>C_ATTRIBUTE</code> refers via its <em>children</em> attribute (according to its reference model) in the form of further <em>C_OBJECTs</em> .</p>
+<p>Along with <code>C_ATTRIBUTE</code> , <code>C_COMPLEX_OBJECT</code> is the key structuring type of the <code><em>constraint_model</em></code> package, and consists of attributes of type <code>C_ATTRIBUTE</code> , which are constraints on the attributes (i.e. any property, including relationships) of the reference model type. Accordingly, each <code>C_ATTRIBUTE</code> records the name of the constrained attribute (in <code><em>rm_attr_name</em></code>) , the existence and cardinality expressed by the constraint (depending on whether the attribute it constrains is a multiple or single relationship), and the constraint on the object to which this <code>C_ATTRIBUTE</code> refers via its <code><em>children</em></code> attribute (according to its reference model) in the form of further <code>C_OBJECTs</code> .</p>
 </div>
 </div>
 <div class="sect4">
@@ -2104,7 +2192,7 @@ An operational template is used for generating and validating canonical openEHR 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_primitive_types_code_c_primitive_object_code_descendants">Primitive Types (<code>C_PRIMITIVE_OBJECT</code> descendants)</h5>
+<h5 id="_primitive_types_c_primitive_object_descendants">Primitive Types (C_PRIMITIVE_OBJECT descendants)</h5>
 <div class="paragraph">
 <p>Constraints on primitive types are defined by the classes inheriting from <code>C_PRIMITIVE_OBJECT</code> , i.e. <code>C_STRING</code> , <code>C_INTEGER</code> and so on. The primitive types are represented in such a way as to accommodate both ‘tuple’ constraints and logically unary constraints, using a tuple array whose members are each a primitive constraint corresponding to each primitive type. Tuple constraints are second order constraints, described below, enable covarying constraints to be stated. In the unary case, the constraint is the first member of a tuple array.</p>
 </div>
@@ -2148,12 +2236,12 @@ An operational template is used for generating and validating canonical openEHR 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>T &#8594; Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As for Ordered type, with T = Integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As for Ordered type, with T = <code>Integer</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Real</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>T &#8594; Real</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As for Ordered type, with T = Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As for Ordered type, with T = <code>Real</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Temporal types</p></td>
@@ -2241,12 +2329,12 @@ An operational template is used for generating and validating canonical openEHR 
 <p>Enumeration types in the reference model are assumed to have semantics expected in UML, and mainstream programming languages, i.e. to be a distinct type based on a primitive type, normally Integer or String. Each such type consists of a set of values from the domain of its underlying type, thus, a set of Integer, String or other primitive values. Each of these values is assumed to be named in the manner of a symbolic constant. Although stricly speaking UML doesn’t require an enumerated type to be based on an underlying primitive type, programming languages do, hence the assumption here that values from the domain of such a type are involved.</p>
 </div>
 <div class="paragraph">
-<p>A constraint on an enumerated type therefore consists of an AOM instance of a <code>C_PRIMITIVE</code> descendant, almost always <code>C_INTEGER</code> or <code>C_STRING</code> . The flag <em>is_enumerated_type_constraint</em> defined on <code>C_PRIMITIVE</code> indicates that a given <code>C_PRIMITIVE</code> is a constrainer for an enumerated type.</p>
+<p>A constraint on an enumerated type therefore consists of an AOM instance of a <code>C_PRIMITIVE</code> descendant, almost always <code>C_INTEGER</code> or <code>C_STRING</code> . The flag <code><em>is_enumerated_type_constraint</em></code> defined on <code>C_PRIMITIVE</code> indicates that a given <code>C_PRIMITIVE</code> is a constrainer for an enumerated type.</p>
 </div>
 <div class="paragraph">
-<p>Since <code>C_PRIMITIVEs</code> don’t have type names in ADL, the type name is inferred by any parser or compiler tool that deserialises an archetype from ADL, and stored in the <em>rm_type</em> attribute inherited from <code>C_OBJECT</code> . An example is shown below of a type enumeration.</p>
+<p>Since <code>C_PRIMITIVEs</code> don’t have type names in ADL, the type name is inferred by any parser or compiler tool that deserialises an archetype from ADL, and stored in the <code><em>rm_type</em></code> attribute inherited from <code>C_OBJECT</code> . An example is shown below of a type enumeration.</p>
 </div>
-<div id="enumerated_constraint" class="imageblock" style="text-align: center">
+<div id="enumerated_constraint" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/enumerated_type_constraint.png" alt="enumerated type constraint">
 </div>
@@ -2277,7 +2365,7 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="paragraph">
 <p>Tuple constraints are designed to account for the very common need to constrain the values of more than one RM class attribute together. This effectively treats the attributes in question as a tuple, and the corresponding object constraints are accordingly modelled as tuples. Additions to the main constraint model to support tuples are shown below.</p>
 </div>
-<div id="tuple_constraint_model" class="imageblock" style="text-align: center">
+<div id="tuple_constraint_model" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-constraint_model-tuple.png" alt="AOM constraint model tuple">
 </div>
@@ -2292,13 +2380,13 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="paragraph">
 <p>These additions allow standard constraint structures (i.e. <code>C_ATTRIBUTE</code> / <code>C_COMPLEX_OBJECT</code> / <code>C_PRIMITIVE_OBJECT</code> hierarchies) to be ‘annotated’, while leaving the first order structure intact. The following example shows an archetype instance structure in which a notional <code>ORDINAL</code> type is constrained. The logical requirement is to constrain a <code>ORDINAL</code> to one of three instance possibilities, each of which consists of a pair of values for the attributes value and symbol, of type Integer and <code>TERMINOLOGY_CODE</code> respectively. Each of these three instance constraints should be understood as an alternative for the single valued owning attribute, <code>ELEMENT</code> .value. Tuple constraints achieve the requirement to express the constraints as pairs not just as allowable alternatives at the final leaf level, which would incorrectly allowing any mixing of the Integer and code values.</p>
 </div>
-<div id="ordinal_tuple_example" class="imageblock" style="text-align: center">
+<div id="ordinal_tuple_example" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-ordinal_tuple_example.png" alt="AOM ordinal tuple example">
 </div>
 <div class="title">Figure 16. Tuple Constraint Example AOM Instances</div>
 </div>
-<div id="tuple_constraint_example_data" class="imageblock" style="text-align: center">
+<div id="tuple_constraint_example_data" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/tuple_example_data.png" alt="tuple example data">
 </div>
@@ -2317,7 +2405,7 @@ An operational template is used for generating and validating canonical openEHR 
 <div class="paragraph">
 <p>The <code>C_OBJECT</code> types defined in Figure <a href="#constraint_model_top">constraint_model Package</a> are reproduced below, with concrete types that may actually occur in archetypes shown in dark yellow / non-italic.</p>
 </div>
-<div id="c_object_substitutions" class="imageblock" style="text-align: center">
+<div id="c_object_substitutions" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/c_object_substitutions.png" alt="c object substitutions">
 </div>
@@ -2358,7 +2446,7 @@ An operational template is used for generating and validating canonical openEHR 
 </div>
 </li>
 <li>
-<p>A terminal <code>C_COMPLEX_OBJECT</code> node containing no constraint other than RM type, <em>node_id</em> and possibly occurrences (i.e. having no substructure), can be redefined by a constraint of any other AOM type.</p>
+<p>A terminal <code>C_COMPLEX_OBJECT</code> node containing no constraint other than RM type, <code><em>node_id</em></code> and possibly occurrences (i.e. having no substructure), can be redefined by a constraint of any other AOM type.</p>
 </li>
 </ul>
 </div>
@@ -2627,13 +2715,13 @@ Typically used during validation of special-ised archetype nodes.</p></td>
 <p><strong>VSAM</strong>: specialised archetype attribute multiplicity conformance: the multiplicity, i.e. whether an attribute is multiply- or single-valued, of a redefined attribute must conform to that of the corresponding attribute in the parent archetype.</p>
 </div>
 <div class="paragraph">
-<p>The following validity rules apply to single-valued attributes, i.e when <code>C_ATTRIBUTE</code> .is_multiple is False:</p>
+<p>The following validity rules apply to single-valued attributes, i.e when <code>C_ATTRIBUTE</code>.<code><em>is_multiple</em></code> is False:</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VACSO</strong>: single-valued attribute child object occurrences validity: the occurrences of a child object of a single-valued attribute cannot have an upper limit greater than 1.</p>
 </div>
 <div class="paragraph">
-<p>The following validity rules apply to container attributes, i.e when <code>C_ATTRIBUTE</code> .is_multiple is True:</p>
+<p>The following validity rules apply to container attributes, i.e when <code>C_ATTRIBUTE</code>.<code><em>is_multiple</em></code> is True:</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VACMCU</strong>: cardinality/occurrences upper bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the occurrences must either have an open upper bound (i.e. n..*) which is interpreted as the maximum value allowed within the cardinality, or else a finite upper bound which is &#8656; the cardinality upper bound.</p>
@@ -2645,7 +2733,7 @@ Typically used during validation of special-ised archetype nodes.</p></td>
 <p><strong>VCACA</strong>: archetype attribute reference model cardinality conformance: the cardinality of an attribute must conform, i.e. be the same or narrower, to the cardinality of the corresponding attribute in the underlying information model.</p>
 </div>
 <div class="paragraph">
-<p>The following validity warnings apply to container attributes, i.e when <code>C_ATTRIBUTE</code> .is_multiple is True:</p>
+<p>The following validity warnings apply to container attributes, i.e when <code>C_ATTRIBUTE</code>.<code><em>is_multiple</em></code> is True:</p>
 </div>
 <div class="paragraph rule">
 <p><strong>WACMCL</strong>: cardinality/occurrences lower bound validity: where a cardinality with a finite upper bound is stated on an attribute, for all immediate child objects for which an occurrences constraint is stated, the sum of occurrences lower bounds should be lower than the cardinality upper limit.</p>
@@ -2786,7 +2874,7 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.</p></
 <div class="sect2">
 <h3 id="_occurrences_inferencing_rules">5.9. Occurrences inferencing rules</h3>
 <div class="paragraph">
-<p>The notion of ‘occurrences’ does not exist in an object model that might be used as the reference model on which archteypes are based, because it is a class model. However, archetypes make statements about how many objects conforming to a specific object constraint node might exist, within a container attribute. In an operational template, an occurrences constraint is required on all children of container attributes. Most such constraints come from the source template(s) and archetypes, but in some cases, there will be nodes with no occurrences. In these cases, the occurrences constraint is inferred from the reference model according to the following algorithm, where <em>c_object</em> represents any object node in an archetype.</p>
+<p>The notion of ‘occurrences’ does not exist in an object model that might be used as the reference model on which archteypes are based, because it is a class model. However, archetypes make statements about how many objects conforming to a specific object constraint node might exist, within a container attribute. In an operational template, an occurrences constraint is required on all children of container attributes. Most such constraints come from the source template(s) and archetypes, but in some cases, there will be nodes with no occurrences. In these cases, the occurrences constraint is inferred from the reference model according to the following algorithm, where <code>c_object</code> represents any object node in an archetype.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2896,10 +2984,10 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.</p></
 <p><strong>VSONCT</strong> specialised archetype object node reference type conformance: the reference model type of a redefined object node in a specialised archetype must conform to the reference model type in the corresponding node in the flat parent archetype by either being identical, or conforming via an inheritance relationship in the relevant reference model.</p>
 </div>
 <div class="paragraph deprecated">
-<p><strong>VSONIR</strong> specialised archetype redefined object node identifier condition: the node identifier of an object node in a specialised archetype that is a redefinition of a node in the flat parent must be redefined if any of reference model type, node identifier definition in the terminology, or occurrences of the immediate object constraint is redefined, with the exception of occurrences being redefined to {0}, i.e. exclusion.</p>
+<p><em>Deprecated</em>: <strong>VSONIR</strong> specialised archetype redefined object node identifier condition: the node identifier of an object node in a specialised archetype that is a redefinition of a node in the flat parent must be redefined if any of reference model type, node identifier definition in the terminology, or occurrences of the immediate object constraint is redefined, with the exception of occurrences being redefined to {0}, i.e. exclusion.</p>
 </div>
 <div class="paragraph deprecated">
-<p><strong>VSONI</strong> specialised archetype redefined object node identifier validity: if an object node in a specialised archetype is a redefinition of a node in the flat parent according to VSONIR, and the parent node carries a node identifier, it must carry a node identifier specalised at the level of the child archetype. Otherwise it must carry the same node identifier (or none) as the corresponding parent node.</p>
+<p><em>Deprecated</em>: <strong>VSONI</strong> specialised archetype redefined object node identifier validity: if an object node in a specialised archetype is a redefinition of a node in the flat parent according to VSONIR, and the parent node carries a node identifier, it must carry a node identifier specalised at the level of the child archetype. Otherwise it must carry the same node identifier (or none) as the corresponding parent node.</p>
 </div>
 <div class="paragraph rule">
 <p><strong>VSONIN</strong> specialised archetype new object node identifier validity: if an object node in a specialised archetype is a new node with respect to the flat parent, and it carries a node identifier, the identifier must be a ‘new’ node identifier, specalised at the level of the child archetype.</p>
@@ -4046,7 +4134,7 @@ The last possibility above is enabled by the merge_tuple routine, which enables 
 <div class="paragraph">
 <p>Assertions are expressed in archetypes in typed first-order predicate logic (FOL). They are used in two places: to express archetype slot constraints, and to express rules in complex object constraints. In both of these places, their role is to constrain something inside the archetype. Constraints on external resources such as terminologies are expressed in the constraint binding part of the archetype terminology, described in Figure <a href="#terminology_package">Terminology Package</a>. The assertion package is illustrated below in <a href="#rules_package">Rules Package</a>.</p>
 </div>
-<div id="rules_package" class="imageblock" style="text-align: center">
+<div id="rules_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-rules.png" alt="AOM rules">
 </div>
@@ -4685,7 +4773,7 @@ Not yet standardised.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_operator_kind_class">6.3.17. OPERATOR_KIND CLASS</h4>
+<h4 id="_operator_kind_enumeration">6.3.17. OPERATOR_KIND Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -4694,17 +4782,12 @@ Not yet standardised.</p></td>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>CLASS</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Enumeration</strong></p></td>
 <td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>OPERATOR_KIND</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Enumeration type for operator types in assertion expressions.<br>
-Enumeration type for operator types in assertion expressions</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Enumeration type for operator types in assertion expressions.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -4712,19 +4795,99 @@ Enumeration type for operator types in assertion expressions</p></td>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>op_eq</strong>: <code>int</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Equals operator ( =' or  ==')</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_eq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equals operator (= or ==)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>op_ne</strong>: <code>int</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not equals operator ( !=' or  /=' or  &lt;&gt;')</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_ne</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not equals operator (!= or /=)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>op_le</strong>: <code>int</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Less-than or equals operator ( &#8656;')</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_le</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less-than or equals operator (&#8656;)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_lt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less-than operator (&#8656;)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_ge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Greater-than or equals operator (&gt;=)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_gt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Greater-than operator (&gt;)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_matches</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Matches operator (matches or is_in)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not logical operator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_and</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">And logical operator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_or</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Or logical operator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_xor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Xor logical operator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_implies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implies logical operator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_for_all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For-all (universal) quantifier</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_exists</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exists quantifier</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arithmetic plus operator (+)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_minus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arithmetic minus operator (-)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_multiply</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arithmetic multiplication operator (*)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_divide</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arithmetic division operator (/)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">op_exponent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arithmetic exponentiation operator (^)</p></td>
 </tr>
 </tbody>
 </table>
@@ -4740,7 +4903,7 @@ Enumeration type for operator types in assertion expressions</p></td>
 <div class="paragraph">
 <p>All local terminology as well as terminological and terminology binding elements of an archetype are represented in the terminology section of an archetype, whose semantics are defined by the <em>archetype.terminology</em> package, shown below.</p>
 </div>
-<div id="terminology_package" class="imageblock" style="text-align: center">
+<div id="terminology_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="uml_diagrams/AOM-terminology.png" alt="AOM terminology">
 </div>
@@ -4755,7 +4918,7 @@ Enumeration type for operator types in assertion expressions</p></td>
 <p>term_definitions: a mandatory structure consisting of lists of term definitions defined local to the archetype, one list for each language of translation, as well as the original language of definition. The entries in this table include:</p>
 </li>
 <li>
-<p>Some or all id-codes. One of these is a code of the form ‘id1’, ‘id1.1’, ‘id1.1.1’ etc, denoting the concept of the archetype as a whole. This particular code is recorded in the <em>concept_code</em> attribute and is used as the id-code on the root node in the archetype definition. Not all id-codes are required to be in the term_definitions structure - for nodes that are children of single-valued attribute, a term definition is optional (and not typically defined).</p>
+<p>Some or all id-codes. One of these is a code of the form ‘id1’, ‘id1.1’, ‘id1.1.1’ etc, denoting the concept of the archetype as a whole. This particular code is recorded in the <code><em>concept_code</em></code> attribute and is used as the id-code on the root node in the archetype definition. Not all id-codes are required to be in the term_definitions structure - for nodes that are children of single-valued attribute, a term definition is optional (and not typically defined).</p>
 </li>
 <li>
 <p>at-codes used to define value terms and inline value sets/ All at-codes will appear within a <code>C_TERMINOLOGY_CODE</code> constraint object within the archetype. All at-codes must have a definition in the term_definitions.</p>
@@ -4777,7 +4940,7 @@ Enumeration type for operator types in assertion expressions</p></td>
 <div class="paragraph">
 <p>Depending on whether the archetype is in differential or flat form, an instance of the <code>ARCHETYPE_TERMINOLOGY</code> class contains terms, constraints, bindings and terminology extracts that were respectively either introduced in the owning archetype, or all codes and bindings obtained by compressing an archetype lineage through inheritance. A typical instance structure of <code>ARCHETYPE_TERMINOLOGY</code> is illustrated in Figure <a href="#terminology_instance">Terminology Instance Structure</a>.</p>
 </div>
-<div id="terminology_instance" class="imageblock" style="text-align: center">
+<div id="terminology_instance" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/terminology_instance_structure.png" alt="terminology instance structure">
 </div>
@@ -4789,7 +4952,7 @@ Enumeration type for operator types in assertion expressions</p></td>
 <div class="sect3">
 <h4 id="_specialisation_depth">7.2.1. Specialisation Depth</h4>
 <div class="paragraph">
-<p>Any given archetype occurs at some point in a lineage of archetypes related by specialisation, where the depth is reflected by the <em>specialisation_depth</em> function. An archetype which is not a specialisation of another has a specialisation_depth of 0. Term and constraint codes introduced in the terminology of specialised archetypes (i.e. which did not exist in the terminology of the parent archetype) are defined in a strict way, using ‘.’ (period) markers. For example, an archetype of specialisation depth 2 will use term definition codes like the following:</p>
+<p>Any given archetype occurs at some point in a lineage of archetypes related by specialisation, where the depth is reflected by the <code><em>specialisation_depth</em></code> function. An archetype which is not a specialisation of another has a specialisation_depth of 0. Term and constraint codes introduced in the terminology of specialised archetypes (i.e. which did not exist in the terminology of the parent archetype) are defined in a strict way, using ‘.’ (period) markers. For example, an archetype of specialisation depth 2 will use term definition codes like the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5151,7 +5314,7 @@ Hash of keys ("text", "description" etc) and corresponding values.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-22 17:00:34 BST
+Last updated 2015-06-24 15:29:22 BST
 </div>
 </div>
 </body>
