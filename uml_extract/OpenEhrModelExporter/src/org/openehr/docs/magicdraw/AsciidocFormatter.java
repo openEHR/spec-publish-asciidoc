@@ -6,6 +6,9 @@ package org.openehr.docs.magicdraw;
 public class AsciidocFormatter implements Formatter {
     @Override
     public String bold(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return "";
+        }
         return '*' + text + '*';
     }
 

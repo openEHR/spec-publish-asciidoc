@@ -13,4 +13,8 @@ public class OpenEhrExporterException extends RuntimeException {
     public OpenEhrExporterException(Throwable cause) {
         super(cause);
     }
+
+    public OpenEhrExporterException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

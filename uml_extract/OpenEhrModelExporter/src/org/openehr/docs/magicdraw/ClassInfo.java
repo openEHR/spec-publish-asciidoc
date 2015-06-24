@@ -7,6 +7,7 @@ import java.util.List;
  * @author Bostjan Lah
  */
 public class ClassInfo {
+    private final String type;
     private String className = "";
     private String documentation = "";
     private String parentClassName;
@@ -15,6 +16,14 @@ public class ClassInfo {
     private final List<ClassAttributeInfo> attributes = new ArrayList<>();
     private final List<ClassAttributeInfo> functions = new ArrayList<>();
     private final List<ConstraintInfo> constraints = new ArrayList<>();
+
+    public ClassInfo(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     public String getClassName() {
         return className;

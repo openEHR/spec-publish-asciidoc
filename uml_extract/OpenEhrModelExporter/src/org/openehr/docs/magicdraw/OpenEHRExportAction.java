@@ -5,10 +5,10 @@ import com.nomagic.magicdraw.core.Application;
 import com.nomagic.magicdraw.core.Project;
 import com.nomagic.magicdraw.export.image.ImageExporter;
 import com.nomagic.magicdraw.ui.dialogs.MDDialogParentProvider;
-import com.nomagic.magicdraw.uml.Visitor;
 import com.nomagic.magicdraw.uml.symbols.DiagramPresentationElement;
-import com.nomagic.uml2.ext.jmi.reflect.VisitorContext;
+import com.nomagic.uml2.ext.jmi.helpers.ModelHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Enumeration;
 import org.openehr.docs.magicdraw.exception.OpenEhrExporterException;
 
 import javax.annotation.CheckForNull;
@@ -20,9 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Action which displays its name.
@@ -60,19 +58,32 @@ class OpenEHRExportAction extends MDAction {
         }
     }
 
-    private void exportProject(File outputFolder, Project project) throws IOException {
-        MyVisitor visitor = new MyVisitor(formatter);
-        for (Element element : project.getModel().getOwnedElement()) {
-            visitModel(element, visitor);
-        }
-
+    private void exportProject(File outputFolder, Project project) throws Exception {
         File classesFolder = new File(outputFolder, "classes");
         if (!classesFolder.exists()) {
             if (!classesFolder.mkdir()) {
                 throw new OpenEhrExporterException("Unable to create folder: " + classesFolder);
             }
         }
-        visitor.getClasses().stream().forEach(cl -> exportClass(cl, classesFolder));
+
+        Collection<? extends Element> umlClasses = ModelHelper.getElementsOfType(project.getModel(),
+                                                                                 new Class[]{com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class.class},
+                                                                                 true);
+        ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
+        umlClasses.stream()
+                .map(e -> (com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class)e)
+                .filter(cl -> cl.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .forEach(cl -> exportClass(classInfoBuilder.build(cl), classesFolder));
+
+        Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getModel(),
+                                                                                      new Class[]{Enumeration.class},
+                                                                                      true);
+
+        EnumerationInfoBuilder enumerationInfoBuilder = new EnumerationInfoBuilder(formatter);
+        umlEnumerations.stream()
+                .map(e -> (Enumeration)e)
+                .filter(en -> en.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .forEach(en -> exportClass(enumerationInfoBuilder.build(en), classesFolder));
 
         File diagramsFolder = new File(outputFolder, "uml_diagrams");
         if (!diagramsFolder.exists()) {
@@ -80,29 +91,16 @@ class OpenEHRExportAction extends MDAction {
                 throw new OpenEhrExporterException("Unable to create folder: " + diagramsFolder);
             }
         }
-        exportDiagrams(project.getDiagrams(), diagramsFolder);
+        project.getDiagrams().stream().forEach(d -> exportDiagram(diagramsFolder, d));
     }
 
-    private void exportDiagrams(Collection<DiagramPresentationElement> diagrams, File outputFolder) throws IOException {
-        for (DiagramPresentationElement diagramPresentationElement : diagrams) {
-            ImageExporter.export(diagramPresentationElement, 1, new File(outputFolder, formatDiagramName(diagramPresentationElement.getName()) + ".png"));
-            ImageExporter.export(diagramPresentationElement, 5, new File(outputFolder, formatDiagramName(diagramPresentationElement.getName()) + ".svg"));
-        }
-    }
-
-    @SuppressWarnings({"OverlyBroadCatchBlock", "MethodWithMultipleLoops"})
-    private void visitModel(Element parent, Visitor... visitors) {
-        for (Element element : parent.getOwnedElement()) {
-            try {
-                for (Visitor visitor : visitors) {
-                    element.accept(visitor);
-                }
-                if (element.hasOwnedElement()) {
-                    visitModel(element, visitors);
-                }
-            } catch (Exception e) {
-                throw new OpenEhrExporterException(e);
-            }
+    private void exportDiagram(File outputFolder, DiagramPresentationElement diagramPresentationElement) {
+        String name = diagramPresentationElement.getName();
+        try {
+            ImageExporter.export(diagramPresentationElement, 1, new File(outputFolder, formatDiagramName(name) + ".png"));
+            ImageExporter.export(diagramPresentationElement, 5, new File(outputFolder, formatDiagramName(name) + ".svg"));
+        } catch (IOException e) {
+            throw new OpenEhrExporterException("Unable to export diagrams for " + name + '!', e);
         }
     }
 
@@ -129,12 +127,12 @@ class OpenEHRExportAction extends MDAction {
     private void exportClass(ClassInfo classInfo, File targetFolder) {
         try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(
                 targetFolder.toPath().resolve(fileName(classInfo.getClassName().toLowerCase()) + ADOC_FILE_EXTENSION), Charset.forName("UTF-8")))) {
-            printWriter.println("==== " + classInfo.getClassName() + " Class");
+            printWriter.println("==== " + classInfo.getClassName() + ' ' + classInfo.getType());
             printWriter.println();
 
             printWriter.println("[cols=\"^1,2,3\"]");
             printWriter.println("|===");
-            printWriter.println('|' + formatter.bold("Class"));
+            printWriter.println('|' + formatter.bold(classInfo.getType()));
             printWriter.println(formatter.getClassBackgroundColour());
             printWriter.println("2+^|" +
                                         (classInfo.isAbstractClass()
@@ -231,25 +229,5 @@ class OpenEHRExportAction extends MDAction {
 
     private static String formatDiagramName(String name) {
         return name;
-    }
-
-    private static class MyVisitor extends Visitor {
-        private final List<ClassInfo> classes = new ArrayList<>();
-        private final Formatter formatter;
-
-        private MyVisitor(Formatter formatter) {
-            this.formatter = formatter;
-        }
-
-        @Override
-        public void visitClass(com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class element, VisitorContext context) {
-            if (element.getQualifiedName().contains(OPENEHR_PACKAGE_NAME)) {
-                classes.add(ClassInfoBuilder.build(element, formatter));
-            }
-        }
-
-        public List<ClassInfo> getClasses() {
-            return classes;
-        }
     }
 }

@@ -1,9 +1,7 @@
 package org.openehr.docs.magicdraw;
 
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Comment;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Constraint;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.LiteralString;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.NamedElement;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.OpaqueExpression;
@@ -18,18 +16,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Bostjan Lah
  */
-public class ClassInfoBuilder {
-    private ClassInfoBuilder() {
+public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class> {
+    private final Formatter formatter;
+
+    public ClassInfoBuilder(Formatter formatter) {
+        this.formatter = formatter;
     }
 
-    public static ClassInfo build(com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class element, Formatter formatter) {
+    @Override
+    public ClassInfo build(com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class element) {
         String className = element.getName();
-        ClassInfo classInfo = new ClassInfo()
+        ClassInfo classInfo = new ClassInfo("Class")
                 .setClassName(className)
                 .setDocumentation(getDocumentation(element, formatter))
                 .setAbstractClass(element.isAbstract());
@@ -43,18 +44,18 @@ public class ClassInfoBuilder {
         getSuperClassData(element, superClassAttributes, superClassOperations);
 
         if (element.hasOwnedAttribute()) {
-            addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), formatter, superClassAttributes);
+            addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
         }
         if (element.hasOwnedOperation()) {
-            addOperations(classInfo.getFunctions(), element.getOwnedOperation(), formatter, superClassOperations);
+            addOperations(classInfo.getFunctions(), element.getOwnedOperation(), superClassOperations);
         }
 
-        addConstraints(classInfo.getConstraints(), element.get_constraintOfConstrainedElement(), formatter);
+        addConstraints(classInfo.getConstraints(), element.get_constraintOfConstrainedElement());
 
         return classInfo;
     }
 
-    private static void getSuperClassData(Class element, Set<String> superClassAttributes, Set<String> superClassOperations) {
+    private void getSuperClassData(Class element, Set<String> superClassAttributes, Set<String> superClassOperations) {
         if (element.hasSuperClass()) {
             for (Class superClass : element.getSuperClass()) {
                 superClassAttributes.addAll(superClass.getOwnedAttribute().stream().map(NamedElement::getName).collect(Collectors.toSet()));
@@ -64,13 +65,13 @@ public class ClassInfoBuilder {
         }
     }
 
-    private static void addConstraints(List<ConstraintInfo> constraints, Collection<Constraint> constraintOfConstrainedElement, Formatter formatter) {
+    private void addConstraints(List<ConstraintInfo> constraints, Collection<Constraint> constraintOfConstrainedElement) {
         for (Constraint constraint : constraintOfConstrainedElement) {
-            constraints.add(new ConstraintInfo().setDocumentation(formatConstraint(constraint, formatter)));
+            constraints.add(new ConstraintInfo().setDocumentation(formatConstraint(constraint)));
         }
     }
 
-    private static String formatConstraint(Constraint constraint, Formatter formatter) {
+    private String formatConstraint(Constraint constraint) {
         StringBuilder builder = new StringBuilder(formatter.italicBold(constraint.getName())).append(": ");
         if (constraint.getSpecification() instanceof OpaqueExpression) {
             OpaqueExpression opaqueExpression = (OpaqueExpression)constraint.getSpecification();
@@ -88,12 +89,12 @@ public class ClassInfoBuilder {
         return builder.toString();
     }
 
-    private static void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Formatter formatter, Set<String> superClassAttributes) {
-        properties.stream().filter(p -> !superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, formatter, p, false));
-        properties.stream().filter(p -> superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, formatter, p, true));
+    private void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+        properties.stream().filter(p -> !superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, false));
+        properties.stream().filter(p -> superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, true));
     }
 
-    private static void addAttribute(List<ClassAttributeInfo> attributes, Formatter formatter, Property property, boolean redefined) {
+    private void addAttribute(List<ClassAttributeInfo> attributes, Property property, boolean redefined) {
         String type = property.getType() == null ? "" : property.getType().getName();
         ClassAttributeInfo classAttributeInfo = new ClassAttributeInfo()
                 .setDocumentation(getDocumentation(property, formatter))
@@ -114,23 +115,23 @@ public class ClassInfoBuilder {
         attributes.add(classAttributeInfo);
     }
 
-    private static String formatType(String type, int upper) {
+    private String formatType(String type, int upper) {
         return upper == -1 || upper > 1 ? "List<" + type + '>' : type;
     }
 
-    private static String formatOccurences(int lower, int upper) {
+    private String formatOccurences(int lower, int upper) {
         return upper == -1 ? lower + "..1" : lower + ".." + upper;
 
     }
 
-    private static void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Formatter formatter, Set<String> superClassOperations) {
+    private void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
         operations.stream().filter(op -> !superClassOperations.contains(op.getName())).forEach(
-                operation -> addOperation(attributes, formatter, operation, false));
+                operation -> addOperation(attributes, operation, false));
         operations.stream().filter(op -> superClassOperations.contains(op.getName())).forEach(
-                operation -> addOperation(attributes, formatter, operation, true));
+                operation -> addOperation(attributes, operation, true));
     }
 
-    private static void addOperation(List<ClassAttributeInfo> attributes, Formatter formatter, Operation operation, boolean effected) {
+    private void addOperation(List<ClassAttributeInfo> attributes, Operation operation, boolean effected) {
         String type = operation.getType() == null ? "" : operation.getType().getName();
         ClassAttributeInfo classAttributeInfo = new ClassAttributeInfo()
                 .setOccurences(effected ? "(effected)" : "")
@@ -138,16 +139,16 @@ public class ClassInfoBuilder {
 
         StringBuilder nameInfo = new StringBuilder(formatter.bold(operation.getName()));
         if (operation.hasOwnedParameter()) {
-            addParameters(nameInfo, operation.getOwnedParameter(), formatter);
+            addParameters(nameInfo, operation.getOwnedParameter());
         }
         StringBuilder builder = new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, operation.getUpper())));
 
-        addOperationConstraint(operation, builder, formatter);
+        addOperationConstraint(operation, builder);
         classAttributeInfo.setName(builder.toString());
         attributes.add(classAttributeInfo);
     }
 
-    private static void addParameters(StringBuilder builder, List<Parameter> parameters, Formatter formatter) {
+    private void addParameters(StringBuilder builder, List<Parameter> parameters) {
         List<String> formattedParameters = new ArrayList<>();
         for (Parameter parameter : parameters) {
             String name = parameter.getName();
@@ -164,18 +165,9 @@ public class ClassInfoBuilder {
         }
     }
 
-    private static void addOperationConstraint(Operation operation, StringBuilder builder, Formatter formatter) {
+    private void addOperationConstraint(Operation operation, StringBuilder builder) {
         for (Constraint constraint : operation.get_constraintOfConstrainedElement()) {
-            builder.append(" +").append(System.lineSeparator()).append(formatConstraint(constraint, formatter));
+            builder.append(" +").append(System.lineSeparator()).append(formatConstraint(constraint));
         }
-    }
-
-    @SuppressWarnings("HardcodedLineSeparator")
-    private static String getDocumentation(Element element, Formatter formatter) {
-        return String.join(formatter.newParagraph(), element.getOwnedComment().stream()
-                .map(Comment::getBody)
-                .flatMap(body -> Stream.of(body.split("\n")))
-                .filter(line -> !line.trim().isEmpty())
-                .collect(Collectors.toList()));
     }
 }
