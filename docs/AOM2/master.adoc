@@ -14,7 +14,6 @@
 // HTML-only attributes
 //
 :linkcss:
-//:stylesheet: ../css/openehr.css
 :keywords: archetype, openehr, aom, aom2
 :description: openEHR Archetype Object Model (AOM2) specification
 
@@ -22,7 +21,7 @@
 // ============================================ Asciidoc PREAMBLE =============================================
 //
 
-image::../images/openehr_logo_large.png["openEHR logo",align="center"]
+image::{spec_asciidoc_git_dir}/resources/images/openehr_logo_large.png["openEHR logo",align="center"]
 
 = Archetype Object Model (AOM2)
 
@@ -40,7 +39,7 @@ image::../images/openehr_logo_large.png["openEHR logo",align="center"]
 image::diagrams/block_diagram.png["openEHR components",align="center"]
  
 
-include::../boilerplate/licence_block.adoc[]
+include::{spec_asciidoc_git_dir}/resources/boilerplate/licence_block.adoc[]
 
 //
 // ============================================= Asciidoc BODY ===============================================
@@ -472,7 +471,7 @@ Various definitional classes are used in the AOM. Some are defined in the `aom.d
 [[definition_package]]
 [.text-center]
 .Definition Package
-image::uml_diagrams/AOM-definitions.png[align="center"]
+image::uml_diagrams/AOM-definitions.svg[align="center"]
 
 The enumeration type `VALIDITY_KIND` is provided in order to define standard values representing `mandatory`, `optional`, or `disallowed` in any model. It is used in this model in classes such as `C_DATE` , `C_TIME` and `C_DATE_TIME`. The `VERSION_STATUS` enumeration type serves a similar function within various AOM types.
 
@@ -497,7 +496,7 @@ The `AUTHORED_ARCHETYPE` class adds identifying attributes, flags and descriptiv
 [[archetype_package]]
 [.text-center]
 .Archetype Package
-image::uml_diagrams/AOM-archetype.png[align="center"]
+image::uml_diagrams/AOM-archetype.svg[align="center"]
 
 The `OPERATIONAL_TEMPLATE` class represents the fully flattened form of a template, i.e. with all fillers and references substituted and overlays processed, to form what is in practical terms, a single custom-made ‘operational’ artefact, ready for transformation to downstream artefacts. Because an operational template includes one or more other archetype structures inline, it also includes their terminologies, enabling it to be treated as a self-standing artefact.
 
@@ -663,7 +662,7 @@ The model in Figure <<archetype_package>> defines the structures of a number of 
 [[source_archetype_structure]]
 [.text-center]
 .Source Archetype Structure
-image::uml_diagrams/AOM-source_archetype_structure.png[align="center"]
+image::uml_diagrams/AOM-source_archetype_structure.svg[align="center"]
 
 Source archetypes can be specialised, in which case their definition structure is a partial overlay on the flat parent, or ‘top-level’, in which case the definition structure is complete. `C_ARCHETYPE_ROOT` instances may only occur representing direct references to other archetypes - ‘external references’.
 
@@ -672,7 +671,7 @@ A flat archetype is generated from one or more source archetypes via the flatten
 [[source_template_structure]]
 [.text-center]
 .Source Template Structure
-image::uml_diagrams/AOM-source_template_structure.png[align="center"]
+image::uml_diagrams/AOM-source_template_structure.svg[align="center"]
 
 This form is used to represent the full ‘operational’ structure of a specialised archetype, and has two uses. The first is to generate backwards compatible ADL 1.4 legacy archetypes (always in flat form); the second is during the template flattening process, when the flat forms of all referenced archetypes and templates are ultimately combined into a single operational template.
 
@@ -685,7 +684,7 @@ Figure <<operational_template_structure>> illustrates the resulting operational 
 [[operational_template_structure]]
 [.text-center]
 .Operational Template Structure
-image::uml_diagrams/AOM-operational_template_structure.png[align="center"]
+image::uml_diagrams/AOM-operational_template_structure.svg[align="center"]
 
 More details of template development, representation and semantics are described in the next section.
 
@@ -772,7 +771,7 @@ Figure [[constraint_model_top]] and Figure [[constraint_model_bottom]] illustrat
 [[constraint_model_top]]
 [.text-center]
 .constraint_model Package
-image::uml_diagrams/AOM-constraint_model-top.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-top.svg[align="center"]
 
 The definition part of an archetype is an instance of a `C_COMPLEX_OBJECT` and consists of alternate layers of object and attribute constrainer nodes, each containing the next level of nodes. At the leaves are primitive object constrainer nodes constraining primitive types such as `String` , `Integer` etc. There are also nodes that represent internal references to other nodes, constraint reference nodes that refer to a text constraint in the constraint binding part of the archetype terminology, and archetype constraint nodes, which represent constraints on other archetypes allowed to appear at a given point. The full list of concrete node types is as follows:
 
@@ -788,7 +787,7 @@ The constraints define which configurations of reference model class instances a
 [[constraint_model_bottom]]
 [.text-center]
 .constraint_model.primitive Package
-image::uml_diagrams/AOM-constraint_model-bottom.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-bottom.svg[align="center"]
 
 The type-name nomenclature `C_XXX` used here is intended to be read as “constraint on objects of type `XXXX` ”, i.e. a `C_COMPLEX_OBJECT` is a “constraint on a complex object (defined by a complex reference model type)”. These type names are used below in the formal model.
 
@@ -939,7 +938,7 @@ Since `C_PRIMITIVEs` don’t have type names in ADL, the type name is inferred b
 [[enumerated_constraint]]
 [.text-center]
 .Enumerated Constraint
-image::diagrams/enumerated_type_constraint.png[align="center"]
+image::diagrams/enumerated_type_constraint.svg[align="center"]
 
 A parser that deserialises from an object dump format such as ODIN, JSON or XML will not need to do this.
 
@@ -960,7 +959,7 @@ Tuple constraints are designed to account for the very common need to constrain 
 [[tuple_constraint_model]]
 [.text-center]
 .Tuple Constraint Model
-image::uml_diagrams/AOM-constraint_model-tuple.png[align="center"]
+image::uml_diagrams/AOM-constraint_model-tuple.svg[align="center"]
 
 In this model, the type `C_ATTRIBUTE_TUPLE` groups the co-constrained `C_ATTRIBUTE`s under a `C_COMPLEX_OBJECT`. Currently the concrete type is limited to being `C_PRIMITIVE_OBJECT`, to reduce complexity, and since this caters for the known examples of tuple constraints. In principle, any `C_DEFINED_OBJECT` would be allowed, and this may change in the future.
 
@@ -971,7 +970,7 @@ These additions allow standard constraint structures (i.e. `C_ATTRIBUTE` / `C_CO
 [[ordinal_tuple_example]]
 [.text-center]
 .Tuple Constraint Example AOM Instances
-image::uml_diagrams/AOM-ordinal_tuple_example.png[align="center"]
+image::uml_diagrams/AOM-ordinal_tuple_example.svg[align="center"]
 
 [[tuple_constraint_example_data]]
 [.text-center]
@@ -1377,7 +1376,7 @@ Assertions are expressed in archetypes in typed first-order predicate logic (FOL
 [[rules_package]]
 [.text-center]
 .Rules Package
-image::uml_diagrams/AOM-rules.png[align="center"]
+image::uml_diagrams/AOM-rules.svg[align="center"]
 
 === Semantics
 
@@ -1421,7 +1420,7 @@ All local terminology as well as terminological and terminology binding elements
 [[terminology_package]]
 [.text-center]
 .Terminology Package
-image::uml_diagrams/AOM-terminology.png[align="center"]
+image::uml_diagrams/AOM-terminology.svg[align="center"]
 
 An archetype terminology consists of the following elements.
 

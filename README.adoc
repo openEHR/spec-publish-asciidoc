@@ -52,15 +52,11 @@ The following commands can be used to generate the HTML and PDF outputs:
 
 [source,shell]
 ----------
-$ cd AOM2/source
-$ asciidoctor -a localyear=`date +%G` AOM2.adoc # generate HTML
-$ asciidoctor -a localyear=`date +%G` -r asciidoctor-pdf -b pdf AOM2.adoc # generate PDF
+$ ./publish.sh
 ----------
 
 == TODO
 Many things...
 
-* proper definition of specific paragraph styles
 * control PDF publishing properly
-* port approach to openEHR specification-XX repositories
-* sort out command line invocation and continuous build
+* sort out continuous build
