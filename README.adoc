@@ -26,14 +26,19 @@ The outputs are generated using asciidoctor tool.
 Alpha
 
 == Just Looking?
-You can see the generated results: link:source/AOM2/[here]. To view the HTML, download and view in the normal way (note the .css files) or view on https://rawgit.com/openEHR/spec-publish-asciidoc/master/source/AOM2/AOM2.html[rawgit]. 
+You can see the generated results: link:docs/AOM2/[here]. To view the HTML, download and view in the normal way (note the .css files) or view on https://rawgit.com/openEHR/spec-publish-asciidoc/master/docs/AOM2/AOM2.html[rawgit]. 
 
-The PDF is very rough and contains a lot of errors that will be fixed with control over the PDF output stag and contains a lot of errors that will be fixed with control over the PDF output stagee. Nevertheless, the current version, herelink:source/AOM2/AOM2.pdf[PDF], gives an idea.
+The PDF is very rough and contains a lot of errors that will be fixed with control over the PDF output stage and contains a lot of errors that will be fixed with control over the PDF output stagee. Nevertheless, the current version, link:docs/AOM2/AOM2.pdf[PDF], gives an idea.
 
 == Installation
 
 === Publishing tools
-To get the environment going you need quite a few tools...:
+To get the environment going you need quite a few tools. If you already have a working Ruby/gem environment, just skip to the Asciidoctor installation bit below.
+
+WARNING: if you have never set up Ruby before, take some care. Experts suggest to install rvm first, and use that as a version manager. It's not strictly necessary, but may help what can otherwise become a versioning nightmare.
+
+Rvm::
+A ruby version manager. Install https://rvm.io/rvm/install[here].
 
 Ruby::
 See https://www.ruby-lang.org/en/documentation/installation/[install Ruby]. The scripts and commands in the publishing environment in this repository assume a unix-style environment, since the ultimate aim is to have it working under a Linux continuous build server. It can be set up on any normal machine; if you are on a Windows machine, using cygwin to run everything is probably advisable.
@@ -43,6 +48,8 @@ Asciidoctor::
 The http://asciidoctor.org/[guidance on this page] pretty much covers it.
 Pygments::
 This supports code highlighting in the generated output. See http://asciidoctor.org/docs/user-manual/#pygments[here].
+Asciidoctor-stylesheet-factory::
+You don't need to install this unless you actually want to change the openehr.css or build new stylesheets. See https://github.com/asciidoctor/asciidoctor-stylesheet-factory[here].
 
 === MagicDraw and UML Extractor
 If you have MagicDraw, you can install the UML extractor plugin in MagicDraw's plugin directory, under `org.openehr.docs.magicdraw`. The plugin files consist of one `.jar` and the `plugin.xml` file.  With this installed, start MagicDraw and open the project link:computable/UML/[openEHR_UML-AM.mdzip]. You will see an 'openEHR' menu option, with one option to extract documentation. Choose this, and choose `source/AOM2` as the output directory. The generated outputs will appear in the subdirectories `uml_diagrams` and `classes`.
@@ -54,6 +61,11 @@ The following commands can be used to generate the HTML and PDF outputs:
 ----------
 $ ./publish.sh
 ----------
+
+Have a look at this script to get an idea of how we are invoking asciidoctor.
+
+=== Stylesheets for HTML
+We are using a stylesheet generated using the asciidoctor-stylesheet-factory; it is in `./css/`.
 
 == TODO
 Many things...
