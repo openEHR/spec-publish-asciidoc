@@ -1,21 +1,17 @@
 page:
-  layout: portrait
   margin: [0.75in, 1in, 0.75in, 1in]
   size: A4
 base:
   font_size: 11
   line_height_length: 17
-  line_height: $base_line_height_length / $base_font_size
 heading:
   font_color: #0066cc
   font_size: 17
   font_style: bold
   line_height: 1.2
   margin_bottom: $vertical_rhythm
-link:
-  font_color: #002FA7
-title:
-  page_align: center
+title_page:
+  align: center
 header:
   recto_content:
     left: image:images/openehr-logo-150x50.png
@@ -29,3 +25,8 @@ footer:
   verso_content:
     center: '*Page {page-number}* | {page-count}'
 caption_align: center
+image:
+  align_default: center
+  scaled_width_default: 1.0
+table:
+  odd_row_background_color: f9f9f9
