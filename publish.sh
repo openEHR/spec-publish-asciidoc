@@ -8,7 +8,7 @@ USAGE='$0 [-p] : generate publishing outputs; HTML by default
 '
 year=`date +%G`
 #spec_asciidoc_git_dir=$(cd ../spec-publish-asciidoc; pwd)
-spec_asciidoc_git_dir=../../ ## relative to doc dirs 2 level down
+spec_asciidoc_git_dir=../.. ## relative to doc dirs 2 level down
 stylesdir=${spec_asciidoc_git_dir}/css
 stylesheet=openehr.css
 master_doc_name=master.adoc
