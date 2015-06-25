@@ -60,12 +60,16 @@ The following commands can be used to generate the HTML and PDF outputs:
 [source,shell]
 ----------
 $ ./publish.sh
+
+$ ./publish.sh -p  # generate PDF as well - takes time
+
+$ ./publish.sh -pt # generate PDF with tracing on, for debug purposes
 ----------
 
 Have a look at this script to get an idea of how we are invoking asciidoctor.
 
-=== Stylesheets for HTML
-We are using a stylesheet generated using the asciidoctor-stylesheet-factory; it is in `./css/`.
+=== Resources, styles and themes for HTML and PDF
+We are using a stylesheet generated using the asciidoctor-stylesheet-factory; it is in `./resources/css/`. An early theme file for PDF, built according to the http://gist.asciidoctor.org/?github-asciidoctor%2Fasciidoctor-pdf%2F%2Fdocs%2Ftheming-guide.adoc[Asciidoctor-pdf theming guide] is in `./resources` as well.
 
 == TODO
 Many things...
