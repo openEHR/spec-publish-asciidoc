@@ -14,7 +14,7 @@
 |{affiliates}
 
 |*Licence*
-|image:{spec_asciidoc_git_dir}/resources/images/cc-by-nd-88x31.png[image] {cc_licence_text} {cc_licence_url}
+|image:{resources_dir}/images/cc-by-nd-88x31.png[image] {cc_licence_text} {cc_licence_url}
 
 |*Support*
 |Issues: {openehr_issues_url} +
