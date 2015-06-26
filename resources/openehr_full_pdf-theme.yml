@@ -24,7 +24,7 @@ page:
   layout: portrait
   # NOTE multiply inches by 72 to get pt values
   #margin: [0.5 * 72, 0.67 * 72, 0.67 * 72, 0.67 * 72]
-  margin: [0.5in, 1in, 0.67in, 0.67in]
+  margin: [0.75in, 0.67in, 0.67in, 0.67in]
   # size can be a named size (e.g., A4) or custom dimensions (e.g., [8.25in, 11.69in])
   size: A4
 base:
@@ -51,7 +51,7 @@ link:
   font_color: 428bca
 # literal is currently used for inline monospaced in prose and table cells
 literal:
-  font_color: b12146
+  font_color: $base_font_color
   font_family: M+ 1mn
 heading:
   #font_color: 181818
@@ -198,15 +198,15 @@ header:
   # NOTE if background_color is set, background and border will span width of page
   border_color: dddddd
   border_width: 0.25
-  height: $base_line_height_length * 4
+  height: $base_line_height_length * 2.5
   padding: [$base_line_height_length / 2, 1, 0, 1]
   valign: top
   recto_content:
-    left: image:./images/openehr-logo-150x50.png
+    left: image:./images/openehr-logo-150x50.png[width=80]
     right: '{chapter-title}'
   verso_content:
     left: '{chapter-title}'
-    right: image:./images/openehr-logo-150x50.png
+    right: image:./images/openehr-logo-150x50.png[width=80]
 footer:
   font_size: $base_font_size_small
   font_color: $base_font_color
