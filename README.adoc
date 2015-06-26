@@ -31,7 +31,7 @@ You can see the generated results: link:docs/AOM2/[here]. To view the HTML, down
 The PDF is very rough and contains a lot of errors that will be fixed with control over the PDF output stage and contains a lot of errors that will be fixed with control over the PDF output stagee. Nevertheless, the current version, link:docs/AOM2/AOM2.pdf[PDF], gives an idea.
 
 == Workflow
-The approach to building specification documentation and web resources is shown graphically link:workflow/workflow.html[here].
+The approach to building specification documentation and web resources is shown graphically https://rawgit.com/openEHR/spec-publish-asciidoc/master/workflow/workflow.html[here].
 
 == Installation
 
