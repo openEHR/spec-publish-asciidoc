@@ -1,4 +1,5 @@
 = spec-publish-asciidoc
+:linkattrs:
 Specification publishing using Asciidoc and UML
 
 == Purpose
