@@ -41,6 +41,14 @@ The approach to building specification documentation and web resources is shown 
 
 To publish the specifications for one openEHR 'component' requires the Git repo of that component, e.g. https://github.com/openEHR/specifications-AM[specifiations-AM] and also this https://github.com/openEHR/spec-publish-asciidoc[spec-publish-asciidoc repository], which supplies the resource files (CSS, PDF theme, boilerplate text etc).
 
+== Benefits
+Once a toolchain like this is established, we can get the following benefits:
+
+* model-based documentation is always up to date, as long as the models are maintained;
+* specifications built like software, under continuous build on server;
+* easier to report and fix errors, and to update documents, due to easy-ish source form;
+* more flexibility to create new output formats.
+
 == Installation
 
 === Publishing tools
