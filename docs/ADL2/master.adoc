@@ -17,7 +17,7 @@
 //
 :linkcss:
 :keywords: archetype, openehr, aom, aom2
-:description: openEHR Archetype Defnition Language (AOM2) specification
+:description: Archetype Definition Language (AOM2) specification
 
 //
 // ============================================ Asciidoc PREAMBLE =============================================
@@ -25,7 +25,7 @@
 
 image::{resources_dir}/images/openehr_logo_large.png["openEHR logo",align="center"]
 
-= Archetype Defnition Language (ADL2) specification
+= Archetype Definition Language (ADL2) specification
 
 [cols="1,1,1"]
 |===
