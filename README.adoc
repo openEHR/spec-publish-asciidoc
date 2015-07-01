@@ -27,9 +27,14 @@ The outputs are generated using asciidoctor tool.
 Alpha
 
 == Just Looking?
-You can see the generated results: link:docs/AOM2/[here]. To view the HTML, download and view in the normal way (note the .css files) or view on https://rawgit.com/openEHR/spec-publish-asciidoc/master/docs/AOM2/AOM2.html[rawgit]. 
+We have converted two large openEHR specifications to the new form - the AOM and the ADL specifications. You can see:
 
-The PDF is very rough and contains a lot of errors that will be fixed with control over the PDF output stage and contains a lot of errors that will be fixed with control over the PDF output stagee. Nevertheless, the current version, link:docs/AOM2/AOM2.pdf[PDF], gives an idea.
+* AOM specification: source form link:docs/AOM2/[here]; https://rawgit.com/openEHR/spec-publish-asciidoc/master/docs/AOM2/AOM2.html[HTML view];
+** features to look for: UML tool generated diagrams and specification tables;
+* ADL specification: source form link:docs/ADL2/[here]; https://rawgit.com/openEHR/spec-publish-asciidoc/master/docs/ADL2/ADL2.html[HTML view];
+** features to look for: machine highlighting using a newly developed ADL mode for Pygments;
+
+The generated PDF is very rough and contains various errors that will be fixed with control over the PDF output stage.
 
 == Workflow
 The approach to building specification documentation and web resources is shown graphically https://rawgit.com/openEHR/spec-publish-asciidoc/master/workflow/workflow.html[here, window="_blank"].
@@ -59,6 +64,18 @@ You don't need to install this unless you actually want to change the openehr.cs
 
 === MagicDraw and UML Extractor
 If you have MagicDraw, you can install the UML extractor plugin in MagicDraw's plugin directory, under `org.openehr.docs.magicdraw`. The plugin files consist of one `.jar` and the `plugin.xml` file.  With this installed, start MagicDraw and open the project link:computable/UML/[openEHR_UML-AM.mdzip]. You will see an 'openEHR' menu option, with one option to extract documentation. Choose this, and choose `source/AOM2` as the output directory. The generated outputs will appear in the subdirectories `uml_diagrams` and `classes`.
+
+=== Conversion of FrameMaker and other source documents
+For conversion from Frame, the following approach is used:
+
+* in Frame, for each chapter document, including 'Front.fm', but not TOC or end.fm, set HTML mappings for Heading types, List types and main Font types
+* save each chapter as HTML
+* hand-edit each file to fix `<pre></pre>` blocks, and heading level errors
+* use pandoc to convert each HTML file xxxx.html to asciidoc, as follows
+
+```
+$ pandoc -f html -t asciidoc -o xxxx.adoc --no-wrap --atx-headers xxxx.html
+```
 
 === Generating the publishing outputs
 The following commands can be used to generate the HTML and PDF outputs:

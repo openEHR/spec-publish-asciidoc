@@ -1,0 +1,157 @@
+//
+// ============================================ Asciidoc HEADER =============================================
+//
+:doctype: book
+:source-highlighter: pygments
+:pygments-style: murphy
+//:toc: macro
+:toc: left
+:toclevels: 4
+:pagenums:
+:numbered!:
+// git rid of PDF 'Chapter' labs on level 1 headings
+:chapter-label:
+:copyright_year: <= YEAR =>
+//
+// HTML-only attributes
+//
+:linkcss:
+:keywords: <= keywords =>
+:description: <= doc title =>
+
+//
+// ============================================ Asciidoc PREAMBLE =============================================
+//
+
+image::{resources_dir}/images/openehr_logo_large.png["openEHR logo",align="center"]
+
+= <doc title>
+
+[cols="1,1,1"]
+|===
+3+^|*Issuer*: http://www.openehr.org/programs/specification/[openEHR Specification Program]
+
+|*Revision*: <<latest_issue>>
+|*Date*: <<latest_issue_date>>
+|*Status*: <= status =>
+
+3+^|*Keywords*: <= keywords =>
+|===
+
+image::diagrams/block_diagram.png["openEHR components",align="center",width="60%"]
+ 
+
+include::{resources_dir}/boilerplate/licence_block.adoc[]
+
+//
+// ============================================= Asciidoc BODY ===============================================
+//
+
+== Amendment Record
+
+// --- header row ---
+[cols="1,6a,2,2", options="header"]
+|===
+|Issue|Details|Raiser|Completed
+
+// --- top row ---
+|[[latest_issue]]<= Version id =>
+|<= dscription =>
+|<= names =>
+|[[latest_issue_date]]<= date =>
+
+// --- release row ---
+4+^|*R E L E A S E{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}<= ver id =>*
+{set:cellbgcolor:aqua}
+
+// --- body row ---
+|
+{set:cellbgcolor!}
+|
+|
+|
+
+|===
+
+//
+// --------------------------------------------- Preface -----------------------------------------------
+//
+== Trademarks
+
+'openEHR' is a trademark of the openEHR Foundation
+
+'Microsoft' is a trademark of the Microsoft Corporation
+
+== Acknowledgements
+
+
+
+//
+// --------------------------------------------- TOC -----------------------------------------------
+//
+//toc::[left]
+
+//
+// --------------------------------------------- INTRO -----------------------------------------------
+//
+:numbered:
+== Introduction
+
+=== Purpose
+
+=== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The http://www.openehr.org/releases/trunk/architecture/overview.pdf[openEHR Architecture Overview]
+* The http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf[openEHR Archetypes: Technical Overview specification]
+
+Related documents include:
+
+* The openEHR http://www.openehr.org/releases/trunk/architecture/am/aom2.pdf[Archetype Object Model (AOM2)]
+* The http://www.openehr.org/releases/trunk/architecture/am/templates_guide.pdf[openEHR Operational Template Specification]
+
+=== Nomenclature
+
+In this document, the term ‘attribute’ denotes any stored property of a type defined in an object model, including primitive attributes and any kind of relationship such as an association or aggregation. XML ‘attributes’ are always referred to explicitly as ‘XML attributes’.
+
+We also use the word ‘archetype’ in a broad sense to designate what are commonly understood to be ‘archetypes’ (specifications of clinical data groups / data constraints) and ‘templates’ (data sets based on archetypes, since at a technical level, an ADL/AOM 2 template is in fact just an archetype. Accordingly, statements about ‘archetypes’ in this specification can be always understood to also apply to templates, unless otherwise indicated.
+
+=== Status
+
+This specification is in the <= state => state.
+
+The development version of this document can be found at <= URL =>.
+
+Blue text indicates sections under active development.
+
+=== Tools
+
+Various tools exist for creating and processing archetypes. The openEHR tools are available in source and binary form from the website (http://www.openEHR.org).
+
+=== Changes from Previous Versions
+
+//
+// --------------------------------------------- MAIN -----------------------------------------------
+//
+== XXXXXXXX
+
+//
+// image model
+//
+//[.text-center]
+//.Package Overview
+//image::uml_diagrams/AOM-packages.png[id=package_overview, align="center"]
+
+ 
+
+//
+// --------------------------------------------- REFERENCES -----------------------------------------------
+//
+:numbered!:
+== References
+
+[bibliography]
+// model entry
+.  [[[abcd]]] Authors. *Title* Year.  Available at URL.
+

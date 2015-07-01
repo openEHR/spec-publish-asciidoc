@@ -14,11 +14,11 @@ title_page:
   align: center
 header:
   recto_content:
-    left: image:images/openehr-logo-150x50.png
+    left: image:images/openehr-logo-150x50.png[]
     right: '{section-or-chapter-title}'
   verso_content:
     left: '{section-or-chapter-title}'
-    right: image:images/openehr-logo-150x50.png
+    right: image:images/openehr-logo-150x50.png[]
 footer:
   recto_content:
     center: '*Page {page-number}* | {page-count}'

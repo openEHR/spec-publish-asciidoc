@@ -4,6 +4,7 @@
 .listingblock .pygments .tok-err { color: #FF0000; background-color: #FFAAAA } /* Error */
 .listingblock .pygments .tok-k { color: #228899; font-weight: bold } /* Keyword */
 .listingblock .pygments .tok-o { color: #333333 } /* Operator */
+.listingblock .pygments .tok-ch { color: #666666; font-style: italic } /* Comment.Hashbang */
 .listingblock .pygments .tok-cm { color: #666666; font-style: italic } /* Comment.Multiline */
 .listingblock .pygments .tok-cp { color: #557799 } /* Comment.Preproc */
 .listingblock .pygments .tok-c1 { color: #666666; font-style: italic } /* Comment.Single */
