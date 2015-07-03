@@ -49,7 +49,9 @@ include::{resources_dir}/boilerplate/licence_block.adoc[]
 
 == Amendment Record
 
-[cols="1,6,2,2", options="header"]
+// the 'a' in the line below is a hack to allow 'all' asciidoc para types in a table
+// so that bullet lists etc will work - but it kills prevailing CSS styles like font etc
+[cols="1,6a,2,2", options="header"]
 |===
 |Issue|Details|Raiser|Completed
 
