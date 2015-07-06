@@ -5,9 +5,9 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<meta name="description" content="openEHR Archetype Defnition Language (AOM2) specification">
+<meta name="description" content="Archetype Definition Language (AOM2) specification">
 <meta name="keywords" content="archetype, openehr, aom, aom2">
-<title>Archetype Defnition Language (ADL2) specification</title>
+<title>Archetype Definition Language (ADL2) specification</title>
 <link rel="stylesheet" href="../../resources/css/openehr.css">
 <link rel="stylesheet" href="../../resources/css/pygments-default.css">
 </head>
@@ -16,7 +16,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_archetype_defnition_language_adl2_specification">Archetype Defnition Language (ADL2) specification</a>
+<li><a href="#_archetype_definition_language_adl2_specification">Archetype Definition Language (ADL2) specification</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
 <li><a href="#_acknowledgements">Acknowledgements</a>
@@ -426,7 +426,7 @@
 </div>
 </div>
 </div>
-<h1 id="_archetype_defnition_language_adl2_specification" class="sect0">Archetype Defnition Language (ADL2) specification</h1>
+<h1 id="_archetype_definition_language_adl2_specification" class="sect0">Archetype Definition Language (ADL2) specification</h1>
 <div class="openblock partintro">
 <div class="content">
 <table class="tableblock frame-all grid-all spread">
@@ -476,10 +476,6 @@
 <td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Affiliates</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Australia, Brazil, Japan, New Zealand, Slovenia, Norway</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
 </tr>
@@ -513,88 +509,114 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add semantic slot definitions.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add semantic slot definitions.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Jun 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Upgrade specification to ADL 2.x level. Reduce overview text.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Upgrade specification to ADL 2.x level. Reduce overview text.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12 Nov 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Change <code>use_archetype</code> syntax to include id-code.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Change <code>use_archetype</code> syntax to include id-code.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  P Langford</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17 July 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Corrections on semantics of node id redefinition in Specialisation section; correct further typos.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Corrections on semantics of node id redefinition in Specialisation section; correct further typos.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Solbrig</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25 June 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add support for constraints on enumeration types.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add support for constraints on enumeration types.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  CIMI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20 June 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Move terminology value set constraints to terminology section, convert external term references to URIs.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Move terminology value set constraints to terminology section, convert external term references to URIs.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  H Solbrig</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17 May 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New format term codes &amp; mandatory node ids.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>New format term codes &amp; mandatory node ids.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7 Jan 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Convert ‘placeholder’ (ac-code) constraint to primitive terminology type constraint.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert ‘placeholder’ (ac-code) constraint to primitive terminology type constraint.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Solbrig</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add archetype id namespacing.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add archetype id namespacing.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  I McNicoll</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24 Nov 2014</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.6.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add tuple construct.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add tuple construct.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20 Aug 2013</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remove dADLsyntax description to new ODIN specification.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Remove dADLsyntax description to new ODIN specification.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22 Apr 2013</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-316: Allow ‘cardinality’ keyword on its own to indicate container attributes, even if no other constraints required.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-316: Allow ‘cardinality’ keyword on its own to indicate container attributes, even if no other constraints required.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">D Moner</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">21 Mar 2012</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-270: Add specialisation semantics to ADL and AOM.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-270: Add specialisation semantics to ADL and AOM.<br>
  Improve explanation of node identifiers.<br>
  Correct typographical errors.<br>
  Make concept optional.<br>
  Refine slot include/exclude rules.<br>
- Review of text &amp; validity rules.</p></td>
+ Review of text &amp; validity rules.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard<br>
  O Pishev<br>
  T Beale</p></td>
@@ -602,26 +624,34 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecate <em>terminologies_available</em> statement in terminology section.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Deprecate <em>terminologies_available</em> statement in terminology section.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add fractional seconds to dADL grammar.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add fractional seconds to dADL grammar.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Arikan</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-303. Make existence, occurrences and cardinality optional in AOM.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-303. Make existence, occurrences and cardinality optional in AOM.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Garde<br>
  S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-300. Archetype slot regular expressions should cover whole identifier. Added <code>C_STRING</code>.<em>is_pattern</em>.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-300. Archetype slot regular expressions should cover whole identifier. Added <code>C_STRING</code>.<em>is_pattern</em>.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Flinton</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -630,20 +660,26 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.4.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-268: Correct missing parentheses in dADL type identifiers. dADL grammar and cADL scanner rules updated.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-268: Correct missing parentheses in dADL type identifiers. dADL grammar and cADL scanner rules updated.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12 Dec 2008</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-284: Correct inconsistencies in naming of term_definitions, constraint_definitions, term_bindings, constraint_bindings attributes in XML-schema and specifications.<br>
- Improved explanatory text for composite identifiers, including statement on case-sensitivity. Warning on .v1draft non-conformance</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-284: Correct inconsistencies in naming of term_definitions, constraint_definitions, term_bindings, constraint_bindings attributes in XML-schema and specifications.<br>
+ Improved explanatory text for composite identifiers, including statement on case-sensitivity. Warning on .v1draft non-conformance</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Torrisi</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SPEC-260: Correct the regex published for the ARCHETYPE_ID type. Update ADL grammar <code>ARCHEYTPE_ID</code> definition.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>SPEC-260: Correct the regex published for the ARCHETYPE_ID type. Update ADL grammar <code>ARCHEYTPE_ID</code> definition.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Gummer,<br>
  J Arnett,<br>
  E Browne</p></td>
@@ -654,37 +690,49 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000203: Release 1.0 explanatory text improvements. Improve Archetype slot explanation.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000203: Release 1.0 explanatory text improvements. Improve Archetype slot explanation.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13 Mar 2007</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000208: Improve ADL grammar for assertion expressions.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000208: Improve ADL grammar for assertion expressions.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000160: Duration constraints. Added ISO 8601 patterns for duration in cADL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000160: Duration constraints. Added ISO 8601 patterns for duration in cADL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000213: Correct ADL grammar for date/times to be properly ISO8601-compliant. Include ‘T’ in cADL patterns and dADL and cADL Date/time, Time and Duration values.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000213: Correct ADL grammar for date/times to be properly ISO8601-compliant. Include ‘T’ in cADL patterns and dADL and cADL Date/time, Time and Duration values.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000216: Allow mixture of W, D etc in ISO8601 Duration (deviation from standard).</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000216: Allow mixture of W, D etc in ISO8601 Duration (deviation from standard).</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000200: Correct Release 1.0 typographical errors.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000200: Correct Release 1.0 typographical errors.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Patterson<br>
  R Chen<br>
  S Garde<br>
@@ -693,43 +741,57 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000225: Allow generic type names in ADL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000225: Allow generic type names in ADL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M Forss</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000226: Rename <code>C_CODED_TEXT</code> to <code>C_CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000226: Rename <code>C_CODED_TEXT</code> to <code>C_CODE_PHRASE</code></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000233: Define semantics for <code>occurrences</code> on <code>ARCHETYPE_INTERNAL_REF</code>.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000233: Define semantics for <code>occurrences</code> on <code>ARCHETYPE_INTERNAL_REF</code>.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Atalag</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000241: Correct cADL grammar for archeype slot match expressions</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000241: Correct cADL grammar for archeype slot match expressions</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000223: Clarify quoting rules in ADL</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000223: Clarify quoting rules in ADL</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Patterson</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000242: Allow non-inclusive two-sided ranges in ADL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000242: Allow non-inclusive two-sided ranges in ADL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000245: Allow term bindings to paths in archetypes.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000245: Allow term bindings to paths in archetypes.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -738,30 +800,38 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000136. Add validity rules to ADL document.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000136. Add validity rules to ADL document.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18 Jan 2006</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000171. Add validity check for cardinality &amp; occurrences</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000171. Add validity check for cardinality &amp; occurrences</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Maldondo</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000141. Allow point intervals in ADL. Updated atomic types part of cADL section and dADL grammar section.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000141. Allow point intervals in ADL. Updated atomic types part of cADL section and dADL grammar section.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18 Jun 2005</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000142. Update dADL grammar to support assumed values.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000142. Update dADL grammar to support assumed values.<br>
  CR-000143. Add partial date/time values to dADL syntax.<br>
  CR-000149. Add URIs to dADL and remove query() syntax.<br>
  CR-000153. Synchronise ADL and AOM for language attributes<br>
  CR-000156. Update documentation of container types.<br>
- CR-000138. Archetype-level assertions.</p></td>
+ CR-000138. Archetype-level assertions.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -770,23 +840,29 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000125. <code>C_QUANTITY</code> example in ADL manual uses old dADL syntax.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000125. <code>C_QUANTITY</code> example in ADL manual uses old dADL syntax.<br>
  CR-000115. Correct "/[xxx]" path grammar error in ADL.<br>
  Create new section describing ADL path syntax.<br>
- CR-000127. Restructure archetype specifications. Remove clinical constraint types section of document.</p></td>
+ CR-000127. Restructure archetype specifications. Remove clinical constraint types section of document.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11 Feb 2005</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000110. Update ADL document and create AOM document.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000110. Update ADL document and create AOM document.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15 Nov 2004</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added explanatory material; added domain type support; rewrote of most dADL sections. Added section on assumed values, “controlled” flag, nested container structures. Change language handling.<br>
- Rewrote OWL section based on input from: University of Manchester, UK; University Seville, Spain.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Added explanatory material; added domain type support; rewrote of most dADL sections. Added section on assumed values, “controlled” flag, nested container structures. Change language handling.<br>
+ Rewrote OWL section based on input from: University of Manchester, UK; University Seville, Spain.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Rector<br>
  R Qamar<br>
  I Román Martínez</p></td>
@@ -794,44 +870,58 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Various changes to assertions due to input from the DSTC.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Various changes to assertions due to input from the DSTC.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Goodchild<br>
  Z Z Tun</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"> </p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Detailed review from Clinical Information Project, Australia.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Detailed review from Clinical Information Project, Australia.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">E Browne</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Remove UML models to “Archetype Object Model” document.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Remove UML models to “Archetype Object Model” document.</strong></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Detailed review from CHIME, UCL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Detailed review from CHIME, UCL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Austin</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000103. Redevelop archetype UML model, add new keywords: <code>allow_archetype</code>, <code>include</code>, <code>exclude</code>.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000103. Redevelop archetype UML model, add new keywords: <code>allow_archetype</code>, <code>include</code>, <code>exclude</code>.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000104. Fix ordering bug when <code>use_node</code> used. Required parser rules for identifiers to make class and attribute identifiers distinct.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000104. Fix ordering bug when <code>use_node</code> used. Required parser rules for identifiers to make class and attribute identifiers distinct.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Atalag</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added grammars for all parts of ADL, as well as new UML diagrams.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Added grammars for all parts of ADL, as well as new UML diagrams.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -840,71 +930,91 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000079. Change interval syntax in ADL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000079. Change interval syntax in ADL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24 Jan 2004</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000077. Add cADL date/time pattern constraints.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000077. Add cADL date/time pattern constraints.<br>
  CR-000078. Add predefined clinical types.
- Better explanation of cardinality, occurrences and existence.</p></td>
+ Better explanation of cardinality, occurrences and existence.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard,<br>
  T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14 Jan 2004</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9.9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000073. Allow lists of Reals and Integers in cADL.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000073. Allow lists of Reals and Integers in cADL.<br>
  CR-000075. Add predefined clinical types library to ADL.<br>
- Added cADL and dADL object models.</p></td>
+ Added cADL and dADL object models.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  S Heard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28 Dec 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR-000070. Create Archetype System Description.
- Moved Archetype Identification Section to new Archetype System document.  Copyright Assgined by Ocean Informatics P/L Australia to The openEHR Foundation.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>CR-000070. Create Archetype System Description.
+ Moved Archetype Identification Section to new Archetype System document.  Copyright Assgined by Ocean Informatics P/L Australia to The openEHR Foundation.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  S Heard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29 Nov 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9.7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added simple value list continuation (“,&#8230;&#8203;"). Changed path syntax so that trailing ‘/’ required for object paths.<br>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Added simple value list continuation (“,&#8230;&#8203;"). Changed path syntax so that trailing ‘/’ required for object paths.<br>
  Remove ranges with excluded limits.<br>
- Added terms and term lists to dADL leaf types.</p></td>
+ Added terms and term lists to dADL leaf types.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">01 Nov 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additions during HL7 WGM Memphis Sept 2003</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Additions during HL7 WGM Memphis Sept 2003</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">09 Sep 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added comparison to other formalisms. Renamed CDL to cADL and dDL to dADL. Changed path syntax to conform (nearly) to Xpath. Numerous small changes.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Added comparison to other formalisms. Renamed CDL to cADL and dDL to dADL. Changed path syntax to conform (nearly) to Xpath. Numerous small changes.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">03 Sep 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rewritten with sections on cADL and dDL.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Rewritten with sections on cADL and dDL.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28 July 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added basic type constraints, re-arranged sections.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Added basic type constraints, re-arranged sections.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15 July 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Initial Writing</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10 July 2003</p></td>
 </tr>
@@ -7830,7 +7940,7 @@ Note that in the above, the ‘/’ is used to denote ‘/protocol’ as a diffe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-01 17:10:32 BST
+Last updated 2015-07-03 08:26:56 BST
 </div>
 </div>
 </body>

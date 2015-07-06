@@ -681,7 +681,7 @@ dt, th.tableblock, td.content { text-rendering: optimizeLegibility; }
 p, td.content { letter-spacing: -0.01em; }
 p strong, td.content strong { letter-spacing: -0.005em; }
 
-p, blockquote, dt, td.content { font-size: 1.0625rem; }
+p, blockquote, dt, td.content { font-size: 1.125rem; }
 
 p { margin-bottom: 1.25rem; }
 
