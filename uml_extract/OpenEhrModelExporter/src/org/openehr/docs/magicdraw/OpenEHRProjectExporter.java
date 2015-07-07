@@ -23,6 +23,9 @@ import java.util.Collection;
 public class OpenEHRProjectExporter {
     private static final String ADOC_FILE_EXTENSION = ".adoc";
     private static final String OPENEHR_PACKAGE_NAME = "openehr";
+    
+    private static final String DIAGRAMS_FOLDER = "diagrams";
+    private static final String CLASSES_FOLDER = "classes";
 
     private final Formatter formatter = new AsciidocFormatter();
     private final String headingPrefix;
@@ -36,7 +39,7 @@ public class OpenEHRProjectExporter {
     }
 
     public void exportProject(File outputFolder, Project project) throws Exception {
-        File classesFolder = new File(outputFolder, "classes");
+        File classesFolder = new File(outputFolder, CLASSES_FOLDER);
         if (!classesFolder.exists()) {
             if (!classesFolder.mkdir()) {
                 throw new OpenEhrExporterException("Unable to create folder: " + classesFolder);
@@ -62,7 +65,7 @@ public class OpenEHRProjectExporter {
                 .filter(en -> en.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
                 .forEach(en -> exportClass(enumerationInfoBuilder.build(en), classesFolder));
 
-        File diagramsFolder = new File(outputFolder, "uml_diagrams");
+        File diagramsFolder = new File(outputFolder, DIAGRAMS_FOLDER);
         if (!diagramsFolder.exists()) {
             if (!diagramsFolder.mkdir()) {
                 throw new OpenEhrExporterException("Unable to create folder: " + diagramsFolder);
