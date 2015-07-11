@@ -1,0 +1,98 @@
+//@import "fonts/asciidoctor";
+@import "settings/openehr";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+h1, h2 {
+  letter-spacing: -0.01em;
+}
+h1.sect0 {text-align: center;}
+
+dt, th.tableblock, td.content {
+  text-rendering: optimizeLegibility; // already set for p
+}
+
+p, td.content {
+  letter-spacing: -0.01em;
+  // TODO needs to apply anywhere we have bold prose
+  strong {
+    letter-spacing: -0.005em;
+  }
+}
+
+// NOTE include blockquote for when it doesn't have a nested p
+p, blockquote, dt, td.content {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+// reduce spacing in lists
+ul > li p {
+  margin-bottom: -0.25rem;
+}
+
+// reduce code font size
+code {
+  font-size: $code-font-size;
+}
+
+// restore font size in sidebar block and regular table cells
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+  font-size: 1em;
+  font-family: $table-row-font-family;
+}
+
+.exampleblock > .content {
+  // white
+  //background-color: #fff;
+  //border-color: $panel-border-color;
+  //@include single-box-shadow($panel-border-color, 0, 1px, 2px);
+
+  // light yellow
+  background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
+  border-color: $panel-border-color;
+  @include single-box-shadow($panel-border-color, 0, 1px, 4px);
+}
+
+// add some special para types
+.paragraph.rule>p {
+	padding-left: 2.5em;
+	text-indent: -2.5em;
+	color: $special-font-color-rule;
+	font-family: $special-font-family;
+}
+.paragraph.tbd>p {
+	padding-left: 2.5em;
+	text-indent: -2.5em;
+	color: $special-font-color-todo;
+	font-family: $special-font-family;
+}
+.paragraph.deprecated>p {
+	padding-left: 2.5em;
+	text-indent: -2.5em;
+	color: $special-font-color-deprecated;
+	font-family: $special-font-family;
+}
+.paragraph.discussion>p {
+	padding-left: 2.5em;
+	color: $special-font-color-discussion;
+	font-family: $special-font-family;
+}
+.paragraph.principle>p {
+	padding-left: 2.5em;
+	color: $special-font-color-principle;
+	font-family: $special-font-family;
+}
+
+// centre-align title in imageblock
+.imageblock {
+    &.text-center > .title {
+        text-align: center !important;
+    }
+}
+
+
+@import "components/print";
