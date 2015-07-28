@@ -3,9 +3,10 @@
 #
 # ============== Definitions =============
 #
-USAGE="${0} [-hlpt] : generate publishing outputs; HTML by default 
+USAGE="${0} [-hlrpt] : generate publishing outputs; HTML by default 
   -h : output this help										
-  -l : use local CSS, etc resources directory
+  -l : use CSS files from this local repository
+  -r : use remote CSS file location from website
   -p : generate PDF as well								
   -t : generate debug trace of asciidoctor-pdf back-end.
 "
@@ -13,13 +14,23 @@ USAGE="${0} [-hlpt] : generate publishing outputs; HTML by default
 # the resources; if in any other repo, we do. This is complicated by the need to make the directories
 # work not just in a normal file system, but on Github, which doesn't appear to see the repo root
 # points as being inside a 'directory'
+year=`date +%G`
 stylesheet=openehr.css
 pdf_theme=openehr_full_pdf-theme.yml
 master_doc_name=master.adoc
 resources_git_repo_name=spec-publish-asciidoc
 use_local_resources=false
+use_remote_resources=false
 uml_export_dir=../UML
-year=`date +%G`
+remote_css_loc=http://www.openehr.org/releases/BASE/dev/resources/css
+
+# directory of specifications-BASE it clone, relative to a document in another repo
+if [ $(basename $PWD) = "spec-publish-asciidoc" ]; then
+	base_dir=../../
+else
+	base_dir=../../../specifications-BASE
+fi
+echo "setting base_dir to $base_dir"
 
 #
 # ============== functions =============
@@ -31,6 +42,7 @@ run_asciidoctor () {
 	# work out the options
 	opts="-a current_year=$year \
 		-a resources_dir=$resources_dir \
+		-a base_dir=$base_dir \
 		-a stylesdir=$stylesdir \
 		-a stylesheet=$stylesheet \
 		-a uml_export_dir=$uml_export_dir \
@@ -47,6 +59,7 @@ run_asciidoctor_pdf () {
 	opts="-a current_year=$year \
 		-a stylesdir=$stylesdir \
 		-a resources_dir=$resources_dir \
+		-a base_dir=$base_dir \
 		-a uml_export_dir=$uml_export_dir \
 		-a pdf-style=$pdf_theme \
 		-a pdf-stylesdir=$resources_dir \
@@ -73,8 +86,11 @@ usage() { echo "$USAGE" 1>&2; exit 1; }
 #
 # ================== main =================
 #
-while getopts "hlpt" o; do
+while getopts "hlprt" o; do
     case "${o}" in
+        r)
+            use_remote_resources=true
+            ;;
         l)
             use_local_resources=true
             ;;
@@ -95,12 +111,19 @@ done
 shift $((OPTIND-1))
 
 # determine whether to use local resources files (this Git repo) or the ones in
-# spec-asciidoc-publish
+# spec-asciidoc-publish, or remote ones
 if [[ "$(basename $(pwd))" != "$resources_git_repo_name" && "$use_local_resources" != true ]]; then
 	resources_git_cd=../$resources_git_repo_name/
 fi
 resources_dir=../../${resources_git_cd}resources ## relative to doc dirs 2 level down
-stylesdir=${resources_dir}/css
+if [[ "$use_remote_resources" = true ]]; then
+	echo "using remote CSS location"
+	stylesdir=$remote_css_loc
+else
+	stylesdir=${resources_dir}/css
+fi
+echo "setting resources_dir to $resources_dir"
+echo "setting stylesdir to $stylesdir"
 
 # ---------- do the publishing ----------
 topdir=${PWD}

@@ -64,6 +64,12 @@ code {
 	color: $special-font-color-rule;
 	font-family: $special-font-family;
 }
+.paragraph.definition>p {
+	padding-left: 2.5em;
+	text-indent: -2.5em;
+	color: $special-font-color-rule;
+	font-family: $special-font-family;
+}
 .paragraph.tbd>p {
 	padding-left: 2.5em;
 	text-indent: -2.5em;
