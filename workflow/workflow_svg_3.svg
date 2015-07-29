@@ -11,14 +11,14 @@
 		.st5 {fill:url(#grad10-15);stroke:none;stroke-linecap:butt;stroke-width:0.75}
 		.st6 {fill:url(#grad7-23);stroke:none;stroke-linecap:butt;stroke-width:0.75}
 		.st7 {fill:#333333;fill-opacity:0;stroke:none;stroke-linecap:butt;stroke-width:0.75}
-		.st8 {stroke:#0070c0;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
-		.st9 {fill:#0070c0;font-family:Calibri;font-size:1.00001em}
+		.st8 {fill:#0070c0;font-family:Calibri;font-size:1.00001em}
+		.st9 {stroke:#0070c0;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
 		.st10 {fill:#789440;font-family:Calibri;font-size:1.00001em;font-weight:bold}
 		.st11 {font-size:1em}
 		.st12 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-weight:bold}
 		.st13 {font-size:1em;font-weight:normal}
 		.st14 {stroke:#0070c0;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
-		.st15 {fill:#000000;font-family:Calibri;font-size:1.00001em}
+		.st15 {fill:#000000;font-family:Calibri;font-size:1.00001em;font-weight:bold}
 		.st16 {fill:#ffff00;stroke:#c00000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
 		.st17 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
@@ -58,24 +58,24 @@
 	</defs>
 	<g>
 		<title>Model Authoring</title>
-		<g id="group192-1" transform="translate(404.21,-111.754)">
-			<title>Graphic (vector).201</title>
-			<g id="shape192-2">
-				<rect x="35.1965" y="573.781" width="8.60049" height="10.4" class="st1"/>
+		<g id="group2-1" transform="translate(263.842,-504.005)">
+			<title>Diagram</title>
+			<g id="shape2-2">
+				<rect x="37.3438" y="572.787" width="8.95836" height="10.4" class="st1"/>
 			</g>
-			<g id="shape193-4" transform="translate(5.17519,0)">
-				<title>Sheet.193</title>
-				<rect x="0" y="562.686" width="27.4142" height="32.5894" class="st2"/>
-				<svg viewBox="0 0 22.48 26.16" clip="rect(2.10042 2.10043 2.10042 2.10043)" height="36.7902" overflow="hidden" preserveAspectRatio="none" width="31.6151" x="-2.10043" y="560.586">
+			<g id="shape3-4" transform="translate(5.49091,0)">
+				<title>Sheet.3</title>
+				<rect x="0" y="560.698" width="29.0866" height="34.5775" class="st2"/>
+				<svg viewBox="0 0 22.48 26.16" clip="rect(2.22856 2.22857 2.22856 2.22857)" height="39.0347" overflow="hidden" preserveAspectRatio="none" width="33.5438" x="-2.22857" y="558.469">
 					<defs>
-						<path id="mfid177" d="M1.5,1.522 L1.5,24.646 L20.996,24.646 L20.996,6.388 C20.996,6.388 17.422,5.746 16.273,5.746 C16.248,4.945 16.265,5.006 16.156,1.522 L1.5,1.522 Z"/>
+						<path id="mfid177" d="M1.5,1.522 L1.5,24.646 L20.998,24.646 L20.998,6.388 C20.998,6.388 17.424,5.746 16.275,5.746 C16.25,4.945 16.267,5.006 16.158,1.522 L1.5,1.522 Z"/>
 					</defs>
 					<g>
 						<g text-rendering="geometricPrecision">
 							<g fill="#5a5a5a">
 								<use xlink:href="#mfid177" fill-rule="evenodd" stroke="none"/>
 								<defs>
-									<path id="mfid178" d="M2,2.022 L2,24.146 L20.496,24.146 L20.496,6.246 C20.496,6.246 16.228,5.537 16.117,2.022 L2,2.022 Z"/>
+									<path id="mfid178" d="M2,2.022 L2,24.146 L20.498,24.146 L20.498,6.246 C20.498,6.246 16.23,5.537 16.119,2.022 L2,2.022 Z"/>
 								</defs>
 							</g>
 							<g fill="#ffffff">
@@ -86,7 +86,7 @@
 					<!-- GetDC -->
 					<!-- Released DC -->
 					<defs>
-						<path id="mfid179" d="M16.215,1.5 L15.822,1.5 L15.822,6.871 L20.971,6.871 L20.971,6.331 L16.215,1.5 Z"/>
+						<path id="mfid179" d="M16.218,1.5 L15.823,1.5 L15.823,6.871 L20.972,6.871 L20.972,6.331 L16.218,1.5 Z"/>
 					</defs>
 					<mask id="mfid180">
 						<use xlink:href="#mfid179" fill-rule="evenodd" fill="white" stroke="none"/>
@@ -107,14 +107,14 @@
 					</radialGradient>
 					<g mask="url(#mfid181)">
 						<g text-rendering="geometricPrecision">
-							<g transform="matrix(96, 0, 0, -96, 15.822, 6.871)">
+							<g transform="matrix(96, 0, 0, -96, 15.823, 6.871)">
 								<g fill="white">
 									<mask id="mfid185" x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" maskUnits="userSpaceOnUse">
 										<rect x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" stroke="none"/>
 									</mask>
 									<use xlink:href="#mfid183" stroke="none" mask="url(#mfid185)" fill="url(#mfid184)"/>
 									<defs>
-										<path id="mfid186" d="M16.322,6.371 L20.305,6.371 L16.322,2.371 L16.322,6.371 Z"/>
+										<path id="mfid186" d="M16.323,6.371 L20.306,6.371 L16.323,2.371 L16.323,6.371 Z"/>
 									</defs>
 								</g>
 							</g>
@@ -124,41 +124,327 @@
 						<g text-rendering="geometricPrecision">
 							<g fill="#ffffff">
 								<use xlink:href="#mfid186" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid187" d="M10.93,12.388 L10.93,10.105"/>
+								</defs>
+							</g>
+							<g fill="#ffffff" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<use xlink:href="#mfid187" fill="none"/>
+							</g>
+							<g fill="#003b80" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="7.047" y="7.044" width="7.662" height="3.461" stroke="none"/>
+							</g>
+							<g fill="#3aa4c2" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="7.297" y="7.294" width="7.162" height="2.961" stroke="none"/>
+								<defs>
+									<path id="mfid188" d="M8.747,14.536 L7.098,14.536 L7.098,19.675"/>
+								</defs>
+								<use xlink:href="#mfid188" fill="none"/>
+								<defs>
+									<path id="mfid189" d="M13.129,14.536 L14.778,14.536 L14.778,19.675"/>
+								</defs>
+								<use xlink:href="#mfid189" fill="none"/>
+								<defs>
+									<path id="mfid190" d="M8.254,14.548 L11.05,17.326 L13.753,14.388 L10.921,11.772 L8.254,14.548 Z"/>
+								</defs>
+							</g>
+							<g fill="#037647" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<use xlink:href="#mfid190" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid191" d="M13.401,14.402 L11.042,16.966 L8.605,14.544 L10.932,12.122 L13.401,14.402 Z"/>
+								</defs>
+							</g>
+							<g fill="#6fba44" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<use xlink:href="#mfid191" fill-rule="evenodd" stroke="none"/>
+							</g>
+							<g fill="#8c100e" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="3.924" y="19.114" width="6.317" height="3.164" stroke="none"/>
+							</g>
+							<g fill="#ee3624" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="4.174" y="19.364" width="5.817" height="2.664" stroke="none"/>
+								<defs>
+									<path id="mfid192" d="M13.393,19.114 C12.521,19.114 11.811,19.823 11.811,20.696 C11.811,21.569 12.521,22.278 13.393,22.278 L16.546,22.278 C17.417,22.278 18.128,21.569 18.128,20.696 C18.128,19.823 17.417,19.114 16.546,19.114 L13.393,19.114 Z"/>
+								</defs>
+							</g>
+							<g fill="#ca3c0d" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<use xlink:href="#mfid192" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid193" d="M12.061,20.696 C12.061,21.432 12.657,22.028 13.393,22.028 L16.546,22.028 C17.282,22.028 17.878,21.432 17.878,20.696 C17.878,19.96 17.282,19.364 16.546,19.364 L13.393,19.364 C12.657,19.364 12.061,19.96 12.061,20.696 Z"/>
+								</defs>
+							</g>
+							<g fill="#f36b3a" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
+								<use xlink:href="#mfid193" fill-rule="evenodd" stroke="none"/>
+							</g>
+						</g>
+					</g>
+				</svg>
+				<rect x="0" y="560.698" width="29.0866" height="34.5775" class="st2"/>
+			</g>
+			<g id="shape4-7">
+				<title>Sheet.4</title>
+				<rect x="0" y="560.698" width="34.5775" height="34.5775" class="st3"/>
+			</g>
+			<g id="group5-9" transform="translate(31.1198,-11.0648)">
+				<title>Sheet.5</title>
+				<g id="shape6-10">
+					<title>Sheet.6</title>
+					<rect x="0" y="582.828" width="12.4479" height="12.4479" class="st4"/>
+				</g>
+				<g id="shape7-12" transform="translate(0.67024,-0.669537)">
+					<title>Sheet.7</title>
+					<rect x="0" y="584.167" width="11.1088" height="11.1088" class="st5"/>
+				</g>
+				<g id="shape8-20" transform="translate(2.28753,-5.55864)">
+					<title>Sheet.8</title>
+					<rect x="0" y="593.945" width="7.87146" height="1.33064" class="st6"/>
+				</g>
+			</g>
+			<g id="group9-24" transform="translate(31.1198,-11.0648)">
+				<title>Sheet.9</title>
+				<g id="shape10-25">
+					<title>Sheet.10</title>
+					<rect x="0" y="582.828" width="12.4479" height="12.4479" class="st4"/>
+				</g>
+				<g id="shape11-27" transform="translate(0.67024,-0.668835)">
+					<title>Sheet.11</title>
+					<rect x="0" y="584.167" width="11.1088" height="11.1088" class="st5"/>
+				</g>
+				<g id="shape12-30" transform="translate(5.55864,-2.28753)">
+					<title>Sheet.12</title>
+					<rect x="0" y="587.403" width="1.33064" height="7.87286" class="st7"/>
+				</g>
+				<g id="shape13-32" transform="translate(2.28753,-5.55864)">
+					<title>Sheet.13</title>
+					<rect x="0" y="593.945" width="7.87146" height="1.33064" class="st7"/>
+				</g>
+			</g>
+			<g id="shape14-34" transform="translate(-4.32219,4.32219)">
+				<title>Sheet.14</title>
+			</g>
+		</g>
+		<g id="shape16-38" transform="translate(122.11,-484.608)">
+			<title>Sheet.16</title>
+			<desc>computable/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="8.57" y="588.88" class="st8">computable/</text>		</g>
+		<g id="shape17-41" transform="translate(170.299,-484.608)">
+			<title>Double tree square</title>
+			<path d="M0 595.28 L30.96 595.28" class="st9"/>
+			<path d="M30.96 595.28 L30.96 606.21 L41.1 606.21" class="st9"/>
+			<path d="M30.96 595.28 L30.96 558.59 L93.54 558.59" class="st9"/>
+		</g>
+		<g id="shape18-46" transform="translate(173.929,-518.583)">
+			<title>Sheet.18</title>
+			<desc>UML/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="26.26" y="588.88" class="st8">UML/</text>		</g>
+		<g id="shape19-49" transform="translate(229.901,-467.292)">
+			<title>Sheet.19</title>
+			<desc>openEHR_UML-XX.mdzip (UML tool model sources)</desc>
+			<rect x="0" y="561.253" width="138.603" height="34.0225" class="st2"/>
+			<text x="6.61" y="574.66" class="st10">openEHR_UML-XX.mdzip<tspan x="5.07" dy="1.2em" class="st11">(</tspan>UML tool model sources)</text>		</g>
+		<g id="shape109-53" transform="translate(460.123,-449.291)">
+			<title>Sheet.109</title>
+			<desc>Content Creation – models Author UML and/or other computable ...</desc>
+			<rect x="0" y="513.371" width="208.854" height="81.9048" class="st2"/>
+			<text x="4" y="541.72" class="st12">Content Creation – models<tspan x="4" dy="1.2em" class="st13">Author UML and</tspan><tspan class="st13">/</tspan><tspan class="st13">or other </tspan><tspan x="4" dy="1.2em" class="st13">computable form models</tspan><tspan class="st13">.</tspan></text>		</g>
+		<g id="shape110-61" transform="translate(63.1791,-436.255)">
+			<title>Multi-tree square</title>
+			<path d="M0 595.28 L44.76 595.28" class="st9"/>
+			<path d="M44.76 595.28 L44.76 642.05 L125.54 642.05" class="st9"/>
+			<path d="M44.76 595.28 L44.76 546.92 L135.47 546.92" class="st9"/>
+			<path d="M44.76 595.28 L44.76 796.54 L129.8 796.54" class="st9"/>
+			<path d="M44.76 595.28 L30.58 595.28" class="st9"/>
+			<path d="M44.76 595.28 L30.58 595.28" class="st9"/>
+			<path d="M44.76 595.28 L30.58 595.28" class="st9"/>
+		</g>
+		<g id="shape111-70" transform="translate(67.4583,-436.255)">
+			<title>Sheet.111</title>
+			<desc>/</desc>
+			<rect x="0" y="575.276" width="40.4783" height="20" class="st2"/>
+			<text x="17.92" y="588.88" class="st8">/</text>		</g>
+		<g id="shape112-73" transform="translate(122.11,-484.608)">
+			<title>Sheet.112</title>
+			<desc>computable/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="8.57" y="588.88" class="st8">computable/</text>		</g>
+		<g id="shape113-76" transform="translate(170.299,-484.608)">
+			<title>Double tree square.113</title>
+			<path d="M0 595.28 L30.96 595.28" class="st9"/>
+			<path d="M30.96 595.28 L30.96 606.21 L41.1 606.21" class="st9"/>
+			<path d="M30.96 595.28 L30.96 558.59 L93.54 558.59" class="st9"/>
+		</g>
+		<g id="shape114-81" transform="translate(126.986,-387.908)">
+			<title>Sheet.114</title>
+			<desc>resources/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="14.06" y="588.88" class="st8">resources/</text>		</g>
+		<g id="shape115-84" transform="translate(160.378,-389.483)">
+			<title>Multi-tree square.8</title>
+			<path d="M0 595.28 L38.94 595.28" class="st9"/>
+			<path d="M38.94 595.28 L38.94 619.51 L103.46 619.51" class="st9"/>
+			<path d="M38.94 595.28 L38.94 540 L103.46 540" class="st9"/>
+			<path d="M38.94 595.28 L38.94 676.06 L103.46 676.06" class="st9"/>
+			<path d="M38.94 595.28 L24.77 595.28" class="st9"/>
+			<path d="M38.94 595.28 L24.77 595.28" class="st9"/>
+			<path d="M38.94 595.28 L24.77 595.28" class="st9"/>
+		</g>
+		<g id="shape116-93" transform="translate(138.748,-235.118)">
+			<title>Sheet.116</title>
+			<desc>docs/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="26.56" y="588.88" class="st8">docs/</text>		</g>
+		<g id="shape117-96" transform="translate(144.116,-234.845)">
+			<title>Multi-tree square.113</title>
+			<path d="M0 595.28 L56.69 595.28" class="st14"/>
+			<path d="M56.69 595.28 L56.69 720.91 L116.53 720.91" class="st14"/>
+			<path d="M56.69 595.28 L56.69 586.62 L201.71 586.62" class="st14"/>
+			<path d="M56.69 595.28 L56.69 595 L40.14 595" class="st14"/>
+			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
+			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
+			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
+		</g>
+		<g id="shape118-105" transform="translate(226.772,-206.922)">
+			<title>Sheet.118</title>
+			<desc>master.adoc</desc>
+			<rect x="0" y="561.253" width="74.7002" height="34.0225" class="st2"/>
+			<text x="6.36" y="581.86" class="st15">master.adoc</text>		</g>
+		<g id="shape119-108" transform="translate(181.241,-241.77)">
+			<title>Sheet.119</title>
+			<desc>XXX/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="28.42" y="588.88" class="st8">XXX/</text>		</g>
+		<g id="shape120-111" transform="translate(297.638,-244.066)">
+			<title>Multi-tree square.129</title>
+			<path d="M0 595.28 L63.41 595.28" class="st14"/>
+			<path d="M63.41 595.28 L63.41 595.84 L48.19 595.84" class="st14"/>
+			<path d="M63.41 595.28 L63.41 587.13 L145.62 587.13" class="st14"/>
+			<path d="M63.41 595.28 L63.41 660.76 L147.97 660.76" class="st14"/>
+			<path d="M63.41 595.28 L63.41 595.84 L49.61 595.84" class="st14"/>
+			<path d="M63.41 595.28 L49.23 595.28" class="st14"/>
+			<path d="M63.41 595.28 L49.23 595.28" class="st14"/>
+		</g>
+		<g id="shape121-120" transform="translate(253.158,-117.559)">
+			<title>Sheet.121</title>
+			<desc>classes/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="20.95" y="588.88" class="st8">classes/</text>		</g>
+		<g id="shape122-123" transform="translate(261.472,-60.8661)">
+			<title>Sheet.122</title>
+			<desc>diagrams/</desc>
+			<rect x="0" y="575.276" width="85.0394" height="20" class="st2"/>
+			<text x="17.87" y="588.88" class="st8">diagrams/</text>		</g>
+		<g id="shape123-126" transform="translate(350.042,-249.291)">
+			<title>Sheet.123</title>
+			<desc>diagrams/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="15.43" y="588.88" class="st8">diagrams/</text>		</g>
+		<g id="shape124-129" transform="translate(184.252,-113.386)">
+			<title>Sheet.124</title>
+			<desc>UML/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="26.26" y="588.88" class="st8">UML/</text>		</g>
+		<g id="group125-132" transform="translate(449.527,-236.702)">
+			<title>Graphic (vector).201</title>
+			<g id="shape125-133">
+				<rect x="35.1965" y="573.781" width="8.60049" height="10.4" class="st1"/>
+			</g>
+			<g id="shape126-135" transform="translate(5.17519,0)">
+				<title>Sheet.126</title>
+				<rect x="0" y="562.686" width="27.4142" height="32.5894" class="st2"/>
+				<svg viewBox="0 0 22.48 26.16" clip="rect(2.10042 2.10043 2.10042 2.10043)" height="36.7902" overflow="hidden" preserveAspectRatio="none" width="31.6151" x="-2.10043" y="560.586">
+					<defs>
+						<path id="mfid194" d="M1.5,1.522 L1.5,24.646 L20.996,24.646 L20.996,6.388 C20.996,6.388 17.422,5.746 16.273,5.746 C16.248,4.945 16.265,5.006 16.156,1.522 L1.5,1.522 Z"/>
+					</defs>
+					<g>
+						<g text-rendering="geometricPrecision">
+							<g fill="#5a5a5a">
+								<use xlink:href="#mfid194" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid195" d="M2,2.022 L2,24.146 L20.496,24.146 L20.496,6.246 C20.496,6.246 16.228,5.537 16.117,2.022 L2,2.022 Z"/>
+								</defs>
+							</g>
+							<g fill="#ffffff">
+								<use xlink:href="#mfid195" fill-rule="evenodd" stroke="none"/>
 							</g>
 						</g>
 					</g>
 					<!-- GetDC -->
 					<!-- Released DC -->
 					<defs>
-						<path id="mfid187" d="M16.214,16.476 C16.214,19.636 13.65,22.201 10.492,22.201 C7.33,22.201 4.766,19.637 4.766,16.476 C4.766,13.315 7.329,10.754 10.492,10.754 C13.649,10.754 16.214,13.314 16.214,16.476 Z"/>
+						<path id="mfid196" d="M16.215,1.5 L15.822,1.5 L15.822,6.871 L20.971,6.871 L20.971,6.331 L16.215,1.5 Z"/>
 					</defs>
-					<mask id="mfid188">
-						<use xlink:href="#mfid187" fill-rule="evenodd" fill="white" stroke="none"/>
+					<mask id="mfid197">
+						<use xlink:href="#mfid196" fill-rule="evenodd" fill="white" stroke="none"/>
 					</mask>
-					<mask id="mfid189" fill="white" stroke="none">
+					<mask id="mfid198" fill="white" stroke="none">
 						<g>
-							<g mask="url(#mfid188)">
-								<use xlink:href="#mfid182"/>
+							<g mask="url(#mfid197)">
+								<rect width="22.48" height="26.16" id="mfid199"/>
 							</g>
 						</g>
 					</mask>
 					<defs>
-						<path id="mfid190" d="M-0.010417,-0.010417 L0.12967,-0.010417 L0.12967,0.12966 L-0.010417,0.12966 Z"/>
+						<path id="mfid200" d="M-0.010417,-0.010417 L0.064052,-0.010417 L0.064052,0.066365 L-0.010417,0.066365 Z"/>
 					</defs>
-					<radialGradient id="mfid191">
+					<radialGradient id="mfid201">
+						<stop offset="0" stop-color="#c6c6c6"/>
+						<stop offset="1" stop-color="#606060"/>
+					</radialGradient>
+					<g mask="url(#mfid198)">
+						<g text-rendering="geometricPrecision">
+							<g transform="matrix(96, 0, 0, -96, 15.822, 6.871)">
+								<g fill="white">
+									<mask id="mfid202" x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" maskUnits="userSpaceOnUse">
+										<rect x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" stroke="none"/>
+									</mask>
+									<use xlink:href="#mfid200" stroke="none" mask="url(#mfid202)" fill="url(#mfid201)"/>
+									<defs>
+										<path id="mfid203" d="M16.322,6.371 L20.305,6.371 L16.322,2.371 L16.322,6.371 Z"/>
+									</defs>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g>
+						<g text-rendering="geometricPrecision">
+							<g fill="#ffffff">
+								<use xlink:href="#mfid203" fill-rule="evenodd" stroke="none"/>
+							</g>
+						</g>
+					</g>
+					<!-- GetDC -->
+					<!-- Released DC -->
+					<defs>
+						<path id="mfid204" d="M16.214,16.476 C16.214,19.636 13.65,22.201 10.492,22.201 C7.33,22.201 4.766,19.637 4.766,16.476 C4.766,13.315 7.329,10.754 10.492,10.754 C13.649,10.754 16.214,13.314 16.214,16.476 Z"/>
+					</defs>
+					<mask id="mfid205">
+						<use xlink:href="#mfid204" fill-rule="evenodd" fill="white" stroke="none"/>
+					</mask>
+					<mask id="mfid206" fill="white" stroke="none">
+						<g>
+							<g mask="url(#mfid205)">
+								<use xlink:href="#mfid199"/>
+							</g>
+						</g>
+					</mask>
+					<defs>
+						<path id="mfid207" d="M-0.010417,-0.010417 L0.12967,-0.010417 L0.12967,0.12966 L-0.010417,0.12966 Z"/>
+					</defs>
+					<radialGradient id="mfid208">
 						<stop offset="0" stop-color="#086bc2"/>
 						<stop offset="1" stop-color="#b5dceb"/>
 					</radialGradient>
-					<g mask="url(#mfid189)">
+					<g mask="url(#mfid206)">
 						<g text-rendering="geometricPrecision">
 							<g transform="matrix(96, 0, 0, -96, 4.766, 22.201)">
 								<g fill="white">
-									<mask id="mfid192" x="-0.010417" y="-0.010417" width="0.14008" height="0.14007" maskUnits="userSpaceOnUse">
+									<mask id="mfid209" x="-0.010417" y="-0.010417" width="0.14008" height="0.14007" maskUnits="userSpaceOnUse">
 										<rect x="-0.010417" y="-0.010417" width="0.14008" height="0.14007" stroke="none"/>
 									</mask>
-									<use xlink:href="#mfid190" stroke="none" mask="url(#mfid192)" fill="url(#mfid191)"/>
+									<use xlink:href="#mfid207" stroke="none" mask="url(#mfid209)" fill="url(#mfid208)"/>
 									<defs>
-										<path id="mfid193" d="M5.357,13.941 C6.293,12.051 8.24,10.753 10.492,10.753 C10.815,10.753 11.135,10.78 11.444,10.831"/>
+										<path id="mfid210" d="M5.357,13.941 C6.293,12.051 8.24,10.753 10.492,10.753 C10.815,10.753 11.135,10.78 11.444,10.831"/>
 									</defs>
 								</g>
 							</g>
@@ -167,22 +453,22 @@
 					<g>
 						<g text-rendering="geometricPrecision">
 							<g fill="white" stroke-width="0.35" stroke="#231f20" stroke-miterlimit="2">
-								<use xlink:href="#mfid193" fill="none"/>
+								<use xlink:href="#mfid210" fill="none"/>
 								<defs>
-									<path id="mfid194" d="M4.544,8.516 L18.582,12.445"/>
+									<path id="mfid211" d="M4.544,8.516 L18.582,12.445"/>
 								</defs>
 							</g>
 							<g fill="white" stroke-width="0.35" stroke="#636466" stroke-miterlimit="2">
-								<use xlink:href="#mfid194" fill="none"/>
+								<use xlink:href="#mfid211" fill="none"/>
 							</g>
 							<g fill="#231f20" stroke-width="0.35" stroke="#636466" stroke-miterlimit="2">
 								<rect x="4.515" y="8.002" width="1.317" height="1.493" stroke="none"/>
 								<defs>
-									<path id="mfid195" d="M4.515,9.495 L5.832,9.495 L5.832,8.002 L4.515,8.002 L4.515,9.495 Z"/>
+									<path id="mfid212" d="M4.515,9.495 L5.832,9.495 L5.832,8.002 L4.515,8.002 L4.515,9.495 Z"/>
 								</defs>
 							</g>
 							<g fill="#231f20" stroke-width="0.5735" stroke="#808284" stroke-miterlimit="2">
-								<use xlink:href="#mfid195" fill="none"/>
+								<use xlink:href="#mfid212" fill="none"/>
 							</g>
 							<g fill="#000000" stroke-width="0.5735" stroke="#808284" stroke-miterlimit="2">
 								<rect x="10.985" y="9.773" width="1.596" height="1.807" stroke="none"/>
@@ -191,344 +477,64 @@
 							<g fill="#231f20" stroke-width="0.5735" stroke="#808284" stroke-miterlimit="2">
 								<rect x="17.261" y="11.467" width="1.595" height="1.809" stroke="none"/>
 								<defs>
-									<path id="mfid196" d="M17.261,13.276 L18.856,13.276 L18.856,11.467 L17.261,11.467 L17.261,13.276 Z"/>
+									<path id="mfid213" d="M17.261,13.276 L18.856,13.276 L18.856,11.467 L17.261,11.467 L17.261,13.276 Z"/>
 								</defs>
-								<use xlink:href="#mfid196" fill="none"/>
+								<use xlink:href="#mfid213" fill="none"/>
 							</g>
 						</g>
 					</g>
 				</svg>
 				<rect x="0" y="562.686" width="27.4142" height="32.5894" class="st2"/>
 			</g>
-			<g id="shape194-7">
-				<title>Sheet.194</title>
+			<g id="shape127-138">
+				<title>Sheet.127</title>
 				<rect x="0" y="562.686" width="32.5894" height="32.5894" class="st3"/>
 			</g>
-			<g id="group195-9" transform="translate(29.3304,-10.4286)">
-				<title>Sheet.195</title>
-				<g id="shape196-10">
-					<title>Sheet.196</title>
+			<g id="group128-140" transform="translate(29.3304,-10.4286)">
+				<title>Sheet.128</title>
+				<g id="shape129-141">
+					<title>Sheet.129</title>
 					<rect x="0" y="583.543" width="11.7322" height="11.7322" class="st4"/>
 				</g>
-				<g id="shape197-12" transform="translate(0.631702,-0.63104)">
-					<title>Sheet.197</title>
+				<g id="shape130-143" transform="translate(0.631702,-0.63104)">
+					<title>Sheet.130</title>
 					<rect x="0" y="584.805" width="10.4701" height="10.4701" class="st5"/>
 				</g>
-				<g id="shape198-20" transform="translate(2.156,-5.23902)">
-					<title>Sheet.198</title>
+				<g id="shape131-146" transform="translate(2.156,-5.23902)">
+					<title>Sheet.131</title>
 					<rect x="0" y="594.021" width="7.41886" height="1.25413" class="st6"/>
 				</g>
 			</g>
-			<g id="group199-24" transform="translate(29.3304,-10.4286)">
-				<title>Sheet.199</title>
-				<g id="shape200-25">
-					<title>Sheet.200</title>
+			<g id="group132-149" transform="translate(29.3304,-10.4286)">
+				<title>Sheet.132</title>
+				<g id="shape133-150">
+					<title>Sheet.133</title>
 					<rect x="0" y="583.543" width="11.7322" height="11.7322" class="st4"/>
 				</g>
-				<g id="shape201-27" transform="translate(0.631702,-0.630378)">
-					<title>Sheet.201</title>
+				<g id="shape134-152" transform="translate(0.631702,-0.630378)">
+					<title>Sheet.134</title>
 					<rect x="0" y="584.805" width="10.4701" height="10.4701" class="st5"/>
 				</g>
-				<g id="shape202-30" transform="translate(5.23902,-2.156)">
-					<title>Sheet.202</title>
+				<g id="shape135-155" transform="translate(5.23902,-2.156)">
+					<title>Sheet.135</title>
 					<rect x="0" y="587.855" width="1.25413" height="7.42018" class="st7"/>
 				</g>
-				<g id="shape203-32" transform="translate(2.156,-5.23902)">
-					<title>Sheet.203</title>
+				<g id="shape136-157" transform="translate(2.156,-5.23902)">
+					<title>Sheet.136</title>
 					<rect x="0" y="594.021" width="7.41886" height="1.25413" class="st7"/>
 				</g>
 			</g>
-			<g id="shape204-34" transform="translate(-4.07367,4.07367)">
-				<title>Sheet.204</title>
+			<g id="shape137-159" transform="translate(-4.07367,4.07367)">
+				<title>Sheet.137</title>
 			</g>
 		</g>
-		<g id="shape1-38" transform="translate(63.1791,-436.255)">
-			<title>Multi-tree square</title>
-			<path d="M0 595.28 L44.76 595.28" class="st8"/>
-			<path d="M44.76 595.28 L44.76 642.05 L125.54 642.05" class="st8"/>
-			<path d="M44.76 595.28 L44.76 546.92 L135.47 546.92" class="st8"/>
-			<path d="M44.76 595.28 L44.76 796.54 L129.8 796.54" class="st8"/>
-			<path d="M44.76 595.28 L30.58 595.28" class="st8"/>
-			<path d="M44.76 595.28 L30.58 595.28" class="st8"/>
-			<path d="M44.76 595.28 L30.58 595.28" class="st8"/>
-		</g>
-		<g id="group2-47" transform="translate(263.842,-504.005)">
-			<title>Diagram</title>
-			<g id="shape2-48">
-				<rect x="37.3438" y="572.787" width="8.95836" height="10.4" class="st1"/>
-			</g>
-			<g id="shape3-50" transform="translate(5.49091,0)">
-				<title>Sheet.3</title>
-				<rect x="0" y="560.698" width="29.0866" height="34.5775" class="st2"/>
-				<svg viewBox="0 0 22.48 26.16" clip="rect(2.22856 2.22857 2.22856 2.22857)" height="39.0347" overflow="hidden" preserveAspectRatio="none" width="33.5438" x="-2.22857" y="558.469">
-					<defs>
-						<path id="mfid197" d="M1.5,1.522 L1.5,24.646 L20.998,24.646 L20.998,6.388 C20.998,6.388 17.424,5.746 16.275,5.746 C16.25,4.945 16.267,5.006 16.158,1.522 L1.5,1.522 Z"/>
-					</defs>
-					<g>
-						<g text-rendering="geometricPrecision">
-							<g fill="#5a5a5a">
-								<use xlink:href="#mfid197" fill-rule="evenodd" stroke="none"/>
-								<defs>
-									<path id="mfid198" d="M2,2.022 L2,24.146 L20.498,24.146 L20.498,6.246 C20.498,6.246 16.23,5.537 16.119,2.022 L2,2.022 Z"/>
-								</defs>
-							</g>
-							<g fill="#ffffff">
-								<use xlink:href="#mfid198" fill-rule="evenodd" stroke="none"/>
-							</g>
-						</g>
-					</g>
-					<!-- GetDC -->
-					<!-- Released DC -->
-					<defs>
-						<path id="mfid199" d="M16.218,1.5 L15.823,1.5 L15.823,6.871 L20.972,6.871 L20.972,6.331 L16.218,1.5 Z"/>
-					</defs>
-					<mask id="mfid200">
-						<use xlink:href="#mfid199" fill-rule="evenodd" fill="white" stroke="none"/>
-					</mask>
-					<mask id="mfid201" fill="white" stroke="none">
-						<g>
-							<g mask="url(#mfid200)">
-								<rect width="22.48" height="26.16" id="mfid202"/>
-							</g>
-						</g>
-					</mask>
-					<defs>
-						<path id="mfid203" d="M-0.010417,-0.010417 L0.064052,-0.010417 L0.064052,0.066365 L-0.010417,0.066365 Z"/>
-					</defs>
-					<radialGradient id="mfid204">
-						<stop offset="0" stop-color="#c6c6c6"/>
-						<stop offset="1" stop-color="#606060"/>
-					</radialGradient>
-					<g mask="url(#mfid201)">
-						<g text-rendering="geometricPrecision">
-							<g transform="matrix(96, 0, 0, -96, 15.823, 6.871)">
-								<g fill="white">
-									<mask id="mfid205" x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" maskUnits="userSpaceOnUse">
-										<rect x="-0.010417" y="-0.010417" width="0.074469" height="0.076781" stroke="none"/>
-									</mask>
-									<use xlink:href="#mfid203" stroke="none" mask="url(#mfid205)" fill="url(#mfid204)"/>
-									<defs>
-										<path id="mfid206" d="M16.323,6.371 L20.306,6.371 L16.323,2.371 L16.323,6.371 Z"/>
-									</defs>
-								</g>
-							</g>
-						</g>
-					</g>
-					<g>
-						<g text-rendering="geometricPrecision">
-							<g fill="#ffffff">
-								<use xlink:href="#mfid206" fill-rule="evenodd" stroke="none"/>
-								<defs>
-									<path id="mfid207" d="M10.93,12.388 L10.93,10.105"/>
-								</defs>
-							</g>
-							<g fill="#ffffff" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<use xlink:href="#mfid207" fill="none"/>
-							</g>
-							<g fill="#003b80" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="7.047" y="7.044" width="7.662" height="3.461" stroke="none"/>
-							</g>
-							<g fill="#3aa4c2" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="7.297" y="7.294" width="7.162" height="2.961" stroke="none"/>
-								<defs>
-									<path id="mfid208" d="M8.747,14.536 L7.098,14.536 L7.098,19.675"/>
-								</defs>
-								<use xlink:href="#mfid208" fill="none"/>
-								<defs>
-									<path id="mfid209" d="M13.129,14.536 L14.778,14.536 L14.778,19.675"/>
-								</defs>
-								<use xlink:href="#mfid209" fill="none"/>
-								<defs>
-									<path id="mfid210" d="M8.254,14.548 L11.05,17.326 L13.753,14.388 L10.921,11.772 L8.254,14.548 Z"/>
-								</defs>
-							</g>
-							<g fill="#037647" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<use xlink:href="#mfid210" fill-rule="evenodd" stroke="none"/>
-								<defs>
-									<path id="mfid211" d="M13.401,14.402 L11.042,16.966 L8.605,14.544 L10.932,12.122 L13.401,14.402 Z"/>
-								</defs>
-							</g>
-							<g fill="#6fba44" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<use xlink:href="#mfid211" fill-rule="evenodd" stroke="none"/>
-							</g>
-							<g fill="#8c100e" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="3.924" y="19.114" width="6.317" height="3.164" stroke="none"/>
-							</g>
-							<g fill="#ee3624" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="4.174" y="19.364" width="5.817" height="2.664" stroke="none"/>
-								<defs>
-									<path id="mfid212" d="M13.393,19.114 C12.521,19.114 11.811,19.823 11.811,20.696 C11.811,21.569 12.521,22.278 13.393,22.278 L16.546,22.278 C17.417,22.278 18.128,21.569 18.128,20.696 C18.128,19.823 17.417,19.114 16.546,19.114 L13.393,19.114 Z"/>
-								</defs>
-							</g>
-							<g fill="#ca3c0d" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<use xlink:href="#mfid212" fill-rule="evenodd" stroke="none"/>
-								<defs>
-									<path id="mfid213" d="M12.061,20.696 C12.061,21.432 12.657,22.028 13.393,22.028 L16.546,22.028 C17.282,22.028 17.878,21.432 17.878,20.696 C17.878,19.96 17.282,19.364 16.546,19.364 L13.393,19.364 C12.657,19.364 12.061,19.96 12.061,20.696 Z"/>
-								</defs>
-							</g>
-							<g fill="#f36b3a" stroke-width="0.5" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round">
-								<use xlink:href="#mfid213" fill-rule="evenodd" stroke="none"/>
-							</g>
-						</g>
-					</g>
-				</svg>
-				<rect x="0" y="560.698" width="29.0866" height="34.5775" class="st2"/>
-			</g>
-			<g id="shape4-53">
-				<title>Sheet.4</title>
-				<rect x="0" y="560.698" width="34.5775" height="34.5775" class="st3"/>
-			</g>
-			<g id="group5-55" transform="translate(31.1198,-11.0648)">
-				<title>Sheet.5</title>
-				<g id="shape6-56">
-					<title>Sheet.6</title>
-					<rect x="0" y="582.828" width="12.4479" height="12.4479" class="st4"/>
-				</g>
-				<g id="shape7-58" transform="translate(0.67024,-0.669537)">
-					<title>Sheet.7</title>
-					<rect x="0" y="584.167" width="11.1088" height="11.1088" class="st5"/>
-				</g>
-				<g id="shape8-61" transform="translate(2.28753,-5.55864)">
-					<title>Sheet.8</title>
-					<rect x="0" y="593.945" width="7.87146" height="1.33064" class="st6"/>
-				</g>
-			</g>
-			<g id="group9-64" transform="translate(31.1198,-11.0648)">
-				<title>Sheet.9</title>
-				<g id="shape10-65">
-					<title>Sheet.10</title>
-					<rect x="0" y="582.828" width="12.4479" height="12.4479" class="st4"/>
-				</g>
-				<g id="shape11-67" transform="translate(0.67024,-0.668835)">
-					<title>Sheet.11</title>
-					<rect x="0" y="584.167" width="11.1088" height="11.1088" class="st5"/>
-				</g>
-				<g id="shape12-70" transform="translate(5.55864,-2.28753)">
-					<title>Sheet.12</title>
-					<rect x="0" y="587.403" width="1.33064" height="7.87286" class="st7"/>
-				</g>
-				<g id="shape13-72" transform="translate(2.28753,-5.55864)">
-					<title>Sheet.13</title>
-					<rect x="0" y="593.945" width="7.87146" height="1.33064" class="st7"/>
-				</g>
-			</g>
-			<g id="shape14-74" transform="translate(-4.32219,4.32219)">
-				<title>Sheet.14</title>
-			</g>
-		</g>
-		<g id="shape15-77" transform="translate(67.4583,-436.255)">
-			<title>Sheet.15</title>
-			<desc>/</desc>
-			<rect x="0" y="575.276" width="40.4783" height="20" class="st2"/>
-			<text x="17.92" y="588.88" class="st9">/</text>		</g>
-		<g id="shape16-80" transform="translate(122.11,-484.608)">
-			<title>Sheet.16</title>
-			<desc>computable/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="8.57" y="588.88" class="st9">computable/</text>		</g>
-		<g id="shape17-83" transform="translate(170.299,-484.608)">
-			<title>Double tree square</title>
-			<path d="M0 595.28 L30.96 595.28" class="st8"/>
-			<path d="M30.96 595.28 L30.96 606.21 L41.1 606.21" class="st8"/>
-			<path d="M30.96 595.28 L30.96 558.59 L93.54 558.59" class="st8"/>
-		</g>
-		<g id="shape18-88" transform="translate(173.929,-518.583)">
-			<title>Sheet.18</title>
-			<desc>UML/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="26.26" y="588.88" class="st9">UML/</text>		</g>
-		<g id="shape19-91" transform="translate(229.901,-467.292)">
-			<title>Sheet.19</title>
-			<desc>openEHR_UML-XX.mdzip (UML tool model sources)</desc>
-			<rect x="0" y="561.253" width="138.603" height="34.0225" class="st2"/>
-			<text x="6.61" y="574.66" class="st10">openEHR_UML-XX.mdzip<tspan x="5.07" dy="1.2em" class="st11">(</tspan>UML tool model sources)</text>		</g>
-		<g id="shape20-95" transform="translate(126.986,-387.908)">
-			<title>Sheet.20</title>
-			<desc>resources/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="14.06" y="588.88" class="st9">resources/</text>		</g>
-		<g id="shape22-98" transform="translate(138.748,-235.118)">
-			<title>Sheet.22</title>
-			<desc>docs/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="26.56" y="588.88" class="st9">docs/</text>		</g>
-		<g id="shape109-101" transform="translate(460.123,-449.291)">
-			<title>Sheet.109</title>
-			<desc>Content Creation – models Author UML and/or other computable ...</desc>
-			<rect x="0" y="513.371" width="208.854" height="81.9048" class="st2"/>
-			<text x="4" y="541.72" class="st12">Content Creation – models<tspan x="4" dy="1.2em" class="st13">Author UML and</tspan><tspan class="st13">/</tspan><tspan class="st13">or other </tspan><tspan x="4" dy="1.2em" class="st13">computable form models</tspan><tspan class="st13">.</tspan></text>		</g>
-		<g id="shape111-109" transform="translate(255.118,-244.066)">
-			<title>Multi-tree square.129</title>
-			<path d="M0 595.28 L63.41 595.28" class="st14"/>
-			<path d="M63.41 595.28 L63.41 646.74 L147.33 646.74" class="st14"/>
-			<path d="M63.41 595.28 L63.41 587.13 L145.62 587.13" class="st14"/>
-			<path d="M63.41 595.28 L63.41 720.85 L146.83 720.85" class="st14"/>
-			<path d="M63.41 595.28 L63.41 786.9 L147.4 786.9" class="st14"/>
-			<path d="M63.41 595.28 L49.23 595.28" class="st14"/>
-			<path d="M63.41 595.28 L49.23 595.28" class="st14"/>
-		</g>
-		<g id="shape112-118" transform="translate(300.076,-250.728)">
-			<title>Sheet.112</title>
-			<desc>classes/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="20.95" y="588.88" class="st9">classes/</text>		</g>
-		<g id="shape113-121" transform="translate(317.406,-192.598)">
-			<title>Sheet.113</title>
-			<desc>uml_diagrams/</desc>
-			<rect x="0" y="575.276" width="85.0394" height="20" class="st2"/>
-			<text x="5.56" y="588.88" class="st9">uml_diagrams/</text>		</g>
-		<g id="shape114-124" transform="translate(306.216,-117.559)">
-			<title>Sheet.114</title>
-			<desc>diagrams/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="15.43" y="588.88" class="st9">diagrams/</text>		</g>
-		<g id="shape142-127" transform="translate(302.514,-50.8661)">
-			<title>Sheet.142</title>
-			<desc>images/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="20.56" y="588.88" class="st9">images/</text>		</g>
-		<g id="shape157-130" transform="translate(144.116,-234.845)">
-			<title>Multi-tree square.113</title>
-			<path d="M0 595.28 L56.69 595.28" class="st14"/>
-			<path d="M56.69 595.28 L56.69 773.43 L129.43 773.43" class="st14"/>
-			<path d="M56.69 595.28 L56.69 586.06 L117.46 586.06" class="st14"/>
-			<path d="M56.69 595.28 L56.69 595 L40.14 595" class="st14"/>
-			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
-			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
-			<path d="M56.69 595.28 L42.52 595.28" class="st14"/>
-		</g>
-		<g id="shape158-139" transform="translate(181.241,-241.77)">
-			<title>Sheet.158</title>
-			<desc>XXX/</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="28.42" y="588.88" class="st9">XXX/</text>		</g>
-		<g id="shape159-142" transform="translate(184.252,-56.6929)">
-			<title>Sheet.159</title>
-			<desc>etc</desc>
-			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="32.55" y="588.88" class="st9">etc</text>		</g>
-		<g id="shape161-145" transform="translate(160.378,-389.483)">
-			<title>Multi-tree square.8</title>
-			<path d="M0 595.28 L38.94 595.28" class="st8"/>
-			<path d="M38.94 595.28 L38.94 619.51 L103.46 619.51" class="st8"/>
-			<path d="M38.94 595.28 L38.94 540 L103.46 540" class="st8"/>
-			<path d="M38.94 595.28 L38.94 676.06 L103.46 676.06" class="st8"/>
-			<path d="M38.94 595.28 L24.77 595.28" class="st8"/>
-			<path d="M38.94 595.28 L24.77 595.28" class="st8"/>
-			<path d="M38.94 595.28 L24.77 595.28" class="st8"/>
-		</g>
-		<g id="shape162-154" transform="translate(243.78,-209.483)">
-			<title>Sheet.162</title>
-			<desc>master.adoc</desc>
-			<rect x="0" y="561.253" width="74.7002" height="34.0225" class="st2"/>
-			<text x="7.01" y="581.86" class="st15">master.adoc</text>		</g>
-		<g id="group163-157" transform="translate(425.888,-102.977)">
+		<g id="group138-162" transform="translate(471.205,-227.926)">
 			<title>Graphic (bitmap).214</title>
-			<g id="shape163-158">
+			<g id="shape138-163">
 				<rect x="28.1218" y="577.056" width="7.42137" height="10.4" class="st1"/>
 			</g>
-			<g id="shape164-160" transform="translate(4.4396,0)">
-				<title>Sheet.164</title>
+			<g id="shape139-165" transform="translate(4.4396,0)">
+				<title>Sheet.139</title>
 				<rect x="0" y="569.237" width="21.5991" height="26.0387" class="st2"/>
 				<svg viewBox="0 0 21.08 24.8" clip="rect(1.78286 1.78294 1.78286 1.78294)" height="29.6044" overflow="hidden" preserveAspectRatio="none" width="25.165" x="-1.78294" y="567.454">
 					<!-- GetDC -->
@@ -752,64 +758,69 @@
 				</svg>
 				<rect x="0" y="569.237" width="21.5991" height="26.0387" class="st2"/>
 			</g>
-			<g id="shape165-163">
-				<title>Sheet.165</title>
+			<g id="shape140-168">
+				<title>Sheet.140</title>
 				<rect x="0" y="569.237" width="26.0387" height="26.0387" class="st3"/>
 			</g>
-			<g id="group166-165" transform="translate(23.4348,-8.33239)">
-				<title>Sheet.166</title>
-				<g id="shape167-166">
-					<title>Sheet.167</title>
+			<g id="group141-170" transform="translate(23.4348,-8.33239)">
+				<title>Sheet.141</title>
+				<g id="shape142-171">
+					<title>Sheet.142</title>
 					<rect x="0" y="585.902" width="9.37394" height="9.37394" class="st4"/>
 				</g>
-				<g id="shape168-168" transform="translate(0.504726,-0.504197)">
-					<title>Sheet.168</title>
+				<g id="shape143-173" transform="translate(0.504726,-0.504197)">
+					<title>Sheet.143</title>
 					<rect x="0" y="586.91" width="8.36555" height="8.36555" class="st5"/>
 				</g>
-				<g id="shape169-171" transform="translate(1.72263,-4.18595)">
-					<title>Sheet.169</title>
+				<g id="shape144-176" transform="translate(1.72263,-4.18595)">
+					<title>Sheet.144</title>
 					<rect x="0" y="594.274" width="5.92762" height="1.00205" class="st6"/>
 				</g>
 			</g>
-			<g id="group170-174" transform="translate(23.4348,-8.33239)">
-				<title>Sheet.170</title>
-				<g id="shape171-175">
-					<title>Sheet.171</title>
+			<g id="group145-179" transform="translate(23.4348,-8.33239)">
+				<title>Sheet.145</title>
+				<g id="shape146-180">
+					<title>Sheet.146</title>
 					<rect x="0" y="585.902" width="9.37394" height="9.37394" class="st4"/>
 				</g>
-				<g id="shape172-177" transform="translate(0.504726,-0.503668)">
-					<title>Sheet.172</title>
+				<g id="shape147-182" transform="translate(0.504726,-0.503668)">
+					<title>Sheet.147</title>
 					<rect x="0" y="586.91" width="8.36555" height="8.36555" class="st5"/>
 				</g>
-				<g id="shape173-180" transform="translate(4.18595,-1.72263)">
-					<title>Sheet.173</title>
+				<g id="shape148-185" transform="translate(4.18595,-1.72263)">
+					<title>Sheet.148</title>
 					<rect x="0" y="589.347" width="1.00205" height="5.92868" class="st7"/>
 				</g>
-				<g id="shape174-182" transform="translate(1.72263,-4.18595)">
-					<title>Sheet.174</title>
+				<g id="shape149-187" transform="translate(1.72263,-4.18595)">
+					<title>Sheet.149</title>
 					<rect x="0" y="594.274" width="5.92762" height="1.00205" class="st7"/>
 				</g>
 			</g>
-			<g id="shape175-184" transform="translate(-3.25484,3.25484)">
-				<title>Sheet.175</title>
+			<g id="shape150-189" transform="translate(-3.25484,3.25484)">
+				<title>Sheet.150</title>
 			</g>
 		</g>
-		<g id="shape176-187" transform="translate(396.85,-85.0394)">
-			<title>Sheet.176</title>
+		<g id="shape151-192" transform="translate(442.167,-209.988)">
+			<title>Sheet.151</title>
 			<desc>xxx.svg, xxx.png</desc>
 			<rect x="0" y="575.276" width="93.6179" height="20" class="st2"/>
-			<text x="8.32" y="588.88" class="st15">xxx.svg, xxx.png</text>		</g>
-		<g id="shape177-190" transform="translate(269.291,-233.485)">
+			<text x="6.8" y="588.88" class="st15">xxx.svg, xxx.png</text>		</g>
+		<g id="shape152-195" transform="translate(358.406,-178.425)">
+			<title>Sheet.152</title>
+			<desc>images/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="20.56" y="588.88" class="st8">images/</text>		</g>
+		<g id="shape153-198" transform="translate(248.898,-237.524)">
 			<title>Document.244</title>
 			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st16"/>
 		</g>
-		<g id="group178-192" transform="translate(407.425,-44.8274)">
+		<g id="group154-200" transform="translate(457.032,-163.091)">
 			<title>Graphic (bitmap).229</title>
-			<g id="shape178-193">
+			<g id="shape154-201">
 				<rect x="28.1218" y="577.056" width="7.42137" height="10.4" class="st1"/>
 			</g>
-			<g id="shape179-195" transform="translate(4.4396,0)">
-				<title>Sheet.179</title>
+			<g id="shape155-203" transform="translate(4.4396,0)">
+				<title>Sheet.155</title>
 				<rect x="0" y="569.237" width="21.5991" height="26.0387" class="st2"/>
 				<svg viewBox="0 0 21.08 24.8" clip="rect(1.78286 1.78294 1.78286 1.78294)" height="29.6044" overflow="hidden" preserveAspectRatio="none" width="25.165" x="-1.78294" y="567.454">
 					<!-- GetDC -->
@@ -1033,52 +1044,90 @@
 				</svg>
 				<rect x="0" y="569.237" width="21.5991" height="26.0387" class="st2"/>
 			</g>
-			<g id="shape180-198">
-				<title>Sheet.180</title>
+			<g id="shape156-206">
+				<title>Sheet.156</title>
 				<rect x="0" y="569.237" width="26.0387" height="26.0387" class="st3"/>
 			</g>
-			<g id="group181-200" transform="translate(23.4348,-8.33239)">
-				<title>Sheet.181</title>
-				<g id="shape182-201">
-					<title>Sheet.182</title>
+			<g id="group157-208" transform="translate(23.4348,-8.33239)">
+				<title>Sheet.157</title>
+				<g id="shape158-209">
+					<title>Sheet.158</title>
 					<rect x="0" y="585.902" width="9.37394" height="9.37394" class="st4"/>
 				</g>
-				<g id="shape183-203" transform="translate(0.504726,-0.504197)">
-					<title>Sheet.183</title>
+				<g id="shape159-211" transform="translate(0.504726,-0.504197)">
+					<title>Sheet.159</title>
 					<rect x="0" y="586.91" width="8.36555" height="8.36555" class="st5"/>
 				</g>
-				<g id="shape184-206" transform="translate(1.72263,-4.18595)">
-					<title>Sheet.184</title>
+				<g id="shape160-214" transform="translate(1.72263,-4.18595)">
+					<title>Sheet.160</title>
 					<rect x="0" y="594.274" width="5.92762" height="1.00205" class="st6"/>
 				</g>
 			</g>
-			<g id="group185-209" transform="translate(23.4348,-8.33239)">
-				<title>Sheet.185</title>
-				<g id="shape186-210">
-					<title>Sheet.186</title>
+			<g id="group161-217" transform="translate(23.4348,-8.33239)">
+				<title>Sheet.161</title>
+				<g id="shape162-218">
+					<title>Sheet.162</title>
 					<rect x="0" y="585.902" width="9.37394" height="9.37394" class="st4"/>
 				</g>
-				<g id="shape187-212" transform="translate(0.504726,-0.503668)">
-					<title>Sheet.187</title>
+				<g id="shape163-220" transform="translate(0.504726,-0.503668)">
+					<title>Sheet.163</title>
 					<rect x="0" y="586.91" width="8.36555" height="8.36555" class="st5"/>
 				</g>
-				<g id="shape188-215" transform="translate(4.18595,-1.72263)">
-					<title>Sheet.188</title>
+				<g id="shape164-223" transform="translate(4.18595,-1.72263)">
+					<title>Sheet.164</title>
 					<rect x="0" y="589.347" width="1.00205" height="5.92868" class="st7"/>
 				</g>
-				<g id="shape189-217" transform="translate(1.72263,-4.18595)">
-					<title>Sheet.189</title>
+				<g id="shape165-225" transform="translate(1.72263,-4.18595)">
+					<title>Sheet.165</title>
 					<rect x="0" y="594.274" width="5.92762" height="1.00205" class="st7"/>
 				</g>
 			</g>
-			<g id="shape190-219" transform="translate(-3.25484,3.25484)">
-				<title>Sheet.190</title>
+			<g id="shape166-227" transform="translate(-3.25484,3.25484)">
+				<title>Sheet.166</title>
 			</g>
 		</g>
-		<g id="shape191-222" transform="translate(378.388,-26.8895)">
-			<title>Sheet.191</title>
+		<g id="shape167-230" transform="translate(427.994,-145.153)">
+			<title>Sheet.167</title>
 			<desc>xxx.png</desc>
 			<rect x="0" y="575.276" width="93.6179" height="20" class="st2"/>
-			<text x="28.37" y="588.88" class="st15">xxx.png</text>		</g>
+			<text x="27.65" y="588.88" class="st15">xxx.png</text>		</g>
+		<g id="shape168-233" transform="translate(173.929,-518.583)">
+			<title>Sheet.168</title>
+			<desc>UML/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="26.26" y="588.88" class="st8">UML/</text>		</g>
+		<g id="shape169-236" transform="translate(231.17,-109.213)">
+			<title>Multi-tree square.147</title>
+			<path d="M0 595.28 L40.44 595.28" class="st14"/>
+			<path d="M40.44 595.28 L40.44 646.74 L124.36 646.74" class="st14"/>
+			<path d="M40.44 595.28 L40.44 586.85 L118.06 586.85" class="st14"/>
+			<path d="M40.44 595.28 L29.47 595.28" class="st14"/>
+			<path d="M40.44 595.28 L25.22 595.28" class="st14"/>
+			<path d="M40.44 595.28 L26.26 595.28" class="st14"/>
+			<path d="M40.44 595.28 L26.26 595.28" class="st14"/>
+		</g>
+		<g id="shape170-245" transform="translate(226.772,-192.749)">
+			<title>Sheet.170</title>
+			<desc>master01-xxxx.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="9.2" y="581.86" class="st15">master01-xxxx.adoc</text>		</g>
+		<g id="shape171-248" transform="translate(226.772,-178.576)">
+			<title>Sheet.171</title>
+			<desc>master02-yyy.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="11.7" y="581.86" class="st15">master02-yyy.adoc</text>		</g>
+		<g id="shape172-251" transform="translate(232.148,-164.403)">
+			<title>Sheet.172</title>
+			<desc>master03-etc.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="12.62" y="581.86" class="st15">master03-etc.adoc</text>		</g>
+		<g id="shape173-254" transform="translate(263.071,-227.927)">
+			<title>Document.151</title>
+			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st16"/>
+		</g>
+		<g id="shape174-256" transform="translate(273.268,-236.702)">
+			<title>Document.217</title>
+			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st16"/>
+		</g>
 	</g>
 </svg>

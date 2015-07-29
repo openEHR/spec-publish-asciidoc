@@ -105,14 +105,14 @@
 		<g id="shape41-36" transform="translate(144.116,-234.845)">
 			<title>Multi-tree square.113</title>
 			<path d="M0 595.28 L56.69 595.28" class="st4"/>
-			<path d="M56.69 595.28 L56.69 773.43 L129.43 773.43" class="st4"/>
-			<path d="M56.69 595.28 L56.69 586.06 L117.46 586.06" class="st4"/>
+			<path d="M56.69 595.28 L56.69 720.91 L116.53 720.91" class="st4"/>
+			<path d="M56.69 595.28 L56.69 586.62 L201.71 586.62" class="st4"/>
 			<path d="M56.69 595.28 L56.69 595 L40.14 595" class="st4"/>
 			<path d="M56.69 595.28 L42.52 595.28" class="st4"/>
 			<path d="M56.69 595.28 L42.52 595.28" class="st4"/>
 			<path d="M56.69 595.28 L42.52 595.28" class="st4"/>
 		</g>
-		<g id="shape42-45" transform="translate(243.78,-209.483)">
+		<g id="shape42-45" transform="translate(226.772,-206.922)">
 			<title>Sheet.42</title>
 			<desc>master.adoc</desc>
 			<rect x="0" y="561.253" width="74.7002" height="34.0225" class="st2"/>
@@ -122,37 +122,37 @@
 			<desc>XXX/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="28.42" y="588.88" class="st3">XXX/</text>		</g>
-		<g id="shape44-51" transform="translate(255.118,-244.066)">
+		<g id="shape44-51" transform="translate(297.638,-244.066)">
 			<title>Multi-tree square.129</title>
 			<path d="M0 595.28 L63.41 595.28" class="st4"/>
-			<path d="M63.41 595.28 L63.41 646.74 L147.33 646.74" class="st4"/>
+			<path d="M63.41 595.28 L63.41 595.84 L48.19 595.84" class="st4"/>
 			<path d="M63.41 595.28 L63.41 587.13 L145.62 587.13" class="st4"/>
-			<path d="M63.41 595.28 L63.41 720.85 L146.83 720.85" class="st4"/>
-			<path d="M63.41 595.28 L63.41 786.9 L147.4 786.9" class="st4"/>
+			<path d="M63.41 595.28 L63.41 660.76 L147.97 660.76" class="st4"/>
+			<path d="M63.41 595.28 L63.41 595.84 L49.61 595.84" class="st4"/>
 			<path d="M63.41 595.28 L49.23 595.28" class="st4"/>
 			<path d="M63.41 595.28 L49.23 595.28" class="st4"/>
 		</g>
-		<g id="shape45-60" transform="translate(300.076,-250.728)">
+		<g id="shape45-60" transform="translate(253.158,-117.559)">
 			<title>Sheet.45</title>
 			<desc>classes/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="20.95" y="588.88" class="st3">classes/</text>		</g>
-		<g id="shape46-63" transform="translate(317.406,-192.598)">
+		<g id="shape46-63" transform="translate(261.472,-60.8661)">
 			<title>Sheet.46</title>
-			<desc>uml_diagrams/</desc>
+			<desc>diagrams/</desc>
 			<rect x="0" y="575.276" width="85.0394" height="20" class="st2"/>
-			<text x="5.56" y="588.88" class="st3">uml_diagrams/</text>		</g>
-		<g id="shape47-66" transform="translate(306.216,-117.559)">
+			<text x="17.87" y="588.88" class="st3">diagrams/</text>		</g>
+		<g id="shape47-66" transform="translate(350.042,-249.291)">
 			<title>Sheet.47</title>
 			<desc>diagrams/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="15.43" y="588.88" class="st3">diagrams/</text>		</g>
-		<g id="shape76-69" transform="translate(184.252,-56.6929)">
+		<g id="shape76-69" transform="translate(184.252,-113.386)">
 			<title>Sheet.76</title>
-			<desc>etc</desc>
+			<desc>UML/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
-			<text x="32.55" y="588.88" class="st3">etc</text>		</g>
-		<g id="group77-72" transform="translate(404.21,-111.754)">
+			<text x="26.26" y="588.88" class="st3">UML/</text>		</g>
+		<g id="group77-72" transform="translate(446.73,-236.702)">
 			<title>Graphic (vector).201</title>
 			<g id="shape77-73">
 				<rect x="35.1965" y="573.781" width="8.60049" height="10.4" class="st6"/>
@@ -336,7 +336,7 @@
 				<title>Sheet.89</title>
 			</g>
 		</g>
-		<g id="group90-109" transform="translate(425.888,-102.977)">
+		<g id="group90-109" transform="translate(468.407,-227.926)">
 			<title>Graphic (bitmap).214</title>
 			<g id="shape90-110">
 				<rect x="28.1218" y="577.056" width="7.42137" height="10.4" class="st6"/>
@@ -608,17 +608,17 @@
 				<title>Sheet.102</title>
 			</g>
 		</g>
-		<g id="shape103-139" transform="translate(396.85,-85.0394)">
+		<g id="shape103-139" transform="translate(439.37,-209.988)">
 			<title>Sheet.103</title>
 			<desc>xxx.svg, xxx.png</desc>
 			<rect x="0" y="575.276" width="93.6179" height="20" class="st2"/>
 			<text x="6.8" y="588.88" class="st5">xxx.svg, xxx.png</text>		</g>
-		<g id="shape104-142" transform="translate(302.514,-50.8661)">
+		<g id="shape104-142" transform="translate(358.406,-178.425)">
 			<title>Sheet.104</title>
 			<desc>images/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="20.56" y="588.88" class="st3">images/</text>		</g>
-		<g id="shape119-145" transform="translate(269.291,-233.485)">
+		<g id="shape119-145" transform="translate(248.898,-237.524)">
 			<title>Document.244</title>
 			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st12"/>
 		</g>
@@ -627,7 +627,7 @@
 			<desc>Content Creation - documents Author source documents for each...</desc>
 			<rect x="0" y="503.45" width="240.602" height="91.8261" class="st2"/>
 			<text x="4" y="519.96" class="st13">Content Creation - documents<tspan x="4" dy="1.2em" class="st14">Author source documents for each </tspan><tspan x="4" dy="1.2em" class="st14">specification XXX in Asciidoc </tspan><tspan x="4" dy="1.2em" class="st14">source text</tspan><tspan class="st14">, </tspan><tspan class="st14">diagrams using normal </tspan><tspan x="4" dy="1.2em" class="st14">tools</tspan><tspan class="st14">, </tspan><tspan class="st14">screen shots etc</tspan></text>		</g>
-		<g id="group132-158" transform="translate(407.425,-44.8274)">
+		<g id="group132-158" transform="translate(454.234,-163.091)">
 			<title>Graphic (bitmap).229</title>
 			<g id="shape132-159">
 				<rect x="28.1218" y="577.056" width="7.42137" height="10.4" class="st6"/>
@@ -899,7 +899,7 @@
 				<title>Sheet.144</title>
 			</g>
 		</g>
-		<g id="shape145-188" transform="translate(378.388,-26.8895)">
+		<g id="shape145-188" transform="translate(425.197,-145.153)">
 			<title>Sheet.145</title>
 			<desc>xxx.png</desc>
 			<rect x="0" y="575.276" width="93.6179" height="20" class="st2"/>
@@ -909,5 +909,38 @@
 			<desc>UML/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="26.26" y="588.88" class="st3">UML/</text>		</g>
+		<g id="shape147-194" transform="translate(231.17,-109.213)">
+			<title>Multi-tree square.147</title>
+			<path d="M0 595.28 L40.44 595.28" class="st4"/>
+			<path d="M40.44 595.28 L40.44 646.74 L124.36 646.74" class="st4"/>
+			<path d="M40.44 595.28 L40.44 586.85 L118.06 586.85" class="st4"/>
+			<path d="M40.44 595.28 L29.47 595.28" class="st4"/>
+			<path d="M40.44 595.28 L25.22 595.28" class="st4"/>
+			<path d="M40.44 595.28 L26.26 595.28" class="st4"/>
+			<path d="M40.44 595.28 L26.26 595.28" class="st4"/>
+		</g>
+		<g id="shape148-203" transform="translate(226.772,-192.749)">
+			<title>Sheet.148</title>
+			<desc>master01-xxxx.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="9.2" y="581.86" class="st5">master01-xxxx.adoc</text>		</g>
+		<g id="shape149-206" transform="translate(226.772,-178.576)">
+			<title>Sheet.149</title>
+			<desc>master02-yyy.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="11.7" y="581.86" class="st5">master02-yyy.adoc</text>		</g>
+		<g id="shape150-209" transform="translate(232.148,-164.403)">
+			<title>Sheet.150</title>
+			<desc>master03-etc.adoc</desc>
+			<rect x="0" y="561.253" width="118.273" height="34.0225" class="st2"/>
+			<text x="12.62" y="581.86" class="st5">master03-etc.adoc</text>		</g>
+		<g id="shape151-212" transform="translate(263.071,-227.927)">
+			<title>Document.151</title>
+			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st12"/>
+		</g>
+		<g id="shape217-214" transform="translate(273.268,-236.702)">
+			<title>Document.217</title>
+			<path d="M13.6 568.08 L20.39 574.88 L13.6 574.88 L13.6 568.08 ZM0 568.08 L0 595.28 L20.39 595.28 L20.39 574.88 L13.6&#xA;						 574.88 L13.6 568.08 L0 568.08 Z" class="st12"/>
+		</g>
 	</g>
 </svg>

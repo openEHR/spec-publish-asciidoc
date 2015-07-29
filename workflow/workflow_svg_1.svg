@@ -625,10 +625,10 @@
 		<g id="shape41-126" transform="translate(144.116,-234.845)">
 			<title>Multi-tree square.113</title>
 			<path d="M0 595.28 L56.69 595.28" class="st12"/>
-			<path d="M56.69 595.28 L56.69 773.43 L129.43 773.43" class="st12"/>
+			<path d="M56.69 595.28 L56.69 713.9 L125.18 713.9" class="st12"/>
 			<path d="M56.69 595.28 L56.69 586.06 L117.46 586.06" class="st12"/>
 			<path d="M56.69 595.28 L56.69 595 L40.14 595" class="st12"/>
-			<path d="M56.69 595.28 L42.52 595.28" class="st12"/>
+			<path d="M56.69 595.28 L56.69 773.43 L128.01 773.43" class="st12"/>
 			<path d="M56.69 595.28 L42.52 595.28" class="st12"/>
 			<path d="M56.69 595.28 L42.52 595.28" class="st12"/>
 		</g>
@@ -637,7 +637,7 @@
 			<desc>XXX/</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
 			<text x="28.42" y="588.88" class="st3">XXX/</text>		</g>
-		<g id="shape76-138" transform="translate(184.252,-56.6929)">
+		<g id="shape76-138" transform="translate(184.252,-120.394)">
 			<title>Sheet.76</title>
 			<desc>etc</desc>
 			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
@@ -910,5 +910,10 @@
 			<desc>PDF theme file</desc>
 			<rect x="0" y="549.99" width="43.797" height="45.2858" class="st2"/>
 			<text x="12.35" y="561.83" class="st4">PDF<tspan x="5.97" dy="1.2em" class="st5">theme</tspan><tspan x="14.33" dy="1.2em" class="st5">file</tspan></text>		</g>
+		<g id="shape147-191" transform="translate(184.252,-56.6929)">
+			<title>Sheet.147</title>
+			<desc>UML/</desc>
+			<rect x="0" y="575.276" width="80.1634" height="20" class="st2"/>
+			<text x="26.26" y="588.88" class="st3">UML/</text>		</g>
 	</g>
 </svg>
