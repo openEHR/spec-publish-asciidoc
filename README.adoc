@@ -81,6 +81,8 @@ You don't need to install this unless you actually want to change the openehr.cs
 
 The Pygments tool is a bit tricky to manage. The pygments.rb installation contains a static copy of an old snapshot of the main pygments Python project in its `vendor` directory. To achieve this, you will need to clone the original project. The best way to do this right now is to clone https://bitbucket.org/thomas_beale/pygments-maint[his Bitbucket] fork of it, which contains the Archetype language additions (enabling colourising of adl, cadl, odin syntax), and then copy the contents of that into the `vendor` area of the `pygments.rb` install (which will be wherever your Ruby gems are being installed).
 
+Note that the Bitbucket Pygments repository is a Mercury repository, not Git, so you have to use commands like `hg clone` etc. Any online Mercury tutorial will provide a guide to these commands. You will most likely only need `clone`, `status`, `ci` (check-in), `push` and `pull`.
+
 Then you will need to go to the root directory of the `pygments.rb` install area, and run `cache-lexers.rb` to update the lexers cache file..
 
 This is not ideal and hopefully, the `pygments.rb` project (which is just a Ruby wrapper around Pygments, which is in Python) will be updated to a better method or replaced within Asciidoctor proper.
