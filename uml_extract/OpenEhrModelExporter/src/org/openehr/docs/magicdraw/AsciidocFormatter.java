@@ -28,11 +28,17 @@ public class AsciidocFormatter implements Formatter {
     @Override
     public String newParagraph() {
         return " +" + System.lineSeparator();
+//        return System.lineSeparator() + System.lineSeparator();
     }
 
     @Override
     public String escapeLiteral(String value) {
         return value.replace("|", "&#124;").replace("*", "&#42;");
+    }
+
+    @Override
+    public String escapeColumnSeparator(String value) {
+        return value.replace("|", "&#124;");
     }
 
     @Override

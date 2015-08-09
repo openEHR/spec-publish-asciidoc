@@ -12,10 +12,9 @@ import java.util.stream.Stream;
 public abstract class AbstractInfoBuilder<T> {
     @SuppressWarnings("HardcodedLineSeparator")
     protected String getDocumentation(Element element, Formatter formatter) {
-        return String.join(formatter.newParagraph(), element.getOwnedComment().stream()
+        return String.join(System.lineSeparator(), element.getOwnedComment().stream()
                 .map(Comment::getBody)
                 .flatMap(body -> Stream.of(body.split("\n")))
-                .filter(line -> !line.trim().isEmpty())
                 .collect(Collectors.toList()));
     }
 

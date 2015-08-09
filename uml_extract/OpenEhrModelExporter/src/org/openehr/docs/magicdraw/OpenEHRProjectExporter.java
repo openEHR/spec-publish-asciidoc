@@ -92,43 +92,43 @@ public class OpenEHRProjectExporter {
 
             printWriter.println("[cols=\"^1,2,3\"]");
             printWriter.println("|===");
-            printWriter.println('|' + formatter.bold(classInfo.getType()));
-            printWriter.println(formatter.getClassBackgroundColour());
-            printWriter.println("2+^|" +
+            printWriter.println("h|" + formatter.bold(classInfo.getType()));
+//            printWriter.println(formatter.getClassBackgroundColour());
+            printWriter.println("2+^h|" +
                                         (classInfo.isAbstractClass()
                                                 ? formatter.italicBold(classInfo.getClassName() + " (abstract)")
                                                 : formatter.bold(classInfo.getClassName())));
             printWriter.println();
 
-            printWriter.println('|' + formatter.bold("Description"));
-            printWriter.println(formatter.getClassBackgroundColour());
+            printWriter.println("h|" + formatter.bold("Description"));
+//            printWriter.println(formatter.getClassBackgroundColour());
 
-            printWriter.println("2+|" + classInfo.getDocumentation());
-            printWriter.println(formatter.resetColour());
+            printWriter.println("2+a|" + formatter.escapeColumnSeparator(classInfo.getDocumentation()));
+//            printWriter.println(formatter.resetColour());
             printWriter.println();
 
             if (classInfo.getParentClassName() != null) {
-                printWriter.println('|' + formatter.bold("Inherit"));
-                printWriter.println(formatter.getClassBackgroundColour());
+                printWriter.println("h|" + formatter.bold("Inherit"));
+//                printWriter.println(formatter.getClassBackgroundColour());
                 printWriter.println("2+|" + classInfo.getParentClassName());
-                printWriter.println(formatter.resetColour());
+//                printWriter.println(formatter.resetColour());
                 printWriter.println();
             }
 
             if (!classInfo.getAttributes().isEmpty()) {
-                printWriter.println('|' + formatter.bold("Attributes"));
-                printWriter.println(formatter.getClassBackgroundColour());
-                printWriter.println("^|" + formatter.bold("Signature"));
-                printWriter.println("^|" + formatter.bold("Meaning"));
+                printWriter.println("h|" + formatter.bold("Attributes"));
+//                printWriter.println(formatter.getClassBackgroundColour());
+                printWriter.println("^h|" + formatter.bold("Signature"));
+                printWriter.println("^h|" + formatter.bold("Meaning"));
 
                 exportAttributes(classInfo, printWriter);
             }
 
             if (!classInfo.getFunctions().isEmpty()) {
-                printWriter.println('|' + formatter.bold("Functions"));
-                printWriter.println(formatter.getClassBackgroundColour());
-                printWriter.println("^|" + formatter.bold("Signature"));
-                printWriter.println("^|" + formatter.bold("Meaning"));
+                printWriter.println("h|" + formatter.bold("Functions"));
+//                printWriter.println(formatter.getClassBackgroundColour());
+                printWriter.println("^h|" + formatter.bold("Signature"));
+                printWriter.println("^h|" + formatter.bold("Meaning"));
             }
 
             if (!classInfo.getFunctions().isEmpty()) {
@@ -149,11 +149,11 @@ public class OpenEHRProjectExporter {
         String title = formatter.bold("Invariant");
         for (ConstraintInfo constraintInfo : classInfo.getConstraints()) {
             printWriter.println();
-            printWriter.println('|' + title);
-            printWriter.println(formatter.getClassBackgroundColour());
+            printWriter.println("h|" + formatter.escapeColumnSeparator(title));
+//            printWriter.println(formatter.getClassBackgroundColour());
 
-            printWriter.println("2+|" + constraintInfo.getDocumentation());
-            printWriter.println(formatter.resetColour());
+            printWriter.println("2+a|" + formatter.escapeColumnSeparator(constraintInfo.getDocumentation()));
+//            printWriter.println(formatter.resetColour());
             title = "";
         }
     }
@@ -161,24 +161,24 @@ public class OpenEHRProjectExporter {
     private void exportFunctions(ClassInfo classInfo, PrintWriter printWriter) {
         for (ClassAttributeInfo classAttributeInfo : classInfo.getFunctions()) {
             printWriter.println();
-            printWriter.println('|' + classAttributeInfo.getOccurences());
-            printWriter.println(formatter.getClassBackgroundColour());
+            printWriter.println("h|" + classAttributeInfo.getOccurences());
+//            printWriter.println(formatter.getClassBackgroundColour());
 
             printWriter.println('|' + classAttributeInfo.getName());
-            printWriter.println(formatter.resetColour());
-            printWriter.println('|' + classAttributeInfo.getDocumentation());
+//            printWriter.println(formatter.resetColour());
+            printWriter.println("a|" + formatter.escapeColumnSeparator(classAttributeInfo.getDocumentation()));
         }
     }
 
     private void exportAttributes(ClassInfo classInfo, PrintWriter printWriter) {
         for (ClassAttributeInfo classAttributeInfo : classInfo.getAttributes()) {
             printWriter.println();
-            printWriter.println('|' + formatter.bold(classAttributeInfo.getOccurences()));
-            printWriter.println(formatter.getClassBackgroundColour());
+            printWriter.println("h|" + formatter.bold(classAttributeInfo.getOccurences()));
+//            printWriter.println(formatter.getClassBackgroundColour());
 
             printWriter.println('|' + classAttributeInfo.getName());
-            printWriter.println(formatter.resetColour());
-            printWriter.println('|' + classAttributeInfo.getDocumentation());
+//            printWriter.println(formatter.resetColour());
+            printWriter.println("a|" + formatter.escapeColumnSeparator(classAttributeInfo.getDocumentation()));
         }
     }
 
