@@ -9,10 +9,8 @@ import java.util.List;
  * @author Bostjan Lah
  */
 public class EnumerationInfoBuilder extends AbstractInfoBuilder<Enumeration> {
-    private final Formatter formatter;
-
     public EnumerationInfoBuilder(Formatter formatter) {
-        this.formatter = formatter;
+        super(formatter);
     }
 
     @Override
@@ -20,10 +18,10 @@ public class EnumerationInfoBuilder extends AbstractInfoBuilder<Enumeration> {
         String className = element.getName();
         ClassInfo classInfo = new ClassInfo("Enumeration")
                 .setClassName(className)
-                .setDocumentation(getDocumentation(element, formatter));
+                .setDocumentation(getDocumentation(element, getFormatter()));
 
         if (element.hasOwnedLiteral()) {
-            addLiterals(classInfo.getAttributes(), element.getOwnedLiteral(), formatter);
+            addLiterals(classInfo.getAttributes(), element.getOwnedLiteral(), getFormatter());
         }
 
         return classInfo;

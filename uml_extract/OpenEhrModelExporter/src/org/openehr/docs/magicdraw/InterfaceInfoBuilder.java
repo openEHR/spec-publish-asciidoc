@@ -1,9 +1,9 @@
 package org.openehr.docs.magicdraw;
 
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Comment;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Constraint;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.LiteralString;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.NamedElement;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.OpaqueExpression;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Parameter;
@@ -12,36 +12,60 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.ValueSpecification;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Bostjan Lah
  */
-public abstract class AbstractInfoBuilder<T> {
+public class InterfaceInfoBuilder extends AbstractInfoBuilder<Class> {
     private final Formatter formatter;
 
-    protected AbstractInfoBuilder(Formatter formatter) {
+    public InterfaceInfoBuilder(Formatter formatter) {
         this.formatter = formatter;
     }
 
-    @SuppressWarnings("HardcodedLineSeparator")
-    protected String getDocumentation(Element element, Formatter formatter) {
-        return String.join(System.lineSeparator(), element.getOwnedComment().stream()
-                .map(Comment::getBody)
-                .flatMap(body -> Stream.of(body.split("\n")))
-                .collect(Collectors.toList()));
+    @Override
+    public ClassInfo build(Class element) {
+        String className = element.getName();
+        ClassInfo classInfo = new ClassInfo("Class")
+                .setClassName(className)
+                .setDocumentation(getDocumentation(element, formatter))
+                .setAbstractClass(element.isAbstract());
+
+        Set<String> superClassAttributes = new HashSet<>();
+        Set<String> superClassOperations = new HashSet<>();
+
+        if (element.hasSuperClass()) {
+            classInfo.setParentClassName(String.join(", ", element.getSuperClass().stream()
+                                            .map(NamedElement::getName)
+                                            .collect(Collectors.toList())));
+            getSuperClassData(element, superClassAttributes, superClassOperations);
+        }
+
+        if (element.hasOwnedAttribute()) {
+            addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
+        }
+        if (element.hasOwnedOperation()) {
+            addOperations(classInfo.getFunctions(), element.getOwnedOperation(), superClassOperations);
+        }
+
+        addConstraints(classInfo.getConstraints(), element.get_constraintOfConstrainedElement());
+
+        return classInfo;
     }
 
-    public abstract ClassInfo build(T element);
-
-    protected Formatter getFormatter() {
-        return formatter;
+    private void getSuperClassData(Class element, Set<String> superClassAttributes, Set<String> superClassOperations) {
+        for (Class superClass : element.getSuperClass()) {
+            superClassAttributes.addAll(superClass.getOwnedAttribute().stream().map(NamedElement::getName).collect(Collectors.toSet()));
+            superClassOperations.addAll(superClass.getOwnedOperation().stream().map(NamedElement::getName).collect(Collectors.toSet()));
+            getSuperClassData(superClass, superClassAttributes, superClassOperations);
+        }
     }
 
-    protected void addConstraints(List<ConstraintInfo> constraints, Collection<Constraint> constraintOfConstrainedElement) {
+    private void addConstraints(List<ConstraintInfo> constraints, Collection<Constraint> constraintOfConstrainedElement) {
         for (Constraint constraint : constraintOfConstrainedElement) {
             constraints.add(new ConstraintInfo().setDocumentation(formatConstraint(constraint)));
         }
@@ -65,7 +89,7 @@ public abstract class AbstractInfoBuilder<T> {
         return builder.toString();
     }
 
-    protected void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+    private void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
         properties.stream().filter(p -> !superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, false));
         properties.stream().filter(p -> superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, true));
     }
@@ -100,7 +124,7 @@ public abstract class AbstractInfoBuilder<T> {
 
     }
 
-    protected void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
+    private void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
         operations.stream().filter(op -> !superClassOperations.contains(op.getName())).forEach(
                 operation -> addOperation(attributes, operation, false));
         operations.stream().filter(op -> superClassOperations.contains(op.getName())).forEach(
@@ -124,7 +148,7 @@ public abstract class AbstractInfoBuilder<T> {
         attributes.add(classAttributeInfo);
     }
 
-    protected void addParameters(StringBuilder builder, List<Parameter> parameters) {
+    private void addParameters(StringBuilder builder, List<Parameter> parameters) {
         List<String> formattedParameters = new ArrayList<>();
         for (Parameter parameter : parameters) {
             String name = parameter.getName();

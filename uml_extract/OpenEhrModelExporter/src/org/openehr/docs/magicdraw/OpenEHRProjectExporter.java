@@ -4,6 +4,7 @@ import com.nomagic.magicdraw.core.Project;
 import com.nomagic.magicdraw.export.image.ImageExporter;
 import com.nomagic.magicdraw.uml.symbols.DiagramPresentationElement;
 import com.nomagic.uml2.ext.jmi.helpers.ModelHelper;
+import com.nomagic.uml2.ext.magicdraw.classes.mdinterfaces.Interface;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Enumeration;
 import org.openehr.docs.magicdraw.exception.OpenEhrExporterException;
@@ -54,6 +55,15 @@ public class OpenEHRProjectExporter {
                 .map(e -> (com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class)e)
                 .filter(cl -> cl.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
                 .forEach(cl -> exportClass(classInfoBuilder.build(cl), classesFolder));
+
+        Collection<? extends Element> umlInterfaces = ModelHelper.getElementsOfType(project.getModel(),
+                                                                                 new Class[]{Interface.class},
+                                                                                 true);
+        InterfaceInfoBuilder interfaceInfoBuilder = new InterfaceInfoBuilder(formatter);
+        umlInterfaces.stream()
+                .map(e -> (Interface)e)
+                .filter(cl -> cl.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .forEach(cl -> exportClass(interfaceInfoBuilder.build(cl), classesFolder));
 
         Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getModel(),
                                                                                       new Class[]{Enumeration.class},
