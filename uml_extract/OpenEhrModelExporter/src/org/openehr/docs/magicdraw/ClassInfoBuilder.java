@@ -35,15 +35,15 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
                 .setDocumentation(getDocumentation(element, formatter))
                 .setAbstractClass(element.isAbstract());
 
+        Set<String> superClassAttributes = new HashSet<>();
+        Set<String> superClassOperations = new HashSet<>();
+
         if (element.hasSuperClass()) {
             classInfo.setParentClassName(String.join(", ", element.getSuperClass().stream()
                                             .map(NamedElement::getName)
                                             .collect(Collectors.toList())));
+            getSuperClassData(element, superClassAttributes, superClassOperations);
         }
-
-        Set<String> superClassAttributes = new HashSet<>();
-        Set<String> superClassOperations = new HashSet<>();
-        getSuperClassData(element, superClassAttributes, superClassOperations);
 
         if (element.hasOwnedAttribute()) {
             addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
@@ -58,12 +58,10 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
     }
 
     private void getSuperClassData(Class element, Set<String> superClassAttributes, Set<String> superClassOperations) {
-        if (element.hasSuperClass()) {
-            for (Class superClass : element.getSuperClass()) {
-                superClassAttributes.addAll(superClass.getOwnedAttribute().stream().map(NamedElement::getName).collect(Collectors.toSet()));
-                superClassOperations.addAll(superClass.getOwnedOperation().stream().map(NamedElement::getName).collect(Collectors.toSet()));
-                getSuperClassData(superClass, superClassAttributes, superClassOperations);
-            }
+        for (Class superClass : element.getSuperClass()) {
+            superClassAttributes.addAll(superClass.getOwnedAttribute().stream().map(NamedElement::getName).collect(Collectors.toSet()));
+            superClassOperations.addAll(superClass.getOwnedOperation().stream().map(NamedElement::getName).collect(Collectors.toSet()));
+            getSuperClassData(superClass, superClassAttributes, superClassOperations);
         }
     }
 
