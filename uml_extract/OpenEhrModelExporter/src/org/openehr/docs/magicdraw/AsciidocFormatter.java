@@ -54,8 +54,12 @@ public class AsciidocFormatter implements Formatter {
     @Override
     public String normalizeLines(String doc) {
         StringBuilder classDoc = new StringBuilder();
+        boolean inLiteralBlock = false;
         for (String line : doc.split("\n")) {
-            classDoc.append(line.trim()).append('\n');
+            if (line.trim().startsWith("----")) {
+                inLiteralBlock = !inLiteralBlock;
+            }
+            classDoc.append(inLiteralBlock ? line : line.trim()).append('\n');
         }
         return classDoc.toString().trim();
     }
