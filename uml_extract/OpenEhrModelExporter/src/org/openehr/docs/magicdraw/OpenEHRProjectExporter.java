@@ -113,7 +113,7 @@ public class OpenEHRProjectExporter {
             printWriter.println("h|" + formatter.bold("Description"));
 //            printWriter.println(formatter.getClassBackgroundColour());
 
-            printWriter.println("2+a|" + formatter.escapeColumnSeparator(classInfo.getDocumentation()));
+            printWriter.println("2+a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classInfo.getDocumentation())));
 //            printWriter.println(formatter.resetColour());
             printWriter.println();
 
@@ -162,7 +162,7 @@ public class OpenEHRProjectExporter {
             printWriter.println("h|" + formatter.escapeColumnSeparator(title));
 //            printWriter.println(formatter.getClassBackgroundColour());
 
-            printWriter.println("2+a|" + formatter.escapeColumnSeparator(constraintInfo.getDocumentation()));
+            printWriter.println("2+a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(constraintInfo.getDocumentation())));
 //            printWriter.println(formatter.resetColour());
             title = "";
         }
@@ -176,7 +176,7 @@ public class OpenEHRProjectExporter {
 
             printWriter.println('|' + classAttributeInfo.getName());
 //            printWriter.println(formatter.resetColour());
-            printWriter.println("a|" + formatter.escapeColumnSeparator(classAttributeInfo.getDocumentation()));
+            printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
         }
     }
 
@@ -188,7 +188,8 @@ public class OpenEHRProjectExporter {
 
             printWriter.println('|' + classAttributeInfo.getName());
 //            printWriter.println(formatter.resetColour());
-            printWriter.println("a|" + formatter.escapeColumnSeparator(classAttributeInfo.getDocumentation()));
+
+            printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
         }
     }
 

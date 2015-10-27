@@ -19,4 +19,6 @@ public interface Formatter {
     String getClassBackgroundColour();
 
     String resetColour();
+
+    String normalizeLines(String doc);
 }

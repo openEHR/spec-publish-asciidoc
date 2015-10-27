@@ -50,4 +50,13 @@ public class AsciidocFormatter implements Formatter {
     public String resetColour() {
         return "{set:cellbgcolor!}";
     }
+
+    @Override
+    public String normalizeLines(String doc) {
+        StringBuilder classDoc = new StringBuilder();
+        for (String line : doc.split("\n")) {
+            classDoc.append(line.trim()).append('\n');
+        }
+        return classDoc.toString().trim();
+    }
 }
