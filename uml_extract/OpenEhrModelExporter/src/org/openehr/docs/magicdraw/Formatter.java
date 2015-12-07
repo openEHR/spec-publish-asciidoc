@@ -16,9 +16,5 @@ public interface Formatter {
 
     String escapeColumnSeparator(String value);
 
-    String getClassBackgroundColour();
-
-    String resetColour();
-
     String normalizeLines(String doc);
 }

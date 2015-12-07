@@ -23,20 +23,21 @@ import java.util.Collection;
  */
 public class OpenEHRProjectExporter {
     private static final String ADOC_FILE_EXTENSION = ".adoc";
-    private static final String OPENEHR_PACKAGE_NAME = "openehr";
-    
+
     private static final String DIAGRAMS_FOLDER = "diagrams";
     private static final String CLASSES_FOLDER = "classes";
 
     private final Formatter formatter = new AsciidocFormatter();
     private final String headingPrefix;
+    private final String rootPackageName;
 
-    public OpenEHRProjectExporter(int headingLevel) {
+    public OpenEHRProjectExporter(int headingLevel, String rootPackageName) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < headingLevel; i++) {
             builder.append('=');
         }
         headingPrefix = builder.toString();
+        this.rootPackageName = rootPackageName;
     }
 
     public void exportProject(File outputFolder, Project project) throws Exception {
@@ -53,7 +54,7 @@ public class OpenEHRProjectExporter {
         ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
         umlClasses.stream()
                 .map(e -> (com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class)e)
-                .filter(cl -> cl.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .filter(cl -> cl.getQualifiedName().contains(rootPackageName))
                 .forEach(cl -> exportClass(classInfoBuilder.build(cl), classesFolder));
 
         Collection<? extends Element> umlInterfaces = ModelHelper.getElementsOfType(project.getModel(),
@@ -62,7 +63,7 @@ public class OpenEHRProjectExporter {
         InterfaceInfoBuilder interfaceInfoBuilder = new InterfaceInfoBuilder(formatter);
         umlInterfaces.stream()
                 .map(e -> (Interface)e)
-                .filter(cl -> cl.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .filter(cl -> cl.getQualifiedName().contains(rootPackageName))
                 .forEach(cl -> exportClass(interfaceInfoBuilder.build(cl), classesFolder));
 
         Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getModel(),
@@ -72,7 +73,7 @@ public class OpenEHRProjectExporter {
         EnumerationInfoBuilder enumerationInfoBuilder = new EnumerationInfoBuilder(formatter);
         umlEnumerations.stream()
                 .map(e -> (Enumeration)e)
-                .filter(en -> en.getQualifiedName().contains(OPENEHR_PACKAGE_NAME))
+                .filter(en -> en.getQualifiedName().contains(rootPackageName))
                 .forEach(en -> exportClass(enumerationInfoBuilder.build(en), classesFolder));
 
         File diagramsFolder = new File(outputFolder, DIAGRAMS_FOLDER);
@@ -103,7 +104,6 @@ public class OpenEHRProjectExporter {
             printWriter.println("[cols=\"^1,2,3\"]");
             printWriter.println("|===");
             printWriter.println("h|" + formatter.bold(classInfo.getType()));
-//            printWriter.println(formatter.getClassBackgroundColour());
             printWriter.println("2+^h|" +
                                         (classInfo.isAbstractClass()
                                                 ? formatter.italicBold(classInfo.getClassName() + " (abstract)")
@@ -111,23 +111,26 @@ public class OpenEHRProjectExporter {
             printWriter.println();
 
             printWriter.println("h|" + formatter.bold("Description"));
-//            printWriter.println(formatter.getClassBackgroundColour());
 
             printWriter.println("2+a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classInfo.getDocumentation())));
-//            printWriter.println(formatter.resetColour());
             printWriter.println();
 
             if (classInfo.getParentClassName() != null) {
                 printWriter.println("h|" + formatter.bold("Inherit"));
-//                printWriter.println(formatter.getClassBackgroundColour());
                 printWriter.println("2+|" + classInfo.getParentClassName());
-//                printWriter.println(formatter.resetColour());
                 printWriter.println();
+            }
+
+            if (!classInfo.getConstants().isEmpty()) {
+                printWriter.println("h|" + formatter.bold("Constants"));
+                printWriter.println("^h|" + formatter.bold("Signature"));
+                printWriter.println("^h|" + formatter.bold("Meaning"));
+
+                exportConstants(classInfo, printWriter);
             }
 
             if (!classInfo.getAttributes().isEmpty()) {
                 printWriter.println("h|" + formatter.bold("Attributes"));
-//                printWriter.println(formatter.getClassBackgroundColour());
                 printWriter.println("^h|" + formatter.bold("Signature"));
                 printWriter.println("^h|" + formatter.bold("Meaning"));
 
@@ -136,7 +139,6 @@ public class OpenEHRProjectExporter {
 
             if (!classInfo.getFunctions().isEmpty()) {
                 printWriter.println("h|" + formatter.bold("Functions"));
-//                printWriter.println(formatter.getClassBackgroundColour());
                 printWriter.println("^h|" + formatter.bold("Signature"));
                 printWriter.println("^h|" + formatter.bold("Meaning"));
             }
@@ -160,10 +162,8 @@ public class OpenEHRProjectExporter {
         for (ConstraintInfo constraintInfo : classInfo.getConstraints()) {
             printWriter.println();
             printWriter.println("h|" + formatter.escapeColumnSeparator(title));
-//            printWriter.println(formatter.getClassBackgroundColour());
 
             printWriter.println("2+a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(constraintInfo.getDocumentation())));
-//            printWriter.println(formatter.resetColour());
             title = "";
         }
     }
@@ -172,25 +172,29 @@ public class OpenEHRProjectExporter {
         for (ClassAttributeInfo classAttributeInfo : classInfo.getFunctions()) {
             printWriter.println();
             printWriter.println("h|" + classAttributeInfo.getOccurences());
-//            printWriter.println(formatter.getClassBackgroundColour());
 
             printWriter.println('|' + classAttributeInfo.getName());
-//            printWriter.println(formatter.resetColour());
             printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
         }
     }
 
     private void exportAttributes(ClassInfo classInfo, PrintWriter printWriter) {
         for (ClassAttributeInfo classAttributeInfo : classInfo.getAttributes()) {
-            printWriter.println();
-            printWriter.println("h|" + formatter.bold(classAttributeInfo.getOccurences()));
-//            printWriter.println(formatter.getClassBackgroundColour());
-
-            printWriter.println('|' + classAttributeInfo.getName());
-//            printWriter.println(formatter.resetColour());
-
-            printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
+            exportAttribute(printWriter, classAttributeInfo);
         }
+    }
+
+    private void exportConstants(ClassInfo classInfo, PrintWriter printWriter) {
+        for (ClassAttributeInfo classAttributeInfo : classInfo.getConstants()) {
+            exportAttribute(printWriter, classAttributeInfo);
+        }
+    }
+
+    private void exportAttribute(PrintWriter printWriter, ClassAttributeInfo classAttributeInfo) {
+        printWriter.println();
+        printWriter.println("h|" + formatter.bold(classAttributeInfo.getOccurences()));
+        printWriter.println('|' + classAttributeInfo.getName());
+        printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
     }
 
     private String fileName(String className) {

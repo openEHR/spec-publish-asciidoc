@@ -28,7 +28,6 @@ public class AsciidocFormatter implements Formatter {
     @Override
     public String newParagraph() {
         return " +" + System.lineSeparator();
-//        return System.lineSeparator() + System.lineSeparator();
     }
 
     @Override
@@ -39,16 +38,6 @@ public class AsciidocFormatter implements Formatter {
     @Override
     public String escapeColumnSeparator(String value) {
         return value.replace("|", "&#124;");
-    }
-
-    @Override
-    public String getClassBackgroundColour() {
-        return "{set:cellbgcolor:lightblue}";
-    }
-
-    @Override
-    public String resetColour() {
-        return "{set:cellbgcolor!}";
     }
 
     @Override

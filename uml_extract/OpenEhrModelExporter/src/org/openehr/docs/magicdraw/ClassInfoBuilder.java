@@ -35,6 +35,7 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
 
         if (element.hasOwnedAttribute()) {
             addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
+            addConstants(classInfo.getConstants(), element.getOwnedAttribute(), superClassAttributes);
         }
         if (element.hasOwnedOperation()) {
             addOperations(classInfo.getFunctions(), element.getOwnedOperation(), superClassOperations);

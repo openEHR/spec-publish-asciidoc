@@ -21,6 +21,7 @@ import java.util.Iterator;
 @SuppressWarnings("UseOfSystemOutOrSystemErr")
 public class AsciidocCommandLine extends CommandLine {
     private int headingLevel;
+    private String rootPackageName = "openehr";
     private File projectFile;
     private File outFolder;
     private boolean helpOnly;
@@ -52,7 +53,7 @@ public class AsciidocCommandLine extends CommandLine {
         projectsManager.loadProject(projectDescriptor, true);
         Project project = projectsManager.getActiveProject();
 
-        OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(headingLevel);
+        OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(headingLevel, rootPackageName);
         try {
             exporter.exportProject(outFolder, project);
             return (byte)0;
@@ -82,11 +83,15 @@ public class AsciidocCommandLine extends CommandLine {
                     }
                     outFolder = outputPath.toFile();
                     break;
+                case "-r":
+                    rootPackageName = getParameterValue(iterator, "-r");
+                    break;
                 case "-?":
                 case "-h":
-                    System.out.println("Usage: uml_generate [-o output_folder] [-l heading_level] <project file>");
+                    System.out.println("Usage: uml_generate [-o output_folder] [-l heading_level] [-r root_package_name] <project file>");
                     System.out.println("       -o: output folder (default = current folder)");
                     System.out.println("       -l: class headings level (default = 3)");
+                    System.out.println("       -r: root package name to export (default = openehr)");
                     helpOnly = true;
                     break;
                 default:

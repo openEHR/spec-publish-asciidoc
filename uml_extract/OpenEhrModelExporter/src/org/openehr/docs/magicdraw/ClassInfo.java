@@ -14,6 +14,7 @@ public class ClassInfo {
     private boolean abstractClass;
 
     private final List<ClassAttributeInfo> attributes = new ArrayList<>();
+    private final List<ClassAttributeInfo> constants = new ArrayList<>();
     private final List<ClassAttributeInfo> functions = new ArrayList<>();
     private final List<ConstraintInfo> constraints = new ArrayList<>();
 
@@ -54,6 +55,10 @@ public class ClassInfo {
 
     public List<ClassAttributeInfo> getAttributes() {
         return attributes;
+    }
+
+    public List<ClassAttributeInfo> getConstants() {
+        return constants;
     }
 
     public List<ClassAttributeInfo> getFunctions() {

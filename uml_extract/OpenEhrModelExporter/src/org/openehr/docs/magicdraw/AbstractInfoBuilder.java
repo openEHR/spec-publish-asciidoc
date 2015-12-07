@@ -8,6 +8,7 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.OpaqueExpression;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Parameter;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.StructuralFeature;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.ValueSpecification;
 
 import java.util.ArrayList;
@@ -66,8 +67,25 @@ public abstract class AbstractInfoBuilder<T> {
     }
 
     protected void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
-        properties.stream().filter(p -> !superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, false));
-        properties.stream().filter(p -> superClassAttributes.contains(p.getName())).forEach(p -> addAttribute(attributes, p, true));
+        properties.stream()
+                .filter(p -> !superClassAttributes.contains(p.getName()))
+                .filter(p -> !p.isReadOnly())
+                .forEach(p -> addAttribute(attributes, p, false));
+        properties.stream()
+                .filter(p -> superClassAttributes.contains(p.getName()))
+                .filter(p -> !p.isReadOnly())
+                .forEach(p -> addAttribute(attributes, p, true));
+    }
+
+    protected void addConstants(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+        properties.stream()
+                .filter(p -> !superClassAttributes.contains(p.getName()))
+                .filter(StructuralFeature::isReadOnly)
+                .forEach(p -> addAttribute(attributes, p, false));
+        properties.stream()
+                .filter(p -> superClassAttributes.contains(p.getName()))
+                .filter(StructuralFeature::isReadOnly)
+                .forEach(p -> addAttribute(attributes, p, true));
     }
 
     private void addAttribute(List<ClassAttributeInfo> attributes, Property property, boolean redefined) {

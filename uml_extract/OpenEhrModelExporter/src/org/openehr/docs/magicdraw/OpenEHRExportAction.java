@@ -31,7 +31,7 @@ class OpenEHRExportAction extends MDAction {
         File outputFolder = chooseFolder();
         if (outputFolder != null) {
             try {
-                OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(3);
+                OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(3, "openehr");
                 exporter.exportProject(outputFolder, Application.getInstance().getProject());
 
                 JOptionPane.showMessageDialog(MDDialogParentProvider.getProvider().getDialogParent(), "Export complete.", "Export",
