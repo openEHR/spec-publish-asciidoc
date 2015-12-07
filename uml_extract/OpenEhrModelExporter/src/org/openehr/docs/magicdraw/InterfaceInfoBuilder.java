@@ -20,6 +20,7 @@ public class InterfaceInfoBuilder extends AbstractInfoBuilder<Interface> {
                 .setClassName(className)
                 .setDocumentation(getDocumentation(element, getFormatter()))
                 .setAbstractClass(element.isAbstract());
+        setHierarchy(element.getQualifiedName(), classInfo);
 
         Set<String> superClassAttributes = new HashSet<>();
         Set<String> superClassOperations = new HashSet<>();

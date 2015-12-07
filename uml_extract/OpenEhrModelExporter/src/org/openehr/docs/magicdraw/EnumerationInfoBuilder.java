@@ -19,6 +19,7 @@ public class EnumerationInfoBuilder extends AbstractInfoBuilder<Enumeration> {
         ClassInfo classInfo = new ClassInfo("Enumeration")
                 .setClassName(className)
                 .setDocumentation(getDocumentation(element, getFormatter()));
+        setHierarchy(element.getQualifiedName(), classInfo);
 
         if (element.hasOwnedLiteral()) {
             addLiterals(classInfo.getAttributes(), element.getOwnedLiteral(), getFormatter());

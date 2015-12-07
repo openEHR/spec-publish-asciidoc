@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Action which displays its name.
@@ -31,7 +33,9 @@ class OpenEHRExportAction extends MDAction {
         File outputFolder = chooseFolder();
         if (outputFolder != null) {
             try {
-                OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(3, "openehr");
+                Set<String> rootPackageNames = new HashSet<>();
+                rootPackageNames.add("openehr");
+                OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(3, rootPackageNames, null);
                 exporter.exportProject(outputFolder, Application.getInstance().getProject());
 
                 JOptionPane.showMessageDialog(MDDialogParentProvider.getProvider().getDialogParent(), "Export complete.", "Export",

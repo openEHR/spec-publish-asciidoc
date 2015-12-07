@@ -7,6 +7,7 @@ import com.nomagic.uml2.ext.jmi.helpers.ModelHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdinterfaces.Interface;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Enumeration;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.NamedElement;
 import org.openehr.docs.magicdraw.exception.OpenEhrExporterException;
 
 import java.io.File;
@@ -14,7 +15,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Action which displays its name.
@@ -26,18 +32,23 @@ public class OpenEHRProjectExporter {
 
     private static final String DIAGRAMS_FOLDER = "diagrams";
     private static final String CLASSES_FOLDER = "classes";
+    // component, release, html file, subref classname + type, description
+    private static final String INDEX_LINK_FORMAT = "http://www.openehr.org/releases/%s/%s/%s.html#_%s_%s[%s]";
 
     private final Formatter formatter = new AsciidocFormatter();
     private final String headingPrefix;
-    private final String rootPackageName;
+    private final Set<String> rootPackageNames;
 
-    public OpenEHRProjectExporter(int headingLevel, String rootPackageName) {
+    private final String indexRelease;
+
+    public OpenEHRProjectExporter(int headingLevel, Set<String> rootPackageNames, String indexRelease) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < headingLevel; i++) {
             builder.append('=');
         }
         headingPrefix = builder.toString();
-        this.rootPackageName = rootPackageName;
+        this.rootPackageNames = rootPackageNames;
+        this.indexRelease = indexRelease;
     }
 
     public void exportProject(File outputFolder, Project project) throws Exception {
@@ -48,33 +59,43 @@ public class OpenEHRProjectExporter {
             }
         }
 
+        ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
         Collection<? extends Element> umlClasses = ModelHelper.getElementsOfType(project.getModel(),
                                                                                  new Class[]{com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class.class},
                                                                                  true);
-        ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
-        umlClasses.stream()
+        List<ClassInfo> classes = umlClasses.stream()
                 .map(e -> (com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class)e)
-                .filter(cl -> cl.getQualifiedName().contains(rootPackageName))
-                .forEach(cl -> exportClass(classInfoBuilder.build(cl), classesFolder));
+                .filter(this::matchesRootPackages)
+                .map(classInfoBuilder::build)
+                .collect(Collectors.toList());
+        classes.forEach(cl -> exportClass(cl, classesFolder));
 
         Collection<? extends Element> umlInterfaces = ModelHelper.getElementsOfType(project.getModel(),
-                                                                                 new Class[]{Interface.class},
-                                                                                 true);
+                                                                                    new Class[]{Interface.class},
+                                                                                    true);
         InterfaceInfoBuilder interfaceInfoBuilder = new InterfaceInfoBuilder(formatter);
-        umlInterfaces.stream()
+        List<ClassInfo> interfaces = umlInterfaces.stream()
                 .map(e -> (Interface)e)
-                .filter(cl -> cl.getQualifiedName().contains(rootPackageName))
-                .forEach(cl -> exportClass(interfaceInfoBuilder.build(cl), classesFolder));
+                .filter(this::matchesRootPackages)
+                .map(interfaceInfoBuilder::build)
+                .collect(Collectors.toList());
+        interfaces.forEach(cl -> exportClass(cl, classesFolder));
 
         Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getModel(),
                                                                                       new Class[]{Enumeration.class},
                                                                                       true);
 
         EnumerationInfoBuilder enumerationInfoBuilder = new EnumerationInfoBuilder(formatter);
-        umlEnumerations.stream()
+        List<ClassInfo> enumerations = umlEnumerations.stream()
                 .map(e -> (Enumeration)e)
-                .filter(en -> en.getQualifiedName().contains(rootPackageName))
-                .forEach(en -> exportClass(enumerationInfoBuilder.build(en), classesFolder));
+                .filter(this::matchesRootPackages)
+                .map(enumerationInfoBuilder::build)
+                .collect(Collectors.toList());
+        enumerations.forEach(en -> exportClass(en, classesFolder));
+
+        if (indexRelease != null) {
+            generateIndex(outputFolder, classes, interfaces, enumerations);
+        }
 
         File diagramsFolder = new File(outputFolder, DIAGRAMS_FOLDER);
         if (!diagramsFolder.exists()) {
@@ -83,6 +104,10 @@ public class OpenEHRProjectExporter {
             }
         }
         project.getDiagrams().stream().forEach(d -> exportDiagram(diagramsFolder, d));
+    }
+
+    private boolean matchesRootPackages(NamedElement namedElement) {
+        return rootPackageNames.stream().filter(rn -> namedElement.getQualifiedName().contains(rn)).findFirst().isPresent();
     }
 
     private void exportDiagram(File outputFolder, DiagramPresentationElement diagramPresentationElement) {
@@ -165,6 +190,49 @@ public class OpenEHRProjectExporter {
 
             printWriter.println("2+a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(constraintInfo.getDocumentation())));
             title = "";
+        }
+    }
+
+    private void generateIndex(File targetFolder, List<ClassInfo> classes, List<ClassInfo> interfaces, List<ClassInfo> enumerations) {
+        List<ClassInfo> allTypes = new ArrayList<>(classes.size() + interfaces.size() + enumerations.size());
+        allTypes.addAll(classes);
+        allTypes.addAll(interfaces);
+        allTypes.addAll(enumerations);
+
+        Collections.sort(allTypes);
+
+        try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(
+                targetFolder.toPath().resolve("class_index" + ADOC_FILE_EXTENSION), Charset.forName("UTF-8")))) {
+            String indexComponent = "";
+            String indexPackage = "";
+            String indexSubPackage = "";
+
+            for (ClassInfo classInfo : allTypes) {
+                if (!"BASE".equals(classInfo.getIndexComponent()) && !"T".equals(classInfo.getClassName())) {
+                    if (!indexComponent.equals(classInfo.getIndexComponent())) {
+                        printWriter.println("== Component " + classInfo.getIndexComponent());
+                        printWriter.println();
+                        indexComponent = classInfo.getIndexComponent();
+                    }
+                    if (!indexPackage.equals(classInfo.getIndexPackage())) {
+                        printWriter.println("=== Model " + classInfo.getIndexPackage());
+                        printWriter.println();
+                        indexPackage = classInfo.getIndexPackage();
+                    }
+                    if (!indexSubPackage.equals(classInfo.getIndexSubPackage())) {
+                        printWriter.println("==== Package " + classInfo.getIndexSubPackage());
+                        printWriter.println();
+                        indexSubPackage = classInfo.getIndexSubPackage();
+                    }
+                    printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease, indexSubPackage, // base link
+                                       classInfo.getClassName().toLowerCase(), classInfo.getType().toLowerCase(), // #href
+                                       classInfo.getType() + ' ' + classInfo.getClassName()); // [descr]
+                    printWriter.println();
+                    printWriter.println();
+                }
+            }
+        } catch (IOException e) {
+            throw new OpenEhrExporterException(e);
         }
     }
 

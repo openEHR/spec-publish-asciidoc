@@ -13,7 +13,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @author Bostjan Lah
@@ -21,7 +25,8 @@ import java.util.Iterator;
 @SuppressWarnings("UseOfSystemOutOrSystemErr")
 public class AsciidocCommandLine extends CommandLine {
     private int headingLevel;
-    private String rootPackageName = "openehr";
+    private final Set<String> rootPackageName = new HashSet<>();
+    private String indexRelease;
     private File projectFile;
     private File outFolder;
     private boolean helpOnly;
@@ -53,7 +58,7 @@ public class AsciidocCommandLine extends CommandLine {
         projectsManager.loadProject(projectDescriptor, true);
         Project project = projectsManager.getActiveProject();
 
-        OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(headingLevel, rootPackageName);
+        OpenEHRProjectExporter exporter = new OpenEHRProjectExporter(headingLevel, rootPackageName, indexRelease);
         try {
             exporter.exportProject(outFolder, project);
             return (byte)0;
@@ -84,14 +89,18 @@ public class AsciidocCommandLine extends CommandLine {
                     outFolder = outputPath.toFile();
                     break;
                 case "-r":
-                    rootPackageName = getParameterValue(iterator, "-r");
+                    rootPackageName.addAll(Pattern.compile(",").splitAsStream(getParameterValue(iterator, "-r")).collect(Collectors.toList()));
+                    break;
+                case "-i":
+                    indexRelease = getParameterValue(iterator, "-i");
                     break;
                 case "-?":
                 case "-h":
-                    System.out.println("Usage: uml_generate [-o output_folder] [-l heading_level] [-r root_package_name] <project file>");
+                    System.out.println("Usage: uml_generate [-o output_folder] [-l heading_level] [-r root_package_name] [-i index_release] <project file>");
                     System.out.println("       -o: output folder (default = current folder)");
                     System.out.println("       -l: class headings level (default = 3)");
                     System.out.println("       -r: root package name to export (default = openehr)");
+                    System.out.println("       -i: generate an index against a specific release, for example Release-1.0.3");
                     helpOnly = true;
                     break;
                 default:
@@ -111,6 +120,9 @@ public class AsciidocCommandLine extends CommandLine {
             }
             if (outFolder == null) {
                 outFolder = new File(".");
+            }
+            if (rootPackageName.isEmpty()) {
+                rootPackageName.add("openehr");
             }
         }
     }

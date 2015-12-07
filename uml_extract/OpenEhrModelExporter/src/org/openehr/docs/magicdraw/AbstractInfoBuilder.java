@@ -164,4 +164,18 @@ public abstract class AbstractInfoBuilder<T> {
             builder.append(" +").append(System.lineSeparator()).append(formatConstraint(constraint));
         }
     }
+
+    protected void setHierarchy(String qualifiedName, ClassInfo classInfo) {
+        // this is hard-coded for openehr atm
+        String[] parts = qualifiedName.split("::");
+        if (parts.length > 4) {
+            classInfo.setIndexComponent(parts[0]);
+            classInfo.setIndexSubPackage(parts[4]);
+            StringBuilder indexPackage = new StringBuilder();
+            for (int i = 1; i < 4; i++) {
+                indexPackage.append('.').append(parts[i]);
+            }
+            classInfo.setIndexPackage(indexPackage.substring(1));
+        }
+    }
 }
