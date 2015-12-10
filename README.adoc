@@ -75,7 +75,7 @@ The http://asciidoctor.org/[guidance on this page] pretty much covers it.
 Pygments::
 This supports code highlighting in the generated output. See http://asciidoctor.org/docs/user-manual/#pygments[here].
 Asciidoctor-stylesheet-factory::
-You don't need to install this unless you actually want to change the openehr.css or build new stylesheets. See https://github.com/asciidoctor/asciidoctor-stylesheet-factory[here].
+You don't need to install this unless you actually want to change the openehr.css or build new stylesheets. See https://github.com/openehr/asciidoctor-stylesheet-factory[openEHR fork of asciidoctor repo]. The openEHR `.scss` files are in `sass` and `sass/settings`. Use `compass compile` on command line at root of repo to regenerate.
 
 === Pygments adjustments
 
@@ -122,9 +122,9 @@ The following commands can be used to generate the HTML and PDF outputs:
 
 [source,shell]
 ----------
-$ ./publish.sh -l  # use a repo-local copy of the 'resources' directory, containing CSS files
+$ ./publish.sh -r  # use the standard remote CSS files
 
-$ ./publish.sh     # eventually this will be the normal method, but for now doesn't locate CSS files properly
+$ ./publish.sh     # use repo-local copy of CSS files
 
 $ ./publish.sh -p  # generate PDF as well - takes time
 
