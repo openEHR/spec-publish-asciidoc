@@ -209,7 +209,7 @@ public class OpenEHRProjectExporter {
             String indexSubPackage = "";
 
             for (ClassInfo classInfo : allTypes) {
-                if (!"BASE".equals(classInfo.getIndexComponent()) && !"T".equals(classInfo.getClassName())) {
+                if (!"BASE".equals(classInfo.getIndexComponent()) && !"T".equals(classInfo.getClassName()) && !classInfo.getClassName().startsWith("DV_INTERVAL<")) {
                     if (!indexComponent.equals(classInfo.getIndexComponent())) {
                         printWriter.println();
                         printWriter.println("== Component " + classInfo.getIndexComponent());
