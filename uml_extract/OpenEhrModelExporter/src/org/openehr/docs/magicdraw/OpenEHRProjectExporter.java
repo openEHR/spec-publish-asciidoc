@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,7 +34,7 @@ public class OpenEHRProjectExporter {
     private static final String DIAGRAMS_FOLDER = "diagrams";
     private static final String CLASSES_FOLDER = "classes";
     // component, release, html file, subref classname + type, description
-    private static final String INDEX_LINK_FORMAT = "http://www.openehr.org/releases/%s/%s/%s.html#_%s_%s[%s]";
+    private static final String INDEX_LINK_FORMAT = "[.xcode]\n* http://www.openehr.org/releases/%s/%s/%s.html#_%s_%s[%s]";
 
     private final Formatter formatter = new AsciidocFormatter();
     private final String headingPrefix;
@@ -201,8 +202,8 @@ public class OpenEHRProjectExporter {
 
         Collections.sort(allTypes);
 
-        try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(
-                targetFolder.toPath().resolve("class_index" + ADOC_FILE_EXTENSION), Charset.forName("UTF-8")))) {
+        Path targetPath = targetFolder.toPath().resolve("class_index" + ADOC_FILE_EXTENSION);
+        try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(targetPath, Charset.forName("UTF-8")))) {
             String indexComponent = "";
             String indexPackage = "";
             String indexSubPackage = "";
@@ -210,30 +211,40 @@ public class OpenEHRProjectExporter {
             for (ClassInfo classInfo : allTypes) {
                 if (!"BASE".equals(classInfo.getIndexComponent()) && !"T".equals(classInfo.getClassName())) {
                     if (!indexComponent.equals(classInfo.getIndexComponent())) {
-                        printWriter.println("== Component " + classInfo.getIndexComponent());
                         printWriter.println();
+                        printWriter.println("== Component " + classInfo.getIndexComponent());
                         indexComponent = classInfo.getIndexComponent();
                     }
                     if (!indexPackage.equals(classInfo.getIndexPackage())) {
-                        printWriter.println("=== Model " + classInfo.getIndexPackage());
                         printWriter.println();
+                        printWriter.println("=== Model " + classInfo.getIndexPackage());
                         indexPackage = classInfo.getIndexPackage();
                     }
                     if (!indexSubPackage.equals(classInfo.getIndexSubPackage())) {
+                        printWriter.println();
                         printWriter.println("==== Package " + classInfo.getIndexSubPackage());
                         printWriter.println();
                         indexSubPackage = classInfo.getIndexSubPackage();
                     }
-                    printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease, indexSubPackage, // base link
+                    printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease, convertToHtmlName(indexSubPackage), // base link
                                        classInfo.getClassName().toLowerCase(), classInfo.getType().toLowerCase(), // #href
-                                       classInfo.getType() + ' ' + classInfo.getClassName()); // [descr]
-                    printWriter.println();
+                                       classInfo.getClassName()); // [descr]
                     printWriter.println();
                 }
             }
         } catch (IOException e) {
-            throw new OpenEhrExporterException(e);
+            throw new OpenEhrExporterException("Unable to write to " + targetPath + '!', e);
         }
+    }
+
+    private String convertToHtmlName(String indexSubPackage) {
+        if ("composition".equals(indexSubPackage)) {
+            return "ehr";
+        }
+        if ("base".equals(indexSubPackage)) {
+            return "support";
+        }
+        return indexSubPackage;
     }
 
     private void exportFunctions(ClassInfo classInfo, PrintWriter printWriter) {
