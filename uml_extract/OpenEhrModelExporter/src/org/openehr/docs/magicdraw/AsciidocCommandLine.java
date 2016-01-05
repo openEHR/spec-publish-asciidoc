@@ -31,23 +31,6 @@ public class AsciidocCommandLine extends CommandLine {
     private File outFolder;
     private boolean helpOnly;
 
-    @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    public static void main(String[] args) {
-        try {
-            AsciidocCommandLine asciidocCommandLine = new AsciidocCommandLine(args);
-            if (!asciidocCommandLine.isHelpOnly()) {
-                System.out.println("Exporting " + asciidocCommandLine.getProjectFile());
-                asciidocCommandLine.launch(args);
-            }
-        } catch (OpenEhrExporterException e) {
-            System.err.println("Unable to export project: " + e.getMessage());
-        }
-    }
-
-    public AsciidocCommandLine(String[] args) {
-        parseCmdLine(args);
-    }
-
     @Override
     protected byte execute() {
         ProjectDescriptor projectDescriptor = ProjectDescriptorsFactory.createProjectDescriptor(projectFile.toURI());
@@ -67,8 +50,9 @@ public class AsciidocCommandLine extends CommandLine {
         }
     }
 
+    @Override
     @SuppressWarnings({"OverlyComplexMethod", "SwitchStatementDensity"})
-    private void parseCmdLine(String[] cmdLineArgs) {
+    protected void parseArgs(String[] cmdLineArgs) {
         for (Iterator<String> iterator = Arrays.asList(cmdLineArgs).iterator(); iterator.hasNext(); ) {
             String arg = iterator.next();
             switch (arg) {
@@ -133,13 +117,5 @@ public class AsciidocCommandLine extends CommandLine {
         } else {
             throw new OpenEhrExporterException("Missing parameter for " + param + '!');
         }
-    }
-
-    public boolean isHelpOnly() {
-        return helpOnly;
-    }
-
-    public File getProjectFile() {
-        return projectFile;
     }
 }
