@@ -110,7 +110,7 @@ public abstract class AbstractInfoBuilder<T> {
     }
 
     private String formatType(String type, int upper) {
-        return upper == -1 || upper > 1 ? "List<" + type + '>' : type;
+        return upper > 1 ? "List<" + type + '>' : type;
     }
 
     private String formatOccurences(int lower, int upper) {
@@ -119,10 +119,10 @@ public abstract class AbstractInfoBuilder<T> {
     }
 
     protected void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
-        operations.stream().filter(op -> !superClassOperations.contains(op.getName())).forEach(
-                operation -> addOperation(attributes, operation, false));
-        operations.stream().filter(op -> superClassOperations.contains(op.getName())).forEach(
-                operation -> addOperation(attributes, operation, true));
+        operations.stream().filter(op -> !superClassOperations.contains(op.getName()))
+                .forEach(operation -> addOperation(attributes, operation, false));
+        operations.stream().filter(op -> superClassOperations.contains(op.getName()))
+                .forEach(operation -> addOperation(attributes, operation, true));
     }
 
     private void addOperation(List<ClassAttributeInfo> attributes, Operation operation, boolean effected) {
@@ -135,7 +135,9 @@ public abstract class AbstractInfoBuilder<T> {
         if (operation.hasOwnedParameter()) {
             addParameters(nameInfo, operation.getOwnedParameter());
         }
-        StringBuilder builder = new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, operation.getUpper())));
+        StringBuilder builder = type.isEmpty()
+                ? new StringBuilder(nameInfo)
+                : new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, operation.getUpper())));
 
         addOperationConstraint(operation, builder);
         classAttributeInfo.setName(builder.toString());
