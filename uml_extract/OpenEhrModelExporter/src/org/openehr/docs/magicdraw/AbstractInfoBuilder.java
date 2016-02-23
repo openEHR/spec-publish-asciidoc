@@ -96,7 +96,7 @@ public abstract class AbstractInfoBuilder<T> {
 
         StringBuilder name = new StringBuilder(formatter.bold(property.getName()));
         name.append(": ");
-        StringBuilder typeInfo = new StringBuilder(formatType(type, property.getUpper()));
+        StringBuilder typeInfo = new StringBuilder(formatType(type, property.getLower(), property.getUpper()));
         ValueSpecification defaultValue = property.getDefaultValue();
         if (defaultValue instanceof LiteralString) {
             LiteralString value = (LiteralString)defaultValue;
@@ -109,8 +109,9 @@ public abstract class AbstractInfoBuilder<T> {
         attributes.add(classAttributeInfo);
     }
 
-    private String formatType(String type, int upper) {
-        return upper > 1 ? "List<" + type + '>' : type;
+    private String formatType(String type, int lower, int upper) {
+//        return (upper > 1 ? "List<" + type + '>' : type) + '[' + lower + ".." + upper + ']';
+        return upper == -1 || upper > 1 ? "List<" + type + '>' : type;
     }
 
     private String formatOccurences(int lower, int upper) {
@@ -137,7 +138,7 @@ public abstract class AbstractInfoBuilder<T> {
         }
         StringBuilder builder = type.isEmpty()
                 ? new StringBuilder(nameInfo)
-                : new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, operation.getUpper())));
+                : new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, operation.getLower(), operation.getUpper())));
 
         addOperationConstraint(operation, builder);
         classAttributeInfo.setName(builder.toString());
@@ -152,7 +153,7 @@ public abstract class AbstractInfoBuilder<T> {
                 if (parameter.getType() == null) {
                     formattedParameters.add(name);
                 } else {
-                    formattedParameters.add(name + ": " + formatter.monospace(formatType(parameter.getType().getName(), parameter.getUpper())));
+                    formattedParameters.add(name + ": " + formatter.monospace(formatType(parameter.getType().getName(), parameter.getLower(), parameter.getUpper())));
                 }
             }
         }
