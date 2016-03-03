@@ -32,7 +32,12 @@ public class AsciidocFormatter implements Formatter {
 
     @Override
     public String escapeLiteral(String value) {
-        return value.replace("|", "&#124;").replace("*", "&#42;");
+        return value.replace("|", "&#124;").replace("*", "&#42;").replace("<=", "\\<=");
+    }
+
+    @Override
+    public String escape(String value) {
+        return value.replace("<=", "\\<=");
     }
 
     @Override

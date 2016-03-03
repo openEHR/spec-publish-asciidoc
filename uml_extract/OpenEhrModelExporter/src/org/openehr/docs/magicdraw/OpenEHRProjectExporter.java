@@ -167,9 +167,7 @@ public class OpenEHRProjectExporter {
                 printWriter.println("h|" + formatter.bold("Functions"));
                 printWriter.println("^h|" + formatter.bold("Signature"));
                 printWriter.println("^h|" + formatter.bold("Meaning"));
-            }
 
-            if (!classInfo.getFunctions().isEmpty()) {
                 exportFunctions(classInfo, printWriter);
             }
 

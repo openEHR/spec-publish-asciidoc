@@ -14,6 +14,8 @@ public interface Formatter {
 
     String escapeLiteral(String value);
 
+    String escape(String value);
+
     String escapeColumnSeparator(String value);
 
     String normalizeLines(String doc);

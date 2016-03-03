@@ -30,10 +30,12 @@ public abstract class AbstractInfoBuilder<T> {
 
     @SuppressWarnings("HardcodedLineSeparator")
     protected String getDocumentation(Element element, Formatter formatter) {
-        return String.join(System.lineSeparator(), element.getOwnedComment().stream()
+        List<String> lines = element.getOwnedComment().stream()
                 .map(Comment::getBody)
                 .flatMap(body -> Stream.of(body.split("\n")))
-                .collect(Collectors.toList()));
+                .map(formatter::escape)
+                .collect(Collectors.toList());
+        return String.join(System.lineSeparator(), lines);
     }
 
     public abstract ClassInfo build(T element);
@@ -58,7 +60,7 @@ public abstract class AbstractInfoBuilder<T> {
                     if (add) {
                         builder.append(formatter.newParagraph());
                     }
-                    builder.append(line);
+                    builder.append(formatter.escape(line));
                     add = true;
                 }
             }
