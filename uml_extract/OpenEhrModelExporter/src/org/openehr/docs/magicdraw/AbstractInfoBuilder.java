@@ -120,7 +120,7 @@ public abstract class AbstractInfoBuilder<T> {
             formattedType = upper == -1 || upper > 1 ? "List<" + type + '>' : type;
         } else {
             String qualifierType = qualifier.getType().getName();
-            formattedType = upper == -1 || upper > 1 ? "Hash<" + type + ',' + qualifierType + '>' : type;
+            formattedType = upper == -1 || upper > 1 ? "Hash<" + qualifierType + ',' + type + '>' : type;
         }
         return formattedType;
     }
