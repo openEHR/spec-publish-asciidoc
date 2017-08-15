@@ -29,7 +29,7 @@ public class InterfaceInfoBuilder extends AbstractInfoBuilder<Interface> {
             addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
         }
         if (element.hasOwnedOperation()) {
-            addOperations(classInfo.getFunctions(), element.getOwnedOperation(), superClassOperations);
+            addOperations(classInfo.getOperations(), element.getOwnedOperation(), superClassOperations);
         }
 
         addConstraints(classInfo.getConstraints(), element.get_constraintOfConstrainedElement());

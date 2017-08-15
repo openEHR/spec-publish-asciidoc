@@ -17,9 +17,9 @@ public class ClassInfo implements Comparable<ClassInfo> {
     private String indexSubPackage = "";
     private boolean abstractClass;
 
-    private final List<ClassAttributeInfo> attributes = new ArrayList<>();
-    private final List<ClassAttributeInfo> constants = new ArrayList<>();
-    private final List<ClassAttributeInfo> functions = new ArrayList<>();
+    private final List<ClassFeatureInfo> attributes = new ArrayList<>();
+    private final List<ClassFeatureInfo> constants = new ArrayList<>();
+    private final List<ClassFeatureInfo> operations = new ArrayList<>();
     private final List<ConstraintInfo> constraints = new ArrayList<>();
 
     public ClassInfo(String type) {
@@ -57,16 +57,16 @@ public class ClassInfo implements Comparable<ClassInfo> {
         return this;
     }
 
-    public List<ClassAttributeInfo> getAttributes() {
+    public List<ClassFeatureInfo> getAttributes() {
         return attributes;
     }
 
-    public List<ClassAttributeInfo> getConstants() {
+    public List<ClassFeatureInfo> getConstants() {
         return constants;
     }
 
-    public List<ClassAttributeInfo> getFunctions() {
-        return functions;
+    public List<ClassFeatureInfo> getOperations() {
+        return operations;
     }
 
     public List<ConstraintInfo> getConstraints() {

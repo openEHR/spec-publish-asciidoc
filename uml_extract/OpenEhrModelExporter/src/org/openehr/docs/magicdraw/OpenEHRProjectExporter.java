@@ -52,6 +52,12 @@ public class OpenEHRProjectExporter {
         this.indexRelease = indexRelease;
     }
 
+    /**
+     * Export a UML project as a set of files.
+     * @param outputFolder Directory in which to write the files.
+     * @param project MD descriptor for a project.
+     * @exception IOException on fail to write to file.
+     */
     public void exportProject(File outputFolder, Project project) throws Exception {
         File classesFolder = new File(outputFolder, CLASSES_FOLDER);
         if (!classesFolder.exists()) {
@@ -60,6 +66,11 @@ public class OpenEHRProjectExporter {
             }
         }
 
+        // Gather UML classes, enumerations and interfaces, run through a pipeline that does:
+        // * cast to an MD class object
+        // * retain only classes within the root package(s) specified on the command line
+        // * convert to ClassInfo objects (local representation used here)
+        // Then export each ClassInfo object as an output file
         ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
         Collection<? extends Element> umlClasses = ModelHelper.getElementsOfType(project.getModel(),
                                                                                  new Class[]{com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class.class},
@@ -94,10 +105,12 @@ public class OpenEHRProjectExporter {
                 .collect(Collectors.toList());
         enumerations.forEach(en -> exportClass(en, classesFolder));
 
+        // Generate the index file
         if (indexRelease != null) {
             generateIndex(outputFolder, classes, interfaces, enumerations);
         }
 
+        // obtain and generate the diagrams
         File diagramsFolder = new File(outputFolder, DIAGRAMS_FOLDER);
         if (!diagramsFolder.exists()) {
             if (!diagramsFolder.mkdir()) {
@@ -111,6 +124,11 @@ public class OpenEHRProjectExporter {
         return rootPackageNames.stream().filter(rn -> namedElement.getQualifiedName().contains(rn)).findFirst().isPresent();
     }
 
+    /**
+     * Export a UML diagram in PNG and SVG format to the export folder.
+     * @param outputFolder target folder on file system.
+     * @param diagramPresentationElement UML diagram representation.
+     */
     private void exportDiagram(File outputFolder, DiagramPresentationElement diagramPresentationElement) {
         String name = diagramPresentationElement.getName();
         try {
@@ -121,6 +139,12 @@ public class OpenEHRProjectExporter {
         }
     }
 
+    /**
+     * Export a class as an Asciidoctor (.adoc) file to the output folder on the file system.
+     * @param targetFolder Directory in which to write the file.
+     * @param classInfo info object for the class.
+     * @exception IOException on fail to write to file.
+     */
     private void exportClass(ClassInfo classInfo, File targetFolder) {
         try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(
                 targetFolder.toPath().resolve(fileName(classInfo.getClassName().toLowerCase()) + ADOC_FILE_EXTENSION), Charset.forName("UTF-8")))) {
@@ -163,7 +187,7 @@ public class OpenEHRProjectExporter {
                 exportAttributes(classInfo, printWriter);
             }
 
-            if (!classInfo.getFunctions().isEmpty()) {
+            if (!classInfo.getOperations().isEmpty()) {
                 printWriter.println("h|" + formatter.bold("Functions"));
                 printWriter.println("^h|" + formatter.bold("Signature"));
                 printWriter.println("^h|" + formatter.bold("Meaning"));
@@ -181,6 +205,11 @@ public class OpenEHRProjectExporter {
         }
     }
 
+    /**
+     * Export all constraints in a class as text (invariants) in an Asciidoctor (.adoc) file.
+     * @param classInfo info object for the class.
+     * @param printWriter File outputter.
+     */
     private void exportConstraints(ClassInfo classInfo, PrintWriter printWriter) {
         String title = formatter.bold("Invariant");
         for (ConstraintInfo constraintInfo : classInfo.getConstraints()) {
@@ -191,7 +220,15 @@ public class OpenEHRProjectExporter {
             title = "";
         }
     }
-
+    /**
+     * Generate an HTML file containing a clickable index of Class names that contain links to the location of
+     * the class within the relevant specification.
+     * @param targetFolder Directory in which to write the file.
+     * @param classes classes to include in index.
+     * @param interfaces interfaces to include in index.
+     * @param enumerations enumerations to include in index.
+     * @exception IOException on fail to write to file.
+     */
     private void generateIndex(File targetFolder, List<ClassInfo> classes, List<ClassInfo> interfaces, List<ClassInfo> enumerations) {
         List<ClassInfo> allTypes = new ArrayList<>(classes.size() + interfaces.size() + enumerations.size());
         allTypes.addAll(classes);
@@ -245,35 +282,60 @@ public class OpenEHRProjectExporter {
         return indexSubPackage;
     }
 
+    /**
+     * Export all methods in a class as text in an Asciidoctor (.adoc) file.
+     * @param classInfo info object for the class.
+     * @param printWriter File outputter.
+     */
     private void exportFunctions(ClassInfo classInfo, PrintWriter printWriter) {
-        for (ClassAttributeInfo classAttributeInfo : classInfo.getFunctions()) {
+        for (ClassFeatureInfo classFeatureInfo : classInfo.getOperations()) {
             printWriter.println();
-            printWriter.println("h|" + classAttributeInfo.getOccurences());
+            printWriter.println("h|" + classFeatureInfo.getOccurrences());
 
-            printWriter.println('|' + classAttributeInfo.getName());
-            printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
+            printWriter.println('|' + classFeatureInfo.getName());
+            printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
         }
     }
 
+    /**
+     * Export all attributes in a class as text in an Asciidoctor (.adoc) file.
+     * @param classInfo info object for the class.
+     * @param printWriter File outputter.
+     */
     private void exportAttributes(ClassInfo classInfo, PrintWriter printWriter) {
-        for (ClassAttributeInfo classAttributeInfo : classInfo.getAttributes()) {
-            exportAttribute(printWriter, classAttributeInfo);
+        for (ClassFeatureInfo classFeatureInfo : classInfo.getAttributes()) {
+            exportAttribute(printWriter, classFeatureInfo);
         }
     }
 
+    /**
+     * Export all constants in a class as text in an Asciidoctor (.adoc) file.
+     * @param classInfo info object for the class.
+     * @param printWriter File outputter.
+     */
     private void exportConstants(ClassInfo classInfo, PrintWriter printWriter) {
-        for (ClassAttributeInfo classAttributeInfo : classInfo.getConstants()) {
-            exportAttribute(printWriter, classAttributeInfo);
+        for (ClassFeatureInfo classFeatureInfo : classInfo.getConstants()) {
+            exportAttribute(printWriter, classFeatureInfo);
         }
     }
 
-    private void exportAttribute(PrintWriter printWriter, ClassAttributeInfo classAttributeInfo) {
+    /**
+     * Export a single attribute in a class as text in an Asciidoctor (.adoc) file.
+     * @param classFeatureInfo info object for the attribute.
+     * @param printWriter File outputter.
+     */
+    private void exportAttribute(PrintWriter printWriter, ClassFeatureInfo classFeatureInfo) {
         printWriter.println();
-        printWriter.println("h|" + formatter.bold(classAttributeInfo.getOccurences()));
-        printWriter.println('|' + classAttributeInfo.getName());
-        printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classAttributeInfo.getDocumentation())));
+        printWriter.println("h|" + formatter.bold(classFeatureInfo.getOccurrences()));
+        printWriter.println('|' + classFeatureInfo.getName());
+        printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
     }
 
+    /**
+     * Convert a class name to a legal file name.
+     * @param className name of class.
+     * @return filename..
+     */
     private String fileName(String className) {
         String name = className.replaceAll("[^a-z0-9]", "_");
         return name.replaceAll("^_+", "");

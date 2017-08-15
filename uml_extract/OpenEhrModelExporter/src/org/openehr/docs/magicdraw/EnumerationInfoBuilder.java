@@ -28,9 +28,9 @@ public class EnumerationInfoBuilder extends AbstractInfoBuilder<Enumeration> {
         return classInfo;
     }
 
-    private void addLiterals(List<ClassAttributeInfo> attributes, List<EnumerationLiteral> ownedLiteral, Formatter formatter) {
+    private void addLiterals(List<ClassFeatureInfo> attributes, List<EnumerationLiteral> ownedLiteral, Formatter formatter) {
         for (EnumerationLiteral literal : ownedLiteral) {
-            attributes.add(new ClassAttributeInfo()
+            attributes.add(new ClassFeatureInfo()
                                    .setName(literal.getName())
                                    .setDocumentation(getDocumentation(literal, formatter)));
         }

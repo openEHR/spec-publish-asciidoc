@@ -68,7 +68,7 @@ public abstract class AbstractInfoBuilder<T> {
         return builder.toString();
     }
 
-    protected void addAttributes(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+    protected void addAttributes(List<ClassFeatureInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
         properties.stream()
                 .filter(p -> !superClassAttributes.contains(p.getName()))
                 .filter(p -> !p.isReadOnly())
@@ -79,7 +79,7 @@ public abstract class AbstractInfoBuilder<T> {
                 .forEach(p -> addAttribute(attributes, p, true));
     }
 
-    protected void addConstants(List<ClassAttributeInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+    protected void addConstants(List<ClassFeatureInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
         properties.stream()
                 .filter(p -> !superClassAttributes.contains(p.getName()))
                 .filter(StructuralFeature::isReadOnly)
@@ -90,11 +90,11 @@ public abstract class AbstractInfoBuilder<T> {
                 .forEach(p -> addAttribute(attributes, p, true));
     }
 
-    private void addAttribute(List<ClassAttributeInfo> attributes, Property property, boolean redefined) {
+    private void addAttribute(List<ClassFeatureInfo> attributes, Property property, boolean redefined) {
         String type = property.getType() == null ? "" : property.getType().getName();
-        ClassAttributeInfo classAttributeInfo = new ClassAttributeInfo()
+        ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
                 .setDocumentation(getDocumentation(property, formatter))
-                .setOccurences(formatOccurences(property.getLower(), property.getUpper()) + (redefined ? " +" + System.lineSeparator() + "(redefined)" : ""));
+                .setOccurrences(formatOccurences(property.getLower(), property.getUpper()) + (redefined ? " +" + System.lineSeparator() + "(redefined)" : ""));
 
         StringBuilder name = new StringBuilder(formatter.bold(property.getName()));
         name.append(": ");
@@ -110,17 +110,31 @@ public abstract class AbstractInfoBuilder<T> {
         if (typeInfo.length() > 0) {
             name.append(formatter.monospace(typeInfo.toString()));
         }
-        classAttributeInfo.setName(name.toString());
-        attributes.add(classAttributeInfo);
+        classFeatureInfo.setName(name.toString());
+        attributes.add(classFeatureInfo);
     }
 
     private String formatType(String type, Property qualifier, int lower, int upper) {
         String formattedType;
+
+        // if there is no qualifier, output either the UML relation target type or List<target type>
         if (qualifier == null) {
             formattedType = upper == -1 || upper > 1 ? "List<" + type + '>' : type;
-        } else {
+        }
+        else {
             String qualifierType = qualifier.getType().getName();
-            formattedType = upper == -1 || upper > 1 ? "Hash<" + qualifierType + ',' + type + '>' : type;
+            String qualifierName = qualifier.getName();
+
+            // if there is a qualifier, but with no name, the output type is either the UML
+            // qualifier type of List<qualifier type>
+            if (qualifierName == null || qualifierName.isEmpty()) {
+                formattedType = upper == -1 || upper > 1 ? "List<" + qualifierType + '>' : qualifierType;
+            }
+            // else if there is a qualifier name, it stands for a Hash key, and we output a Hash type sig
+            // This should only occur with multiple relationships.
+            else {
+                formattedType = upper == -1 || upper > 1 ? "Hash<" + qualifierType + ',' + type + '>' : qualifierType;
+            }
         }
         return formattedType;
     }
@@ -130,17 +144,23 @@ public abstract class AbstractInfoBuilder<T> {
 
     }
 
-    protected void addOperations(List<ClassAttributeInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
+    protected void addOperations(List<ClassFeatureInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
         operations.stream().filter(op -> !superClassOperations.contains(op.getName()))
                 .forEach(operation -> addOperation(attributes, operation, false));
         operations.stream().filter(op -> superClassOperations.contains(op.getName()))
                 .forEach(operation -> addOperation(attributes, operation, true));
     }
 
-    private void addOperation(List<ClassAttributeInfo> attributes, Operation operation, boolean effected) {
+    /**
+     * Add parameters for a UML method in a class definition to the attribute string.
+     * @param attributes UML parameter definitions.
+     * @param operation UML operation definition.
+     * @param effected True if this operation effects an abstract operation in a parent class.
+     */
+    private void addOperation(List<ClassFeatureInfo> attributes, Operation operation, boolean effected) {
         String type = operation.getType() == null ? "" : operation.getType().getName();
-        ClassAttributeInfo classAttributeInfo = new ClassAttributeInfo()
-                .setOccurences(effected ? "(effected)" : "")
+        ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
+                .setOccurrences(effected ? "(effected)" : "")
                 .setDocumentation(getDocumentation(operation, formatter));
 
         StringBuilder nameInfo = new StringBuilder(formatter.bold(operation.getName()));
@@ -152,10 +172,15 @@ public abstract class AbstractInfoBuilder<T> {
                 : new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, null, operation.getLower(), operation.getUpper())));
 
         addOperationConstraint(operation, builder);
-        classAttributeInfo.setName(builder.toString());
-        attributes.add(classAttributeInfo);
+        classFeatureInfo.setName(builder.toString());
+        attributes.add(classFeatureInfo);
     }
 
+    /**
+     * Add parameters for a UML method in a class definition to the attribute string.
+     * @param parameters UML parameter definitions.
+     * @param builder string builder containing method definition as a string.
+     */
     protected void addParameters(StringBuilder builder, List<Parameter> parameters) {
         List<String> formattedParameters = new ArrayList<>();
         for (Parameter parameter : parameters) {
@@ -165,7 +190,8 @@ public abstract class AbstractInfoBuilder<T> {
                     formattedParameters.add(name);
                 } else {
                     formattedParameters.add(
-                            name + ": " + formatter.monospace(formatType(parameter.getType().getName(), null, parameter.getLower(), parameter.getUpper())));
+                            name + ": " + formatter.monospace(formatType(parameter.getType().getName(), null,
+                                                              parameter.getLower(), parameter.getUpper())));
                 }
             }
         }
@@ -174,6 +200,12 @@ public abstract class AbstractInfoBuilder<T> {
         }
     }
 
+    /**
+     * Add the pre- or post-condition constraints attached to a UML method in a class definition
+     * to the attribute string, each on a new line.
+     * @param operation UML method definition.
+     * @param builder string builder containing method definition as a string.
+     */
     private void addOperationConstraint(Operation operation, StringBuilder builder) {
         for (Constraint constraint : operation.get_constraintOfConstrainedElement()) {
             builder.append(" +").append(System.lineSeparator()).append(formatConstraint(constraint));

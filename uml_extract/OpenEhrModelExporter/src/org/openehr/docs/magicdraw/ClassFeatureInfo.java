@@ -3,17 +3,17 @@ package org.openehr.docs.magicdraw;
 /**
  * @author Bostjan Lah
  */
-public class ClassAttributeInfo {
-    private String occurences = "";
+public class ClassFeatureInfo {
+    private String occurrences = "";
     private String name = "";
     private String documentation = "";
 
-    public String getOccurences() {
-        return occurences;
+    public String getOccurrences() {
+        return occurrences;
     }
 
-    public ClassAttributeInfo setOccurences(String occurences) {
-        this.occurences = occurences;
+    public ClassFeatureInfo setOccurrences(String occurrences) {
+        this.occurrences = occurrences;
         return this;
     }
 
@@ -21,7 +21,7 @@ public class ClassAttributeInfo {
         return name;
     }
 
-    public ClassAttributeInfo setName(String name) {
+    public ClassFeatureInfo setName(String name) {
         this.name = name;
         return this;
     }
@@ -30,7 +30,7 @@ public class ClassAttributeInfo {
         return documentation;
     }
 
-    public ClassAttributeInfo setDocumentation(String documentation) {
+    public ClassFeatureInfo setDocumentation(String documentation) {
         this.documentation = documentation;
         return this;
     }
