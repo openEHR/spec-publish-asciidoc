@@ -121,7 +121,8 @@ public class OpenEHRProjectExporter {
     }
 
     private boolean matchesRootPackages(NamedElement namedElement) {
-        return rootPackageNames.stream().filter(rn -> namedElement.getQualifiedName().contains(rn)).findFirst().isPresent();
+        return rootPackageNames.stream().anyMatch (rn -> namedElement.getQualifiedName().contains(rn));
+     //   return rootPackageNames.stream().filter(rn -> namedElement.getQualifiedName().contains(rn)).findFirst().isPresent();
     }
 
     /**
