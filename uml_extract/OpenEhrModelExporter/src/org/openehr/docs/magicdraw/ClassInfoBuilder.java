@@ -22,6 +22,7 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
                 .setClassName(className)
                 .setDocumentation(getDocumentation(element, getFormatter()))
                 .setAbstractClass(element.isAbstract());
+
         setHierarchy(element.getQualifiedName(), classInfo);
 
         Set<String> superClassAttributes = new HashSet<>();
@@ -30,6 +31,7 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
         if (element.hasSuperClass()) {
             classInfo.setParentClassName(String.join(", ", element.getSuperClass().stream()
                                             .map(NamedElement::getName)
+                                            .map(formatter::monospace)
                                             .collect(Collectors.toList())));
             getSuperClassData(element, superClassAttributes, superClassOperations);
         }

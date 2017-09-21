@@ -5,7 +5,7 @@ package org.openehr.docs.magicdraw;
  */
 public class ClassFeatureInfo {
     private String occurrences = "";
-    private String name = "";
+    private String signature = "";
     private String documentation = "";
 
     public String getOccurrences() {
@@ -17,12 +17,12 @@ public class ClassFeatureInfo {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getSignature() {
+        return signature;
     }
 
-    public ClassFeatureInfo setName(String name) {
-        this.name = name;
+    public ClassFeatureInfo setSignature(String signature) {
+        this.signature = signature;
         return this;
     }
 

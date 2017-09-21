@@ -21,6 +21,22 @@ public class AsciidocFormatter implements Formatter {
     }
 
     @Override
+    public String italicMonospace(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return "";
+        }
+        return "`_" + text + "_`";
+    }
+
+    @Override
+    public String boldMonospace(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return "";
+        }
+        return "`*" + text + "*`";
+    }
+
+    @Override
     public String italicBold(String text) {
         return "*_" + text + "_*";
     }

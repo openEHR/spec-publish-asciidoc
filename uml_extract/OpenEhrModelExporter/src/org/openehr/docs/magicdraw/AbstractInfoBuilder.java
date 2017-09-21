@@ -22,7 +22,7 @@ import java.util.stream.Stream;
  * @author Bostjan Lah
  */
 public abstract class AbstractInfoBuilder<T> {
-    private final Formatter formatter;
+    protected final Formatter formatter;
 
     protected AbstractInfoBuilder(Formatter formatter) {
         this.formatter = formatter;
@@ -60,7 +60,7 @@ public abstract class AbstractInfoBuilder<T> {
                     if (add) {
                         builder.append(formatter.newParagraph());
                     }
-                    builder.append(formatter.escape(line));
+                    builder.append(formatter.monospace(formatter.escape(line)));
                     add = true;
                 }
             }
@@ -90,27 +90,41 @@ public abstract class AbstractInfoBuilder<T> {
                 .forEach(p -> addAttribute(attributes, p, true));
     }
 
+    /**
+     * Build a ClassFeatureInfo object for property and add it to the attributes list.
+     * @param attributes List of ClassFeatureInfo objects for this class so far built.
+     * @param property the property to add.
+     * @param redefined True if this operation effects an abstract operation in a parent class.
+     */
     private void addAttribute(List<ClassFeatureInfo> attributes, Property property, boolean redefined) {
-        String type = property.getType() == null ? "" : property.getType().getName();
+        // create a ClassFeatureInfo with attribute documentation, occurrences and redefined marker
         ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
                 .setDocumentation(getDocumentation(property, formatter))
-                .setOccurrences(formatOccurences(property.getLower(), property.getUpper()) + (redefined ? " +" + System.lineSeparator() + "(redefined)" : ""));
+                .setOccurrences(formatSpecialOccurences(property.getLower(), property.getUpper()) + (redefined ? " +" + System.lineSeparator() + "(redefined)" : ""));
 
-        StringBuilder name = new StringBuilder(formatter.bold(property.getName()));
-        name.append(": ");
+        // attribute signature
+        StringBuilder sigBuilder = new StringBuilder(formatter.bold(property.getName()));
+        sigBuilder.append(": ");
 
+        // compute the type, based on type, except if there is a qualifier on the property, in which case use its type
+        String type = property.getType() == null ? "" : property.getType().getName();
         Property qualifier = property.getAssociation() != null && property.hasQualifier() ? property.getQualifier().get(0) : null;
         StringBuilder typeInfo = new StringBuilder(formatType(type, qualifier, property.getLower(), property.getUpper()));
 
+        // add '=' + default value, if defined
         ValueSpecification defaultValue = property.getDefaultValue();
         if (defaultValue instanceof LiteralString) {
             LiteralString value = (LiteralString)defaultValue;
             typeInfo.append("{nbsp}={nbsp}").append(formatter.escapeLiteral(value.getValue()));
         }
+
+        // If there is any type information, append it
         if (typeInfo.length() > 0) {
-            name.append(formatter.monospace(typeInfo.toString()));
+            sigBuilder.append(formatter.monospace(typeInfo.toString()));
         }
-        classFeatureInfo.setName(name.toString());
+
+        classFeatureInfo.setSignature(sigBuilder.toString());
+
         attributes.add(classFeatureInfo);
     }
 
@@ -139,64 +153,126 @@ public abstract class AbstractInfoBuilder<T> {
         return formattedType;
     }
 
-    private String formatOccurences(int lower, int upper) {
-        return upper == -1 ? lower + "..1" : lower + ".." + upper;
-
-    }
-
-    protected void addOperations(List<ClassFeatureInfo> attributes, List<Operation> operations, Set<String> superClassOperations) {
-        operations.stream().filter(op -> !superClassOperations.contains(op.getName()))
-                .forEach(operation -> addOperation(attributes, operation, false));
-        operations.stream().filter(op -> superClassOperations.contains(op.getName()))
-                .forEach(operation -> addOperation(attributes, operation, true));
+    /**
+     * Format occurrences in the standard way.
+     * @param lower lower value of occurrences.
+     * @param upper upper value of occurrences.
+     */
+    private String formatInlineOccurences(int lower, int upper) {
+        if (upper == -1)
+            return lower == 0 ? "0..1" : "1";
+        else
+            return lower == upper ? "" + lower : lower + ".." + upper;
     }
 
     /**
-     * Add parameters for a UML method in a class definition to the attribute string.
-     * @param attributes UML parameter definitions.
+     * Format occurrences in a way that accounts for 0..* in UML being represented as List<T>.
+     * @param lower lower value of occurrences.
+     * @param upper upper value of occurrences.
+     */
+    private String formatSpecialOccurences(int lower, int upper) {
+        return upper == -1 ? lower + "..1" : lower + ".." + upper;
+    }
+
+    protected void addOperations(List<ClassFeatureInfo> features, List<Operation> operations, Set<String> superClassOperations) {
+        operations.stream().filter(op -> !superClassOperations.contains(op.getName()))
+                .forEach(operation -> addOperation(features, operation, false));
+        operations.stream().filter(op -> superClassOperations.contains(op.getName()))
+                .forEach(operation -> addOperation(features, operation, true));
+    }
+
+    /**
+     * Build a ClassFeatureInfo for operation, and append it to the features list so far built.
+     * @param features List of class features so far built.
      * @param operation UML operation definition.
      * @param effected True if this operation effects an abstract operation in a parent class.
      */
-    private void addOperation(List<ClassFeatureInfo> attributes, Operation operation, boolean effected) {
+    private void addOperation(List<ClassFeatureInfo> features, Operation operation, boolean effected) {
+        // Create the documentation, which will include documentation for each
+        // parameter that has it.
+        StringBuilder opDocBuilder = new StringBuilder(getDocumentation(operation, formatter));
+
+        // Start building the operation signature
+        // append the operation name, bolded
+        StringBuilder opSigBuilder = new StringBuilder(formatter.bold(operation.getName()));
+
+        // If there are parameters, output them within parentheses
+        if (operation.hasOwnedParameter()) {
+            addSignatureParameters(opSigBuilder, operation.getOwnedParameter());
+            addDocumentParameters(opDocBuilder, operation.getOwnedParameter());
+        }
+
+        // If there is a return type, append to the signature it in monospace.
         String type = operation.getType() == null ? "" : operation.getType().getName();
+        StringBuilder fullSigBuilder = type.isEmpty()
+                ? new StringBuilder(opSigBuilder)
+                : new StringBuilder(opSigBuilder + ": " + formatter.monospace(formatType(type, null, operation.getLower(), operation.getUpper())));
+
+        // Output any operation pre- and post-conditions (UML constraints)
+        addOperationConstraint(operation, fullSigBuilder);
+
         ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
                 .setOccurrences(effected ? "(effected)" : "")
-                .setDocumentation(getDocumentation(operation, formatter));
+                .setDocumentation(opDocBuilder.toString());
 
-        StringBuilder nameInfo = new StringBuilder(formatter.bold(operation.getName()));
-        if (operation.hasOwnedParameter()) {
-            addParameters(nameInfo, operation.getOwnedParameter());
-        }
-        StringBuilder builder = type.isEmpty()
-                ? new StringBuilder(nameInfo)
-                : new StringBuilder(nameInfo + ": " + formatter.monospace(formatType(type, null, operation.getLower(), operation.getUpper())));
+        classFeatureInfo.setSignature(fullSigBuilder.toString());
 
-        addOperationConstraint(operation, builder);
-        classFeatureInfo.setName(builder.toString());
-        attributes.add(classFeatureInfo);
+        features.add(classFeatureInfo);
     }
 
     /**
-     * Add parameters for a UML method in a class definition to the attribute string.
+     * Add parameters for a UML method in a class definition to the operation string.
      * @param parameters UML parameter definitions.
-     * @param builder string builder containing method definition as a string.
+     * @param sigBuilder string builder containing method definition as a string.
      */
-    protected void addParameters(StringBuilder builder, List<Parameter> parameters) {
+    protected void addSignatureParameters(StringBuilder sigBuilder, List<Parameter> parameters) {
         List<String> formattedParameters = new ArrayList<>();
         for (Parameter parameter : parameters) {
-            String name = parameter.getName();
-            if (!"return".equals(name) && !name.isEmpty()) {
-                if (parameter.getType() == null) {
-                    formattedParameters.add(name);
-                } else {
+            String paramSignature = parameter.getName();
+            if (!"return".equals(paramSignature) && !paramSignature.isEmpty()) {
+                if (parameter.getType() == null)
+                    formattedParameters.add(paramSignature);
+                else {
                     formattedParameters.add(
-                            name + ": " + formatter.monospace(formatType(parameter.getType().getName(), null,
-                                                              parameter.getLower(), parameter.getUpper())));
+                            paramSignature + ": " + formatter.monospace(
+                                    formatType(parameter.getType().getName(), null, parameter.getLower(), parameter.getUpper()) +
+                                            '[' + formatInlineOccurences(parameter.getLower(), parameter.getUpper()) + ']'
+                            )
+                    );
+                }
+            }
+        }
+
+        // if there are parameters, put them out on different lines, else just output "()"
+        if (!formattedParameters.isEmpty()) {
+            sigBuilder.append(" (").append(formatter.newParagraph());
+            sigBuilder.append(String.join("," + formatter.newParagraph(), formattedParameters)).append(formatter.newParagraph());
+            sigBuilder.append(')');
+        }
+        else
+            sigBuilder.append(" ()");
+    }
+
+    /**
+     * Add parameters for a UML method in a class definition to the operation string.
+     * @param parameters UML parameter definitions.
+     * @param docBuilder string builder containing parameter documentation.
+     */
+    protected void addDocumentParameters(StringBuilder docBuilder, List<Parameter> parameters) {
+        List<String> formattedParameters = new ArrayList<>();
+        for (Parameter parameter : parameters) {
+            String paramName = parameter.getName();
+            if (!"return".equals(paramName) && !paramName.isEmpty()) {
+                String paramComment = getDocumentation(parameter, formatter);
+                if (!paramComment.isEmpty()) {
+                    formattedParameters.add(System.lineSeparator() + formatter.italicMonospace(paramName)  + ":: " + paramComment);
                 }
             }
         }
         if (!formattedParameters.isEmpty()) {
-            builder.append(" (").append(String.join(", ", formattedParameters)).append(')');
+            docBuilder.append(formatter.newParagraph());
+            docBuilder.append ("[horizontal]");
+            docBuilder.append(String.join("\n", formattedParameters));
         }
     }
 

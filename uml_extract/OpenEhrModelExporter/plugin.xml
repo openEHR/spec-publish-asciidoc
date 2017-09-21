@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin
 	id="org.openehr.docs.magicdraw"
-	name="openEHR docs exporter"
+	signature="openEHR docs exporter"
 	version="1.0"
-	provider-name="openEHR"
+	provider-signature="openEHR"
 	class="org.openehr.docs.magicdraw.OpenEHRExporter">
 
 	<requires>
@@ -11,6 +11,6 @@
 	</requires>
 
 	<runtime>
-	   <library name="OpenEhrModelExporter.jar"/>
+	   <library signature="OpenEhrModelExporter.jar"/>
 	</runtime>
 </plugin>

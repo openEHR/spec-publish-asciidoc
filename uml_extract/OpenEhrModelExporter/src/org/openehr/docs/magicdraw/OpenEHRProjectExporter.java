@@ -152,7 +152,7 @@ public class OpenEHRProjectExporter {
             printWriter.println(headingPrefix + ' ' + classInfo.getClassName() + ' ' + classInfo.getType());
             printWriter.println();
 
-            printWriter.println("[cols=\"^1,2,3\"]");
+            printWriter.println("[cols=\"^1,3,5\"]");
             printWriter.println("|===");
             printWriter.println("h|" + formatter.bold(classInfo.getType()));
             printWriter.println("2+^h|" +
@@ -212,7 +212,7 @@ public class OpenEHRProjectExporter {
      * @param printWriter File outputter.
      */
     private void exportConstraints(ClassInfo classInfo, PrintWriter printWriter) {
-        String title = formatter.bold("Invariant");
+        String title = formatter.bold("Invariants");
         for (ConstraintInfo constraintInfo : classInfo.getConstraints()) {
             printWriter.println();
             printWriter.println("h|" + formatter.escapeColumnSeparator(title));
@@ -293,7 +293,7 @@ public class OpenEHRProjectExporter {
             printWriter.println();
             printWriter.println("h|" + classFeatureInfo.getOccurrences());
 
-            printWriter.println('|' + classFeatureInfo.getName());
+            printWriter.println('|' + classFeatureInfo.getSignature());
             printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
         }
     }
@@ -328,7 +328,7 @@ public class OpenEHRProjectExporter {
     private void exportAttribute(PrintWriter printWriter, ClassFeatureInfo classFeatureInfo) {
         printWriter.println();
         printWriter.println("h|" + formatter.bold(classFeatureInfo.getOccurrences()));
-        printWriter.println('|' + classFeatureInfo.getName());
+        printWriter.println('|' + classFeatureInfo.getSignature());
         printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
     }
 
