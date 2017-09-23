@@ -58,7 +58,7 @@ public abstract class AbstractInfoBuilder<T> {
                 boolean add = false;
                 for (String line : opaqueExpression.getBody()) {
                     if (add) {
-                        builder.append(formatter.newParagraph());
+                        builder.append(formatter.hardLineBreak());
                     }
                     builder.append(formatter.monospace(formatter.escape(line)));
                     add = true;
@@ -191,14 +191,17 @@ public abstract class AbstractInfoBuilder<T> {
         // Create the documentation, which will include documentation for each
         // parameter that has it.
         StringBuilder opDocBuilder = new StringBuilder(getDocumentation(operation, formatter));
+        opDocBuilder.append(System.lineSeparator());
 
         // Start building the operation signature
         // append the operation name, bolded
         StringBuilder opSigBuilder = new StringBuilder(formatter.bold(operation.getName()));
 
-        // If there are parameters, output them within parentheses
+        // If there are parameters, output them within parentheses; also
+        // add the parameter documentation to the documentary text
         if (operation.hasOwnedParameter()) {
             addSignatureParameters(opSigBuilder, operation.getOwnedParameter());
+            opDocBuilder.append(System.lineSeparator());
             addDocumentParameters(opDocBuilder, operation.getOwnedParameter());
         }
 
@@ -245,8 +248,8 @@ public abstract class AbstractInfoBuilder<T> {
 
         // if there are parameters, put them out on different lines, else just output "()"
         if (!formattedParameters.isEmpty()) {
-            sigBuilder.append(" (").append(formatter.newParagraph());
-            sigBuilder.append(String.join("," + formatter.newParagraph(), formattedParameters)).append(formatter.newParagraph());
+            sigBuilder.append(" (").append(formatter.hardLineBreak());
+            sigBuilder.append(String.join("," + formatter.hardLineBreak(), formattedParameters)).append(formatter.hardLineBreak());
             sigBuilder.append(')');
         }
         else
@@ -270,7 +273,8 @@ public abstract class AbstractInfoBuilder<T> {
             }
         }
         if (!formattedParameters.isEmpty()) {
-            docBuilder.append(formatter.newParagraph());
+            docBuilder.append (".Parameters");
+            docBuilder.append(formatter.hardLineBreak());
             docBuilder.append ("[horizontal]");
             docBuilder.append(String.join("\n", formattedParameters));
         }

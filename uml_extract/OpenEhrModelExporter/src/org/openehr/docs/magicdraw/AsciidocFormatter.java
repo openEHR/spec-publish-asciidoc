@@ -42,7 +42,7 @@ public class AsciidocFormatter implements Formatter {
     }
 
     @Override
-    public String newParagraph() {
+    public String hardLineBreak() {
         return " +" + System.lineSeparator();
     }
 

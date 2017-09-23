@@ -14,7 +14,7 @@ public interface Formatter {
 
     String italicBold(String text);
 
-    String newParagraph();
+    String hardLineBreak();
 
     String escapeLiteral(String value);
 
