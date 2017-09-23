@@ -690,6 +690,8 @@ th.tableblock { background-color: skyblue; font-family: "Open Sans", "DejaVu San
 
 th.tableblock.frontpage { background-color: lightsteelblue; font-family: "Open Sans", "DejaVu Sans", sans-serif; }
 
+td.hdlist1 { font-weight: bold; padding-bottom: 0.41667em; }
+
 p, td.content { letter-spacing: -0.01em; }
 p strong, td.content strong { letter-spacing: -0.005em; }
 
