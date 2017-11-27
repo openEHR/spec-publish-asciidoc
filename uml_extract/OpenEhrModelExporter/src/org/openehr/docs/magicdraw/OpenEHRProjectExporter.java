@@ -16,11 +16,7 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -117,12 +113,20 @@ public class OpenEHRProjectExporter {
                 throw new OpenEhrExporterException("Unable to create folder: " + diagramsFolder);
             }
         }
-        project.getDiagrams().stream().forEach(d -> exportDiagram(diagramsFolder, d));
+
+        List<DiagramPresentationElement> diagrams = project.getDiagrams().stream()
+                .filter(this::diagMatchesRootPackages)
+                .collect(Collectors.toList());
+        diagrams.forEach(d -> exportDiagram(diagramsFolder, d));
     }
 
     private boolean matchesRootPackages(NamedElement namedElement) {
-        return rootPackageNames.stream().anyMatch (rn -> namedElement.getQualifiedName().contains(rn));
+        return rootPackageNames.stream().anyMatch (rn -> namedElement.getQualifiedName().contains(rn + "::"));
      //   return rootPackageNames.stream().filter(rn -> namedElement.getQualifiedName().contains(rn)).findFirst().isPresent();
+    }
+
+    private boolean diagMatchesRootPackages(DiagramPresentationElement diagElement) {
+        return rootPackageNames.stream().anyMatch (rn -> diagElement.getName().contains(rn + "-"));
     }
 
     /**
@@ -245,26 +249,38 @@ public class OpenEHRProjectExporter {
             String indexSubPackage = "";
 
             for (ClassInfo classInfo : allTypes) {
-                if (!"BASE".equals(classInfo.getIndexComponent()) && !"T".equals(classInfo.getClassName()) && !classInfo.getClassName().contains("<")) {
+                // The test for className > 2 is to avoid generic parameters like 'T', and
+                // occasionally 'TT' or similar.
+                // removed: !"BASE".equals(classInfo.getIndexComponent()) &&
+                if (classInfo.getClassName().length() > 2 && !classInfo.getClassName().contains("<")) {
+
+                    // if Component of class has changed since last iteration, output a new header line
                     if (!indexComponent.equals(classInfo.getIndexComponent())) {
                         printWriter.println();
                         printWriter.println("== Component " + classInfo.getIndexComponent());
                         indexComponent = classInfo.getIndexComponent();
                     }
+
+                    // if Package of class has changed since last iteration, output a new header line
                     if (!indexPackage.equals(classInfo.getIndexPackage())) {
                         printWriter.println();
                         printWriter.println("=== Model " + classInfo.getIndexPackage());
                         indexPackage = classInfo.getIndexPackage();
                     }
+
+                    // if Sub-package of class has changed since last iteration, output a new header line
                     if (!indexSubPackage.equals(classInfo.getIndexSubPackage())) {
                         printWriter.println();
                         printWriter.println("==== Package " + classInfo.getIndexSubPackage());
                         printWriter.println();
                         indexSubPackage = classInfo.getIndexSubPackage();
                     }
-                    printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease, convertToHtmlName(indexSubPackage), // base link
-                                       classInfo.getClassName().toLowerCase(), classInfo.getType().toLowerCase(), // #href
-                                       classInfo.getClassName()); // [descr]
+
+                    // Output the class as a linked text line
+                    printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease,
+                            classSpecMap.containsKey(indexSubPackage) ? classSpecMap.get(indexSubPackage) : indexSubPackage, // base link
+                            classInfo.getClassName().toLowerCase(), classInfo.getType().toLowerCase(), // #href
+                            classInfo.getClassName()); // [descr]
                     printWriter.println();
                 }
             }
@@ -273,14 +289,16 @@ public class OpenEHRProjectExporter {
         }
     }
 
-    private String convertToHtmlName(String indexSubPackage) {
-        if ("composition".equals(indexSubPackage)) {
-            return "ehr";
-        }
-        if ("base".equals(indexSubPackage)) {
-            return "support";
-        }
-        return indexSubPackage;
+    /*
+     * Handle some exceptions to regular relationship between package name and
+     * specification name.
+     */
+    static Hashtable<String, String> classSpecMap = new Hashtable<String, String>();
+
+    static {
+        classSpecMap.put("composition", "ehr");
+        classSpecMap.put("aom2_profile", "aom2");
+        classSpecMap.put("p_aom2", "aom2");
     }
 
     /**
