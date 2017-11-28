@@ -290,15 +290,16 @@ public class OpenEHRProjectExporter {
     }
 
     /*
-     * Handle some exceptions to regular relationship between package name and
-     * specification name.
+     * Handle exceptions to regular relationship between package name and
+     * specification document name.
      */
     static Hashtable<String, String> classSpecMap = new Hashtable<String, String>();
 
     static {
         classSpecMap.put("composition", "ehr");
-        classSpecMap.put("aom2_profile", "aom2");
-        classSpecMap.put("p_aom2", "aom2");
+        classSpecMap.put("aom2", "AOM2");
+        classSpecMap.put("aom2_profile", "AOM2");
+        classSpecMap.put("p_aom2", "AOM2");
     }
 
     /**
