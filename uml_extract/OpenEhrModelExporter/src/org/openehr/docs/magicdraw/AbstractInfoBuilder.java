@@ -11,10 +11,7 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.StructuralFeature;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.ValueSpecification;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,39 +65,40 @@ public abstract class AbstractInfoBuilder<T> {
         return builder.toString();
     }
 
-    protected void addAttributes(List<ClassFeatureInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+    protected void addAttributes(List<ClassFeatureInfo> attributes, List<Property> properties, Map<String, Property> superClassAttributes) {
         properties.stream()
-                .filter(p -> !superClassAttributes.contains(p.getName()))
+                .filter(p -> !superClassAttributes.containsKey(p.getName()))
                 .filter(p -> !p.isReadOnly())
-                .forEach(p -> addAttribute(attributes, p, false));
+                .forEach(p -> addAttribute(attributes, p, OperationStatus.DEFINED));
         properties.stream()
-                .filter(p -> superClassAttributes.contains(p.getName()))
+                .filter(p -> superClassAttributes.containsKey(p.getName()))
                 .filter(p -> !p.isReadOnly())
-                .forEach(p -> addAttribute(attributes, p, true));
+                .forEach(p -> addAttribute(attributes, p, OperationStatus.REDEFINED));
     }
 
-    protected void addConstants(List<ClassFeatureInfo> attributes, List<Property> properties, Set<String> superClassAttributes) {
+    protected void addConstants(List<ClassFeatureInfo> attributes, List<Property> properties, Map<String, Property> superClassAttributes) {
         properties.stream()
-                .filter(p -> !superClassAttributes.contains(p.getName()))
+                .filter(p -> !superClassAttributes.containsKey(p.getName()))
                 .filter(StructuralFeature::isReadOnly)
-                .forEach(p -> addAttribute(attributes, p, false));
+                .forEach(p -> addAttribute(attributes, p, OperationStatus.DEFINED));
         properties.stream()
-                .filter(p -> superClassAttributes.contains(p.getName()))
+                .filter(p -> superClassAttributes.containsKey(p.getName()))
                 .filter(StructuralFeature::isReadOnly)
-                .forEach(p -> addAttribute(attributes, p, true));
+                .forEach(p -> addAttribute(attributes, p, OperationStatus.REDEFINED));
     }
 
     /**
      * Build a ClassFeatureInfo object for property and add it to the attributes list.
      * @param attributes List of ClassFeatureInfo objects for this class so far built.
      * @param property the property to add.
-     * @param redefined True if this operation effects an abstract operation in a parent class.
+     * @param attrStatus Status of attribute in this class: defined, redefined etc.
      */
-    private void addAttribute(List<ClassFeatureInfo> attributes, Property property, boolean redefined) {
+    private void addAttribute(List<ClassFeatureInfo> attributes, Property property, OperationStatus attrStatus) {
         // create a ClassFeatureInfo with attribute documentation, occurrences and redefined marker
         ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
                 .setDocumentation(getDocumentation(property, formatter))
-                .setOccurrences(formatSpecialOccurences(property.getLower(), property.getUpper()) + (redefined ? " +" + System.lineSeparator() + "(redefined)" : ""));
+                .setStatus(formatSpecialOccurences(property.getLower(), property.getUpper()) +
+                        (attrStatus.toString().isEmpty()? "" : " +" + System.lineSeparator() + "(" + attrStatus + ")"));
 
         // attribute signature
         StringBuilder sigBuilder = new StringBuilder(formatter.bold(property.getName()));
@@ -174,20 +172,26 @@ public abstract class AbstractInfoBuilder<T> {
         return upper == -1 ? lower + "..1" : lower + ".." + upper;
     }
 
-    protected void addOperations(List<ClassFeatureInfo> features, List<Operation> operations, Set<String> superClassOperations) {
-        operations.stream().filter(op -> !superClassOperations.contains(op.getName()))
-                .forEach(operation -> addOperation(features, operation, false));
-        operations.stream().filter(op -> superClassOperations.contains(op.getName()))
-                .forEach(operation -> addOperation(features, operation, true));
+    protected void addOperations(List<ClassFeatureInfo> features, List<Operation> operations, Map<String, Operation> superClassOperations) {
+        for (Operation op : operations) {
+            if (superClassOperations.containsKey(op.getName())) {
+                if (superClassOperations.get(op.getName()).isAbstract())
+                    addOperation(features, op, OperationStatus.EFFECTED);
+                else
+                    addOperation(features, op, OperationStatus.REDEFINED);
+            }
+            else
+                addOperation(features, op, op.isAbstract()? OperationStatus.ABSTRACT : OperationStatus.DEFINED);
+        }
     }
 
     /**
      * Build a ClassFeatureInfo for operation, and append it to the features list so far built.
      * @param features List of class features so far built.
      * @param operation UML operation definition.
-     * @param effected True if this operation effects an abstract operation in a parent class.
+     * @param opStatus Status of operation in this class: abstract, effected, defined etc.
      */
-    private void addOperation(List<ClassFeatureInfo> features, Operation operation, boolean effected) {
+    private void addOperation(List<ClassFeatureInfo> features, Operation operation, OperationStatus opStatus) {
         // Create the documentation, which will include documentation for each
         // parameter that has it.
         StringBuilder opDocBuilder = new StringBuilder(getDocumentation(operation, formatter));
@@ -215,7 +219,7 @@ public abstract class AbstractInfoBuilder<T> {
         addOperationConstraint(operation, fullSigBuilder);
 
         ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
-                .setOccurrences(effected ? "(effected)" : "")
+                .setStatus(opStatus.toString().isEmpty()? "" : "(" + opStatus + ")")
                 .setDocumentation(opDocBuilder.toString());
 
         classFeatureInfo.setSignature(fullSigBuilder.toString());

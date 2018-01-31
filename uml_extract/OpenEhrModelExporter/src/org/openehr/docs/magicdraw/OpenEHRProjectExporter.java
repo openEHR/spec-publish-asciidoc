@@ -310,7 +310,7 @@ public class OpenEHRProjectExporter {
     private void exportFunctions(ClassInfo classInfo, PrintWriter printWriter) {
         for (ClassFeatureInfo classFeatureInfo : classInfo.getOperations()) {
             printWriter.println();
-            printWriter.println("h|" + classFeatureInfo.getOccurrences());
+            printWriter.println("h|" + classFeatureInfo.getStatus());
 
             printWriter.println('|' + classFeatureInfo.getSignature());
             printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
@@ -346,7 +346,7 @@ public class OpenEHRProjectExporter {
      */
     private void exportAttribute(PrintWriter printWriter, ClassFeatureInfo classFeatureInfo) {
         printWriter.println();
-        printWriter.println("h|" + formatter.bold(classFeatureInfo.getOccurrences()));
+        printWriter.println("h|" + formatter.bold(classFeatureInfo.getStatus()));
         printWriter.println('|' + classFeatureInfo.getSignature());
         printWriter.println("a|" + formatter.escapeColumnSeparator(formatter.normalizeLines(classFeatureInfo.getDocumentation())));
     }

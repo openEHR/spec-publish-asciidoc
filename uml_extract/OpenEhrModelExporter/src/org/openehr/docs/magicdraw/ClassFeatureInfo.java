@@ -4,16 +4,16 @@ package org.openehr.docs.magicdraw;
  * @author Bostjan Lah
  */
 public class ClassFeatureInfo {
-    private String occurrences = "";
+    private String status = "";
     private String signature = "";
     private String documentation = "";
 
-    public String getOccurrences() {
-        return occurrences;
+    public String getStatus() {
+        return status;
     }
 
-    public ClassFeatureInfo setOccurrences(String occurrences) {
-        this.occurrences = occurrences;
+    public ClassFeatureInfo setStatus(String status) {
+        this.status = status;
         return this;
     }
 

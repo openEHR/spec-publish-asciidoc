@@ -2,9 +2,11 @@ package org.openehr.docs.magicdraw;
 
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.NamedElement;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -25,8 +27,8 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
 
         setHierarchy(element.getQualifiedName(), classInfo);
 
-        Set<String> superClassAttributes = new HashSet<>();
-        Set<String> superClassOperations = new HashSet<>();
+        Map<String, Property> superClassAttributes = new HashMap<>();
+        Map<String, Operation> superClassOperations = new HashMap<>();
 
         if (element.hasSuperClass()) {
             classInfo.setParentClassName(String.join(", ", element.getSuperClass().stream()
@@ -49,10 +51,10 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
         return classInfo;
     }
 
-    private void getSuperClassData(Class element, Set<String> superClassAttributes, Set<String> superClassOperations) {
+    private void getSuperClassData(Class element, Map<String, Property> superClassAttributes, Map<String, Operation> superClassOperations) {
         for (Class superClass : element.getSuperClass()) {
-            superClassAttributes.addAll(superClass.getOwnedAttribute().stream().map(NamedElement::getName).collect(Collectors.toSet()));
-            superClassOperations.addAll(superClass.getOwnedOperation().stream().map(NamedElement::getName).collect(Collectors.toSet()));
+            superClassAttributes.putAll(superClass.getOwnedAttribute().stream().collect(Collectors.toMap(NamedElement::getName, p -> p)));
+            superClassOperations.putAll(superClass.getOwnedOperation().stream().collect(Collectors.toMap(NamedElement::getName, p -> p)));
             getSuperClassData(superClass, superClassAttributes, superClassOperations);
         }
     }

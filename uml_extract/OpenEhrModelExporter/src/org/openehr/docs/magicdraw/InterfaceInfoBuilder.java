@@ -1,9 +1,11 @@
 package org.openehr.docs.magicdraw;
 
 import com.nomagic.uml2.ext.magicdraw.classes.mdinterfaces.Interface;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Bostjan Lah
@@ -22,8 +24,8 @@ public class InterfaceInfoBuilder extends AbstractInfoBuilder<Interface> {
                 .setAbstractClass(element.isAbstract());
         setHierarchy(element.getQualifiedName(), classInfo);
 
-        Set<String> superClassAttributes = new HashSet<>();
-        Set<String> superClassOperations = new HashSet<>();
+        Map<String, Property> superClassAttributes = new HashMap<>();
+        Map<String, Operation> superClassOperations = new HashMap<>();
 
         if (element.hasOwnedAttribute()) {
             addAttributes(classInfo.getAttributes(), element.getOwnedAttribute(), superClassAttributes);
