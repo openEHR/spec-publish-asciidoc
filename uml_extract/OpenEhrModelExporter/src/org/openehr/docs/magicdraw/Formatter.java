@@ -23,4 +23,7 @@ public interface Formatter {
     String escapeColumnSeparator(String value);
 
     String normalizeLines(String doc);
+
+    String errorDelimiterLine();
+
 }

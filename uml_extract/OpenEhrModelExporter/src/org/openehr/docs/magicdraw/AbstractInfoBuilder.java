@@ -19,20 +19,59 @@ import java.util.stream.Stream;
  * @author Bostjan Lah
  */
 public abstract class AbstractInfoBuilder<T> {
+    static String DOC_ERROR_DELIM = ".Errors";
+
     protected final Formatter formatter;
 
     protected AbstractInfoBuilder(Formatter formatter) {
         this.formatter = formatter;
     }
 
+    /**
+     * Extract comment text, but remove any section starting with the line
+     * ".Error"; this is split out by getErrorDocumentation()
+     */
     @SuppressWarnings("HardcodedLineSeparator")
     protected String getDocumentation(Element element, Formatter formatter) {
-        List<String> lines = element.getOwnedComment().stream()
+        List<String> allLines = element.getOwnedComment().stream()
                 .map(Comment::getBody)
                 .flatMap(body -> Stream.of(body.split("\n")))
                 .map(formatter::escape)
                 .collect(Collectors.toList());
-        return String.join(System.lineSeparator(), lines);
+        List<String> resultLines = new ArrayList<>();
+        for (String s: allLines) {
+            if (s.equalsIgnoreCase(DOC_ERROR_DELIM))
+                break;
+            resultLines.add(s);
+        }
+        return String.join(System.lineSeparator(), resultLines);
+    }
+
+    /**
+     * Extract error comment text, which is delimited by a line containing
+     * ".Error", if it exists.
+     * The delimiter line is not included in the result. If there is no
+     * error text, the result is an empty string.
+     */
+    @SuppressWarnings("HardcodedLineSeparator")
+    protected String getErrorDocumentation(Element element, Formatter formatter) {
+        List<String> allLines = element.getOwnedComment().stream()
+                .map(Comment::getBody)
+                .flatMap(body -> Stream.of(body.split("\n")))
+                .map(formatter::escape)
+                .collect(Collectors.toList());
+        List<String> resultLines = new ArrayList<>();
+        boolean found = false;
+        for (String s: allLines) {
+            if (found)
+                resultLines.add(s);
+            if (s.equalsIgnoreCase(DOC_ERROR_DELIM))
+                found = true;
+        }
+        if (!resultLines.isEmpty())
+            return String.join(System.lineSeparator(), resultLines);
+        else
+            return "";
     }
 
     public abstract ClassInfo build(T element);
@@ -192,8 +231,7 @@ public abstract class AbstractInfoBuilder<T> {
      * @param opStatus Status of operation in this class: abstract, effected, defined etc.
      */
     private void addOperation(List<ClassFeatureInfo> features, Operation operation, OperationStatus opStatus) {
-        // Create the documentation, which will include documentation for each
-        // parameter that has it.
+        // Create the main documentation.
         StringBuilder opDocBuilder = new StringBuilder(getDocumentation(operation, formatter));
         opDocBuilder.append(System.lineSeparator());
 
@@ -217,6 +255,15 @@ public abstract class AbstractInfoBuilder<T> {
 
         // Output any operation pre- and post-conditions (UML constraints)
         addOperationConstraint(operation, fullSigBuilder);
+
+        // Create and set the error documentation, if there is any.
+        String errStr = getErrorDocumentation(operation, formatter);
+        if (!errStr.isEmpty()) {
+            opDocBuilder.append(System.lineSeparator());
+            opDocBuilder.append(formatter.errorDelimiterLine());
+            opDocBuilder.append (getErrorDocumentation(operation, formatter));
+            opDocBuilder.append(System.lineSeparator());
+        }
 
         ClassFeatureInfo classFeatureInfo = new ClassFeatureInfo()
                 .setStatus(opStatus.toString().isEmpty()? "" : "(" + opStatus + ")")

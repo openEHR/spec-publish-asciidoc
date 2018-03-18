@@ -90,4 +90,14 @@ public class AsciidocFormatter implements Formatter {
         }
         return classDoc.toString().trim();
     }
+
+    /**
+     * Generate the line of text ".Errors", which will be interpreted by Asciidoctor
+     * as a special heading.
+     */
+    @Override
+    public String errorDelimiterLine() {
+        return (System.lineSeparator() + ".Errors" + System.lineSeparator());
+    }
+
 }
