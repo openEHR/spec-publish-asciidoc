@@ -1,5 +1,5 @@
 .listingblock .pygments .hll { background-color: #ffffcc }
-.listingblock .pygments  { background: #ffffff; }
+.listingblock .pygments, .listingblock .pygments code { background: #ffffff; }
 .listingblock .pygments .tok-c { color: #666666; font-style: italic } /* Comment */
 .listingblock .pygments .tok-err { color: #FF0000; background-color: #FFAAAA } /* Error */
 .listingblock .pygments .tok-k { color: #228899; font-weight: bold } /* Keyword */
