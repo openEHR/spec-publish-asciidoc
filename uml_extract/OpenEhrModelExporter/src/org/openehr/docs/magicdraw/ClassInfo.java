@@ -8,8 +8,9 @@ import java.util.List;
  * @author Bostjan Lah
  */
 public class ClassInfo implements Comparable<ClassInfo> {
-    private final String type;
-    private String className = "";
+    private final String metaType;         // "Class", "Interface", "Enumeration" etc
+    private String classTypeName = "";     // including any generics
+    private String className = "";         // root class name
     private String documentation = "";
     private String parentClassName;
     private String indexComponent = "";
@@ -23,19 +24,24 @@ public class ClassInfo implements Comparable<ClassInfo> {
     private final List<ConstraintInfo> constraints = new ArrayList<>();
 
     public ClassInfo(String type) {
-        this.type = type;
+        this.metaType = type;
     }
 
-    public String getType() {
-        return type;
+    public String getMetaType() {
+        return metaType;
+    }
+
+    public String getClassTypeName() {
+        return classTypeName;
     }
 
     public String getClassName() {
         return className;
     }
 
-    public ClassInfo setClassName(String className) {
-        this.className = className;
+    public ClassInfo setClassTypeName(String classTypeName) {
+        this.classTypeName = classTypeName;
+        this.className = classTypeName.contains("<") ? classTypeName.substring(0, classTypeName.indexOf('<')): classTypeName;
         return this;
     }
 
@@ -123,6 +129,6 @@ public class ClassInfo implements Comparable<ClassInfo> {
             return k;
         }
 
-        return className.compareTo(o.className);
+        return classTypeName.compareTo(o.classTypeName);
     }
 }

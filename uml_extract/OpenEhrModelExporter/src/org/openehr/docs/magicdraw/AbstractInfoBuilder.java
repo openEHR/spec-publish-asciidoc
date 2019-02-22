@@ -1,17 +1,11 @@
 package org.openehr.docs.magicdraw;
 
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Comment;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Constraint;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.LiteralString;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.OpaqueExpression;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Parameter;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.StructuralFeature;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.ValueSpecification;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -143,8 +137,28 @@ public abstract class AbstractInfoBuilder<T> {
         StringBuilder sigBuilder = new StringBuilder(formatter.bold(property.getName()));
         sigBuilder.append(": ");
 
-        // compute the type, based on type, except if there is a qualifier on the property, in which case use its type
+        // determine the type
         String type = property.getType() == null ? "" : property.getType().getName();
+
+        // if there are template parameters, add them to the type name. Because UML doesn't
+        // support a proper notion of types, we have to get the qualified type name, then
+        // search for that, and then check if it is a template type, and if so obtain the
+        // list of parameters and construct a string of the form "<T,U,V>" to add to the root
+        // type name.
+
+        // THE FOLLOWING CODE IS AN INITIAL ATTEMPT BUT IS WRONG
+        //String type = property.getMetaType() == null ? "" : property.getMetaType().getQualifiedName();
+        //TemplateParameter tplParam = property.getClassType().getTypeName();
+        //getMetaType(). getOwningTemplateParameter();
+//        if (tplParam != null) {
+//            List<TemplateParameter> tplParams = tplParam.getSignature().getOwnedParameter();
+//            String tplParamList = tplParams.stream()
+//                    .map(t -> t.getHumanName())
+//                    .collect(Collectors.joining(","));
+//            type = type + '<' + tplParamList + '>';
+//        }
+
+        // if there is a qualifier on the property, get it, since this will modify the type
         Property qualifier = property.getAssociation() != null && property.hasQualifier() ? property.getQualifier().get(0) : null;
         StringBuilder typeInfo = new StringBuilder(formatType(type, qualifier, property.getLower(), property.getUpper()));
 

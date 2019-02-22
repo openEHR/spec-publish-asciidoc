@@ -1,5 +1,6 @@
 package org.openehr.docs.magicdraw;
 
+import com.nomagic.uml2.ext.magicdraw.auxiliaryconstructs.mdtemplates.TemplateSignature;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.NamedElement;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Operation;
@@ -20,8 +21,21 @@ public class ClassInfoBuilder extends AbstractInfoBuilder<com.nomagic.uml2.ext.m
     @Override
     public ClassInfo build(com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class element) {
         String className = element.getName();
+
+        // check for template parts
+        TemplateSignature tplSig = element.getOwnedTemplateSignature();
+        if (tplSig != null) {
+            // List<TemplateParameter>;
+            // FIXME: we have to get the name using getHumanName() but remove
+            // the 'Class '. There is no other way to get the parameter type name
+            String tplParamsStr = tplSig.getOwnedParameter().stream()
+                    .map(t -> t.getParameteredElement().getHumanName().replace("Class ", ""))
+                    .collect(Collectors.joining(","));
+            className = className + '<' + tplParamsStr + '>';
+        }
+
         ClassInfo classInfo = new ClassInfo("Class")
-                .setClassName(className)
+                .setClassTypeName(className)
                 .setDocumentation(getDocumentation(element, getFormatter()))
                 .setAbstractClass(element.isAbstract());
 

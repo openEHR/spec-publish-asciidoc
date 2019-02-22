@@ -30,7 +30,7 @@ public class OpenEHRProjectExporter {
     private static final String DIAGRAMS_FOLDER = "diagrams";
     private static final String CLASSES_FOLDER = "classes";
     // component, release, html file, subref classname + type, description
-    private static final String INDEX_LINK_FORMAT = "[.xcode]\n* http://www.openehr.org/releases/%s/%s/%s.html#_%s_%s[%s]";
+    private static final String INDEX_LINK_FORMAT = "[.xcode]\n* link:/releases/%s/%s/%s.html#_%s_%s[%s^]\n";
 
     private final Formatter formatter = new AsciidocFormatter();
     private final String headingPrefix;
@@ -68,30 +68,32 @@ public class OpenEHRProjectExporter {
         // * convert to ClassInfo objects (local representation used here)
         // Then export each ClassInfo object as an output file
         ClassInfoBuilder classInfoBuilder = new ClassInfoBuilder(formatter);
-        Collection<? extends Element> umlClasses = ModelHelper.getElementsOfType(project.getModel(),
-                                                                                 new Class[]{com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class.class},
-                                                                                 true);
+        Collection<? extends Element> umlClasses = ModelHelper.getElementsOfType(project.getPrimaryModel(),
+                new Class[]{com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class.class},
+                true);
         List<ClassInfo> classes = umlClasses.stream()
                 .map(e -> (com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class)e)
+                .filter(c -> ! c.getName().contains("<"))// ignore classes with names simulating template type names
                 .filter(this::matchesRootPackages)
                 .map(classInfoBuilder::build)
                 .collect(Collectors.toList());
         classes.forEach(cl -> exportClass(cl, classesFolder));
 
-        Collection<? extends Element> umlInterfaces = ModelHelper.getElementsOfType(project.getModel(),
-                                                                                    new Class[]{Interface.class},
-                                                                                    true);
+        Collection<? extends Element> umlInterfaces = ModelHelper.getElementsOfType(project.getPrimaryModel(),
+                new Class[]{Interface.class},
+                true);
         InterfaceInfoBuilder interfaceInfoBuilder = new InterfaceInfoBuilder(formatter);
         List<ClassInfo> interfaces = umlInterfaces.stream()
                 .map(e -> (Interface)e)
+                .filter(c -> ! c.getName().contains("<"))// ignore classes with names simulating template type names
                 .filter(this::matchesRootPackages)
                 .map(interfaceInfoBuilder::build)
                 .collect(Collectors.toList());
         interfaces.forEach(cl -> exportClass(cl, classesFolder));
 
-        Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getModel(),
-                                                                                      new Class[]{Enumeration.class},
-                                                                                      true);
+        Collection<? extends Element> umlEnumerations = ModelHelper.getElementsOfType(project.getPrimaryModel(),
+                new Class[]{Enumeration.class},
+                true);
 
         EnumerationInfoBuilder enumerationInfoBuilder = new EnumerationInfoBuilder(formatter);
         List<ClassInfo> enumerations = umlEnumerations.stream()
@@ -100,6 +102,10 @@ public class OpenEHRProjectExporter {
                 .map(enumerationInfoBuilder::build)
                 .collect(Collectors.toList());
         enumerations.forEach(en -> exportClass(en, classesFolder));
+
+     //   Collection<? extends Element> umlStateMachines = ModelHelper.getElementsOfType(project.getPrimaryModel(),
+     //           new Class[]{StateMachine.class},
+     //           true);
 
         // Generate the index file
         if (indexRelease != null) {
@@ -153,16 +159,16 @@ public class OpenEHRProjectExporter {
     private void exportClass(ClassInfo classInfo, File targetFolder) {
         try (PrintWriter printWriter = new PrintWriter(Files.newBufferedWriter(
                 targetFolder.toPath().resolve(fileName(classInfo.getClassName().toLowerCase()) + ADOC_FILE_EXTENSION), Charset.forName("UTF-8")))) {
-            printWriter.println(headingPrefix + ' ' + classInfo.getClassName() + ' ' + classInfo.getType());
+            printWriter.println(headingPrefix + ' ' + classInfo.getClassTypeName() + ' ' + classInfo.getMetaType());
             printWriter.println();
 
             printWriter.println("[cols=\"^1,3,5\"]");
             printWriter.println("|===");
-            printWriter.println("h|" + formatter.bold(classInfo.getType()));
+            printWriter.println("h|" + formatter.bold(classInfo.getMetaType()));
             printWriter.println("2+^h|" +
                                         (classInfo.isAbstractClass()
-                                                ? formatter.italicBold(classInfo.getClassName() + " (abstract)")
-                                                : formatter.bold(classInfo.getClassName())));
+                                                ? formatter.italicBold(classInfo.getClassTypeName() + " (abstract)")
+                                                : formatter.bold(classInfo.getClassTypeName())));
             printWriter.println();
 
             printWriter.println("h|" + formatter.bold("Description"));
@@ -251,8 +257,7 @@ public class OpenEHRProjectExporter {
             for (ClassInfo classInfo : allTypes) {
                 // The test for className > 2 is to avoid generic parameters like 'T', and
                 // occasionally 'TT' or similar.
-                // removed: !"BASE".equals(classInfo.getIndexComponent()) &&
-                if (classInfo.getClassName().length() > 2 && !classInfo.getClassName().contains("<")) {
+                if (classInfo.getClassName().length() > 2) {
 
                     // if Component of class has changed since last iteration, output a new header line
                     if (!indexComponent.equals(classInfo.getIndexComponent())) {
@@ -279,9 +284,8 @@ public class OpenEHRProjectExporter {
                     // Output the class as a linked text line
                     printWriter.printf(INDEX_LINK_FORMAT, indexComponent, indexRelease,
                             classSpecMap.containsKey(indexSubPackage) ? classSpecMap.get(indexSubPackage) : indexSubPackage, // base link
-                            classInfo.getClassName().toLowerCase(), classInfo.getType().toLowerCase(), // #href
+                            classInfo.getClassName().toLowerCase(), classInfo.getMetaType().toLowerCase(), // #href
                             classInfo.getClassName()); // [descr]
-                    printWriter.println();
                 }
             }
         } catch (IOException e) {
